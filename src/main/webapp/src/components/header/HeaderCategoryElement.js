@@ -22,7 +22,7 @@ const HeaderCategory = ({
     <>
       <Link to={link} onClick={() => setIsClickedCategory(link)}>
         <div className="flex-col mt-3 ">
-          <div className="flex justify-evenly pl-3 pr-3 hover:text-gray-400">
+          <div className="flex justify-evenly pl-3 pr-3 hover:text-gray-400 transition-all duration-150">
             <FontAwesomeIcon
               className="text-xl "
               icon={
@@ -48,10 +48,10 @@ const HeaderCategory = ({
               }
             />
 
-            <span className="ml-2">{text}</span>
+            <span className="ml-2 text-sm">{text}</span>
           </div>
           {isClickedCategory === link ? (
-            <div className="bg-orange-400 h-[2px] mt-2 translate-y-[1.6px]"></div>
+            <div className="bg-orange-400 h-[2px] mt-3 translate-y-[1.6px]"></div>
           ) : null}
         </div>
       </Link>

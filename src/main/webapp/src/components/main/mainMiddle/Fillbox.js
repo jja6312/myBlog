@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import FillboxHover from "./FillboxHover";
 
-const Fillbox = ({ brightness: brightness }) => {
+const Fillbox = ({ brightness }) => {
   return (
     <div
-      // style={{ width: size, height: `${size}px` }}
-      className={`rounded-sm w-[4px] h-[4px] md:w-2 md:h-2 xl:w-[10px] xl:h-[10px] 2xl:w-3 2xl:h-3 ${brightness} ${
+      className={`group relative rounded-sm w-[4px] h-[4px] md:w-2 md:h-2 xl:w-[10px] xl:h-[10px] 2xl:w-3 2xl:h-3 ${brightness} ${
         brightness === "bg-blue-300" ? "border border-white" : ""
       }`}
-    ></div>
+    >
+      <FillboxHover />
+    </div>
   );
 };
 
