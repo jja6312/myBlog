@@ -3,11 +3,11 @@ import WriteElement from "./WriteElement";
 
 const WriteDashboard = () => {
   return (
-    <div className="writeDashboard w-full bg-darkDeep flex flex-col mt-4">
+    <div className="writeDashboard w-full bg-darkDeep flex flex-col my-6">
       <div className="flex">
-        <span className="text-4xl ml-2">14</span>
-        <span className="text-4xl ml-5">January</span>
-        <span className="text-4xl ml-5 text-gray-500">2024</span>
+        <span className="text-2xl ml-2">14</span>
+        <span className="text-2xl ml-5">January</span>
+        <span className="text-2xl ml-5 text-gray-500">2024</span>
       </div>
       <hr className="border-gray-800 mt-5 mb-5"></hr>
       <WriteElement

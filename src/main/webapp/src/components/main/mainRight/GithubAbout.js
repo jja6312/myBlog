@@ -2,7 +2,7 @@ import React from "react";
 
 const GithubAbout = () => {
   return (
-    <div className="w-1/3 h-[300px] flex flex-col rounded-lg border border-gray-800  p-4  xl:mt-[76px] xl:h-[265px] xl:w-full">
+    <div className="w-1/3 h-[300px] flex flex-col rounded-lg border border-gray-800  p-4 xl:mt-[76px] xl:h-[265px] xl:w-full">
       <span className="text-2xl font-semibold">📖 공부량</span>
       <br></br>
       <br></br>

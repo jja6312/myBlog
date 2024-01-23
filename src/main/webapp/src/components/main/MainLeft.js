@@ -8,6 +8,7 @@ const MainLeft = () => {
       <div className="md:flex items-center flex-col xl:mr-0">
         <div className="flex justify-center items-center rounded-full overflow-hidden w-[30vw] h-[30vw] md:w-[15vw] md:h-[15vw] lg:mt-4 transition-colors duration-500 ease-in-out border-2 border-dark hover:border-gray-200">
           <img
+            alt=""
             className="w-full md:w-[120%] mt-9 object-cover transition-transform duration-500 ease-in-out transform hover:scale-125"
             src={`${process.env.PUBLIC_URL}/image/profile/profile2.png`}
           />

@@ -5,9 +5,13 @@ import HeaderCategories from "./HeaderCategories";
 import MobileHeaderCategory from "../mobile/mobileHeader/MobileHeaderCategory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  const [isClickedCategory, setIsClickedCategory] = useState(location.pathname);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -20,17 +24,21 @@ const Header = () => {
       >
         <div className="flex justify-start items-center py-3 pl-3">
           <img
+            alt=""
             className="w-10 h-10 md:w-15 md:h-15 md:ml-5 rounded-xl"
             src={process.env.PUBLIC_URL + "/image/test/logo.png"}
             alt="logo"
           />
-          <Link to="/myBlog">
+          <Link to="/myBlog" onClick={() => setIsClickedCategory("/myBlog")}>
             <span className="text-[10px] sm:text-lg md:text-xl lg:text-2xl ml-6 font-semibold ">
               정지 안하는 정지안의 블로그🔥🔥🔥
             </span>
           </Link>
         </div>
-        <HeaderCategories />
+        <HeaderCategories
+          isClickedCategory={isClickedCategory}
+          setIsClickedCategory={setIsClickedCategory}
+        />
         <div id="mobile">
           <div className="relative xl:hidden">
             <MobileHeaderCategory

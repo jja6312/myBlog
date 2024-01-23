@@ -1,19 +1,16 @@
-import React from "react";
-import Developing from "../Developing";
-import DevlogListElement from "./DevlogListElement";
+import React, { useState } from "react";
+
+import DevlogLeft from "./DevlogLeft";
+import DevlogMain from "./DevlogMain";
+import DevlogRight from "./DevlogRight";
 
 const Devlog = () => {
+  const [isSelected, setIsSelected] = useState(false);
   return (
-    <div
-      id="devlogContainer"
-      className="bg-dark text-white flex flex-col items-center pl-5 min-h-screen "
-    >
-      <div className="w-10/12 text-[8px] flex flex-col md:text-sm md:w-7/12 mt-10">
-        <span className=" font-semibold">전체 글 (341)</span>
-        <div className="flex justify-start w-full">
-          <DevlogListElement></DevlogListElement>
-        </div>
-      </div>
+    <div className="flex justify-between text-white">
+      <DevlogLeft isSelected={isSelected} setIsSelected={setIsSelected} />
+      <DevlogMain />
+      <DevlogRight isSelected={isSelected} setIsSelected={setIsSelected} />
     </div>
   );
 };

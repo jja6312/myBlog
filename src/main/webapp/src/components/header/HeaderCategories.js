@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import HeaderCategoryElement from "./HeaderCategoryElement";
 
-const HeaderCategories = () => {
-  const [isClickedCategory, setIsClickedCategory] = useState("/myBlog");
+const HeaderCategories = ({ isClickedCategory, setIsClickedCategory }) => {
   return (
     <div className="hidden text-md xl:flex">
       <HeaderCategoryElement
