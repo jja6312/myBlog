@@ -3,7 +3,9 @@ import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
 import { NotionRenderer } from "react-notion";
 import axios from "axios";
-import "./notion.css";
+import "./notionAPICustom.css";
+import DevlogTag from "./DevlogTag";
+import DevlogCategories from "./DevlogCategories";
 
 // 개발일지 읽기 페이지 [24.01.24 15:46 정지안]
 const ReadForm = () => {
@@ -20,14 +22,43 @@ const ReadForm = () => {
       });
   }, []);
   return (
-    // Notion API로 받아온 데이터를 NotionRenderer로 렌더링
-    <div className="bg-dark w-full min-h-screen">
-      <NotionRenderer
-        className="notionText"
-        blockMap={response}
-        hideHeader={true}
-        darkMode={true}
-      />
+    <div className="bg-dark text-white w-full min-h-screen flex justify-center">
+      <div className="w-8/12 p-10 flex flex-col mt-32">
+        {/* 제목 */}
+        <span className="text-6xl font-semibold">
+          (AWS) Beanstalk로 배포하기
+        </span>
+
+        {/* 작성자 정보 */}
+        <div className="flex items-center space-x-4  mt-12">
+          {/* 작성자 프로필사진 */}
+          <div className="flex justify-center items-center rounded-full overflow-hidden w-12 h-12 ">
+            <img
+              alt=""
+              className="w-full md:w-[120%] object-cover "
+              src={`${process.env.PUBLIC_URL}/image/profile/profile2.png`}
+            />
+          </div>
+          <span className="text-xl">정지안</span>
+          <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+          <span className="text-xl text-gray-400">2024.1.24</span>
+        </div>
+
+        <div className="flex w-full mt-5 space-x-4">
+          {/* 카테고리 */}
+          <DevlogCategories categoryName="aws" />
+          {/* 태그 */}
+          <DevlogTag tagName="Beanstalk" />
+        </div>
+        {/* Notion API로 노션페이지에서 받아온 개발일지를 NotionRenderer로 렌더 */}
+        <div className="mt-10 ">
+          <NotionRenderer
+            blockMap={response}
+            hideHeader={true}
+            darkMode={true}
+          />
+        </div>
+      </div>
     </div>
   );
 };
