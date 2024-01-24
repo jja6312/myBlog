@@ -9,6 +9,7 @@ import Youtube from "./components/youtube/Youtube";
 import About from "./components/about/About";
 import Book from "./components/book/Book";
 import Video from "./components/video/Video";
+import WriteForm from "./components/devlog/WriteForm";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
             <Route path="/book" element={<Book />} />
             <Route path="/video" element={<Video />} />
             <Route path="/timeline" element={<Video />} />
+            {/* 글 작성 */}
+            <Route path="/writeForm" element={<WriteForm />} />
           </Routes>
         </div>
       </BrowserRouter>

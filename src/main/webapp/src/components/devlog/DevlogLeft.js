@@ -24,8 +24,8 @@ const DevlogLeft = ({ isSelected, setIsSelected }) => {
           isSelected={isSelected}
           setIsSelected={setIsSelected}
           id="3"
-          imgSrc=""
-          writeAccount="Fill me"
+          imgSrc="/image/test/kuber.png"
+          writeAccount="47"
         />
         <Hexagon
           isSelected={isSelected}
@@ -54,15 +54,15 @@ const DevlogLeft = ({ isSelected, setIsSelected }) => {
           isSelected={isSelected}
           setIsSelected={setIsSelected}
           id="7"
-          imgSrc=""
-          writeAccount="Fill me"
+          imgSrc="/image/test/docker.png"
+          writeAccount="73"
         />
         <Hexagon
           isSelected={isSelected}
           setIsSelected={setIsSelected}
           id="8"
-          imgSrc=""
-          writeAccount="Fill me"
+          imgSrc="/image/test/java.png"
+          writeAccount="34"
         />
         <Hexagon
           isSelected={isSelected}
