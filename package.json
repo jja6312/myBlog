@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-notion": "^0.10.0"
+  }
+}

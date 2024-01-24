@@ -1,0 +1,30 @@
+/* notion.css */
+.notion-text,
+.notion-h1,
+.notion-h2,
+.notion-h3,
+.notion-callout-text {
+  color: white;
+}
+.notion-teal_background {
+  background-color: rgb(30, 99, 50) !important;
+}
+
+.notion-blue_background {
+  background-color: rgb(62, 101, 160) !important;
+}
+
+.notion-purple_background {
+  background-color: rgb(99, 38, 117) !important;
+}
+
+.notion-pink_background {
+  background-color: rgb(225, 44, 113) !important;
+}
+
+.notion-brown_background {
+  background-color: rgb(147, 120, 62) !important;
+}
+.notion-gray_background {
+  background-color: rgb(108, 108, 108) !important;
+}
