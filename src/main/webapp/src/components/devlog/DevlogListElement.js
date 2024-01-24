@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// 개발일지 목록에 보이는 게시글 --[24.01.24 16:32 정지안]
 const DevlogListElement = () => {
   return (
     <>

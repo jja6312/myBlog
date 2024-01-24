@@ -1,13 +1,17 @@
-/* notion.css */
+/* 노션에서 작성한 글을 아래와 같이 커스텀 */
 .notion-text,
-.notion-h1,
 .notion-h2,
 .notion-h3,
 .notion-callout-text {
   color: white;
 }
+
+.notion-h1 {
+  color: rgb(240, 235, 126);
+}
+
 .notion-teal_background {
-  background-color: rgb(30, 99, 50) !important;
+  background-color: rgb(60, 139, 82) !important;
 }
 
 .notion-blue_background {
@@ -19,7 +23,7 @@
 }
 
 .notion-pink_background {
-  background-color: rgb(225, 44, 113) !important;
+  background-color: rgb(223, 91, 142) !important;
 }
 
 .notion-brown_background {

@@ -9,6 +9,7 @@ import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+// 모바일 헤더 카테고리--[24.01.24 18:26 정지안]
 const MobileHeaderCategory = ({ isDropdownOpen, setIsDropdownOpen }) => {
   return (
     <div>

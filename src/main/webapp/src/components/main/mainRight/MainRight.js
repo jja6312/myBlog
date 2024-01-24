@@ -1,7 +1,7 @@
 import React from "react";
-import GithubAbout from "./mainRight/GithubAbout";
-import DataAbout from "./mainRight/DataAbout";
-import WriteAbout from "./mainRight/WriteAbout";
+import GithubAbout from "./GithubAbout";
+import DataAbout from "./DataAbout";
+import WriteAbout from "./WriteAbout";
 
 const MainRight = () => {
   return (

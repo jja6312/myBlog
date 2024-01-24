@@ -1,6 +1,7 @@
 import React from "react";
 import WriteElement from "./WriteElement";
 
+// 특정 날짜의 개발일지 --[24.01.24 18:22 정지안]
 const WriteDashboard = () => {
   return (
     <div className="writeDashboard w-full bg-darkDeep flex flex-col my-6">
