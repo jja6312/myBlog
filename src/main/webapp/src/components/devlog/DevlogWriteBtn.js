@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DevlogWriteBtn = () => {
   return (
-    <div
-      className="fixed z-50 bg-gray-700 border-4 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
+    <>
+      <Link to="/writeForm">
+        <div
+          className="fixed z-50 bg-gray-700 border-4 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
       hover:bg-amber-500 hover:text-black
       
       w-20 h-10 rounded-[20px] text-sm bottom-5 right-5
@@ -11,9 +14,11 @@ const DevlogWriteBtn = () => {
       
       2xl:w-60 2xl:h-20 2xl:rounded-[40px] 2xl:text-3xl 2xl:bottom-15 2xl:right-15
       "
-    >
-      <span>글쓰기</span>
-    </div>
+        >
+          <span>글쓰기</span>
+        </div>
+      </Link>
+    </>
   );
 };
 
