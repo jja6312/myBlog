@@ -19,13 +19,6 @@ const WriteForm = () => {
   const [tagList, setTagList] = useState([]); // DB에서 불러온 태그 리스트
 
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
-  // const [writeDTO, setWriteDTO] = useState({
-  //   title: "",
-  //   category: { name: "" },
-  //   tag: { name: "" },
-  //   notionPageId: "",
-  //   topic: "",
-  // });
   const [writeDTO, setWriteDTO] = useState({
     title: "",
     categoryName: "",
@@ -37,22 +30,29 @@ const WriteForm = () => {
   // 변경되는 input을 DTO에 저장
   const onChangeInput = (e) => {
     const { id, value } = e.target;
-    // if (id === "category") {
-    //   setWriteDTO({
-    //     ...writeDTO,
-    //     category: { name: value },
-    //   });
-    // } else if (id === "tag") {
-    //   setWriteDTO({
-    //     ...writeDTO,
-    //     tag: { name: value },
-    //   });
-    // } else {
     setWriteDTO({
       ...writeDTO,
       [id]: value,
     });
-    // }
+  };
+
+  const onHandlingCategory = (e) => {
+    const { value } = e.target;
+    // "새 카테고리 입력" 텍스트 탐지를 위한 state 변경 (직접입력 div의 스위치역할)
+    setSelectedCategory(value);
+
+    // 카테고리 선택 시 DTO에 저장
+    if (value !== "새 카테고리 입력" && value !== "카테고리 선택") {
+      setWriteDTO({
+        ...writeDTO,
+        categoryName: value,
+      });
+    } else if (value === "새 카테고리 입력" || value === "카테고리 선택") {
+      setWriteDTO({
+        ...writeDTO,
+        categoryName: "",
+      });
+    }
   };
 
   // 저장 버튼 클릭 시 서버에 writeDTO 객체를 전달
@@ -81,6 +81,11 @@ const WriteForm = () => {
     console.log("categoryList");
     console.log(categoryList);
   }, [categoryList]);
+
+  useEffect(() => {
+    console.log("writeDTO");
+    console.log(writeDTO);
+  }, [writeDTO]);
 
   return (
     <div className="flex w-full min-h-screen bg-dark">
@@ -116,9 +121,13 @@ const WriteForm = () => {
             <div className="flex flex-col w-full">
               <select
                 className=" h-12 bg-dark text-white pl-3  text-2xl"
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e) => onHandlingCategory(e)}
               >
                 <option>카테고리 선택</option>
+                {/* 카테고리리스트를 옵션으로 보여준다. */}
+                {categoryList.map((category) => (
+                  <option className="text-yellow-500">{category.name}</option>
+                ))}
                 <option>새 카테고리 입력</option>
               </select>
               {selectedCategory === "새 카테고리 입력" && (

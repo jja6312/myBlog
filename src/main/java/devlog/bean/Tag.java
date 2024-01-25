@@ -35,6 +35,9 @@ public class Tag {
         this.name = name;
         this.category = category;
     }
+
+    public Tag() {
+    }
 }
 
 // *태그란?
