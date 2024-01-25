@@ -15,11 +15,21 @@ const WriteForm = () => {
   const [selectedCategory, setSelectedCategory] = useState("카테고리"); // 선택된 카테고리 이름
   const [selectedTag, setSelectedTag] = useState("태그"); // 선택된 태그 이름
 
+  const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
+  const [tagList, setTagList] = useState([]); // DB에서 불러온 태그 리스트
+
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
+  // const [writeDTO, setWriteDTO] = useState({
+  //   title: "",
+  //   category: { name: "" },
+  //   tag: { name: "" },
+  //   notionPageId: "",
+  //   topic: "",
+  // });
   const [writeDTO, setWriteDTO] = useState({
     title: "",
-    category: { name: "" },
-    tag: { name: "" },
+    categoryName: "",
+    tagName: "",
     notionPageId: "",
     topic: "",
   });
@@ -27,22 +37,22 @@ const WriteForm = () => {
   // 변경되는 input을 DTO에 저장
   const onChangeInput = (e) => {
     const { id, value } = e.target;
-    if (id === "category") {
-      setWriteDTO({
-        ...writeDTO,
-        category: { ...writeDTO.category, name: value },
-      });
-    } else if (id === "tag") {
-      setWriteDTO({
-        ...writeDTO,
-        tag: { ...writeDTO.tag, name: value },
-      });
-    } else {
-      setWriteDTO({
-        ...writeDTO,
-        [id]: value,
-      });
-    }
+    // if (id === "category") {
+    //   setWriteDTO({
+    //     ...writeDTO,
+    //     category: { name: value },
+    //   });
+    // } else if (id === "tag") {
+    //   setWriteDTO({
+    //     ...writeDTO,
+    //     tag: { name: value },
+    //   });
+    // } else {
+    setWriteDTO({
+      ...writeDTO,
+      [id]: value,
+    });
+    // }
   };
 
   // 저장 버튼 클릭 시 서버에 writeDTO 객체를 전달
@@ -62,8 +72,15 @@ const WriteForm = () => {
   };
 
   useEffect(() => {
-    console.log(writeDTO);
-  }, [writeDTO]);
+    axios.post("http://localhost:8080/devlog/getCategoryList").then((res) => {
+      setCategoryList(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log("categoryList");
+    console.log(categoryList);
+  }, [categoryList]);
 
   return (
     <div className="flex w-full min-h-screen bg-dark">
@@ -106,7 +123,7 @@ const WriteForm = () => {
               </select>
               {selectedCategory === "새 카테고리 입력" && (
                 <input
-                  id="category"
+                  id="categoryName"
                   className=" h-12 bg-dark text-white pl-3 mt-2 text-2xl"
                   placeholder="카테고리 직접 입력"
                   onChange={(e) => onChangeInput(e)}
@@ -128,7 +145,7 @@ const WriteForm = () => {
               </select>
               {selectedTag === "새 태그 입력" && (
                 <input
-                  id="tag"
+                  id="tagName"
                   className="h-12 bg-dark text-white pl-3 mt-2 text-2xl"
                   placeholder="태그 직접 입력"
                   onChange={(e) => onChangeInput(e)}
