@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// 글쓰기 버튼 --[24.01.24 17:29 정지안]
 const DevlogWriteBtn = () => {
   return (
     <>

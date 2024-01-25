@@ -13,12 +13,6 @@ public class UserController {
 	public void userList() {
 		System.out.println("hello");
 	}
-	@GetMapping(value="/hello")
-	public void hello() {
-		System.out.println("hello");
-	}
-	
-	
 	
 
 }

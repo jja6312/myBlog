@@ -1,11 +1,19 @@
 import React from "react";
 import Hexagon from "./Hexagon";
 
+// 개발일지의 카테고리 선택 페이지 [24.01.24 15:50 정지안]
+//┌--------------------------------------------------------------------------------┐
+//| 꿀벌이 공간을 효율적으로 활용한 육각형 벌집에서 애벌레를 키우듯이,                  |
+//| 나만의 효율적인 방식을 찾아 개발 지식을 튼튼하게 기르고싶다는 마음으로 디자인되었다. |
+//└-------------------------------------------------------------------------------┘
+
 const DevlogLeft = ({ isSelected, setIsSelected }) => {
   return (
     <div className="relative w-[25vw] flex justify-center pb-10">
       <span className="absolute top-7 right-8 text-3xl italic">Categories</span>
+      {/* 세로로 나열된 육각형줄 4개 중 1번째 */}
       <div className="w-1/4 flex flex-col ">
+        {/* 육각형 모양의 이미지 컴포넌트 */}
         <Hexagon
           isSelected={isSelected}
           setIsSelected={setIsSelected}
@@ -49,6 +57,7 @@ const DevlogLeft = ({ isSelected, setIsSelected }) => {
           writeAccount="Fill me"
         />
       </div>
+      {/* 세로로 나열된 육각형줄 4개 중 2번째 */}
       <div className="w-1/4 flex flex-col mt-[3.45vw] -translate-x-[0.5vw]">
         <Hexagon
           isSelected={isSelected}
@@ -93,6 +102,7 @@ const DevlogLeft = ({ isSelected, setIsSelected }) => {
           writeAccount="Fill me"
         />
       </div>
+      {/* 세로로 나열된 육각형줄 4개 중 3번째 */}
       <div className="w-1/4 flex flex-col mt-[6.9vw] -translate-x-[1vw]">
         <Hexagon
           isSelected={isSelected}
@@ -137,6 +147,7 @@ const DevlogLeft = ({ isSelected, setIsSelected }) => {
           writeAccount="Fill me"
         />
       </div>
+      {/* 세로로 나열된 육각형줄 4개 중 4번째 */}
       <div className="w-1/4 flex flex-col mt-[10.35vw] -translate-x-[1.5vw]">
         <Hexagon
           isSelected={isSelected}

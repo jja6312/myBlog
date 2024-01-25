@@ -10,14 +10,14 @@ import lombok.Data;
 @Table(name="usertable")
 @Data
 public class UserDTO {
-	@Column(name="name", nullable=false, length=30)
-	private String name;
 	
 	@Id
 	@Column(name="id", length=30)
 	private String id;
 	@Column(name="pwd", nullable=false, length=30)
 	private String pwd;
+	@Column(name="name", nullable=false, length=30)
+	private String name;
 
 }
 

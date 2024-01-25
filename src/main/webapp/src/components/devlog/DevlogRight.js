@@ -6,6 +6,7 @@ import { faPersonDigging } from "@fortawesome/free-solid-svg-icons";
 import { faBrain } from "@fortawesome/free-solid-svg-icons";
 import hexagon from "./hexagon.module.css";
 
+// 개발일지의 오른쪽 영역으로, 선택된 카테고리의 하위 구성 및 필터기능 제공 --[24.01.24 16:47 정지안]
 const DevlogRight = ({ isSelected, setIsSelected }) => {
   return (
     <div className="relative w-3/12 flex flex-col items-center">
@@ -15,8 +16,9 @@ const DevlogRight = ({ isSelected, setIsSelected }) => {
       <span className="absolute  top-[4.8vw] right-[3vw] italic z-40 text-2xl text-gray-400">
         by Category
       </span>
+
+      {/* 육각형모양 이미지. custom을 위해 컴포넌트에서 분리. Hexagon.start ------*/}
       <div className="absolute top-0 left-[2vw] z-30">
-        {/* Hexagon 육각형 하나만 빼냈음.start -----------*/}
         <button
           className={`relative w-[9vw] h-[7.7vw] mt-[0.5vw] ${hexagon.hexagon}
         text-black
@@ -36,8 +38,10 @@ const DevlogRight = ({ isSelected, setIsSelected }) => {
             (341)
           </span>
         </button>
-        {/* Hexagon 육각형 하나만 빼냈음.end -----------*/}
       </div>
+      {/* Hexagon.end --------------------------------------------------------*/}
+
+      {/* 필터 */}
       <div className="absolute top-[4.3vw] px-5 pt-[4vw] pb-[1vw] flex flex-col bg-gray-800 w-10/12 min-h-[50vh] rounded-lg text-lg">
         <div className="mt-[1vw]">
           <FontAwesomeIcon className="text-xl " icon={faPersonDigging} />

@@ -1,3 +1,4 @@
+/* 육각형을 만들기 위한 css */
 .hexagon {
   background-color: black;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);

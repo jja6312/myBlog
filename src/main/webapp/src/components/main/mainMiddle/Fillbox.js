@@ -1,6 +1,7 @@
 import React from "react";
 import FillboxHover from "./FillboxHover";
 
+// 깃허브대시보드 박스
 const Fillbox = ({ brightness }) => {
   return (
     <div
