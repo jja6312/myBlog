@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import devlog.bean.Category;
-import devlog.bean.DevlogWrite;
 import devlog.bean.DevlogWriteDTO;
+import devlog.bean.Tag;
 import devlog.service.DevlogService;
 
 //개발일지와 관련된 controller --[24.01.25 정지안]
@@ -33,5 +33,10 @@ public class DevlogController {
     @PostMapping(value = "/devlog/getCategoryList")
     public List<Category> getCategoryList() {
         return devlogService.getCategoryList();
+    }
+    // (글쓰기에서 태그 선택을 위한) 태그 리스트 가져오기
+    @PostMapping(value = "/devlog/getTagList")
+    public List<Tag> getTagList() {
+    	return devlogService.getTagList();
     }
 }

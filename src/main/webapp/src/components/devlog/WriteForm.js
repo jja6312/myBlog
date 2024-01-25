@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // 글쓰기 페이지. --[24.01.24 17:36 정지안]
 
@@ -17,6 +18,7 @@ const WriteForm = () => {
 
   const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
   const [tagList, setTagList] = useState([]); // DB에서 불러온 태그 리스트
+  const navigate = useNavigate();
 
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
@@ -59,11 +61,34 @@ const WriteForm = () => {
   const onSaveWrite = () => {
     console.log(writeDTO);
 
+    //유효성검사
+    if (writeDTO.title === "") {
+      alert("제목을 입력하세요.");
+      return;
+    }
+    if (writeDTO.topic === "") {
+      alert("주제를 선택하세요.");
+      return;
+    }
+    if (writeDTO.categoryName === "") {
+      alert("카테고리를 선택하세요.");
+      return;
+    }
+    if (writeDTO.tagName === "") {
+      alert("태그를 선택하세요.");
+      return;
+    }
+    if (writeDTO.notionPageId === "") {
+      alert("노션 페이지 아이디를 입력하세요.");
+      return;
+    }
+
     axios
       .post("http://localhost:8080/devlog/save", writeDTO)
       .then((res) => {
         alert("저장에 성공했습니다.");
         console.log(res);
+        navigate("/devlog");
       })
       .catch((err) => {
         alert("저장에 실패했습니다.");
@@ -72,15 +97,23 @@ const WriteForm = () => {
   };
 
   useEffect(() => {
+    // 카테고리 리스트 불러오기
     axios.post("http://localhost:8080/devlog/getCategoryList").then((res) => {
       setCategoryList(res.data);
+    });
+    // 태그 리스트 불러오기
+    axios.post("http://localhost:8080/devlog/getTagList").then((res) => {
+      setTagList(res.data);
     });
   }, []);
 
   useEffect(() => {
     console.log("categoryList");
     console.log(categoryList);
-  }, [categoryList]);
+
+    console.log("tagList");
+    console.log(tagList);
+  }, [categoryList, tagList]);
 
   useEffect(() => {
     console.log("writeDTO");
@@ -150,6 +183,14 @@ const WriteForm = () => {
                 onChange={(e) => setSelectedTag(e.target.value)}
               >
                 <option>태그 선택</option>
+                {/* taglist를 filter(taglist[i].category.name===selectedCategory) */}
+
+                {tagList
+                  .filter((tag) => tag.category.name === selectedCategory)
+                  .map((tag) => (
+                    <option className="text-yellow-500">{tag.name}</option>
+                  ))}
+
                 <option>새 태그 입력</option>
               </select>
               {selectedTag === "새 태그 입력" && (

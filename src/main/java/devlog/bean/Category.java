@@ -34,9 +34,7 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private Set<Tag> tags;
 
-    // 기본생성자
-    public Category() {
-    }
+   
 
     public Category(String name) {
         this.name = name;

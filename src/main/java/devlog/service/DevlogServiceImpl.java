@@ -65,4 +65,16 @@ public class DevlogServiceImpl implements DevlogService {
 	public List<Category> getCategoryList() {
 		return categoryRepository.findAll();
 	}
+
+
+
+	@Override
+	public List<Tag> getTagList() {
+		
+		return tagRepository.findAll();
+	}
+
+
+
+	
 }
