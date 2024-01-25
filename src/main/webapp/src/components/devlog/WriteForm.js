@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 // 글쓰기 페이지. --[24.01.24 17:36 정지안]
 
@@ -11,8 +12,58 @@ import React, { useEffect, useState } from "react";
 //    (노션에서 작성한 개발일지를 fetch로 불러서 화면에 뿌린다.)
 
 const WriteForm = () => {
-  const [selectedCategory, setSelectedCategory] = useState("카테고리"); // 선택된 카테고리 저장
-  const [selectedTag, setSelectedTag] = useState("태그"); // 선택된 태그 저장
+  const [selectedCategory, setSelectedCategory] = useState("카테고리"); // 선택된 카테고리 이름
+  const [selectedTag, setSelectedTag] = useState("태그"); // 선택된 태그 이름
+
+  // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
+  const [writeDTO, setWriteDTO] = useState({
+    title: "",
+    category: { name: "" },
+    tag: { name: "" },
+    notionPageId: "",
+    topic: "",
+  });
+
+  // 변경되는 input을 DTO에 저장
+  const onChangeInput = (e) => {
+    const { id, value } = e.target;
+    if (id === "category") {
+      setWriteDTO({
+        ...writeDTO,
+        category: { ...writeDTO.category, name: value },
+      });
+    } else if (id === "tag") {
+      setWriteDTO({
+        ...writeDTO,
+        tag: { ...writeDTO.tag, name: value },
+      });
+    } else {
+      setWriteDTO({
+        ...writeDTO,
+        [id]: value,
+      });
+    }
+  };
+
+  // 저장 버튼 클릭 시 서버에 writeDTO 객체를 전달
+  const onSaveWrite = () => {
+    console.log(writeDTO);
+
+    axios
+      .post("http://localhost:8080/devlog/save", writeDTO)
+      .then((res) => {
+        alert("저장에 성공했습니다.");
+        console.log(res);
+      })
+      .catch((err) => {
+        alert("저장에 실패했습니다.");
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    console.log(writeDTO);
+  }, [writeDTO]);
 
   return (
     <div className="flex w-full min-h-screen bg-dark">
@@ -20,52 +71,86 @@ const WriteForm = () => {
       <div className="flex flex-col w-min-h-screen bg-darkDeep w-8/12 p-5">
         {/* 제목 입력 */}
         <input
+          id="title"
+          onChange={(e) => onChangeInput(e)}
           className="w-full h-20 bg-darkDeep text-white pl-3 mt-10 text-5xl"
           placeholder="제목을 입력하세요."
         ></input>
-        <div className="flex w-full space-x-6">
-          {/* 카테고리 선택 */}
-          <div className="flex flex-col w-1/4">
+        <div className="flex w-full items-center mt-10">
+          <span className="text-red-500 text-3xl mr-2">*</span>
+          <div className="flex flex-col w-full">
             <select
-              className=" h-12 bg-dark text-white pl-3 mt-10 text-2xl"
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              id="topic"
+              className=" h-12 bg-dark text-white pl-3 text-2xl"
+              onChange={(e) => onChangeInput(e)}
             >
-              <option>카테고리</option>
-              <option>새 카테고리 입력</option>
+              <option>어떤 종류의 글인가요?</option>
+              <option>프로젝트 / 트러블슈팅</option>
+              <option>학습 도서 관련 글</option>
+              <option>학습 강의 관련 글</option>
+              <option>개념 정리</option>
             </select>
-            {selectedCategory === "새 카테고리 입력" && (
-              <input
-                className=" h-12 bg-dark text-white pl-3 mt-2 text-2xl"
-                placeholder="카테고리 직접 입력"
-              ></input>
-            )}
           </div>
+        </div>
+        <div className="flex w-full space-x-6 mt-10">
+          {/* 카테고리 선택 */}
+          <div className="flex w-1/2 items-center">
+            <span className="text-red-500 text-3xl mr-2">*</span>
+            <div className="flex flex-col w-full">
+              <select
+                className=" h-12 bg-dark text-white pl-3  text-2xl"
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option>카테고리 선택</option>
+                <option>새 카테고리 입력</option>
+              </select>
+              {selectedCategory === "새 카테고리 입력" && (
+                <input
+                  id="category"
+                  className=" h-12 bg-dark text-white pl-3 mt-2 text-2xl"
+                  placeholder="카테고리 직접 입력"
+                  onChange={(e) => onChangeInput(e)}
+                ></input>
+              )}
+            </div>
+          </div>
+
           {/* 태그 선택 */}
-          <div className="flex flex-col w-1/4">
-            <select
-              className=" h-12 bg-dark text-white pl-3 mt-10 text-2xl"
-              onChange={(e) => setSelectedTag(e.target.value)}
-            >
-              <option>태그</option>
-              <option>새 태그 입력</option>
-            </select>
-            {selectedTag === "새 태그 입력" && (
-              <input
-                className="h-12 bg-dark text-white pl-3 mt-2 text-2xl"
-                placeholder="태그 직접 입력"
-              ></input>
-            )}
+          <div className="flex w-1/2 items-center">
+            <span className="text-red-500 text-3xl mr-2">*</span>
+            <div className="flex flex-col w-full">
+              <select
+                className=" h-12 bg-dark text-white pl-3 text-2xl"
+                onChange={(e) => setSelectedTag(e.target.value)}
+              >
+                <option>태그 선택</option>
+                <option>새 태그 입력</option>
+              </select>
+              {selectedTag === "새 태그 입력" && (
+                <input
+                  id="tag"
+                  className="h-12 bg-dark text-white pl-3 mt-2 text-2xl"
+                  placeholder="태그 직접 입력"
+                  onChange={(e) => onChangeInput(e)}
+                ></input>
+              )}
+            </div>
           </div>
         </div>
 
         {/* 노션 페이지 아이디 입력 */}
-        <input
-          className="w-full h-20 bg-dark text-white pl-3 mt-10 text-2xl"
-          placeholder="노션 페이지 아이디를 입력하세요."
-        ></input>
-
+        <div className="flex items-center mt-10 ">
+          <span className="text-red-500 text-3xl mr-2">*</span>
+          <input
+            id="notionPageId"
+            className="w-full h-20 bg-dark text-white pl-3 text-2xl"
+            placeholder="노션 페이지 아이디를 입력하세요."
+            onChange={(e) => onChangeInput(e)}
+          ></input>
+        </div>
         {/* 저장 버튼 */}
         <div
+          onClick={() => onSaveWrite()}
           className="fixed z-50  border-4 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
           bg-gray-700 text-white
           hover:bg-amber-500 hover:text-black
