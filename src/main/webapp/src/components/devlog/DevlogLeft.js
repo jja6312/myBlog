@@ -7,7 +7,6 @@ const DevlogLeft = ({
   isSelected,
   setIsSelected,
   hexagonArrays, // 화면상 왼쪽으로부터 구성된 4개의 Hexagon 배열.
-  groupedDevlogs, // 카테고리별로 그룹화된 개발일지. 파일구조 : {java:[{},{},...]}
 }) => {
   // 각 배열을 6개의 육각형요소 구성하는 함수
   const ensureSixHexagons = (array, columnIndex) => {
@@ -21,7 +20,9 @@ const DevlogLeft = ({
     // 부족한 육각형 항목을 고유한 writeItems로 채움
     while (filledArray.length < 6) {
       filledArray.push({
-        writeItems: `notYetFilledCategory-${columnIndex}-${filledArray.length}`,
+        writeItems: {
+          categoryName: `notYetFilledCategory-${columnIndex}-${filledArray.length}`,
+        },
         notYetFilledCategory: true,
         length: "",
       });

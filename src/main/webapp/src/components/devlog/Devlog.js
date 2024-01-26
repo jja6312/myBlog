@@ -6,7 +6,8 @@ import axios from "axios";
 
 //개발일지 페이지 --[24.01.24 15:48 정지안]
 const Devlog = () => {
-  const [isSelected, setIsSelected] = useState("All"); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
+  const [isSelected, setIsSelected] = useState("전체 글"); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
+  const [selectedDevlogWriteList, setSelectedDevlogWriteList] = useState({}); // 선택된 카테고리에 대해 filter된 devlogWriteList(개발일지)를 저장하는 state
 
   const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
   const [devlogWriteList, setDevlogWriteList] = useState([]); // DB에서 불러온 개발일지 리스트
@@ -68,7 +69,7 @@ const Devlog = () => {
 
       // 전체 글을 나타내는 항목을 첫 번째 요소로 추가
       groupedDevlogsArray.unshift({
-        categoryName: "All",
+        categoryName: "전체 글",
         writeListByCategory: devlogWriteList, //모든 글
       });
 
@@ -95,6 +96,20 @@ const Devlog = () => {
     }
   }, [groupedDevlogs, devlogWriteList]);
 
+  useEffect(() => {
+    if (isSelected === "전체 글") {
+      setSelectedDevlogWriteList(devlogWriteList);
+    } else if (isSelected !== "전체 글") {
+      setSelectedDevlogWriteList(
+        devlogWriteList.filter((devlog) => devlog.category.name === isSelected)
+      );
+    }
+  }, [isSelected]);
+
+  useEffect(() => {
+    console.log("selectedDevlogWriteList", selectedDevlogWriteList);
+  }, [selectedDevlogWriteList]);
+
   return (
     <div className="flex justify-between text-white">
       {/* 카테고리 */}
@@ -102,11 +117,14 @@ const Devlog = () => {
         isSelected={isSelected}
         setIsSelected={setIsSelected}
         hexagonArrays={hexagonArrays}
-        groupedDevlogs={groupedDevlogs}
       />
 
       {/* 콘텐츠(개발일지 목록) 표시 */}
-      <DevlogMain devlogWriteList={devlogWriteList} />
+      <DevlogMain
+        isSelected={isSelected}
+        selectedDevlogWriteList={selectedDevlogWriteList}
+        devlogWriteList={devlogWriteList}
+      />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
       <DevlogRight isSelected={isSelected} setIsSelected={setIsSelected} />

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // 개발일지 목록에 보이는 게시글 --[24.01.24 16:32 정지안]
-const DevlogListElement = () => {
+const DevlogListElement = ({ title, createdAt }) => {
   return (
     <>
       <div className="group cursor-pointer w-full flex flex-col ">
@@ -11,9 +11,9 @@ const DevlogListElement = () => {
           <div className="flex justify-between p-4 rounded transition-all duration-150 hover:bg-gray-800">
             <div className="w-[80%] md:w-[60%] lg:w-[70%] xl:w-[75%]  flex flex-col">
               {/* 작성일 */}
-              <span className="text-sm text-gray-400">2024.01.12</span>
+              <span className="text-sm text-gray-400">{createdAt}</span>
               {/* 글제목 */}
-              <span className="text-xl group-hover:underline">2024년 회고</span>
+              <span className="text-xl group-hover:underline">{title}</span>
               {/* 내용 */}
               <span className="text-sm mt-3 text-gray-400">
                 쏼라쏼라 얄라리얄라령
