@@ -25,7 +25,6 @@ public class DevlogController {
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/devlog/save")
     public void saveDevlog(@RequestBody DevlogWriteDTO devlogWriteDTO) {
-    	System.out.println(devlogWriteDTO.getCategoryName()+"!!!");
         devlogService.saveWrite(devlogWriteDTO);
     }
     

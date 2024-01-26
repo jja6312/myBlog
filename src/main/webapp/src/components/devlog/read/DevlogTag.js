@@ -1,6 +1,6 @@
 import React from "react";
 
-// 개발일지 글 읽을때 보이는 태그 --[24.01.24 19:13 정지안]
+// 개발일지 글 읽을때 보이는 태그 --[24.01.26 19:13 정지안]
 const DevlogTag = ({ tagName }) => {
   return (
     <div

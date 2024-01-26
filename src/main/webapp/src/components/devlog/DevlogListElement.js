@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DevlogTag from "./read/DevlogTag";
 import DevlogCategories from "./read/DevlogCategories";
 
-// 개발일지 목록에 보이는 게시글 --[24.01.24 16:32 정지안]
+// 개발일지 목록에 보이는 게시글 --[24.01.26 16:32 정지안]
 const DevlogListElement = ({
   title,
   createdAt,
