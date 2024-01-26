@@ -6,6 +6,7 @@ import axios from "axios";
 import "./notionAPICustom.css";
 import DevlogTag from "./DevlogTag";
 import DevlogCategories from "./DevlogCategories";
+import { useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenClip } from "@fortawesome/free-solid-svg-icons";
@@ -13,9 +14,13 @@ import { faPenClip } from "@fortawesome/free-solid-svg-icons";
 // 개발일지 읽기 페이지 [24.01.24 15:46 정지안]
 const ReadForm = () => {
   const [notionData, setNotionData] = useState({}); // Notion API로 받아온 데이터 저장
+  const [createdAt, setCreatedAt] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
-    const NOTION_PAGE_ID = "69332cb77a92421a823b9bfeee2b76af"; // Notion 페이지 ID
+    const param = new URLSearchParams(location.search);
+    const NOTION_PAGE_ID = param.get("notionPageId"); // Notion 페이지 ID
+    setCreatedAt(param.get("createdAt")); // 작성일 저장
     // Notion API로 데이터 받아오기
     axios
       .get(`https://notion-api.splitbee.io/v1/page/${NOTION_PAGE_ID}`)
@@ -44,14 +49,18 @@ const ReadForm = () => {
           </div>
           <span className="text-xl">정지안</span>
           <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-          <span className="text-xl text-gray-400">2024.1.24</span>
+          <span className="text-xl text-gray-400">{createdAt}</span>
         </div>
 
         <div className="flex w-full mt-5 space-x-4">
           {/* 카테고리 */}
-          <DevlogCategories categoryName="aws" />
+          <div className="min-w-20 h-10">
+            <DevlogCategories categoryName="aws" />
+          </div>
           {/* 태그 */}
-          <DevlogTag tagName="Beanstalk" />
+          <div className="min-w-20 h-10">
+            <DevlogTag tagName="Beanstalk" />
+          </div>
         </div>
         {/* Notion API로 노션페이지에서 받아온 개발일지를 NotionRenderer로 렌더 */}
         <div className="mt-10 ">

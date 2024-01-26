@@ -31,22 +31,29 @@ const DevlogMain = ({
         </span>
         {/* 하단, 개발일지 게시글 */}
         <div className="flex flex-col w-full">
-          {isSelected === "전체 글" &&
-            devlogWriteList.length > 0 &&
-            devlogWriteList.map((devlog) => (
-              <DevlogListElement
-                title={devlog.title}
-                createdAt={formatCreatedAt(devlog.createdAt)}
-              ></DevlogListElement>
-            ))}
-          {isSelected !== "전체 글" &&
-            selectedDevlogWriteList.length > 0 &&
-            selectedDevlogWriteList.map((devlog) => (
-              <DevlogListElement
-                title={devlog.title}
-                createdAt={formatCreatedAt(devlog.createdAt)}
-              ></DevlogListElement>
-            ))}
+          {isSelected === "전체 글"
+            ? devlogWriteList.length > 0 &&
+              devlogWriteList.map((devlog) => (
+                <DevlogListElement
+                  title={devlog.title}
+                  createdAt={formatCreatedAt(devlog.createdAt)}
+                  category={devlog.category.name}
+                  tag={devlog.tag.name}
+                  topic={devlog.topic}
+                  notionPageId={devlog.notionPageId}
+                ></DevlogListElement>
+              ))
+            : selectedDevlogWriteList.length > 0 &&
+              selectedDevlogWriteList.map((devlog) => (
+                <DevlogListElement
+                  title={devlog.title}
+                  createdAt={formatCreatedAt(devlog.createdAt)}
+                  category={devlog.category.name}
+                  tag={devlog.tag.name}
+                  topic={devlog.topic}
+                  notionPageId={devlog.notionPageId}
+                ></DevlogListElement>
+              ))}
         </div>
       </div>
     </div>
