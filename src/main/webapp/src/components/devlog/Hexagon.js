@@ -17,7 +17,7 @@ const Hexagon = ({
         ${hexagon.hexagon} 
         ${imgSrc ? "text-black" : "text-white"} 
         ${isSelected === id ? "opacity-100" : "opacity-50"}
-        hover:opacity-100 hover:shadow-white transition-all ease-in-out duration-300 `}
+        hover:opacity-100  transition-all ease-in-out duration-300 `}
         onClick={() => setIsSelected(id)}
       >
         <img
@@ -35,7 +35,7 @@ const Hexagon = ({
         text-[1.2vw]
         "
         >
-          ({writeAccount})
+          {writeAccount}
         </span>
       </button>
     </>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import devlog.bean.Category;
+import devlog.bean.DevlogWrite;
 import devlog.bean.DevlogWriteDTO;
 import devlog.bean.Tag;
 import devlog.service.DevlogService;
@@ -20,14 +21,13 @@ public class DevlogController {
     @Autowired
     private DevlogService devlogService; // 개발일지 서비스
 
+    //----------------------글쓰기----------------------
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/devlog/save")
     public void saveDevlog(@RequestBody DevlogWriteDTO devlogWriteDTO) {
     	System.out.println(devlogWriteDTO.getCategoryName()+"!!!");
         devlogService.saveWrite(devlogWriteDTO);
     }
-    
-    
     
     // (글쓰기에서 카테고리 선택을 위한) 카테고리 리스트 가져오기
     @PostMapping(value = "/devlog/getCategoryList")
@@ -38,5 +38,12 @@ public class DevlogController {
     @PostMapping(value = "/devlog/getTagList")
     public List<Tag> getTagList() {
     	return devlogService.getTagList();
+    }
+    
+    //----------------------개발일지 메인----------------------
+
+    @PostMapping(value = "/devlog/getDevlogWriteList")
+    public List<DevlogWrite> getDevlogWriteList() {
+    	return devlogService.getDevlogWriteList();
     }
 }

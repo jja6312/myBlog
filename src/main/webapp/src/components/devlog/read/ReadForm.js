@@ -12,7 +12,7 @@ import { faPenClip } from "@fortawesome/free-solid-svg-icons";
 
 // 개발일지 읽기 페이지 [24.01.24 15:46 정지안]
 const ReadForm = () => {
-  const [response, setResponse] = useState({}); // Notion API로 받아온 데이터 저장
+  const [notionData, setNotionData] = useState({}); // Notion API로 받아온 데이터 저장
 
   useEffect(() => {
     const NOTION_PAGE_ID = "69332cb77a92421a823b9bfeee2b76af"; // Notion 페이지 ID
@@ -20,8 +20,8 @@ const ReadForm = () => {
     axios
       .get(`https://notion-api.splitbee.io/v1/page/${NOTION_PAGE_ID}`)
       .then(({ data }) => {
-        setResponse(data);
-        console.log(data);
+        setNotionData(data);
+        console.log(notionData);
       });
   }, []);
   return (
@@ -56,7 +56,7 @@ const ReadForm = () => {
         {/* Notion API로 노션페이지에서 받아온 개발일지를 NotionRenderer로 렌더 */}
         <div className="mt-10 ">
           <NotionRenderer
-            blockMap={response}
+            blockMap={notionData}
             hideHeader={true}
             darkMode={true}
           />

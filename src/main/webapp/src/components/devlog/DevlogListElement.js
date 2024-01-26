@@ -10,6 +10,8 @@ const DevlogListElement = () => {
         <Link to="/readForm">
           <div className="flex justify-between p-4 rounded transition-all duration-150 hover:bg-gray-800">
             <div className="w-[80%] md:w-[60%] lg:w-[70%] xl:w-[75%]  flex flex-col">
+              {/* 작성일 */}
+              <span className="text-sm text-gray-400">2024.01.12</span>
               {/* 글제목 */}
               <span className="text-xl group-hover:underline">2024년 회고</span>
               {/* 내용 */}
@@ -22,7 +24,7 @@ const DevlogListElement = () => {
               <img
                 alt=""
                 className="object-cover w-full h-full"
-                src={process.env.PUBLIC_URL + "/image/test/spring.png"}
+                src={process.env.PUBLIC_URL + "/image/categories/spring.png"}
               ></img>
             </div>
           </div>

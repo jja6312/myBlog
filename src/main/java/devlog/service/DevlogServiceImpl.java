@@ -76,5 +76,13 @@ public class DevlogServiceImpl implements DevlogService {
 
 
 
+	@Override
+	public List<DevlogWrite> getDevlogWriteList() {
+		
+		return devlogRepository.findAll();
+	}
+
+
+
 	
 }

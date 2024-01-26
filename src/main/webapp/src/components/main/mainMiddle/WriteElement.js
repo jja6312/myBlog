@@ -21,7 +21,7 @@ const WriteElement = ({ title, content, createdDate }) => {
           <div className="w-36 h-36">
             <img
               alt=""
-              src={process.env.PUBLIC_URL + "/image/test/spring.png"}
+              src={process.env.PUBLIC_URL + "/image/categories/spring.png"}
               className="object-cover w-full h-full rounded-md"
             />
           </div>

@@ -20,8 +20,6 @@ const DevlogMain = () => {
         {/* 하단, 개발일지 게시글 */}
         <div className="flex flex-col w-full">
           <DevlogListElement></DevlogListElement>
-          <DevlogListElement></DevlogListElement>
-          <DevlogListElement></DevlogListElement>
         </div>
       </div>
     </div>
