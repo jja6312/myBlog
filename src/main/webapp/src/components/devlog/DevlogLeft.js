@@ -47,7 +47,9 @@ const DevlogLeft = ({
               imgSrc={
                 hexagon.notYetFilledCategory
                   ? "/image/categories/darkDeep.png"
-                  : "/image/categories/all.png"
+                  : hexagon.writeItems.categoryName === "전체 글"
+                  ? "/image/categories/all.png"
+                  : `/storage/categories/${hexagon.writeItems.writeListByCategory[0].categoryThumbnail}`
               }
               writeAccount={hexagon.length}
             />

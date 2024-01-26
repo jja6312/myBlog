@@ -1,9 +1,12 @@
 package devlog.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import devlog.bean.Category;
 import devlog.bean.DevlogWrite;
@@ -12,6 +15,7 @@ import devlog.bean.Tag;
 import devlog.repository.CategoryRepository;
 import devlog.repository.DevlogRepository;
 import devlog.repository.TagRepository;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class DevlogServiceImpl implements DevlogService {
@@ -25,24 +29,35 @@ public class DevlogServiceImpl implements DevlogService {
 
     //글 저장
     @Override
-    public void saveWrite(DevlogWriteDTO devlogWriteDTO) {
+    public void saveWrite(DevlogWriteDTO devlogWriteDTO, MultipartFile categoryThumbnail, HttpSession session) {
+//    	DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
+//
+//        devlogRepository.save(devlogWrite);
     	DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
     	
-//        Category category = categoryRepository.findByName(devlogWrite.getCategory().getName())
-//                .orElseGet(() -> categoryRepository.save(new Category(devlogWrite.getCategory().getName())));
-//
-//        devlogWrite.setCategory(category);
-//
-//        Tag tag = tagRepository.findByName(devlogWrite.getTag().getName())
-//                .orElseGet(() -> tagRepository.save(new Tag(devlogWrite.getTag().getName(), category)));
-//
-//        devlogWrite.setTag(tag);
-
+    	// 실제폴더의 파일경로 확인
+    	String filePath = session.getServletContext().getRealPath("/public/storage/categories");
+    	System.out.println("실제폴더 = " + filePath);
+    	
+    	// 이미지를 set
+		String originalFileName = categoryThumbnail.getOriginalFilename();
+		devlogWrite.setCategoryThumbnail(originalFileName);
+		
+		// 파일 생성
+		File file = new File(filePath, originalFileName);
+		try {
+			categoryThumbnail.transferTo(file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
         devlogRepository.save(devlogWrite);
+    	 
     }
     
+   
     
-    
+    //글 저장 로직
     private DevlogWrite convertToEntity(DevlogWriteDTO devlogWriteDTO) {
         DevlogWrite devlogWrite = new DevlogWrite();
         devlogWrite.setTitle(devlogWriteDTO.getTitle());

@@ -1,7 +1,7 @@
 import React from "react";
 import hexagon from "./hexagon.module.css";
 
-// 개발일지의 카테고리 기능을 하는 육각형 --[24.01.24 17:29 정지안]
+// 개발일지의 카테고리 기능을 하는 육각형 --[24.01.26 17:29 정지안]
 const Hexagon = ({
   isSelected, // DevlogLeft에서 선택한 카테고리를 저장하는 state
   setIsSelected,

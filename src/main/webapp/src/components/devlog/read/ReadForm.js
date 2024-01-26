@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenClip } from "@fortawesome/free-solid-svg-icons";
 
-// 개발일지 읽기 페이지 [24.01.24 15:46 정지안]
+// 개발일지 읽기 페이지 [24.01.26 15:46 정지안]
 const ReadForm = () => {
   const [notionData, setNotionData] = useState({}); // Notion API로 받아온 데이터 저장
   const [createdAt, setCreatedAt] = useState("");

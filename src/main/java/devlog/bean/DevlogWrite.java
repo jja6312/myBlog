@@ -14,7 +14,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-//개발일지(데브로그)의 글에 관련된 테이블.  --[24.01.25 14:43 정지안]
+//개발일지(데브로그)의 글에 관련된 테이블.  --[24.01.26 14:43 정지안]
 @Entity
 @Table(name = "devlogWrite")
 @Data
@@ -31,6 +31,9 @@ public class DevlogWrite {
 
     @Column(name = "notion_page_id", nullable = false)
     private String notionPageId; // 노션페이지아이디 => 글은 노션에서 작성한 글을 바로 불러올 수 있게 만들었다.
+    
+    @Column(name = "category_thumbnail", nullable = true)
+    private String categoryThumbnail; 
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt; // 생성일

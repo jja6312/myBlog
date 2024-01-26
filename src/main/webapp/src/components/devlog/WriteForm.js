@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import hexagon from "./hexagon.module.css";
 
-// 글쓰기 페이지. --[24.01.24 17:36 정지안]
+// 글쓰기 페이지. --[24.01.26 17:36 정지안]
 
 // 위 페이지는 아래 세 가지 데이터를 다룬다.
 // 1. 카테고리
@@ -19,6 +20,11 @@ const WriteForm = () => {
   const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
   const [tagList, setTagList] = useState([]); // DB에서 불러온 태그 리스트
   const navigate = useNavigate();
+  const imgRef = useRef();
+  const [imgList, setImgList] = useState(
+    `${process.env.PUBLIC_URL}/image/nullImage/nullImage1.png`
+  ); //미리보기 이미지
+  const [imgFiles, setImgFiles] = useState([]); //이미지저장
 
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
@@ -38,6 +44,18 @@ const WriteForm = () => {
     });
   };
 
+  const onImgInput = (e) => {
+    setImgFiles(e.target.files[0]);
+    setImgList(URL.createObjectURL(e.target.files[0]));
+    console.log("onImgInput", e.target.files[0]);
+  };
+
+  const onImageUploadClick = () => {
+    if (imgRef.current) {
+      imgRef.current.click();
+    }
+  };
+
   const onHandlingCategory = (e) => {
     const { value } = e.target;
     // "새 카테고리 입력" 텍스트 탐지를 위한 state 변경 (직접입력 div의 스위치역할)
@@ -54,6 +72,9 @@ const WriteForm = () => {
         ...writeDTO,
         categoryName: "",
       });
+
+      // 새 카테고리 입력이 선택되면 태그를 '새 태그 입력'으로 변경
+      setSelectedTag("새 태그 입력");
     }
   };
 
@@ -82,9 +103,19 @@ const WriteForm = () => {
       alert("노션 페이지 아이디를 입력하세요.");
       return;
     }
-
+    const formData = new FormData();
+    formData.append("title", writeDTO.title);
+    formData.append("categoryName", writeDTO.categoryName);
+    formData.append("tagName", writeDTO.tagName);
+    formData.append("notionPageId", writeDTO.notionPageId);
+    formData.append("topic", writeDTO.topic);
+    formData.append("categoryThumbnail", imgFiles); // 이미지 파일 추가
     axios
-      .post("http://localhost:8080/devlog/save", writeDTO)
+      .post("http://localhost:8080/devlog/save", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         alert("저장에 성공했습니다.");
         console.log(res);
@@ -147,6 +178,7 @@ const WriteForm = () => {
             </select>
           </div>
         </div>
+
         <div className="flex w-full space-x-6 mt-10">
           {/* 카테고리 선택 */}
           <div className="flex w-1/2 items-center">
@@ -164,23 +196,30 @@ const WriteForm = () => {
                 <option>새 카테고리 입력</option>
               </select>
               {selectedCategory === "새 카테고리 입력" && (
-                <input
-                  id="categoryName"
-                  className=" h-12 bg-dark text-white pl-3 mt-2 text-2xl"
-                  placeholder="카테고리 직접 입력"
-                  onChange={(e) => onChangeInput(e)}
-                ></input>
+                <>
+                  <input
+                    id="categoryName"
+                    className=" h-12 bg-dark text-white pl-3 mt-2 text-2xl"
+                    placeholder="카테고리 직접 입력"
+                    onChange={(e) => onChangeInput(e)}
+                  ></input>
+                </>
               )}
             </div>
           </div>
 
           {/* 태그 선택 */}
-          <div className="flex w-1/2 items-center">
+          <div className="flex w-1/2 h-full items-start">
             <span className="text-red-500 text-3xl mr-2">*</span>
             <div className="flex flex-col w-full">
               <select
+                id="tagName"
                 className=" h-12 bg-dark text-white pl-3 text-2xl"
-                onChange={(e) => setSelectedTag(e.target.value)}
+                onChange={(e) => {
+                  setSelectedTag(e.target.value);
+                  onChangeInput(e);
+                }}
+                value={selectedTag}
               >
                 <option>태그 선택</option>
                 {/* taglist를 filter(taglist[i].category.name===selectedCategory) */}
@@ -188,7 +227,9 @@ const WriteForm = () => {
                 {tagList
                   .filter((tag) => tag.category.name === selectedCategory)
                   .map((tag) => (
-                    <option className="text-yellow-500">{tag.name}</option>
+                    <option key={tag.name} className="text-yellow-500">
+                      {tag.name}
+                    </option>
                   ))}
 
                 <option>새 태그 입력</option>
@@ -204,7 +245,29 @@ const WriteForm = () => {
             </div>
           </div>
         </div>
-
+        {selectedCategory === "새 카테고리 입력" && (
+          <div className="flex items-center w-full mt-2">
+            <span className="text-red-500 text-3xl mr-2">*</span>
+            <div
+              className="w-full bg-dark flex items-center space-x-11 p-4 cursor-pointer hover:opacity-50"
+              onClick={onImageUploadClick}
+            >
+              <input ref={imgRef} type="file" onChange={onImgInput} hidden />
+              <button
+                className={`relative w-[7.3vw] h-[6.35vw] mt-[0.5vw] ${hexagon.hexagon}`}
+              >
+                <img
+                  alt=""
+                  className="object-cover w-full h-full"
+                  src={imgList}
+                ></img>
+              </button>
+              <span className="text-gray-400 text-2xl">
+                카테고리 이미지 추가
+              </span>
+            </div>
+          </div>
+        )}
         {/* 노션 페이지 아이디 입력 */}
         <div className="flex items-center mt-10 ">
           <span className="text-red-500 text-3xl mr-2">*</span>
