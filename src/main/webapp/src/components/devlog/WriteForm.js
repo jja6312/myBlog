@@ -24,7 +24,7 @@ const WriteForm = () => {
   const [imgList, setImgList] = useState(
     `${process.env.PUBLIC_URL}/image/nullImage/nullImage1.png`
   ); //미리보기 이미지
-  const [imgFiles, setImgFiles] = useState(""); //이미지저장
+  const [imgFiles, setImgFiles] = useState([]); //이미지저장
 
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
@@ -103,9 +103,19 @@ const WriteForm = () => {
       alert("노션 페이지 아이디를 입력하세요.");
       return;
     }
-
+    const formData = new FormData();
+    formData.append("title", writeDTO.title);
+    formData.append("categoryName", writeDTO.categoryName);
+    formData.append("tagName", writeDTO.tagName);
+    formData.append("notionPageId", writeDTO.notionPageId);
+    formData.append("topic", writeDTO.topic);
+    formData.append("categoryThumbnail", imgFiles); // 이미지 파일 추가
     axios
-      .post("http://localhost:8080/devlog/save", writeDTO)
+      .post("http://localhost:8080/devlog/save", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         alert("저장에 성공했습니다.");
         console.log(res);
