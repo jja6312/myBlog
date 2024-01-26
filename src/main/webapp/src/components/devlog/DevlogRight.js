@@ -28,7 +28,7 @@ const DevlogRight = ({ isSelected, setIsSelected }) => {
           <img
             alt=""
             className="object-cover w-full h-full"
-            src={process.env.PUBLIC_URL + "/image/test/all.png"}
+            src={process.env.PUBLIC_URL + "/image/categories/all.png"}
           ></img>
           <span
             className="absolute top-2/3 left-1/2 -translate-x-1/2

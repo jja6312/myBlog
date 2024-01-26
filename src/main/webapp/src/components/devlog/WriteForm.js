@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // 글쓰기 페이지. --[24.01.24 17:36 정지안]
 
@@ -15,11 +16,15 @@ const WriteForm = () => {
   const [selectedCategory, setSelectedCategory] = useState("카테고리"); // 선택된 카테고리 이름
   const [selectedTag, setSelectedTag] = useState("태그"); // 선택된 태그 이름
 
+  const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
+  const [tagList, setTagList] = useState([]); // DB에서 불러온 태그 리스트
+  const navigate = useNavigate();
+
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
     title: "",
-    category: { name: "" },
-    tag: { name: "" },
+    categoryName: "",
+    tagName: "",
     notionPageId: "",
     topic: "",
   });
@@ -27,20 +32,27 @@ const WriteForm = () => {
   // 변경되는 input을 DTO에 저장
   const onChangeInput = (e) => {
     const { id, value } = e.target;
-    if (id === "category") {
+    setWriteDTO({
+      ...writeDTO,
+      [id]: value,
+    });
+  };
+
+  const onHandlingCategory = (e) => {
+    const { value } = e.target;
+    // "새 카테고리 입력" 텍스트 탐지를 위한 state 변경 (직접입력 div의 스위치역할)
+    setSelectedCategory(value);
+
+    // 카테고리 선택 시 DTO에 저장
+    if (value !== "새 카테고리 입력" && value !== "카테고리 선택") {
       setWriteDTO({
         ...writeDTO,
-        category: { ...writeDTO.category, name: value },
+        categoryName: value,
       });
-    } else if (id === "tag") {
+    } else if (value === "새 카테고리 입력" || value === "카테고리 선택") {
       setWriteDTO({
         ...writeDTO,
-        tag: { ...writeDTO.tag, name: value },
-      });
-    } else {
-      setWriteDTO({
-        ...writeDTO,
-        [id]: value,
+        categoryName: "",
       });
     }
   };
@@ -49,11 +61,34 @@ const WriteForm = () => {
   const onSaveWrite = () => {
     console.log(writeDTO);
 
+    //유효성검사
+    if (writeDTO.title === "") {
+      alert("제목을 입력하세요.");
+      return;
+    }
+    if (writeDTO.topic === "") {
+      alert("주제를 선택하세요.");
+      return;
+    }
+    if (writeDTO.categoryName === "") {
+      alert("카테고리를 선택하세요.");
+      return;
+    }
+    if (writeDTO.tagName === "") {
+      alert("태그를 선택하세요.");
+      return;
+    }
+    if (writeDTO.notionPageId === "") {
+      alert("노션 페이지 아이디를 입력하세요.");
+      return;
+    }
+
     axios
       .post("http://localhost:8080/devlog/save", writeDTO)
       .then((res) => {
         alert("저장에 성공했습니다.");
         console.log(res);
+        navigate("/devlog");
       })
       .catch((err) => {
         alert("저장에 실패했습니다.");
@@ -62,6 +97,26 @@ const WriteForm = () => {
   };
 
   useEffect(() => {
+    // 카테고리 리스트 불러오기
+    axios.post("http://localhost:8080/devlog/getCategoryList").then((res) => {
+      setCategoryList(res.data);
+    });
+    // 태그 리스트 불러오기
+    axios.post("http://localhost:8080/devlog/getTagList").then((res) => {
+      setTagList(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log("categoryList");
+    console.log(categoryList);
+
+    console.log("tagList");
+    console.log(tagList);
+  }, [categoryList, tagList]);
+
+  useEffect(() => {
+    console.log("writeDTO");
     console.log(writeDTO);
   }, [writeDTO]);
 
@@ -99,14 +154,18 @@ const WriteForm = () => {
             <div className="flex flex-col w-full">
               <select
                 className=" h-12 bg-dark text-white pl-3  text-2xl"
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e) => onHandlingCategory(e)}
               >
                 <option>카테고리 선택</option>
+                {/* 카테고리리스트를 옵션으로 보여준다. */}
+                {categoryList.map((category) => (
+                  <option className="text-yellow-500">{category.name}</option>
+                ))}
                 <option>새 카테고리 입력</option>
               </select>
               {selectedCategory === "새 카테고리 입력" && (
                 <input
-                  id="category"
+                  id="categoryName"
                   className=" h-12 bg-dark text-white pl-3 mt-2 text-2xl"
                   placeholder="카테고리 직접 입력"
                   onChange={(e) => onChangeInput(e)}
@@ -124,11 +183,19 @@ const WriteForm = () => {
                 onChange={(e) => setSelectedTag(e.target.value)}
               >
                 <option>태그 선택</option>
+                {/* taglist를 filter(taglist[i].category.name===selectedCategory) */}
+
+                {tagList
+                  .filter((tag) => tag.category.name === selectedCategory)
+                  .map((tag) => (
+                    <option className="text-yellow-500">{tag.name}</option>
+                  ))}
+
                 <option>새 태그 입력</option>
               </select>
               {selectedTag === "새 태그 입력" && (
                 <input
-                  id="tag"
+                  id="tagName"
                   className="h-12 bg-dark text-white pl-3 mt-2 text-2xl"
                   placeholder="태그 직접 입력"
                   onChange={(e) => onChangeInput(e)}

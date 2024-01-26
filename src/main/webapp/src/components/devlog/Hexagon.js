@@ -7,7 +7,7 @@ const Hexagon = ({
   setIsSelected,
   imgSrc, //카테고리 이미지
   writeAccount, //카테고리별 글 개수
-  id, //카테고리 식별자
+  writeItems, //카테고리 식별자
 }) => {
   return (
     <>
@@ -16,9 +16,9 @@ const Hexagon = ({
         className={`relative w-[7.3vw] h-[6.35vw] mt-[0.5vw] 
         ${hexagon.hexagon} 
         ${imgSrc ? "text-black" : "text-white"} 
-        ${isSelected === id ? "opacity-100" : "opacity-50"}
-        hover:opacity-100 hover:shadow-white transition-all ease-in-out duration-300 `}
-        onClick={() => setIsSelected(id)}
+        ${isSelected === writeItems.categoryName ? "opacity-100" : "opacity-50"}
+        hover:opacity-100  transition-all ease-in-out duration-300 `}
+        onClick={() => setIsSelected(writeItems.categoryName)}
       >
         <img
           alt=""
@@ -35,7 +35,7 @@ const Hexagon = ({
         text-[1.2vw]
         "
         >
-          ({writeAccount})
+          {writeAccount}
         </span>
       </button>
     </>
