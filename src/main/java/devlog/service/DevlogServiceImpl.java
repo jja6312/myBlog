@@ -29,24 +29,27 @@ public class DevlogServiceImpl implements DevlogService {
 
     //글 저장
     @Override
-    public void saveWrite(DevlogWriteDTO devlogWriteDTO, MultipartFile categoryThumbnail, HttpSession session) {
-//    	DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
-//
-//        devlogRepository.save(devlogWrite);
+    public void saveWrite(DevlogWriteDTO devlogWriteDTO, MultipartFile categoryThumbnail,MultipartFile writeThumbnail, HttpSession session) {
+    	
     	DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
     	
     	// 실제폴더의 파일경로 확인
-    	String filePath = session.getServletContext().getRealPath("/public/storage/categories");
-    	System.out.println("실제폴더 = " + filePath);
+    	String filePathCategory = session.getServletContext().getRealPath("/public/storage/categories");
+    	String filePathWrite = session.getServletContext().getRealPath("/public/storage/write");
+    	System.out.println("실제폴더 = " + filePathCategory);
     	
     	// 이미지를 set
-		String originalFileName = categoryThumbnail.getOriginalFilename();
-		devlogWrite.setCategoryThumbnail(originalFileName);
+		String originalFileNameCategory = categoryThumbnail.getOriginalFilename();
+		String originalFileNameWrite = writeThumbnail.getOriginalFilename();
+		devlogWrite.setCategoryThumbnail(originalFileNameCategory);
+		devlogWrite.setWriteThumbnail(originalFileNameWrite);
 		
 		// 파일 생성
-		File file = new File(filePath, originalFileName);
+		File fileCategory = new File(filePathCategory, originalFileNameCategory);
+		File fileWrite = new File(filePathWrite, originalFileNameWrite);
 		try {
-			categoryThumbnail.transferTo(file);
+			categoryThumbnail.transferTo(fileCategory);
+			categoryThumbnail.transferTo(fileWrite);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

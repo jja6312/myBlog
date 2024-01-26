@@ -20,11 +20,16 @@ const WriteForm = () => {
   const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
   const [tagList, setTagList] = useState([]); // DB에서 불러온 태그 리스트
   const navigate = useNavigate();
-  const imgRef = useRef();
-  const [imgList, setImgList] = useState(
+  const imgRefCategory = useRef();
+  const imgRefWrite = useRef();
+  const [imgListCategory, setImgListCategory] = useState(
     `${process.env.PUBLIC_URL}/image/nullImage/nullImage1.png`
-  ); //미리보기 이미지
-  const [imgFiles, setImgFiles] = useState([]); //이미지저장
+  ); //카테고리 썸네일 미리보기 이미지
+  const [imgListWrite, setImgListWrite] = useState(
+    `${process.env.PUBLIC_URL}/image/nullImage/nullImage1.png`
+  ); //글 썸네일 미리보기 이미지
+  const [imgFileCategory, setImgFileCategory] = useState([]); //이미지저장
+  const [imgFileWrite, setImgFileWrite] = useState([]); //이미지저장
 
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
@@ -45,14 +50,20 @@ const WriteForm = () => {
   };
 
   const onImgInput = (e) => {
-    setImgFiles(e.target.files[0]);
-    setImgList(URL.createObjectURL(e.target.files[0]));
-    console.log("onImgInput", e.target.files[0]);
+    if (e.target.id === "imgCategoryInput") {
+      setImgFileCategory(e.target.files[0]);
+      setImgListCategory(URL.createObjectURL(e.target.files[0]));
+      console.log("onImgInput, imgCategoryInput", e.target.files[0]);
+    } else if (e.target.id === "imgWriteInput") {
+      setImgFileWrite(e.target.files[0]);
+      setImgListWrite(URL.createObjectURL(e.target.files[0]));
+      console.log("onImgInput, imgWriteInput", e.target.files[0]);
+    }
   };
 
   const onImageUploadClick = () => {
-    if (imgRef.current) {
-      imgRef.current.click();
+    if (imgRefCategory.current) {
+      imgRefCategory.current.click();
     }
   };
 
@@ -109,7 +120,8 @@ const WriteForm = () => {
     formData.append("tagName", writeDTO.tagName);
     formData.append("notionPageId", writeDTO.notionPageId);
     formData.append("topic", writeDTO.topic);
-    formData.append("categoryThumbnail", imgFiles); // 이미지 파일 추가
+    formData.append("categoryThumbnail", imgFileCategory); // 이미지 파일 추가
+    formData.append("writeThumbnail", imgFileWrite); // 이미지 파일 추가
     axios
       .post("http://localhost:8080/devlog/save", formData, {
         headers: {
@@ -156,12 +168,15 @@ const WriteForm = () => {
       <div className="flex flex-col w-min-h-screen w-2/12"></div>
       <div className="flex flex-col w-min-h-screen bg-darkDeep w-8/12 p-5">
         {/* 제목 입력 */}
-        <input
-          id="title"
-          onChange={(e) => onChangeInput(e)}
-          className="w-full h-20 bg-darkDeep text-white pl-3 mt-10 text-5xl"
-          placeholder="제목을 입력하세요."
-        ></input>
+        <div className="flex items-center mt-10">
+          <span className="text-red-500 text-3xl mr-2">*</span>
+          <input
+            id="title"
+            onChange={(e) => onChangeInput(e)}
+            className="w-full h-20 bg-darkDeep text-white pl-3 text-5xl border border-gray-700"
+            placeholder="제목을 입력하세요."
+          ></input>
+        </div>
         <div className="flex w-full items-center mt-10">
           <span className="text-red-500 text-3xl mr-2">*</span>
           <div className="flex flex-col w-full">
@@ -252,14 +267,21 @@ const WriteForm = () => {
               className="w-full bg-dark flex items-center space-x-11 p-4 cursor-pointer hover:opacity-50"
               onClick={onImageUploadClick}
             >
-              <input ref={imgRef} type="file" onChange={onImgInput} hidden />
+              <input
+                id="imgCategoryInput"
+                ref={imgRefCategory}
+                type="file"
+                onChange={onImgInput}
+                hidden
+              />
+              {/* 카테고리 이미지 미리보기 */}
               <button
                 className={`relative w-[7.3vw] h-[6.35vw] mt-[0.5vw] ${hexagon.hexagon}`}
               >
                 <img
                   alt=""
                   className="object-cover w-full h-full"
-                  src={imgList}
+                  src={imgListCategory}
                 ></img>
               </button>
               <span className="text-gray-400 text-2xl">
@@ -269,12 +291,31 @@ const WriteForm = () => {
           </div>
         )}
         {/* 노션 페이지 아이디 입력 */}
-        <div className="flex items-center mt-10 ">
+        <div className="flex items-center mt-2 ">
           <span className="text-red-500 text-3xl mr-2">*</span>
+          {/* 썸네일 input */}
+          <input
+            id="imgWriteInput"
+            ref={imgRefWrite}
+            type="file"
+            onChange={onImgInput}
+            hidden
+          />
+          {/* 게시글 썸네일 미리보기 */}
+          <div
+            className="w-2/12 h-40 object-cover cursor-pointer hover:opacity-50"
+            onClick={() => imgRefWrite.current.click()}
+          >
+            <img
+              alt=""
+              className="object-cover w-full h-full"
+              src={imgListWrite}
+            ></img>
+          </div>
           <input
             id="notionPageId"
-            className="w-full h-20 bg-dark text-white pl-3 text-2xl"
-            placeholder="노션 페이지 아이디를 입력하세요."
+            className="w-10/12 h-40 bg-dark text-white pl-3 text-2xl"
+            placeholder="게시글 썸네일 추가 및 노션 페이지 아이디 입력"
             onChange={(e) => onChangeInput(e)}
           ></input>
         </div>
