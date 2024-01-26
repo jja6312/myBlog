@@ -6,7 +6,7 @@ import axios from "axios";
 
 //개발일지 페이지 --[24.01.24 15:48 정지안]
 const Devlog = () => {
-  const [isSelected, setIsSelected] = useState(false); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
+  const [isSelected, setIsSelected] = useState("All"); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
 
   const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
   const [devlogWriteList, setDevlogWriteList] = useState([]); // DB에서 불러온 개발일지 리스트
@@ -60,14 +60,16 @@ const Devlog = () => {
     if (Object.keys(groupedDevlogs).length > 0 && devlogWriteList.length > 0) {
       // 객체를 배열로 변환하고 내림차순 정렬
       const groupedDevlogsArray = Object.entries(groupedDevlogs)
-        .map(([key, value]) => ({ key, posts: value, length: value.length }))
+        .map(([categoryName, writeListByCategory]) => ({
+          categoryName,
+          writeListByCategory: writeListByCategory,
+        }))
         .sort((a, b) => b.length - a.length);
 
       // 전체 글을 나타내는 항목을 첫 번째 요소로 추가
       groupedDevlogsArray.unshift({
-        key: "All",
-        posts: devlogWriteList,
-        length: devlogWriteList.length,
+        categoryName: "All",
+        writeListByCategory: devlogWriteList, //모든 글
       });
 
       // hexagonArrays 업데이트

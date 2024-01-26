@@ -11,17 +11,17 @@ const DevlogLeft = ({
 }) => {
   // 각 배열을 6개의 육각형요소 구성하는 함수
   const ensureSixHexagons = (array, columnIndex) => {
-    // 배열을 카테고리 이름을 ID로 사용하는 객체로 변환
+    // 배열을 카테고리 이름을 writeItems로 사용하는 객체로 변환
     const filledArray = array.map((items) => ({
-      id: items,
+      writeItems: items,
       notYetFilledCategory: false, // 카테고리 데이터를 할당받지 않은 육각형
-      length: "(" + items.posts.length + ")",
+      length: "(" + items.writeListByCategory.length + ")",
     }));
 
-    // 부족한 육각형 항목을 고유한 ID로 채움
+    // 부족한 육각형 항목을 고유한 writeItems로 채움
     while (filledArray.length < 6) {
       filledArray.push({
-        id: `notYetFilledCategory-${columnIndex}-${filledArray.length}`,
+        writeItems: `notYetFilledCategory-${columnIndex}-${filledArray.length}`,
         notYetFilledCategory: true,
         length: "",
       });
@@ -42,7 +42,7 @@ const DevlogLeft = ({
             <Hexagon
               isSelected={isSelected}
               setIsSelected={setIsSelected}
-              id={hexagon.id}
+              writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
                   ? "/image/categories/darkDeep.png"
@@ -60,7 +60,7 @@ const DevlogLeft = ({
             <Hexagon
               isSelected={isSelected}
               setIsSelected={setIsSelected}
-              id={hexagon.id}
+              writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
                   ? "/image/categories/darkDeep.png"
@@ -78,7 +78,7 @@ const DevlogLeft = ({
             <Hexagon
               isSelected={isSelected}
               setIsSelected={setIsSelected}
-              id={hexagon.id}
+              writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
                   ? "/image/categories/darkDeep.png"
@@ -96,7 +96,7 @@ const DevlogLeft = ({
             <Hexagon
               isSelected={isSelected}
               setIsSelected={setIsSelected}
-              id={hexagon.id}
+              writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
                   ? "/image/categories/darkDeep.png"
