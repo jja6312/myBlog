@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DevlogListElement from "./DevlogListElement";
 import DevlogWriteBtn from "./DevlogWriteBtn";
 import { formatCreatedAt } from "../formatCreatedAt";
@@ -10,6 +10,14 @@ const DevlogMain = ({
   devlogWriteList,
   selectedFilter,
 }) => {
+  const [visibleCount, setVisibleCount] = useState(6); // 초기에 표시할 게시글의 수
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태
+
+  const totalLength =
+    isSelected === "전체 글"
+      ? devlogWriteList.length
+      : selectedDevlogWriteList.length;
+
   const filteredDevlogList =
     // 전체글이라면 전체글(devlogWriteList) 기준으로 필터.
     isSelected === "전체 글"
@@ -33,6 +41,59 @@ const DevlogMain = ({
         })
       : selectedDevlogWriteList;
 
+  const filteredDevlogListInfinitScroll =
+    // 전체글이라면 전체글(devlogWriteList) 기준으로 필터.
+    isSelected === "전체 글"
+      ? devlogWriteList
+          .filter((devlog) => {
+            return (
+              (selectedFilter.topic === "" ||
+                devlog.topic === selectedFilter.topic) &&
+              (selectedFilter.tag === "" ||
+                devlog.tag.name === selectedFilter.tag)
+            );
+          })
+          .slice(0, visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
+      : // 선택된 카테고리가 있을 경우, 그 카테고리의 글들을 기준으로 필터.
+      selectedFilter.topic || selectedFilter.tag
+      ? selectedDevlogWriteList
+          .filter((devlog) => {
+            return (
+              (selectedFilter.topic === "" ||
+                devlog.topic === selectedFilter.topic) &&
+              (selectedFilter.tag === "" ||
+                devlog.tag.name === selectedFilter.tag)
+            );
+          })
+          .slice(0, visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
+      : selectedDevlogWriteList;
+
+  // 스크롤 이벤트 핸들러
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop <
+      document.documentElement.scrollHeight - 100
+    )
+      return;
+
+    // 전체 길이와 visibleCount를 비교
+    if (visibleCount < totalLength) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setVisibleCount((prevCount) => Math.min(prevCount + 10, totalLength)); // 최대 길이를 초과하지 않도록 설정
+        setIsLoading(false);
+      }, 1700);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [visibleCount, totalLength]);
+
   return (
     <div
       className=" bg-darkDeep text-white flex flex-col items-center px-5 min-h-screen 
@@ -47,12 +108,15 @@ const DevlogMain = ({
         <span className=" font-semibold">
           {/* 카테고리이름 */}
           {isSelected}
-          {/* 게시글 수 */}({filteredDevlogList && filteredDevlogList.length})
+          {/* 게시글 수 */}(
+          {filteredDevlogListInfinitScroll &&
+            filteredDevlogListInfinitScroll.length}
+          )
         </span>
         {/* 하단, 개발일지 게시글 */}
         <div className="flex flex-col w-full">
-          {filteredDevlogList.length > 0 &&
-            filteredDevlogList.map((devlog) => (
+          {filteredDevlogListInfinitScroll.length > 0 &&
+            filteredDevlogListInfinitScroll.map((devlog) => (
               <DevlogListElement
                 title={devlog.title}
                 createdAt={formatCreatedAt(devlog.createdAt)}
@@ -65,6 +129,16 @@ const DevlogMain = ({
             ))}
         </div>
       </div>
+      {/* 로딩 */}
+      {isLoading && (
+        <div className="w-full flex  justify-center">
+          <img
+            src={process.env.PUBLIC_URL + "/image/loading/loading2.gif"}
+            alt="loading"
+            className="w-96 rounded-full"
+          />
+        </div>
+      )}
     </div>
   );
 };
