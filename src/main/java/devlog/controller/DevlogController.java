@@ -31,7 +31,7 @@ public class DevlogController {
     	    @RequestParam("tagName") String tagName,
     	    @RequestParam("notionPageId") String notionPageId,
     	    @RequestParam("topic") String topic,
-    	    @RequestParam("categoryThumbnail") MultipartFile categoryThumbnail,
+            @RequestParam(value = "categoryThumbnail", required = false) MultipartFile categoryThumbnail,
     	    @RequestParam("writeThumbnail") MultipartFile writeThumbnail,
     	    HttpSession session) {
     	

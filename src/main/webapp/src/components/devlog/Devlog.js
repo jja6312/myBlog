@@ -127,7 +127,11 @@ const Devlog = () => {
       />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
-      <DevlogRight isSelected={isSelected} setIsSelected={setIsSelected} />
+      <DevlogRight
+        isSelected={isSelected}
+        selectedDevlogWriteList={selectedDevlogWriteList}
+        devlogWriteList={devlogWriteList}
+      />
     </div>
   );
 };

@@ -11,6 +11,7 @@ const DevlogListElement = ({
   topic,
   tag,
   notionPageId,
+  imgSrcWriteThumbnail,
 }) => {
   return (
     <>
@@ -44,7 +45,7 @@ const DevlogListElement = ({
               <img
                 alt=""
                 className="object-cover w-full h-full"
-                src={process.env.PUBLIC_URL + "/image/categories/spring.png"}
+                src={process.env.PUBLIC_URL + imgSrcWriteThumbnail}
               ></img>
             </div>
           </div>

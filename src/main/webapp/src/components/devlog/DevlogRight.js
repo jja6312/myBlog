@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,11 @@ import { faBrain } from "@fortawesome/free-solid-svg-icons";
 import hexagon from "./hexagon.module.css";
 
 // 개발일지의 오른쪽 영역으로, 선택된 카테고리의 하위 구성 및 필터기능 제공 --[24.01.24 16:47 정지안]
-const DevlogRight = ({ isSelected, setIsSelected }) => {
+const DevlogRight = ({
+  isSelected,
+  selectedDevlogWriteList,
+  devlogWriteList,
+}) => {
   return (
     <div className="relative w-3/12 flex flex-col items-center">
       <span className="absolute  top-[1.7vw] right-[3vw] italic z-40 text-3xl">
@@ -28,14 +32,26 @@ const DevlogRight = ({ isSelected, setIsSelected }) => {
           <img
             alt=""
             className="object-cover w-full h-full"
-            src={process.env.PUBLIC_URL + "/image/categories/all.png"}
+            src={
+              process.env.PUBLIC_URL +
+              `/storage/categories/${
+                isSelected === "전체 글"
+                  ? "all.png"
+                  : selectedDevlogWriteList[0] &&
+                    selectedDevlogWriteList[0].category.categoryThumbnail
+              }`
+            }
           ></img>
           <span
             className="absolute top-2/3 left-1/2 -translate-x-1/2
         text-[1.2vw]
         "
           >
-            (341)
+            {/* 선택된 카테고리가 있으면 그것의 글갯수, 없으면 총글의 갯수. */}(
+            {selectedDevlogWriteList[0]
+              ? selectedDevlogWriteList.length
+              : devlogWriteList.length}
+            )
           </span>
         </button>
       </div>

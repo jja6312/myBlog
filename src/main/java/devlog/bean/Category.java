@@ -27,14 +27,15 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(name = "category_thumbnail", nullable = true)
+    private String categoryThumbnail;
+
     // ------------다른 테이블과의 관계---------------
     @OneToMany(mappedBy = "category")
     private Set<DevlogWrite> devlogWrites;
 
     @OneToMany(mappedBy = "category")
     private Set<Tag> tags;
-
-   
 
     public Category(String name) {
         this.name = name;
