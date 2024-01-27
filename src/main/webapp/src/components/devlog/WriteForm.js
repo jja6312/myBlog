@@ -186,6 +186,7 @@ const WriteForm = () => {
               onChange={(e) => onChangeInput(e)}
             >
               <option>어떤 종류의 글인가요?</option>
+              <option>공식문서 탐독</option>
               <option>프로젝트 / 트러블슈팅</option>
               <option>학습 도서 관련 글</option>
               <option>학습 강의 관련 글</option>

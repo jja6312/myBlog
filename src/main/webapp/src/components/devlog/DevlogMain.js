@@ -87,7 +87,7 @@ const DevlogMain = ({
         <span className=" font-semibold">
           {/* 카테고리이름 */}
           {isSelected}
-          {/* 게시글 수 */}({filteredDevlogList && filteredDevlogList.length})
+          {/* 게시글 수 */}({totalLength})
         </span>
         {/* 하단, 개발일지 게시글 */}
         <InfiniteScroll
