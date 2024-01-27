@@ -6,8 +6,6 @@ const TopicTagFilter = ({
   topicName,
   tagList,
   countTagFunc,
-  isTopicOrTagSelected,
-  setIsTopicOrTagSelected,
   selectedFilter,
   setSelectedFilter,
 }) => {

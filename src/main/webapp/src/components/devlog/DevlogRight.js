@@ -13,8 +13,6 @@ const DevlogRight = ({
   selectedDevlogWriteList,
   devlogWriteList,
 
-  isTopicOrTagSelected,
-  setIsTopicOrTagSelected,
   selectedFilter,
   setSelectedFilter,
 }) => {
@@ -66,6 +64,11 @@ const DevlogRight = ({
     }
   }, [devlogWriteList, selectedDevlogWriteList]);
 
+  // 카테고리가 변경되면 필터 초기화!
+  useEffect(() => {
+    setSelectedFilter({ topic: "", tag: "" });
+  }, [isSelected]);
+
   useEffect(() => {
     console.log("filteredTagByTopic", filteredTagByTopic);
   }, [filteredTagByTopic]);
@@ -88,6 +91,7 @@ const DevlogRight = ({
         text-black
         
         hover:shadow-white transition-all ease-in-out duration-300 `}
+          onClick={() => setSelectedFilter({ topic: "", tag: "" })}
         >
           <img
             alt=""
@@ -125,8 +129,7 @@ const DevlogRight = ({
           tagList={filteredTagByTopic.projectAndTroubleShooting}
           countTagFunc={countTagOccurrencesInTopic}
           // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          isTopicOrTagSelected={isTopicOrTagSelected}
-          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           //--------------------------------------------------------------
@@ -137,8 +140,7 @@ const DevlogRight = ({
           tagList={filteredTagByTopic.book}
           countTagFunc={countTagOccurrencesInTopic}
           // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          isTopicOrTagSelected={isTopicOrTagSelected}
-          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           //--------------------------------------------------------------
@@ -149,8 +151,7 @@ const DevlogRight = ({
           tagList={filteredTagByTopic.lecture}
           countTagFunc={countTagOccurrencesInTopic}
           // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          isTopicOrTagSelected={isTopicOrTagSelected}
-          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           //--------------------------------------------------------------
@@ -161,8 +162,6 @@ const DevlogRight = ({
           tagList={filteredTagByTopic.concept}
           countTagFunc={countTagOccurrencesInTopic}
           // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          isTopicOrTagSelected={isTopicOrTagSelected}
-          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
           //--------------------------------------------------------------

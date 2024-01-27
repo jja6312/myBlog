@@ -333,7 +333,7 @@ const WriteForm = () => {
         {/* 저장 버튼 */}
         <div
           onClick={() => onSaveWrite()}
-          className="fixed z-50  border-4 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
+          className="fixed z-50  border-2 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
           bg-gray-700 text-white
           hover:bg-amber-500 hover:text-black
       

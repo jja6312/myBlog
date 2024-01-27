@@ -8,7 +8,31 @@ const DevlogMain = ({
   isSelected,
   selectedDevlogWriteList,
   devlogWriteList,
+  selectedFilter,
 }) => {
+  const filteredDevlogList =
+    // 전체글이라면 전체글(devlogWriteList) 기준으로 필터.
+    isSelected === "전체 글"
+      ? devlogWriteList.filter((devlog) => {
+          return (
+            (selectedFilter.topic === "" ||
+              devlog.topic === selectedFilter.topic) &&
+            (selectedFilter.tag === "" ||
+              devlog.tag.name === selectedFilter.tag)
+          );
+        })
+      : // 선택된 카테고리가 있을 경우, 그 카테고리의 글들을 기준으로 필터.
+      selectedFilter.topic || selectedFilter.tag
+      ? selectedDevlogWriteList.filter((devlog) => {
+          return (
+            (selectedFilter.topic === "" ||
+              devlog.topic === selectedFilter.topic) &&
+            (selectedFilter.tag === "" ||
+              devlog.tag.name === selectedFilter.tag)
+          );
+        })
+      : selectedDevlogWriteList;
+
   return (
     <div
       className=" bg-darkDeep text-white flex flex-col items-center px-5 min-h-screen 
@@ -23,39 +47,22 @@ const DevlogMain = ({
         <span className=" font-semibold">
           {/* 카테고리이름 */}
           {isSelected}
-          {/* 게시글 수 */}(
-          {isSelected === "전체 글"
-            ? devlogWriteList && devlogWriteList.length
-            : selectedDevlogWriteList && selectedDevlogWriteList.length}
-          )
+          {/* 게시글 수 */}({filteredDevlogList && filteredDevlogList.length})
         </span>
         {/* 하단, 개발일지 게시글 */}
         <div className="flex flex-col w-full">
-          {isSelected === "전체 글"
-            ? devlogWriteList.length > 0 &&
-              devlogWriteList.map((devlog) => (
-                <DevlogListElement
-                  title={devlog.title}
-                  createdAt={formatCreatedAt(devlog.createdAt)}
-                  category={devlog.category.name}
-                  tag={devlog.tag.name}
-                  topic={devlog.topic}
-                  notionPageId={devlog.notionPageId}
-                  imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
-                ></DevlogListElement>
-              ))
-            : selectedDevlogWriteList.length > 0 &&
-              selectedDevlogWriteList.map((devlog) => (
-                <DevlogListElement
-                  title={devlog.title}
-                  createdAt={formatCreatedAt(devlog.createdAt)}
-                  category={devlog.category.name}
-                  tag={devlog.tag.name}
-                  topic={devlog.topic}
-                  notionPageId={devlog.notionPageId}
-                  imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
-                ></DevlogListElement>
-              ))}
+          {filteredDevlogList.length > 0 &&
+            filteredDevlogList.map((devlog) => (
+              <DevlogListElement
+                title={devlog.title}
+                createdAt={formatCreatedAt(devlog.createdAt)}
+                category={devlog.category.name}
+                tag={devlog.tag.name}
+                topic={devlog.topic}
+                notionPageId={devlog.notionPageId}
+                imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
+              ></DevlogListElement>
+            ))}
         </div>
       </div>
     </div>
