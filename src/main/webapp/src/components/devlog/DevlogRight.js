@@ -5,12 +5,18 @@ import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
 import { faPersonDigging } from "@fortawesome/free-solid-svg-icons";
 import { faBrain } from "@fortawesome/free-solid-svg-icons";
 import hexagon from "./hexagon.module.css";
+import TopicTagFilter from "./TopicTagFilter";
 
 // 개발일지의 오른쪽 영역으로, 선택된 카테고리의 하위 구성 및 필터기능 제공 --[24.01.27 12:47 정지안]
 const DevlogRight = ({
   isSelected,
   selectedDevlogWriteList,
   devlogWriteList,
+
+  isTopicOrTagSelected,
+  setIsTopicOrTagSelected,
+  selectedFilter,
+  setSelectedFilter,
 }) => {
   const [filteredTagByTopic, setFilteredTagByTopic] = useState({
     projectAndTroubleShooting: [], // 프로젝트 / 트러블슈팅
@@ -27,6 +33,7 @@ const DevlogRight = ({
 
   // filteredTagByTopic의 초기값은 devlogWriteList를 기준으로함.
   useEffect(() => {
+    // 전체 글일 경우 전체글(devlogWriteList) 기준으로 필터.
     setFilteredTagByTopic({
       projectAndTroubleShooting: devlogWriteList.filter(
         (write) => write.topic === "프로젝트 / 트러블슈팅"
@@ -40,6 +47,7 @@ const DevlogRight = ({
       concept: devlogWriteList.filter((write) => write.topic === "개념 정리"),
     });
 
+    // 만약 선택된 카테고리가 있을 경우, 그 카테고리의 글들을 기준으로 필터.
     if (selectedDevlogWriteList[0]) {
       setFilteredTagByTopic({
         projectAndTroubleShooting: selectedDevlogWriteList.filter(
@@ -109,83 +117,56 @@ const DevlogRight = ({
       </div>
       {/* Hexagon.end --------------------------------------------------------*/}
 
-      {/* 필터 */}
+      {/* 카테고리에 따른 토픽 & 태그 필터 */}
       <div className="absolute top-[4.3vw] px-5 pt-[4vw] pb-[1vw] flex flex-col bg-gray-800 w-10/12 min-h-[50vh] rounded-lg text-lg">
-        <div className="mt-[1vw]">
-          <FontAwesomeIcon className="text-xl " icon={faPersonDigging} />
-          <span className="text-green-200"> 프로젝트 / 트러블슈팅</span>
-          <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            {filteredTagByTopic.projectAndTroubleShooting.length > 0
-              ? filteredTagByTopic.projectAndTroubleShooting.map((write) => (
-                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-                    {write.tag.name}(
-                    {countTagOccurrencesInTopic(
-                      filteredTagByTopic.projectAndTroubleShooting,
-                      write.tag.name
-                    )}
-                    )
-                  </span>
-                ))
-              : "-"}
-          </div>
-        </div>
-
-        <div className="mt-[1vw]">
-          <FontAwesomeIcon className="text-xl " icon={faBook} />
-          <span className="text-green-200"> 학습 도서 관련 글</span>
-          <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            {filteredTagByTopic.book.length > 0
-              ? filteredTagByTopic.book.map((write) => (
-                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-                    {write.tag.name}(
-                    {countTagOccurrencesInTopic(
-                      filteredTagByTopic.book,
-                      write.tag.name
-                    )}
-                    )
-                  </span>
-                ))
-              : "-"}
-          </div>
-        </div>
-
-        <div className="mt-[1vw]">
-          <FontAwesomeIcon className="text-xl " icon={faHeadphones} />
-          <span className="text-green-200"> 학습 강의 관련 글</span>
-          <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            {filteredTagByTopic.lecture.length > 0
-              ? filteredTagByTopic.lecture.map((write) => (
-                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-                    {write.tag.name}(
-                    {countTagOccurrencesInTopic(
-                      filteredTagByTopic.lecture,
-                      write.tag.name
-                    )}
-                    )
-                  </span>
-                ))
-              : "-"}
-          </div>
-        </div>
-
-        <div className="mt-[1vw]">
-          <FontAwesomeIcon className="text-xl " icon={faBrain} />
-          <span className="text-green-200"> 개념 정리</span>
-          <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            {filteredTagByTopic.concept.length > 0
-              ? filteredTagByTopic.concept.map((write) => (
-                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-                    {write.tag.name}(
-                    {countTagOccurrencesInTopic(
-                      filteredTagByTopic.concept,
-                      write.tag.name
-                    )}
-                    )
-                  </span>
-                ))
-              : "-"}
-          </div>
-        </div>
+        <TopicTagFilter
+          icon={faPersonDigging}
+          topicName="프로젝트 / 트러블슈팅"
+          tagList={filteredTagByTopic.projectAndTroubleShooting}
+          countTagFunc={countTagOccurrencesInTopic}
+          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
+          isTopicOrTagSelected={isTopicOrTagSelected}
+          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+          //--------------------------------------------------------------
+        />
+        <TopicTagFilter
+          icon={faBook}
+          topicName="학습 도서 관련 글"
+          tagList={filteredTagByTopic.book}
+          countTagFunc={countTagOccurrencesInTopic}
+          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
+          isTopicOrTagSelected={isTopicOrTagSelected}
+          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+          //--------------------------------------------------------------
+        />
+        <TopicTagFilter
+          icon={faHeadphones}
+          topicName="학습 강의 관련 글"
+          tagList={filteredTagByTopic.lecture}
+          countTagFunc={countTagOccurrencesInTopic}
+          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
+          isTopicOrTagSelected={isTopicOrTagSelected}
+          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+          //--------------------------------------------------------------
+        />
+        <TopicTagFilter
+          icon={faBrain}
+          topicName="개념 정리"
+          tagList={filteredTagByTopic.concept}
+          countTagFunc={countTagOccurrencesInTopic}
+          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
+          isTopicOrTagSelected={isTopicOrTagSelected}
+          setIsTopicOrTagSelected={setIsTopicOrTagSelected}
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+          //--------------------------------------------------------------
+        />
       </div>
     </div>
   );
