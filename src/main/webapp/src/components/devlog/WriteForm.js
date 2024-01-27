@@ -173,11 +173,11 @@ const WriteForm = () => {
           <input
             id="title"
             onChange={(e) => onChangeInput(e)}
-            className="w-full h-20 bg-darkDeep text-white pl-3 text-5xl border border-gray-700"
+            className="w-full h-20 bg-darkDeep text-white p-3 text-4xl border border-gray-700"
             placeholder="제목을 입력하세요."
           ></input>
         </div>
-        <div className="flex w-full items-center mt-10">
+        <div className="flex w-full items-center mt-2">
           <span className="text-red-500 text-3xl mr-2">*</span>
           <div className="flex flex-col w-full">
             <select
@@ -194,9 +194,9 @@ const WriteForm = () => {
           </div>
         </div>
 
-        <div className="flex w-full space-x-6 mt-10">
+        <div className="flex w-full space-x-6 mt-2">
           {/* 카테고리 선택 */}
-          <div className="flex w-1/2 items-center">
+          <div className="flex w-1/2 items-start">
             <span className="text-red-500 text-3xl mr-2">*</span>
             <div className="flex flex-col w-full">
               <select
@@ -264,7 +264,7 @@ const WriteForm = () => {
           <div className="flex items-center w-full mt-2">
             <span className="text-red-500 text-3xl mr-2">*</span>
             <div
-              className="w-full bg-dark flex items-center space-x-11 p-4 cursor-pointer hover:opacity-50"
+              className="w-full bg-slate-900 flex items-center space-x-11 p-4 cursor-pointer hover:opacity-50"
               onClick={onImageUploadClick}
             >
               <input
@@ -285,39 +285,50 @@ const WriteForm = () => {
                 ></img>
               </button>
               <span className="text-gray-400 text-2xl">
-                카테고리 이미지 추가
+                카테고리 썸네일 추가
               </span>
             </div>
           </div>
         )}
         {/* 노션 페이지 아이디 입력 */}
-        <div className="flex items-center mt-2 ">
-          <span className="text-red-500 text-3xl mr-2">*</span>
-          {/* 썸네일 input */}
-          <input
-            id="imgWriteInput"
-            ref={imgRefWrite}
-            type="file"
-            onChange={onImgInput}
-            hidden
-          />
-          {/* 게시글 썸네일 미리보기 */}
-          <div
-            className="w-2/12 h-40 object-cover cursor-pointer hover:opacity-50"
-            onClick={() => imgRefWrite.current.click()}
-          >
-            <img
-              alt=""
-              className="object-cover w-full h-full"
-              src={imgListWrite}
-            ></img>
+        <div className="flex flex-col w-full  items-center mt-2 ">
+          <div className="flex w-full items-center">
+            <span className="text-red-500 text-3xl mr-2">*</span>
+            {/* 썸네일 input */}
+            <input
+              id="imgWriteInput"
+              ref={imgRefWrite}
+              type="file"
+              onChange={onImgInput}
+              hidden
+            />
+            {/* 게시글 썸네일 미리보기 */}
+
+            <div
+              className="flex items-center w-full p-6 object-cover cursor-pointer bg-dark hover:opacity-50"
+              onClick={() => imgRefWrite.current.click()}
+            >
+              <div className="w-32 h-32">
+                <img
+                  alt=""
+                  className="object-cover w-full h-full"
+                  src={imgListWrite}
+                ></img>
+              </div>
+              <span className="text-gray-400 text-2xl ml-12">
+                게시글 썸네일 추가
+              </span>
+            </div>
           </div>
-          <input
-            id="notionPageId"
-            className="w-10/12 h-40 bg-dark text-white pl-3 text-2xl"
-            placeholder="게시글 썸네일 추가 및 노션 페이지 아이디 입력"
-            onChange={(e) => onChangeInput(e)}
-          ></input>
+          <div className="flex w-full items-center mt-2">
+            <span className="text-red-500 text-3xl mr-2">*</span>
+            <input
+              id="notionPageId"
+              className="w-full h-20 bg-dark text-white pl-3 text-2xl"
+              placeholder="노션 페이지 아이디 입력"
+              onChange={(e) => onChangeInput(e)}
+            ></input>
+          </div>
         </div>
         {/* 저장 버튼 */}
         <div

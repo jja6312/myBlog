@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
@@ -6,17 +6,69 @@ import { faPersonDigging } from "@fortawesome/free-solid-svg-icons";
 import { faBrain } from "@fortawesome/free-solid-svg-icons";
 import hexagon from "./hexagon.module.css";
 
-// 개발일지의 오른쪽 영역으로, 선택된 카테고리의 하위 구성 및 필터기능 제공 --[24.01.24 16:47 정지안]
+// 개발일지의 오른쪽 영역으로, 선택된 카테고리의 하위 구성 및 필터기능 제공 --[24.01.27 12:47 정지안]
 const DevlogRight = ({
   isSelected,
   selectedDevlogWriteList,
   devlogWriteList,
 }) => {
+  const [filteredTagByTopic, setFilteredTagByTopic] = useState({
+    projectAndTroubleShooting: [], // 프로젝트 / 트러블슈팅
+    book: [], // 학습 도서 관련 글
+    lecture: [], // 학습 강의 관련 글
+    concept: [], // 개념 정리
+  }); // 선택된 카테고리에 대해 topic값을 기준으로 필터.
+
+  // 토픽 이름별로 태그 이름에 따른 글의 수를 세는 함수
+  const countTagOccurrencesInTopic = (topic, tagName) => {
+    return topic.filter((write) => write.tag && write.tag.name === tagName)
+      .length;
+  };
+
+  // filteredTagByTopic의 초기값은 devlogWriteList를 기준으로함.
+  useEffect(() => {
+    setFilteredTagByTopic({
+      projectAndTroubleShooting: devlogWriteList.filter(
+        (write) => write.topic === "프로젝트 / 트러블슈팅"
+      ),
+      book: devlogWriteList.filter(
+        (write) => write.topic === "학습 도서 관련 글"
+      ),
+      lecture: devlogWriteList.filter(
+        (write) => write.topic === "학습 강의 관련 글"
+      ),
+      concept: devlogWriteList.filter((write) => write.topic === "개념 정리"),
+    });
+
+    if (selectedDevlogWriteList[0]) {
+      setFilteredTagByTopic({
+        projectAndTroubleShooting: selectedDevlogWriteList.filter(
+          (write) => write.topic === "프로젝트 / 트러블슈팅"
+        ),
+        book: selectedDevlogWriteList.filter(
+          (write) => write.topic === "학습 도서 관련 글"
+        ),
+        lecture: selectedDevlogWriteList.filter(
+          (write) => write.topic === "학습 강의 관련 글"
+        ),
+        concept: selectedDevlogWriteList.filter(
+          (write) => write.topic === "개념 정리"
+        ),
+      });
+    }
+  }, [devlogWriteList, selectedDevlogWriteList]);
+
+  useEffect(() => {
+    console.log("filteredTagByTopic", filteredTagByTopic);
+  }, [filteredTagByTopic]);
+
   return (
     <div className="relative w-3/12 flex flex-col items-center">
-      <span className="absolute  top-[1.7vw] right-[3vw] italic z-40 text-3xl">
-        Filter
-      </span>
+      <div className="absolute  top-[1.7vw] right-[3vw] italic z-40 text-3xl">
+        <span className="text-green-200">Topic </span>
+        <span>&</span>
+        <span className="text-yellow-500"> Tag</span>
+      </div>
       <span className="absolute  top-[4.8vw] right-[3vw] italic z-40 text-2xl text-gray-400">
         by Category
       </span>
@@ -61,56 +113,77 @@ const DevlogRight = ({
       <div className="absolute top-[4.3vw] px-5 pt-[4vw] pb-[1vw] flex flex-col bg-gray-800 w-10/12 min-h-[50vh] rounded-lg text-lg">
         <div className="mt-[1vw]">
           <FontAwesomeIcon className="text-xl " icon={faPersonDigging} />
-          <span> 프로젝트 / 트러블슈팅</span>
+          <span className="text-green-200"> 프로젝트 / 트러블슈팅</span>
           <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              (애견 연애/산책)flirdog (13)
-            </span>
+            {filteredTagByTopic.projectAndTroubleShooting.length > 0
+              ? filteredTagByTopic.projectAndTroubleShooting.map((write) => (
+                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
+                    {write.tag.name}(
+                    {countTagOccurrencesInTopic(
+                      filteredTagByTopic.projectAndTroubleShooting,
+                      write.tag.name
+                    )}
+                    )
+                  </span>
+                ))
+              : "-"}
           </div>
         </div>
 
         <div className="mt-[1vw]">
           <FontAwesomeIcon className="text-xl " icon={faBook} />
-          <span> 학습 도서 관련 글</span>
+          <span className="text-green-200"> 학습 도서 관련 글</span>
           <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              Effective Java (1)
-            </span>
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              자바의 정석 (2)
-            </span>
+            {filteredTagByTopic.book.length > 0
+              ? filteredTagByTopic.book.map((write) => (
+                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
+                    {write.tag.name}(
+                    {countTagOccurrencesInTopic(
+                      filteredTagByTopic.book,
+                      write.tag.name
+                    )}
+                    )
+                  </span>
+                ))
+              : "-"}
           </div>
         </div>
 
         <div className="mt-[1vw]">
           <FontAwesomeIcon className="text-xl " icon={faHeadphones} />
-          <span> 학습 강의 관련 글</span>
+          <span className="text-green-200"> 학습 강의 관련 글</span>
           <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              김영한의 스프링부트 고급 (11)
-            </span>
+            {filteredTagByTopic.lecture.length > 0
+              ? filteredTagByTopic.lecture.map((write) => (
+                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
+                    {write.tag.name}(
+                    {countTagOccurrencesInTopic(
+                      filteredTagByTopic.lecture,
+                      write.tag.name
+                    )}
+                    )
+                  </span>
+                ))
+              : "-"}
           </div>
         </div>
 
         <div className="mt-[1vw]">
           <FontAwesomeIcon className="text-xl " icon={faBrain} />
-          <span> 개념 정리</span>
+          <span className="text-green-200"> 개념 정리</span>
           <div className=" bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              운영체제(35)
-            </span>
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              네트워크(33)
-            </span>
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              알고리즘(13)
-            </span>
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              aws(22)
-            </span>
-            <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
-              자바(33)
-            </span>
+            {filteredTagByTopic.concept.length > 0
+              ? filteredTagByTopic.concept.map((write) => (
+                  <span className="text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white">
+                    {write.tag.name}(
+                    {countTagOccurrencesInTopic(
+                      filteredTagByTopic.concept,
+                      write.tag.name
+                    )}
+                    )
+                  </span>
+                ))
+              : "-"}
           </div>
         </div>
       </div>

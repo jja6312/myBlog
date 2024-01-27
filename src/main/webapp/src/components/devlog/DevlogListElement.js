@@ -18,7 +18,7 @@ const DevlogListElement = ({
       <div className="group cursor-pointer w-full flex flex-col ">
         <hr className="border-gray-500 my-5 "></hr>
         <Link
-          to={`/readForm?notionPageId=${notionPageId}&createdAt=${createdAt}`}
+          to={`/readForm?notionPageId=${notionPageId}&createdAt=${createdAt}&title=${title}&category=${category}&tag=${tag}&topic=${topic}`}
         >
           <div className="flex justify-between p-4 rounded transition-all duration-150 hover:bg-gray-800">
             <div className="w-[80%] md:w-[60%] lg:w-[70%] xl:w-[75%]  flex flex-col">
