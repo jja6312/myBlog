@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DevlogListElement from "./DevlogListElement";
 import DevlogWriteBtn from "./DevlogWriteBtn";
 import { formatCreatedAt } from "../formatCreatedAt";
+import InfiniteScroll from "../InpiniteScroll";
 
 // 개발일지의 가운데 영역으로, 개발일지 목록을 표시하는 페이지 --[24.01.26 16:47 정지안]
 const DevlogMain = ({
@@ -10,6 +11,7 @@ const DevlogMain = ({
   devlogWriteList,
   selectedFilter,
 }) => {
+  // ------------------무한로딩------------------
   const [visibleCount, setVisibleCount] = useState(6); // 초기에 표시할 게시글의 수
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태
 
@@ -19,29 +21,6 @@ const DevlogMain = ({
       : selectedDevlogWriteList.length;
 
   const filteredDevlogList =
-    // 전체글이라면 전체글(devlogWriteList) 기준으로 필터.
-    isSelected === "전체 글"
-      ? devlogWriteList.filter((devlog) => {
-          return (
-            (selectedFilter.topic === "" ||
-              devlog.topic === selectedFilter.topic) &&
-            (selectedFilter.tag === "" ||
-              devlog.tag.name === selectedFilter.tag)
-          );
-        })
-      : // 선택된 카테고리가 있을 경우, 그 카테고리의 글들을 기준으로 필터.
-      selectedFilter.topic || selectedFilter.tag
-      ? selectedDevlogWriteList.filter((devlog) => {
-          return (
-            (selectedFilter.topic === "" ||
-              devlog.topic === selectedFilter.topic) &&
-            (selectedFilter.tag === "" ||
-              devlog.tag.name === selectedFilter.tag)
-          );
-        })
-      : selectedDevlogWriteList;
-
-  const filteredDevlogListInfinitScroll =
     // 전체글이라면 전체글(devlogWriteList) 기준으로 필터.
     isSelected === "전체 글"
       ? devlogWriteList
@@ -108,37 +87,33 @@ const DevlogMain = ({
         <span className=" font-semibold">
           {/* 카테고리이름 */}
           {isSelected}
-          {/* 게시글 수 */}(
-          {filteredDevlogListInfinitScroll &&
-            filteredDevlogListInfinitScroll.length}
-          )
+          {/* 게시글 수 */}({filteredDevlogList && filteredDevlogList.length})
         </span>
         {/* 하단, 개발일지 게시글 */}
-        <div className="flex flex-col w-full">
-          {filteredDevlogListInfinitScroll.length > 0 &&
-            filteredDevlogListInfinitScroll.map((devlog) => (
-              <DevlogListElement
-                title={devlog.title}
-                createdAt={formatCreatedAt(devlog.createdAt)}
-                category={devlog.category.name}
-                tag={devlog.tag.name}
-                topic={devlog.topic}
-                notionPageId={devlog.notionPageId}
-                imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
-              ></DevlogListElement>
-            ))}
-        </div>
+        <InfiniteScroll
+          visibleCount={visibleCount}
+          setVisibleCount={setVisibleCount}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          totalLength={totalLength}
+        >
+          <div className="flex flex-col w-full">
+            {filteredDevlogList.length > 0 &&
+              filteredDevlogList.map((devlog) => (
+                <DevlogListElement
+                  key={devlog.id}
+                  title={devlog.title}
+                  createdAt={formatCreatedAt(devlog.createdAt)}
+                  category={devlog.category.name}
+                  tag={devlog.tag.name}
+                  topic={devlog.topic}
+                  notionPageId={devlog.notionPageId}
+                  imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
+                ></DevlogListElement>
+              ))}
+          </div>{" "}
+        </InfiniteScroll>
       </div>
-      {/* 로딩 */}
-      {isLoading && (
-        <div className="w-full flex  justify-center">
-          <img
-            src={process.env.PUBLIC_URL + "/image/loading/loading2.gif"}
-            alt="loading"
-            className="w-96 rounded-full"
-          />
-        </div>
-      )}
     </div>
   );
 };
