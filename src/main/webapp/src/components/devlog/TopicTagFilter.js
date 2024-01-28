@@ -52,7 +52,7 @@ const TopicTagFilter = ({
   return (
     <div className="mt-[1vw]">
       <div
-        className={`flex items-center space-x-2 hover:bg-gray-500 cursor-pointer ${
+        className={`flex items-center space-x-2 transition-all ease-in-out duration-150 hover:bg-gray-500 cursor-pointer ${
           selectedFilter.topic === topicName && selectedFilter.tag === ""
             ? "bg-slate-500"
             : ""
@@ -70,7 +70,7 @@ const TopicTagFilter = ({
               <span
                 id="tag"
                 onClick={filterHandling}
-                className={`text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white ${
+                className={`text-yellow-500 cursor-pointer transition-all ease-in-out duration-150 hover:bg-gray-500 hover:text-white ${
                   selectedFilter.topic === topicName &&
                   selectedFilter.tag === tagName
                     ? "bg-slate-500"
