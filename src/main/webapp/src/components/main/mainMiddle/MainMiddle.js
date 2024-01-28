@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GithubDashboard from "./GithubDashboard";
 import DataDashboard from "./DataDashboard";
 import WriteDashboard from "./WriteDashboard";
+import axios from "axios";
 
 // 메인 페이지의 가운데 콘텐츠표시부분. --[24.01.24 16:02 정지안]
 
 const MainMiddle = () => {
+  const [yearlyStudyTime, setYearlyStudyTime] = useState({});
+  // 일별 공부량 데이터 불러오기
+  const getYearlyStudyTime = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/studyTime/getYearlyStudyTime"
+      );
+      setYearlyStudyTime(response.data);
+      console.log("yearlyStudyTime", response.data);
+    } catch (error) {
+      console.error("Error fetching yearly study time", error);
+    }
+  };
+
+  useEffect(() => {
+    getYearlyStudyTime();
+  }, []);
+
   return (
     <div
       className="bg-darkDeep flex flex-col px-5

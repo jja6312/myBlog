@@ -1,7 +1,8 @@
 package studyTime.service;
 
-import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import devlog.bean.Category;
 import devlog.repository.CategoryRepository;
 import studyTime.bean.StudyTime;
 import studyTime.bean.StudyTimeDTO;
+import studyTime.bean.StudyTimeSummaryDTO;
 import studyTime.repository.StudyTimeRepository;
 
 //스터디 시간과 관련된 service --[24.01.27 20:41 정지안]
@@ -52,4 +54,20 @@ public class StudyTimeServiceImpl implements StudyTimeService {
         return studyTimeRepository.findTotalDurationByDate(today)
                                   .orElse(0L);
     }
+    //메인페이지 렌더시, 연간 공부 시간을 조회
+//    public Map<LocalDate, Long> getYearlyStudyTime() {
+//        LocalDate startDate = LocalDate.of(2024, 1, 1);
+//        LocalDate endDate = LocalDate.of(2024, 12, 31);
+//        return studyTimeRepository.findDurationByDateRange(startDate, endDate);
+//        return null;
+//    }
+    
+    public List<StudyTimeSummaryDTO> getYearlyStudyTime() {
+    	LocalDateTime startDate = LocalDateTime.of(2024, 1, 1,0,0);
+    	LocalDateTime endDate = LocalDateTime.of(2024, 12, 31,0,0);
+        return studyTimeRepository.findDurationByDateRange(startDate, endDate);
+    }
+
+    
+    
 }
