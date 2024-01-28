@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// 개발일지 우측, 토픽 및 태그 필터링 기능 제공 --[24.01.28 12:47 정지안]
 const TopicTagFilter = ({
   icon,
   topicName,
@@ -9,6 +10,11 @@ const TopicTagFilter = ({
   selectedFilter,
   setSelectedFilter,
 }) => {
+  // 고유한 태그 이름만 추출
+  const uniqueTagNames = Array.from(
+    new Set(tagList.map((write) => write.tag.name))
+  );
+
   const filterHandling = (e) => {
     const filterType = e.target.id; // 'topic' 또는 'tag'가 추출됨.
     let filterName;
@@ -59,19 +65,19 @@ const TopicTagFilter = ({
         </span>
       </div>
       <div className="bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
-        {tagList.length > 0
-          ? tagList.map((write) => (
+        {uniqueTagNames.length > 0
+          ? uniqueTagNames.map((tagName) => (
               <span
                 id="tag"
                 onClick={filterHandling}
                 className={`text-yellow-500 cursor-pointer hover:bg-gray-500 hover:text-white ${
                   selectedFilter.topic === topicName &&
-                  selectedFilter.tag === write.tag.name
+                  selectedFilter.tag === tagName
                     ? "bg-slate-500"
                     : ""
                 }`}
               >
-                {write.tag.name} ({countTagFunc(tagList, write.tag.name)})
+                {tagName} ({countTagFunc(tagList, tagName)})
               </span>
             ))
           : "-"}

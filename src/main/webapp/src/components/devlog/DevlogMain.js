@@ -32,7 +32,7 @@ const DevlogMain = ({
                 devlog.tag.name === selectedFilter.tag)
             );
           })
-          .slice(0, visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
+          .slice(-visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
       : // 선택된 카테고리가 있을 경우, 그 카테고리의 글들을 기준으로 필터.
       selectedFilter.topic || selectedFilter.tag
       ? selectedDevlogWriteList
@@ -46,6 +46,11 @@ const DevlogMain = ({
           })
           .slice(0, visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
       : selectedDevlogWriteList;
+
+  // 최근 날짜가 위로 오도록 정렬
+  const sortedFilteredDevlogList = filteredDevlogList.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
 
   // 스크롤 이벤트 핸들러
   const handleScroll = () => {
@@ -98,8 +103,8 @@ const DevlogMain = ({
           totalLength={totalLength}
         >
           <div className="flex flex-col w-full">
-            {filteredDevlogList.length > 0 &&
-              filteredDevlogList.map((devlog) => (
+            {sortedFilteredDevlogList.length > 0 &&
+              sortedFilteredDevlogList.map((devlog) => (
                 <DevlogListElement
                   key={devlog.id}
                   title={devlog.title}
@@ -111,7 +116,7 @@ const DevlogMain = ({
                   imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
                 ></DevlogListElement>
               ))}
-          </div>{" "}
+          </div>
         </InfiniteScroll>
       </div>
     </div>
