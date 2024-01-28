@@ -7,5 +7,7 @@ import studyTime.bean.StudyTimeDTO;
 public interface StudyTimeService {
 
 	void createStudyTime(StudyTimeDTO studyTimeDTO);
+	
+	long getTodayStudyTime();
 
 }
