@@ -6,43 +6,59 @@ import axios from "axios";
 
 // 메인의 왼쪽. 스탑워치 표시--[24.01.27 21:36 정지안]
 const Stopwatch = () => {
-  const [timer, setTimer] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [categoryList, setCategoryList] = useState([]);
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
+  const [timer, setTimer] = useState(0); // 타이머 시간
+  const [isActive, setIsActive] = useState(false); // 타이머 시작 및 중지
 
-  // 스톱워치 시작 및 중지 토글
+  const [categoryList, setCategoryList] = useState([]); // 카테고리 목록
+  const [startTime, setStartTime] = useState(null);
+  const [studySession, setStudySession] = useState({
+    categoryName: null,
+    startTime: startTime,
+    endTime: new Date().toISOString(), // ISOString으로 저장함으로써 DB에서 Date로 변환 가능
+    duration: timer, // 초 단위로 저장
+  }); // DB로 보낼 스톱워치 정보
+
+  // 카테고리 이름을 통해 카테고리 아이디 설정
+  const settingCategory = (e) => {
+    const categoryName = e.target.value;
+    if (e.target.value !== "카테고리 선택") {
+      setStudySession({ ...studySession, categoryName: categoryName });
+    } else if (e.target.value === "카테고리 선택") {
+      setStudySession({ ...studySession, categoryName: null });
+    }
+  };
+
   const toggleTimer = () => {
+    if (studySession.categoryName === null) {
+      alert("카테고리를 선택해주세요");
+      return;
+    }
     setIsActive(!isActive);
     if (!isActive) {
-      setStartTime(new Date().toISOString());
+      setStartTime(new Date());
     } else {
-      setEndTime(new Date().toISOString());
-      handleSave();
+      const endTime = new Date();
+      const duration = Math.round((endTime - startTime) / 1000);
+      const newSession = {
+        categoryName: studySession.categoryName,
+        startTime: startTime.toISOString(),
+        endTime: endTime.toISOString(),
+        duration: duration,
+      };
+      handleSave(newSession);
     }
   };
 
   // 스톱워치 저장
-  const handleSave = () => {
-    const studySession = {
-      categoryId: selectedCategory,
-      startTime: startTime,
-      endTime: new Date().toISOString(),
-      duration: timer,
-    };
-
+  const handleSave = (studyTimeDTO) => {
     axios
-      .post("http://localhost:8080/studyTime/saveTime", studySession)
+      .post("http://localhost:8080/studyTime/saveTime", studyTimeDTO)
       .then((response) => {
         alert("저장 성공");
       })
       .catch((error) => {
         alert("저장 실패");
       });
-
-    // 타이머 초기화
     setTimer(0);
     setIsActive(false);
   };
@@ -107,17 +123,18 @@ const Stopwatch = () => {
           {formatTime()}
         </span>
       </div>
-      <div className="flex justify-center items-center mt-5">
-        <div className="w-[65px] h-7  flex justify-center items-center text-black">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            {categoryList.map((category) => (
-              <option key={category.id}>{category.name}</option>
-            ))}
-          </select>
-        </div>
+
+      <div className="w-full h-7  flex justify-center items-center text-black">
+        <select
+          className="w-full"
+          value={studySession.categoryName}
+          onChange={settingCategory}
+        >
+          <option>카테고리 선택</option>
+          {categoryList.map((category) => (
+            <option key={category.id}>{category.name}</option>
+          ))}
+        </select>
       </div>
     </div>
   );

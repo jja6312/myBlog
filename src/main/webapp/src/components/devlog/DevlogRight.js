@@ -94,7 +94,7 @@ const DevlogRight = ({
       </span>
 
       {/* 육각형모양 이미지. custom을 위해 컴포넌트에서 분리. Hexagon.start ------*/}
-      <div className="absolute top-0 left-[2vw] z-30">
+      <div className="absolute top-0 left-[2vw] z-30 hover:opacity-50 transition-all ease-in-out duration-150">
         <button
           className={`relative w-[9vw] h-[7.7vw] mt-[0.5vw] ${hexagon.hexagon}
         text-black
