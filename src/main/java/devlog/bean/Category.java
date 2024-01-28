@@ -2,6 +2,7 @@ package devlog.bean;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,9 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import studyTime.bean.StudyTime;
 
 // 데브로그 글쓰기에서 입력된 *카테고리 종류를 유니크하게 관리하는 Table --[24.01.25 14:43 정지안]
 @Entity
@@ -27,18 +28,21 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(name = "category_thumbnail", nullable = true)
+    private String categoryThumbnail;
+
     // ------------다른 테이블과의 관계---------------
     @OneToMany(mappedBy = "category")
-    private Set<DevlogWrite> devlogWrites;
+    private Set<DevlogWrite> devlogWrite;
 
     @OneToMany(mappedBy = "category")
-    private Set<Tag> tags;
-
-   
+    private Set<Tag> tag;
 
     public Category(String name) {
         this.name = name;
     }
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudyTime> studyTimes;
 }
 
 // *카테고리란?

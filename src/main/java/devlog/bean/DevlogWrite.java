@@ -33,7 +33,10 @@ public class DevlogWrite {
     private String notionPageId; // 노션페이지아이디 => 글은 노션에서 작성한 글을 바로 불러올 수 있게 만들었다.
     
     @Column(name = "category_thumbnail", nullable = true)
-    private String categoryThumbnail; 
+    private String categoryThumbnail;//카테고리 썸네일 
+    
+    @Column(name = "write_thumbnail", nullable = true)
+    private String writeThumbnail; //게시글 썸네일
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt; // 생성일

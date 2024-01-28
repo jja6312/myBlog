@@ -1,6 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPause } from "@fortawesome/free-solid-svg-icons";
+
+import Stopwatch from "./Stopwatch";
 
 // 메인의 왼쪽. 프로필사진, 스탑워치 표시--[24.01.24 18:00 정지안]
 const MainLeft = () => {
@@ -16,7 +16,6 @@ const MainLeft = () => {
           />
         </div>
 
-        {/* 스탑워치 */}
         <div className="levelContainer w-full flex flex-col justify-center items-center">
           <span className="text-2xl">Lv.1</span>
           <div className="w-full flex justify-end">
@@ -25,30 +24,8 @@ const MainLeft = () => {
           <div className="w-full h-4 md:h-6 xl:h-9 rounded-md bg-white"></div>
         </div>
       </div>
-      <div className="stopwatch flex flex-col justify-evenly w-full h-[250px] md:h-[50vh] xl:h-[180px] bg-black xl:mt-11 ">
-        <div className="flex justify-between p-3">
-          <span className="text-sm text-blue-200">자동 저장</span>
-          <span className="text-sm text-gray-400">
-            오늘 총 공부량, 07:45:22
-          </span>
-        </div>
-        <div className="flex justify-center items-center mt-2 px-2">
-          <div className="w-[60px] h-[60px] text-3xl rounded-full border border-white flex justify-center items-center">
-            <FontAwesomeIcon icon={faPause} />
-          </div>
-          <span className="text-[20px] md:text-5xl ml-4 -translate-y-1">
-            01:05:45
-          </span>
-        </div>
-        <div className="flex justify-center items-center mt-5">
-          <div className="w-[65px] h-7 rounded-xl bg-yellow-300  flex justify-center items-center">
-            <span className=" text-black font-semibold text-xl">Java</span>
-          </div>
-          <div className="w-[65px] h-7 rounded-xl bg-blue-300  flex justify-center items-center ml-3">
-            <span className=" text-black font-semibold text-xl">활용</span>
-          </div>
-        </div>
-      </div>
+      {/* 스탑워치 */}
+      <Stopwatch />
     </div>
   );
 };

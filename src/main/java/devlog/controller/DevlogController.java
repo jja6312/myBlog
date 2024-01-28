@@ -31,13 +31,14 @@ public class DevlogController {
     	    @RequestParam("tagName") String tagName,
     	    @RequestParam("notionPageId") String notionPageId,
     	    @RequestParam("topic") String topic,
-    	    @RequestParam("categoryThumbnail") MultipartFile categoryThumbnail,
+            @RequestParam(value = "categoryThumbnail", required = false) MultipartFile categoryThumbnail,
+    	    @RequestParam("writeThumbnail") MultipartFile writeThumbnail,
     	    HttpSession session) {
-    	System.out.println("컨트롤러!!!: categoryName:"+categoryName);
+    	
         DevlogWriteDTO devlogWriteDTO = new DevlogWriteDTO(title, topic, notionPageId, categoryName, tagName);
-        System.out.println("컨트롤러!!!: DTO의 카테고리네임:"+devlogWriteDTO.getCategoryName());
+        
 
-        devlogService.saveWrite(devlogWriteDTO,categoryThumbnail,session);
+        devlogService.saveWrite(devlogWriteDTO,categoryThumbnail,writeThumbnail,session);
     }
     
     // (글쓰기에서 카테고리 선택을 위한) 카테고리 리스트 가져오기

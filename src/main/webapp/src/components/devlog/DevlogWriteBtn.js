@@ -7,7 +7,7 @@ const DevlogWriteBtn = () => {
     <>
       <Link to="/writeForm">
         <div
-          className="fixed z-50 bg-gray-700 border-4 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
+          className="fixed z-50 bg-gray-700 border-2 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
       hover:bg-amber-500 hover:text-black
       
       w-20 h-10 rounded-[20px] text-sm bottom-5 right-5

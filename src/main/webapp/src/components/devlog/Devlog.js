@@ -15,6 +15,10 @@ const Devlog = () => {
 
   const [hexagonArrays, setHexagonArrays] = useState([[], [], [], []]); // Hexagon 배열을 관리하는 state
 
+  // ------------/Devlog/DevlogRight/TopicTagFilter에서 set되고, /Devlog/DevlogMain에서 선택된 토픽과 태그를 기준으로 필터됨.------------
+  const [selectedFilter, setSelectedFilter] = useState({ topic: "", tag: "" });
+  //--------------------------------------------------------------
+
   // 카테고리별로 devlogWriteList를 그룹화하는 함수
   const groupDevlogsByCategory = (devlogList, categories) => {
     const grouped = {};
@@ -124,10 +128,19 @@ const Devlog = () => {
         isSelected={isSelected}
         selectedDevlogWriteList={selectedDevlogWriteList}
         devlogWriteList={devlogWriteList}
+        selectedFilter={selectedFilter}
       />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
-      <DevlogRight isSelected={isSelected} setIsSelected={setIsSelected} />
+      <DevlogRight
+        isSelected={isSelected}
+        selectedDevlogWriteList={selectedDevlogWriteList}
+        devlogWriteList={devlogWriteList}
+        // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
+        //--------------------------------------------------------------
+      />
     </div>
   );
 };
