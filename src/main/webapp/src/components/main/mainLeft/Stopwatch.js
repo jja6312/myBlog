@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { formatTime } from "../../formatTime";
 
 // 메인의 왼쪽. 스탑워치 표시--[24.01.27 21:36 정지안]
 const Stopwatch = () => {
@@ -17,6 +18,7 @@ const Stopwatch = () => {
     endTime: new Date().toISOString(), // ISOString으로 저장함으로써 DB에서 Date로 변환 가능
     duration: timer, // 초 단위로 저장
   }); // DB로 보낼 스톱워치 정보
+  const [todayStudyTime, setTodayStudyTime] = useState(0);
 
   // 카테고리 이름을 통해 카테고리 아이디 설정
   const settingCategory = (e) => {
@@ -49,33 +51,39 @@ const Stopwatch = () => {
     }
   };
 
-  // 스톱워치 저장
-  const handleSave = (studyTimeDTO) => {
+  const getTodayStudyTime = () => {
+    // 오늘 총 공부량 불러오기
     axios
-      .post("http://localhost:8080/studyTime/saveTime", studyTimeDTO)
-      .then((response) => {
-        alert("저장 성공");
+      .get("http://localhost:8080/studyTime/getTodayStudyTime")
+      .then((res) => {
+        console.log("todayStudyTime", res.data);
+        setTodayStudyTime(res.data);
       })
-      .catch((error) => {
-        alert("저장 실패");
+      .catch((err) => {
+        console.log(err);
       });
+  };
+
+  const handleSave = async (studyTimeDTO) => {
+    // 스톱워치 저장
+    try {
+      await axios.post(
+        "http://localhost:8080/studyTime/saveTime",
+        studyTimeDTO
+      );
+      getTodayStudyTime();
+    } catch (e) {
+      alert("저장 실패");
+      console.log(e);
+    }
+
     setTimer(0);
     setIsActive(false);
   };
 
-  // 타이머 시간을 HH:MM:SS 형식으로 포맷
-  const formatTime = () => {
-    const getTwoDigits = (num) => String(num).padStart(2, "0");
-    let seconds = timer % 60;
-    let minutes = Math.floor(timer / 60) % 60;
-    let hours = Math.floor(timer / 3600);
-    return `${getTwoDigits(hours)}:${getTwoDigits(minutes)}:${getTwoDigits(
-      seconds
-    )}`;
-  };
-
-  // 카테고리 목록 불러오기
   useEffect(() => {
+    getTodayStudyTime();
+    // 카테고리 목록 불러오기
     axios
       .post("http://localhost:8080/devlog/getCategoryList")
       .then((res) => {
@@ -106,12 +114,14 @@ const Stopwatch = () => {
   }, [categoryList]);
 
   return (
-    <div className="stopwatch flex flex-col justify-evenly w-full h-[250px] md:h-[50vh] xl:h-[180px] bg-black xl:mt-11 ">
+    <div className="stopwatch flex flex-col justify-between w-full h-[250px] md:h-[50vh] xl:h-[180px] bg-black xl:mt-11 ">
       <div className="flex justify-between p-3">
         <span className="text-sm text-blue-200">자동 저장</span>
-        <span className="text-sm text-gray-400">오늘 총 공부량, 07:45:22</span>
+        <span className="text-sm text-gray-400">
+          오늘 총 공부량, {formatTime(todayStudyTime)}
+        </span>
       </div>
-      <div className="flex justify-center items-center mt-2 px-2 ">
+      <div className="flex justify-center items-center mb-4 px-2 ">
         {/* 시작 및 중지버튼 */}
         <div
           onClick={toggleTimer}
@@ -119,20 +129,31 @@ const Stopwatch = () => {
         >
           <FontAwesomeIcon icon={isActive ? faPause : faPlay} />{" "}
         </div>
-        <span className="text-[20px] md:text-5xl ml-4 -translate-y-1">
-          {formatTime()}
+        {/* 스톱워치 시간 표시 */}
+        <span
+          className={`text-[20px] md:text-5xl ml-4 -translate-y-1
+        ${isActive ? "text-green-300" : "text-white"}
+        `}
+        >
+          {formatTime(timer)}
         </span>
       </div>
 
-      <div className="w-full h-7  flex justify-center items-center text-black">
+      <div className="w-full h-7  flex justify-center items-end ">
         <select
-          className="w-full"
+          className={`w-full bg-gray-800 h-10 ${
+            studySession.categoryName === null
+              ? "text-gray-400"
+              : "text-green-400 font-semibold"
+          }`}
           value={studySession.categoryName}
           onChange={settingCategory}
         >
-          <option>카테고리 선택</option>
+          <option className="text-gray-400">카테고리 선택</option>
           {categoryList.map((category) => (
-            <option key={category.id}>{category.name}</option>
+            <option className="text-green-400 font-semibold" key={category.id}>
+              {category.name}
+            </option>
           ))}
         </select>
       </div>

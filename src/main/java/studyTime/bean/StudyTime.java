@@ -38,6 +38,6 @@ public class StudyTime {
 	    private LocalDateTime endTime;
 
 	    @Column(nullable = false)
-	    private Duration duration; // Long보다 효과적!
+	    private long durationInSeconds; // 지속 시간을 초 단위로 저장
 
 }

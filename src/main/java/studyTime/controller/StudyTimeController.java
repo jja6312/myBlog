@@ -3,6 +3,7 @@ package studyTime.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,14 @@ public class StudyTimeController {
         studyTimeService.createStudyTime(studyTimeDTO);
         return ResponseEntity.ok().build();
     }
+	
+	//오늘 공부한 시간 가져오기
+	@GetMapping("/studyTime/getTodayStudyTime")
+    public ResponseEntity<Long> getTodayStudyTime() {
+        long todayStudyTime = studyTimeService.getTodayStudyTime();
+        return ResponseEntity.ok(todayStudyTime);
+    }
+	
 	
 
 }
