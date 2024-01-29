@@ -2,7 +2,12 @@ import React from "react";
 
 const DataAbout = () => {
   return (
-    <div className="w-1/3 h-[300px] flex flex-col rounded-lg border border-gray-800 p-4 xl:h-[287px] xl:mt-10 xl:w-full">
+    <div
+      className=" flex flex-col rounded-lg border border-gray-800 p-4
+    w-1/3 h-[300px]
+    xl:w-full xl:h-[287px] xl:mt-16
+    "
+    >
       <span className="text-lg font-semibold">👀 관심기술</span>
       <br></br>
       <div className="flex items-center mt-3">

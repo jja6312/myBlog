@@ -1,7 +1,6 @@
 import React from "react";
 import GithubAbout from "./GithubAbout";
 import DataAbout from "./DataAbout";
-import WriteAbout from "./WriteAbout";
 
 const MainRight = () => {
   return (
@@ -13,7 +12,6 @@ const MainRight = () => {
     >
       <GithubAbout></GithubAbout>
       <DataAbout></DataAbout>
-      <WriteAbout></WriteAbout>
     </div>
   );
 };

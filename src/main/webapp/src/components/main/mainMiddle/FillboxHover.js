@@ -16,7 +16,11 @@ const FillboxHover = ({ durationHourAndMinute, isClicked, id, isToday }) => {
         `}
       >
         <div className="z-10 flex flex-col">
-          {isToday ? <span>💞 Today 💞</span> : <span>{id}</span>}
+          {isToday ? (
+            <span>💞 Today 💞</span>
+          ) : (
+            <span>{id.includes("20") ? id : ""}</span>
+          )}
           {id === "smEvaluation" ? (
             <span>4시간 이상</span>
           ) : id === "mdEvaluation" ? (
