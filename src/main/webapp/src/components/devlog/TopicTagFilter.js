@@ -28,7 +28,8 @@ const TopicTagFilter = ({
     }
     // 동일한 필터를 선택했을 경우, 필터를 해제함.
     if (filterType === "topic") {
-      if (selectedFilter.topic === filterName) {
+      // 토픽'만'선택된 경우
+      if (selectedFilter.topic === filterName && selectedFilter.tag === "") {
         setSelectedFilter({ topic: "", tag: "" }); // 이미 선택된 토픽을 해제
       } else {
         setSelectedFilter({ topic: filterName, tag: "" }); // 새로운 토픽 선택
@@ -66,8 +67,9 @@ const TopicTagFilter = ({
       </div>
       <div className="bg-gray-700 w-full max-h-32 p-2 mt-2 overflow-y-scroll flex flex-col">
         {uniqueTagNames.length > 0
-          ? uniqueTagNames.map((tagName) => (
+          ? uniqueTagNames.map((tagName, index) => (
               <span
+                key={index}
                 id="tag"
                 onClick={filterHandling}
                 className={`text-yellow-500 cursor-pointer transition-all ease-in-out duration-150 hover:bg-gray-500 hover:text-white ${

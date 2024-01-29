@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import studyTime.bean.StudyTime;
 import studyTime.bean.StudyTimeDTO;
 import studyTime.bean.StudyTimeSummaryDTO;
 import studyTime.service.StudyTimeService;
