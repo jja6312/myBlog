@@ -1,5 +1,7 @@
 package studyTime.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import studyTime.bean.StudyTimeDTO;
+import studyTime.bean.StudyTimeSummaryDTO;
 import studyTime.service.StudyTimeService;
 
 //스터디 시간과 관련된 controller --[24.01.27 20:41 정지안]
@@ -32,6 +35,13 @@ public class StudyTimeController {
         long todayStudyTime = studyTimeService.getTodayStudyTime();
         return ResponseEntity.ok(todayStudyTime);
     }
+	
+	//연간 공부 시간 가져오기
+	@GetMapping("/studyTime/getYearlyStudyTime")
+	public ResponseEntity<List<StudyTimeSummaryDTO>> getYearlyStudyTime() {
+	    List<StudyTimeSummaryDTO> yearlyStudyTime = studyTimeService.getYearlyStudyTime();
+	    return ResponseEntity.ok(yearlyStudyTime);
+	}
 	
 	
 

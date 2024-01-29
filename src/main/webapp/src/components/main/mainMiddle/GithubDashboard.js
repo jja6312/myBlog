@@ -1,118 +1,148 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Fillbox from "./Fillbox";
+import GithubDashboardMonthAtTop from "./githubDashboard/GithubDashboardMonthAtTop";
+import GithubDashboardDayOfWeekAtMiddle from "./githubDashboard/GithubDashboardDayOfWeekAtMiddle";
+import GithubDashboardDescriptionAtBottom from "./githubDashboard/GithubDashboardDescriptionAtBottom";
 
-// 깃허브 대시보드를 모방한 연간 공부 시간 시각화 대시보드 --[24.01.24 18:20 정지안]
-const GithubDashboard = () => {
-  const numberOfWeeks = 52; //52주(가로 52개)
-  const elements = Array.from({ length: numberOfWeeks }, (_, i) => i + 1); //52개의 요소를 가진 배열 생성
+const GithubDashboard = ({ yearlyStudyTime, clickedDate, setClickedDate }) => {
+  const year = 2024; // 2024년
+  const [dates, setDates] = useState([]); // 달력 데이터 저장 state
 
-  // 7개의 박스로 채워진 배열을 반환(세로 7개)
-  const fillBox7EA = () => {
-    const boxes = [];
-    for (let i = 0; i < 7; i++) {
-      boxes.push(<Fillbox brightness="bg-gray-900"></Fillbox>);
+  const today = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDate = date < 10 ? `0${date}` : `${date}`;
+
+    return `${year}-${formattedMonth}-${formattedDate}`;
+  };
+
+  const generateCalendar = (year) => {
+    let allDates = [];
+    for (let month = 0; month < 12; month++) {
+      let date = new Date(year, month, 1);
+      while (date.getMonth() === month) {
+        allDates.push(new Date(date));
+        date.setDate(date.getDate() + 1);
+      }
     }
-    return boxes;
+    return allDates;
+  };
+
+  const formatDate = (date) => {
+    if (!date) return "";
+    let d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  };
+  // 말풍선이 오늘날짜로 뜨도록 초기화
+  useEffect(() => {
+    setClickedDate(today());
+  }, []);
+
+  useEffect(() => {
+    setDates(generateCalendar(year));
+  }, [year]);
+
+  const fillBoxWithDate = (date) => {
+    const formattedDate = formatDate(date);
+    const id = formattedDate ? `${formattedDate}` : `empty-${Math.random()}`;
+    const dayStudyTime = yearlyStudyTime.filter(
+      (item) => item.date === formattedDate
+    );
+    const durationHours = dayStudyTime[0]
+      ? dayStudyTime[0].durationInSeconds / 3600
+      : 0;
+    // 마우스를 올렸을 때 나타나는 일별 공부시간 표시
+    const durationHourAndMinute = dayStudyTime[0]
+      ? Math.floor(durationHours) > 0 // 1시간 이상일 때, xx시간 xx분
+        ? `${Math.floor(durationHours)}시간 ${Math.floor(
+            (durationHours - Math.floor(durationHours)) * 60
+          )}분`
+        : `${Math.floor((durationHours - Math.floor(durationHours)) * 60)}분` // 1시간 미만일 때, xx분
+      : "-"; // 공부시간이 없을 때, "-"
+
+    return (
+      <Fillbox
+        id={id}
+        brightness={
+          isToday(id)
+            ? `bg-yellow-500` //오늘날짜라면 노란색 배경
+            : durationHours >= 10 // 공부시간이 10시간 이상일 때 밝은 배경
+            ? "bg-blue-300"
+            : durationHours >= 8
+            ? "bg-blue-500"
+            : durationHours >= 6
+            ? "bg-blue-700"
+            : durationHours >= 4
+            ? "bg-blue-900"
+            : "bg-dark" // 공부시간이 4시간 미만일 때 어두운 배경
+        }
+        durationHourAndMinute={durationHourAndMinute}
+        clickedDate={clickedDate}
+        setClickedDate={setClickedDate}
+        isToday={isToday(id)}
+      ></Fillbox>
+    );
+  };
+
+  // 날짜가 오늘이라면 노란색배경적용
+  const isToday = (id) => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDate = date < 10 ? `0${date}` : `${date}`;
+
+    return `${year}-${formattedMonth}-${formattedDate}` === id;
+  };
+
+  const renderWeeks = () => {
+    const numberOfWeeks = Math.ceil(dates.length / 7);
+    const weeks = [];
+    for (let i = 0; i < numberOfWeeks; i++) {
+      weeks.push(
+        <div
+          key={i}
+          className="flex flex-col mt-2 justify-start items-center gap-[1px] md:gap-[4px] lg:gap-1"
+        >
+          {dates.slice(i * 7, (i + 1) * 7).map((date, index) => (
+            <div key={index}>{fillBoxWithDate(date)}</div>
+          ))}
+        </div>
+      );
+    }
+    return weeks;
   };
 
   return (
-    <div className="flex flex-col w-full bg-darkDeep pt-10">
-      <div className="flex">
-        <span className="text-xl font-semibold">3213.3</span>
-        <span className="text-xl text-gray-400 ml-3">hours in 2024</span>
-      </div>
-      <div className="flex justify-center rounded-lg border border-gray-800 px-2 py-10 mt-2">
-        <div className="w-fit">
-          {/* 가로, 1~12월 텍스트 */}
-          <div className="w-full flex justify-start items-center">
-            <span className="ml-5 text-[8px] w-[20px] md:ml-0 md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Jan
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Feb
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Mar
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Apr
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              May
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Jun
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Jul
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Aug
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Sep
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Oct
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Nov
-            </span>
-            <span className="text-[8px] w-[20px] md:w-[53px] md:text-[12px] xl:w-[61px] xl:text-[14px] 2xl:w-[70px] 2xl:text-[16px] text-end">
-              Dec
-            </span>
+    <div className="flex flex-col w-full bg-darkDeep">
+      <div className="flex justify-center rounded-lg border border-gray-800 px-4 py-5 ">
+        <div className="w-fit my-5">
+          {/* 상단, 1~12월 텍스트*/}
+          <GithubDashboardMonthAtTop />
+          <div className="flex ml-2 gap-[0.5px] md:gap-[4px] lg:gap-1">
+            {/* 좌측, 월 수 금 텍스트 */}
+            <GithubDashboardDayOfWeekAtMiddle />
+            {/* 메인, 공부시간에 따라 밝기를 나타내는 네모상자, 2024년 1년치 렌더 */}
+            {renderWeeks()}
           </div>
-
-          <div className="w-full flex mt-4 ">
-            {/* 세로, 월 수 금 텍스트 */}
-            <div className="flex flex-col justify-center items-start gap-[4px] md:gap-[11px]">
-              <span className="text-[8px] w-[20px] md:text-[12px] md:w-[30px] xl:w-[40px] xl:text-[14px] 2xl:text-[16px]">
-                Mon
-              </span>
-              <span className="text-[8px] w-[20px] md:text-[12px] md:w-[30px] xl:w-[40px] xl:text-[14px] 2xl:text-[16px]">
-                Wed
-              </span>
-              <span className="text-[8px] w-[20px] md:text-[12px] md:w-[30px] xl:w-[40px] xl:text-[14px] 2xl:text-[16px]">
-                Fri
-              </span>
-            </div>
-            {/* 박스들 구현 */}
-            <div className="flex ml-2 gap-[0.5px] md:gap-[4px] lg:gap-1">
-              {elements.map((box, index) => {
-                return (
-                  <div
-                    id={index}
-                    className="flex flex-col justify-center items-center gap-[1px] md:gap-[4px] lg:gap-1"
-                  >
-                    {fillBox7EA()}
-                  </div>
-                );
-              })}
-              <div className="flex flex-col justify-center items-center gap-[1px] md:gap-[4px] lg:gap-1">
-                <Fillbox brightness="bg-blue-900"></Fillbox>
-                <Fillbox brightness="bg-blue-500"></Fillbox>
-                <Fillbox brightness="bg-darkDeep"></Fillbox>
-                <Fillbox brightness="bg-darkDeep"></Fillbox>
-                <Fillbox brightness="bg-darkDeep"></Fillbox>
-                <Fillbox brightness="bg-darkDeep"></Fillbox>
-                <Fillbox brightness="bg-darkDeep"></Fillbox>
-              </div>
-            </div>
-          </div>
-          {/* 하단의 부연설명 */}
-          <div className="bottomContainer text-gray-400 flex justify-between items-center mr-11 mt-3">
-            <span className="text-[5px] md:text-lg">
-              Find Out What Jian Learned
-            </span>
-            <div className="flex gap-2 items-center">
-              <span>Less</span>
-              <Fillbox brightness="bg-blue-900"></Fillbox>
-              <Fillbox brightness="bg-blue-700"></Fillbox>
-              <Fillbox brightness="bg-blue-500"></Fillbox>
-              <Fillbox brightness="bg-blue-300"></Fillbox>
-              <span>More</span>
-            </div>
-          </div>
+          {/* 하단, 부연 설명 */}
+          <GithubDashboardDescriptionAtBottom
+            clickedDate={clickedDate}
+            setClickedDate={setClickedDate}
+          />
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import devlog.bean.Tag;
 import devlog.service.DevlogService;
 import jakarta.servlet.http.HttpSession;
 
-//개발일지와 관련된 controller --[24.01.25 정지안]
+//개발일지와 관련된 controller --[24.01.29 정지안]
 @CrossOrigin
 @RestController
 public class DevlogController {
@@ -58,4 +59,12 @@ public class DevlogController {
     public List<DevlogWrite> getDevlogWriteList() {
     	return devlogService.getDevlogWriteList();
     }
+    
+    
+    //---------------------myBlog 메인에서 요청---------------------
+    @GetMapping(value="/myBlog/getDevlogWriteListByDate")
+    public List<DevlogWrite> getDevlogWriteListByDate(@RequestParam("clickedDate") String clickedDate) {
+    	return devlogService.getDevlogWriteListByDate(clickedDate);
+    }
+    
 }

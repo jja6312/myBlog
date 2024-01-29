@@ -6,7 +6,7 @@ import React from "react";
 // 동적으로 데이터를 시각화하여 보여주는 페이지 --[24.01.24 16:02 정지안]
 const DataDashboard = () => {
   return (
-    <div className="dataDashboard w-full bg-dark flex mt-10">
+    <div className="dataDashboard w-full bg-dark flex ">
       <div className="bg-darkDeep border border-gray-800 w-5/12 h-72"></div>
       <div className="bg-darkDeep border border-gray-800 w-7/12 h-72 -translate-x-1"></div>
     </div>

@@ -11,9 +11,9 @@ const Stopwatch = () => {
   const [isActive, setIsActive] = useState(false); // 타이머 시작 및 중지
 
   const [categoryList, setCategoryList] = useState([]); // 카테고리 목록
-  const [startTime, setStartTime] = useState(null);
+  const [startTime, setStartTime] = useState("");
   const [studySession, setStudySession] = useState({
-    categoryName: null,
+    categoryName: "",
     startTime: startTime,
     endTime: new Date().toISOString(), // ISOString으로 저장함으로써 DB에서 Date로 변환 가능
     duration: timer, // 초 단위로 저장
@@ -26,12 +26,12 @@ const Stopwatch = () => {
     if (e.target.value !== "카테고리 선택") {
       setStudySession({ ...studySession, categoryName: categoryName });
     } else if (e.target.value === "카테고리 선택") {
-      setStudySession({ ...studySession, categoryName: null });
+      setStudySession({ ...studySession, categoryName: "" });
     }
   };
 
   const toggleTimer = () => {
-    if (studySession.categoryName === null) {
+    if (studySession.categoryName === "") {
       alert("카테고리를 선택해주세요");
       return;
     }
@@ -97,7 +97,7 @@ const Stopwatch = () => {
 
   // 타이머 기능
   useEffect(() => {
-    let interval = null;
+    let interval = "";
     if (isActive) {
       interval = setInterval(() => {
         setTimer((timer) => timer + 1);
@@ -125,7 +125,7 @@ const Stopwatch = () => {
         {/* 시작 및 중지버튼 */}
         <div
           onClick={toggleTimer}
-          className="w-[60px] h-[60px] border-2 border-white rounded-full flex justify-center items-center"
+          className="w-[60px] h-[60px] border-2 border-white rounded-full flex justify-center items-center cursor-pointer hover:opacity-75"
         >
           <FontAwesomeIcon icon={isActive ? faPause : faPlay} />{" "}
         </div>
@@ -141,9 +141,9 @@ const Stopwatch = () => {
 
       <div className="w-full h-7  flex justify-center items-end ">
         <select
-          className={`w-full bg-gray-800 h-10 ${
-            studySession.categoryName === null
-              ? "text-gray-400"
+          className={`w-full bg-gray-800 h-10  hover:opacity-75 cursor-pointer border-2 border-slate-600 ${
+            studySession.categoryName === ""
+              ? "text-white opacity-100"
               : "text-green-400 font-semibold"
           }`}
           value={studySession.categoryName}

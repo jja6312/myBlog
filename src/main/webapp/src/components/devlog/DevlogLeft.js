@@ -39,8 +39,9 @@ const DevlogLeft = ({
       {/* 첫 번째 육각형 줄 */}
       <div className="w-1/4 flex flex-col mt-[0vw] -translate-x-[0vw]">
         {hexagonArrays[0] &&
-          ensureSixHexagons(hexagonArrays[0], 0).map((hexagon) => (
+          ensureSixHexagons(hexagonArrays[0], 0).map((hexagon, index) => (
             <Hexagon
+              key={`hexagon-0-${index}`}
               isSelected={isSelected}
               setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
@@ -59,8 +60,9 @@ const DevlogLeft = ({
       {/* 두 번째 육각형 줄 */}
       <div className="w-1/4 flex flex-col mt-[3.45vw] -translate-x-[0.5vw]">
         {hexagonArrays[1] &&
-          ensureSixHexagons(hexagonArrays[1], 1).map((hexagon) => (
+          ensureSixHexagons(hexagonArrays[1], 1).map((hexagon, index) => (
             <Hexagon
+              key={`hexagon-1-${index}`}
               isSelected={isSelected}
               setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
@@ -79,8 +81,9 @@ const DevlogLeft = ({
       {/* 세 번째 육각형 줄 */}
       <div className="w-1/4 flex flex-col mt-[6.9vw] -translate-x-[1vw]">
         {hexagonArrays[2] &&
-          ensureSixHexagons(hexagonArrays[2], 2).map((hexagon) => (
+          ensureSixHexagons(hexagonArrays[2], 2).map((hexagon, index) => (
             <Hexagon
+              key={`hexagon-2-${index}`}
               isSelected={isSelected}
               setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
@@ -99,8 +102,9 @@ const DevlogLeft = ({
       {/* 네 번째 육각형 줄 */}
       <div className="w-1/4 flex flex-col mt-[10.35vw] -translate-x-[1.5vw]">
         {hexagonArrays[3] &&
-          ensureSixHexagons(hexagonArrays[3], 3).map((hexagon) => (
+          ensureSixHexagons(hexagonArrays[3], 3).map((hexagon, index) => (
             <Hexagon
+              key={`hexagon-3-${index}`}
               isSelected={isSelected}
               setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
