@@ -2,6 +2,9 @@ package devlog.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,6 +108,19 @@ public class DevlogServiceImpl implements DevlogService {
 	public List<DevlogWrite> getDevlogWriteList() {
 
 		return devlogRepository.findAll();
+	}
+
+	@Override
+	public List<DevlogWrite> getDevlogWriteListByDate(String clickedDate) {
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    LocalDate date = LocalDate.parse(clickedDate, formatter);
+	    LocalDateTime startOfDay = date.atStartOfDay();
+	    LocalDateTime endOfDay = date.atTime(23, 59, 59);
+	    System.out.println(date+"=>date!!!!!!!!!!");
+	    System.out.println(startOfDay+"=>startOfDay!!!!!!!!!!");
+	    System.out.println(endOfDay+"=>endOfDay!!!!!!!!!!");
+
+	    return devlogRepository.findAllByDate(startOfDay, endOfDay);
 	}
 
 }

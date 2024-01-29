@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faStackOverflow } from "@fortawesome/free-brands-svg-icons";
@@ -10,6 +10,7 @@ import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
 import { faTimeline } from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // 헤더의 카테고리--[24.01.24 17:55 정지안]
 const HeaderCategory = ({
@@ -19,6 +20,15 @@ const HeaderCategory = ({
   isClickedCategory, //클릭된 카테고리의 path
   setIsClickedCategory,
 }) => {
+  const location = useLocation(); //현재 url의 path를 가져옴
+
+  useEffect(() => {
+    // URL이 변경될 때마다 실행
+    if (location.pathname === link) {
+      setIsClickedCategory(link);
+    }
+  }, [location, link, setIsClickedCategory]);
+
   return (
     <>
       <Link to={link} onClick={() => setIsClickedCategory(link)}>

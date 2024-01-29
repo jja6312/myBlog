@@ -20,4 +20,6 @@ public interface DevlogService {
 
 	List<DevlogWrite> getDevlogWriteList();
 
+	List<DevlogWrite> getDevlogWriteListByDate(String clickedDate);
+
 }

@@ -4,13 +4,21 @@ import GithubDashboardMonthAtTop from "./githubDashboard/GithubDashboardMonthAtT
 import GithubDashboardDayOfWeekAtMiddle from "./githubDashboard/GithubDashboardDayOfWeekAtMiddle";
 import GithubDashboardDescriptionAtBottom from "./githubDashboard/GithubDashboardDescriptionAtBottom";
 
-const GithubDashboard = ({ yearlyStudyTime }) => {
+const GithubDashboard = ({ yearlyStudyTime, clickedDate, setClickedDate }) => {
   const year = 2024; // 2024년
   const [dates, setDates] = useState([]); // 달력 데이터 저장 state
 
-  useEffect(() => {
-    setDates(generateCalendar(year));
-  }, [year]);
+  const today = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDate = date < 10 ? `0${date}` : `${date}`;
+
+    return `${year}-${formattedMonth}-${formattedDate}`;
+  };
 
   const generateCalendar = (year) => {
     let allDates = [];
@@ -36,24 +44,40 @@ const GithubDashboard = ({ yearlyStudyTime }) => {
 
     return [year, month, day].join("-");
   };
+  // 말풍선이 오늘날짜로 뜨도록 초기화
+  useEffect(() => {
+    setClickedDate(today());
+  }, []);
+
+  useEffect(() => {
+    setDates(generateCalendar(year));
+  }, [year]);
 
   const fillBoxWithDate = (date) => {
     const formattedDate = formatDate(date);
-    const id = formattedDate
-      ? `date-${formattedDate}`
-      : `empty-${Math.random()}`;
+    const id = formattedDate ? `${formattedDate}` : `empty-${Math.random()}`;
     const dayStudyTime = yearlyStudyTime.filter(
       (item) => item.date === formattedDate
     );
     const durationHours = dayStudyTime[0]
       ? dayStudyTime[0].durationInSeconds / 3600
       : 0;
+    // 마우스를 올렸을 때 나타나는 일별 공부시간 표시
+    const durationHourAndMinute = dayStudyTime[0]
+      ? Math.floor(durationHours) > 0 // 1시간 이상일 때, xx시간 xx분
+        ? `${Math.floor(durationHours)}시간 ${Math.floor(
+            (durationHours - Math.floor(durationHours)) * 60
+          )}분`
+        : `${Math.floor((durationHours - Math.floor(durationHours)) * 60)}분` // 1시간 미만일 때, xx분
+      : "-"; // 공부시간이 없을 때, "-"
 
     return (
       <Fillbox
         id={id}
         brightness={
-          durationHours >= 10
+          isToday(id)
+            ? `bg-yellow-500` //오늘날짜라면 노란색 배경
+            : durationHours >= 10 // 공부시간이 10시간 이상일 때 밝은 배경
             ? "bg-blue-300"
             : durationHours >= 8
             ? "bg-blue-500"
@@ -61,10 +85,27 @@ const GithubDashboard = ({ yearlyStudyTime }) => {
             ? "bg-blue-700"
             : durationHours >= 4
             ? "bg-blue-900"
-            : "bg-dark" // 이 부분은 durationHours가 4시간 미만일 때의 색상입니다.
+            : "bg-dark" // 공부시간이 4시간 미만일 때 어두운 배경
         }
+        durationHourAndMinute={durationHourAndMinute}
+        clickedDate={clickedDate}
+        setClickedDate={setClickedDate}
+        isToday={isToday(id)}
       ></Fillbox>
     );
+  };
+
+  // 날짜가 오늘이라면 노란색배경적용
+  const isToday = (id) => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+
+    const formattedMonth = month < 10 ? `0${month}` : `${month}`;
+    const formattedDate = date < 10 ? `0${date}` : `${date}`;
+
+    return `${year}-${formattedMonth}-${formattedDate}` === id;
   };
 
   const renderWeeks = () => {
@@ -98,7 +139,10 @@ const GithubDashboard = ({ yearlyStudyTime }) => {
             {renderWeeks()}
           </div>
           {/* 하단, 부연 설명 */}
-          <GithubDashboardDescriptionAtBottom />
+          <GithubDashboardDescriptionAtBottom
+            clickedDate={clickedDate}
+            setClickedDate={setClickedDate}
+          />
         </div>
       </div>
     </div>
