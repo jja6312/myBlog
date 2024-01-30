@@ -69,7 +69,9 @@ const Devlog = () => {
           categoryName,
           writeListByCategory: writeListByCategory,
         }))
-        .sort((a, b) => b.length - a.length);
+        .sort(
+          (a, b) => b.writeListByCategory.length - a.writeListByCategory.length
+        );
 
       // 전체 글을 나타내는 항목을 첫 번째 요소로 추가
       groupedDevlogsArray.unshift({
