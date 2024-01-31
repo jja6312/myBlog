@@ -19,7 +19,7 @@ const FillboxHover = ({ durationHourAndMinute, isClicked, id, isToday }) => {
           {isToday ? (
             <span>💞 Today 💞</span>
           ) : (
-            <span>{id.includes("20") ? id : ""}</span>
+            <span>{id.includes("20") ? id : ""}</span> //
           )}
           {id === "smEvaluation" ? (
             <span>4시간 이상</span>
