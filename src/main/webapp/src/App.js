@@ -19,7 +19,7 @@ function App() {
         <div className="App flex-col justify-start items-start bg-dark">
           <Header></Header>
           <Routes>
-            <Route path="/myBlog" element={<Main />} />
+            <Route path="/" element={<Main />} />
             <Route path="/skill" element={<Skill />} />
             <Route path="/project" element={<Project />} />
             <Route path="/devlog" element={<Devlog />} />

@@ -19,7 +19,7 @@ const MobileHeaderCategory = ({ isDropdownOpen, setIsDropdownOpen }) => {
         } overflow-hidden transition-max-height duration-200 ease-in-out flex flex-col absolute left-0 right-0 shadow-md mt-2`}
       >
         <Link
-          to="/myBlog"
+          to="/"
           className="flex px-4 py-2 bg-dark hover:bg-darkDeep hover:text-gray-500"
           onClick={() => setIsDropdownOpen(false)}
         >
