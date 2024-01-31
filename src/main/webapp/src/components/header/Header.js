@@ -31,7 +31,7 @@ const Header = () => {
             src={process.env.PUBLIC_URL + "/image/test/logo.png"}
             alt="logo"
           />
-          <Link to="/myBlog" onClick={() => setIsClickedCategory("/myBlog")}>
+          <Link to="/" onClick={() => setIsClickedCategory("/")}>
             <span className="text-[10px] sm:text-lg md:text-xl lg:text-2xl ml-6 font-semibold ">
               정지 안하는 정지안의 블로그🔥🔥🔥
             </span>

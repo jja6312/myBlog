@@ -10,7 +10,7 @@ const HeaderCategories = ({
   return (
     <div className="hidden text-md xl:flex">
       <HeaderCategoryElement
-        link="/myBlog" // 클릭 시 이동할 url
+        link="/" // 클릭 시 이동할 url
         text="홈" //화면에 보여질 text
         icon="faHouse" //fontawesome의 아이콘 이름을 통해 아이콘 표시
         isClickedCategory={isClickedCategory} //클릭된 카테고리의 path
