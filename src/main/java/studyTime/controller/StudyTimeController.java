@@ -24,6 +24,7 @@ public class StudyTimeController {
 	//공부시간 저장
 	@PostMapping("/studyTime/saveTime")
     public ResponseEntity<?> createStudySession(@RequestBody StudyTimeDTO studyTimeDTO) {
+		System.out.println("controller시간저장!!!:"+studyTimeDTO.getDuration());
 		
         studyTimeService.createStudyTime(studyTimeDTO);
         return ResponseEntity.ok().build();
