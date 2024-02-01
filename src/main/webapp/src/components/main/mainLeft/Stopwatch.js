@@ -65,6 +65,7 @@ const Stopwatch = () => {
   };
 
   const handleSave = async (studyTimeDTO) => {
+  console.log("studyTimeDTO",studyTimeDTO);
     // 스톱워치 저장
     try {
       await axios.post(

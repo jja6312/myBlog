@@ -30,6 +30,7 @@ public class StudyTimeServiceImpl implements StudyTimeService {
     @Override
     public void createStudyTime(StudyTimeDTO studyTimeDTO) {
         StudyTime studyTime = convertToEntity(studyTimeDTO);
+        System.out.println("serviceImpl시간저장 엔티티 변환후!!!:"+studyTime.getDurationInSeconds());
         studyTimeRepository.save(studyTime);
     }
     
