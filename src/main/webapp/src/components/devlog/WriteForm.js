@@ -123,7 +123,7 @@ const WriteForm = () => {
     formData.append("categoryThumbnail", imgFileCategory); // 이미지 파일 추가
     formData.append("writeThumbnail", imgFileWrite); // 이미지 파일 추가
     axios
-      .post("http://localhost:8080/devlog/save", formData, {
+      .post("http://43.203.18.91:8080/devlog/save", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -141,11 +141,13 @@ const WriteForm = () => {
 
   useEffect(() => {
     // 카테고리 리스트 불러오기
-    axios.post("http://localhost:8080/devlog/getCategoryList").then((res) => {
-      setCategoryList(res.data);
-    });
+    axios
+      .post("http://43.203.18.91:8080/devlog/getCategoryList")
+      .then((res) => {
+        setCategoryList(res.data);
+      });
     // 태그 리스트 불러오기
-    axios.post("http://localhost:8080/devlog/getTagList").then((res) => {
+    axios.post("http://43.203.18.91:8080/devlog/getTagList").then((res) => {
       setTagList(res.data);
     });
   }, []);

@@ -54,7 +54,7 @@ const Stopwatch = () => {
   const getTodayStudyTime = () => {
     // 오늘 총 공부량 불러오기
     axios
-      .get("http://localhost:8080/studyTime/getTodayStudyTime")
+      .get("http://43.203.18.91:8080/studyTime/getTodayStudyTime")
       .then((res) => {
         console.log("todayStudyTime", res.data);
         setTodayStudyTime(res.data);
@@ -65,11 +65,11 @@ const Stopwatch = () => {
   };
 
   const handleSave = async (studyTimeDTO) => {
-  console.log("studyTimeDTO",studyTimeDTO);
+    console.log("studyTimeDTO", studyTimeDTO);
     // 스톱워치 저장
     try {
       await axios.post(
-        "http://localhost:8080/studyTime/saveTime",
+        "http://43.203.18.91:8080/studyTime/saveTime",
         studyTimeDTO
       );
       getTodayStudyTime();
@@ -86,7 +86,7 @@ const Stopwatch = () => {
     getTodayStudyTime();
     // 카테고리 목록 불러오기
     axios
-      .post("http://localhost:8080/devlog/getCategoryList")
+      .post("http://43.203.18.91:8080/devlog/getCategoryList")
       .then((res) => {
         console.log("categoryList", res.data);
         setCategoryList(res.data);

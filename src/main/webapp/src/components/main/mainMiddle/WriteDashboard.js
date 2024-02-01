@@ -15,7 +15,7 @@ const WriteDashboard = ({ clickedDate }) => {
   useEffect(() => {
     if (clickedDate === "") return;
     axios
-      .get("http://localhost:8080/myBlog/getDevlogWriteListByDate", {
+      .get("http://43.203.18.91:8080/myBlog/getDevlogWriteListByDate", {
         params: {
           clickedDate: clickedDate,
         },
