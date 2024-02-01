@@ -6,50 +6,61 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
-  REACT_AWS_S3_BUCKET: myblog-react # 리액트 S3 버킷
-  SPRINGBOOT_AWS_S3_BUCKET: myblog-springboot # 스프링 부트 S3 버킷
+  REACT_AWS_S3_BUCKET: myblog-react
+  SPRINGBOOT_AWS_S3_BUCKET: myblog-springboot
   AWS_CODE_DEPLOY_APPLICATION: myBlogCodeDeploy
-  AWS_CODE_DEPLOY_GROUP: myBlogCodeDeploy # 배포그룹 이름
+  AWS_CODE_DEPLOY_GROUP: myBlogCodeDeploy
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-20.04
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up JDK 17 for Spring Boot
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'corretto'
+      - name: Set up JDK 17 for Spring Boot
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "corretto"
 
-    - name: Build Spring Boot project with Gradle
-      run: ./gradlew clean build -x test
+      - name: Build Spring Boot project with Gradle
+        run: ./gradlew clean build -x test
 
-    - name: Set up Node.js for React
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18.18.2'
+      - name: Set up Node.js for React
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.18.2"
 
-    - name: Build React project
-      run: |
-        cd src/main/webapp
-        npm install
-        npm run build
+      - name: Build React project
+        run: |
+          cd src/main/webapp
+          npm install
+          npm run build
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-region: ${{ env.AWS_REGION }}
-        aws-access-key-id: ${{ secrets.CICD_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.CICD_SECRET_KEY }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.CICD_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.CICD_SECRET_KEY }}
 
-    - name: Upload React build to S3
-      run: aws s3 sync src/main/webapp/build s3://${{ env.REACT_AWS_S3_BUCKET }}/react-build/$GITHUB_SHA --delete
+      - name: Package React build into a zip
+        run: |
+          cd src/main/webapp/build
+          zip -r react-build-$GITHUB_SHA.zip .
+          mv react-build-$GITHUB_SHA.zip ../../../../
+          cd ../../../../
 
-    - name: Upload Spring Boot build to S3
-      run: aws deploy push --application-name ${{ env.AWS_CODE_DEPLOY_APPLICATION }} --ignore-hidden-files --s3-location s3://${{ env.SPRINGBOOT_AWS_S3_BUCKET }}/springboot-build/$GITHUB_SHA.zip --source build/libs
+      - name: Upload React build zip to S3
+        run: aws s3 cp react-build-$GITHUB_SHA.zip s3://${{ env.REACT_AWS_S3_BUCKET }}/react-build/$GITHUB_SHA.zip
 
-    - name: Deploy to EC2 via CodeDeploy
-      run: aws deploy create-deployment --application-name ${{ env.AWS_CODE_DEPLOY_APPLICATION }} --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name ${{ env.AWS_CODE_DEPLOY_GROUP }} --s3-location bucket=${{ env.SPRINGBOOT_AWS_S3_BUCKET }},key=springboot-build/$GITHUB_SHA.zip,bundleType=zip
+      - name: Package Spring Boot build into a zip
+        run: |
+          zip -r springboot-build-$GITHUB_SHA.zip build/libs/*.jar
+
+      - name: Upload Spring Boot build zip to S3
+        run: aws s3 cp springboot-build-$GITHUB_SHA.zip s3://${{ env.SPRINGBOOT_AWS_S3_BUCKET }}/springboot-build/$GITHUB_SHA.zip
+
+      - name: Deploy to EC2 via CodeDeploy
+        run: aws deploy create-deployment --application-name ${{ env.AWS_CODE_DEPLOY_APPLICATION }} --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name ${{ env.AWS_CODE_DEPLOY_GROUP }} --s3-location bucket=${{ env.SPRINGBOOT_AWS_S3_BUCKET }},key=springboot-build/$GITHUB_SHA.zip,bundleType=zip
