@@ -67,7 +67,7 @@ const InfiniteScroll = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [visibleCount, totalLength]);
+  }, [handleScroll]);
 
   return (
     <div>

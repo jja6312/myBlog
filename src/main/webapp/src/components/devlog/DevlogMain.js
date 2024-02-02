@@ -76,7 +76,7 @@ const DevlogMain = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [visibleCount, totalLength]);
+  }, [visibleCount, totalLength, handleScroll]);
 
   return (
     <div
