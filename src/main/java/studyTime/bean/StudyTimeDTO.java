@@ -21,5 +21,4 @@ public class StudyTimeDTO {
         this.endTime = this.endTime.plusHours(9);
     }
 
-
 }
