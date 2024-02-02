@@ -53,7 +53,10 @@ jobs:
 
       - name: Package Spring Boot build into a zip
         run: |
-          zip -r springboot-build-$GITHUB_SHA.zip build/libs/*.jar
+          cp appspec.yml build/libs/
+          cp deploy.sh build/libs/
+          cd build/libs/
+          zip -r springboot-build-$GITHUB_SHA.zip ./*
 
       - name: Upload Spring Boot build zip to S3
         run: aws s3 cp springboot-build-$GITHUB_SHA.zip s3://${{ env.SPRINGBOOT_AWS_S3_BUCKET }}/springboot-build/$GITHUB_SHA.zip
