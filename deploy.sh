@@ -28,4 +28,4 @@ sleep 5
 # 새 Spring Boot 애플리케이션 배포
 JAR_NAME=$(ls $SPRINGBOOT_DIR | grep '.jar' | tail -n 1)
 echo "Deploying $JAR_NAME"
-nohup java -jar $SPRINGBOOT_DIR/$JAR_NAME > $SPRINGBOOT_DIR/$(date +%F_%T)-nohup.out 2>&1 &
+nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME > $SPRINGBOOT_DIR/$(date +%F_%T)-nohup.out 2>&1 &
