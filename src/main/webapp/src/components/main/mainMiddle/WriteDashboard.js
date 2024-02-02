@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import WriteElement from "./WriteElement";
 import axios from "axios";
 import DevlogListElement from "../../devlog/DevlogListElement";
 import { formatCreatedAt } from "../../formatCreatedAt";

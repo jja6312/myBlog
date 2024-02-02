@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import HeaderCategoryElement from "./HeaderCategoryElement";
 import { Link } from "react-router-dom";
 import HeaderCategories from "./HeaderCategories";
 import MobileHeaderCategory from "../mobile/mobileHeader/MobileHeaderCategory";

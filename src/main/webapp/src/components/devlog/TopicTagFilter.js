@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // 개발일지 우측, 토픽 및 태그 필터링 기능 제공 --[24.01.28 12:47 정지안]

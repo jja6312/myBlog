@@ -208,8 +208,10 @@ const WriteForm = () => {
               >
                 <option>카테고리 선택</option>
                 {/* 카테고리리스트를 옵션으로 보여준다. */}
-                {categoryList.map((category) => (
-                  <option className="text-yellow-500">{category.name}</option>
+                {categoryList.map((category, index) => (
+                  <option key={index} className="text-yellow-500">
+                    {category.name}
+                  </option>
                 ))}
                 <option>새 카테고리 입력</option>
               </select>

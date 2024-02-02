@@ -3,7 +3,6 @@ import GithubDashboard from "./GithubDashboard";
 import DataDashboard from "./DataDashboard";
 import WriteDashboard from "./WriteDashboard";
 import axios from "axios";
-import Calendar from "./Calendar";
 
 // 메인 페이지의 가운데 콘텐츠표시부분. --[24.01.24 16:02 정지안]
 

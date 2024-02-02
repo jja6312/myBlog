@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import HeaderCategoryElement from "./HeaderCategoryElement";
 
 // 헤더 카테고리들 --[24.01.24 17:52 정지안]
