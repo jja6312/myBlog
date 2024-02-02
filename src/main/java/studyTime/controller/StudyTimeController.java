@@ -24,7 +24,8 @@ public class StudyTimeController {
 	//공부시간 저장
 	@PostMapping("/studyTime/saveTime")
     public ResponseEntity<?> createStudySession(@RequestBody StudyTimeDTO studyTimeDTO) {
-		System.out.println("controller시간저장!!!:"+studyTimeDTO.getDuration());
+		//  UTC시간대 +9시간을 해준다 --[24.02.03 정지안]
+		studyTimeDTO.adjustTimeForKST();
 		
         studyTimeService.createStudyTime(studyTimeDTO);
         return ResponseEntity.ok().build();
