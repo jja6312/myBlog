@@ -18,6 +18,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Grant execute permission for Gradlew
+        run: chmod +x ./gradlew
+
       - name: Set up JDK 17 for Spring Boot
         uses: actions/setup-java@v3
         with:
@@ -35,7 +38,7 @@ jobs:
       - name: Build React project
         run: |
           cd src/main/webapp
-          npm install
+          npm install --legacy-peer-deps # npm 호환문제로 인해 legacy코드 추가됨.
           npm run build
 
       - name: Configure AWS credentials
