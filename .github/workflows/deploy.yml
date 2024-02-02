@@ -48,15 +48,8 @@ jobs:
           aws-access-key-id: ${{ secrets.CICD_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.CICD_SECRET_KEY }}
 
-      - name: Package React build into a zip
-        run: |
-          cd src/main/webapp/build
-          zip -r react-build-$GITHUB_SHA.zip .
-          mv react-build-$GITHUB_SHA.zip ../../../../
-          cd ../../../../
-
-      - name: Upload React build zip to S3
-        run: aws s3 cp react-build-$GITHUB_SHA.zip s3://${{ env.REACT_AWS_S3_BUCKET }}/react-build/$GITHUB_SHA.zip
+      - name: Upload React build to S3
+        run: aws s3 sync src/main/webapp/build/ s3://${{ env.REACT_AWS_S3_BUCKET }}/react-build/$GITHUB_SHA/
 
       - name: Package Spring Boot build into a zip
         run: |
