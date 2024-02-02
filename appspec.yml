@@ -20,4 +20,4 @@ hooks:
     # 배포 후 실행할 스크립트 위치. EC2에서 Spring Boot 애플리케이션을 구동
     - location: deploy.sh
       timeout: 300
-      runas: ubuntu
+      runas: root
