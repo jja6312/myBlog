@@ -2,29 +2,22 @@ version: 0.0
 os: linux
 files:
   # Spring Boot 빌드 아티팩트를 EC2 인스턴스로 복사
-  - source: /springboot-build/$GITHUB_SHA.zip
+  - source: /
     destination: /opt/myBlog/springboot
-
-  # React 빌드 결과물을 EC2 인스턴스로 복사
-  - source: /react-build/$GITHUB_SHA
-    destination: /opt/myBlog/react
+    overwrite: yes
 
 permissions:
   # Spring Boot 애플리케이션 디렉토리 권한 설정
   - object: /opt/myBlog/springboot/
     owner: ubuntu
     group: ubuntu
-    mode: 755 # 표준 권한 설정
-
-  # React 애플리케이션 디렉토리 권한 설정
-  - object: /opt/myBlog/react/
-    owner: ubuntu
-    group: ubuntu
-    mode: 755 # 표준 권한 설정
+    mode: 755
+    type:
+      - file
 
 hooks:
   AfterInstall:
-    # 배포 후 실행할 스크립트 위치. EC2에서 Spring Boot 및 React 애플리케이션을 구동
+    # 배포 후 실행할 스크립트 위치. EC2에서 Spring Boot 애플리케이션을 구동
     - location: deploy.sh
-      timeout: 60
-      runas: root # 필요에 따라 'ubuntu' 등 다른 사용자로 실행 설정 가능
+      timeout: 300
+      runas: ubuntu

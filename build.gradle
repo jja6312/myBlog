@@ -34,3 +34,10 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+//bootJar를 통해 생성된 JAR 파일만 배포 패키지에 포함시키도록 설정
+bootJar {
+    enabled = true
+}
+jar {
+    enabled = false
+}
