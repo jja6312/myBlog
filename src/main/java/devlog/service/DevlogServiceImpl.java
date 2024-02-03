@@ -35,41 +35,41 @@ public class DevlogServiceImpl implements DevlogService {
 	public void saveWrite(DevlogWriteDTO devlogWriteDTO, MultipartFile categoryThumbnail, MultipartFile writeThumbnail,
 			HttpSession session) {
 
-		 DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
+		DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
 
-		    // 실제 폴더의 파일 경로 확인
-		    String filePathCategory = session.getServletContext().getRealPath("/public/storage/categories");
-		    String filePathWrite = session.getServletContext().getRealPath("/public/storage/write");
-		    System.out.println("실제 폴더 = " + filePathCategory);
+		// 실제 폴더의 파일 경로 확인
+		String filePathCategory = session.getServletContext().getRealPath("/public/storage/categories");
+		String filePathWrite = session.getServletContext().getRealPath("/public/storage/write");
+		System.out.println("실제 폴더 = " + filePathCategory);
 
-		    String originalFileNameCategory = null;
-		    //카테고리 썸네일 사진이 있을 때만 카테고리 썸네일을 처리.
-		    if (categoryThumbnail != null && !categoryThumbnail.isEmpty()) {
-		        originalFileNameCategory = categoryThumbnail.getOriginalFilename();
-		        // 카테고리 썸네일 처리
-		        Category category = devlogWrite.getCategory();
-		        category.setCategoryThumbnail(originalFileNameCategory);
-		        File fileCategory = new File(filePathCategory, originalFileNameCategory);
-		        try {
-		            categoryThumbnail.transferTo(fileCategory);
-		        } catch (IllegalStateException | IOException e) {
-		            e.printStackTrace();
-		        }
-		        categoryRepository.save(category);
-		    }
+		String originalFileNameCategory = null;
+		// 카테고리 썸네일 사진이 있을 때만 카테고리 썸네일을 처리.
+		if (categoryThumbnail != null && !categoryThumbnail.isEmpty()) {
+			originalFileNameCategory = categoryThumbnail.getOriginalFilename();
+			// 카테고리 썸네일 처리
+			Category category = devlogWrite.getCategory();
+			category.setCategoryThumbnail(originalFileNameCategory);
+			File fileCategory = new File(filePathCategory, originalFileNameCategory);
+			try {
+				categoryThumbnail.transferTo(fileCategory);
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+			categoryRepository.save(category);
+		}
 
-		    String originalFileNameWrite = writeThumbnail.getOriginalFilename();
-		    devlogWrite.setWriteThumbnail(originalFileNameWrite);
+		String originalFileNameWrite = writeThumbnail.getOriginalFilename();
+		devlogWrite.setWriteThumbnail(originalFileNameWrite);
 
-		    // 게시글 썸네일 저장
-		    File fileWrite = new File(filePathWrite, originalFileNameWrite);
-		    try {
-		        writeThumbnail.transferTo(fileWrite);
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+		// 게시글 썸네일 저장
+		File fileWrite = new File(filePathWrite, originalFileNameWrite);
+		try {
+			writeThumbnail.transferTo(fileWrite);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		    devlogRepository.save(devlogWrite);
+		devlogRepository.save(devlogWrite);
 
 	}
 
@@ -112,15 +112,15 @@ public class DevlogServiceImpl implements DevlogService {
 
 	@Override
 	public List<DevlogWrite> getDevlogWriteListByDate(String clickedDate) {
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	    LocalDate date = LocalDate.parse(clickedDate, formatter);
-	    LocalDateTime startOfDay = date.atStartOfDay();
-	    LocalDateTime endOfDay = date.atTime(23, 59, 59);
-	    System.out.println(date+"=>date!!!!!!!!!!");
-	    System.out.println(startOfDay+"=>startOfDay!!!!!!!!!!");
-	    System.out.println(endOfDay+"=>endOfDay!!!!!!!!!!");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate date = LocalDate.parse(clickedDate, formatter);
+		LocalDateTime startOfDay = date.atStartOfDay();
+		LocalDateTime endOfDay = date.atTime(23, 59, 59);
+		System.out.println(date + "=>date!!!!!!!!!!");
+		System.out.println(startOfDay + "=>startOfDay!!!!!!!!!!");
+		System.out.println(endOfDay + "=>endOfDay!!!!!!!!!!");
 
-	    return devlogRepository.findAllByDate(startOfDay, endOfDay);
+		return devlogRepository.findAllByDate(startOfDay, endOfDay);
 	}
 
 }
