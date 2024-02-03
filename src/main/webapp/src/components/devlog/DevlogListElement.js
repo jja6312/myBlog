@@ -45,7 +45,7 @@ const DevlogListElement = ({
               <img
                 alt=""
                 className="object-cover w-full h-full"
-                src={process.env.PUBLIC_URL + imgSrcWriteThumbnail}
+                src={imgSrcWriteThumbnail}
               ></img>
             </div>
           </div>

@@ -50,7 +50,8 @@ const DevlogLeft = ({
                   ? "/image/categories/darkDeep.png"
                   : hexagon.writeItems.categoryName === "전체 글"
                   ? "/image/categories/all.png"
-                  : `/storage/categories/${hexagon.writeItems.writeListByCategory[0].category.categoryThumbnail}`
+                  : hexagon.writeItems.writeListByCategory[0].category
+                      .categoryThumbnail
               }
               writeAccount={hexagon.length}
             />
@@ -71,7 +72,8 @@ const DevlogLeft = ({
                   ? "/image/categories/darkDeep.png"
                   : hexagon.writeItems.categoryName === "전체 글"
                   ? "/image/categories/all.png"
-                  : `/storage/categories/${hexagon.writeItems.writeListByCategory[0].category.categoryThumbnail}`
+                  : hexagon.writeItems.writeListByCategory[0].category
+                      .categoryThumbnail
               }
               writeAccount={hexagon.length}
             />
@@ -92,7 +94,8 @@ const DevlogLeft = ({
                   ? "/image/categories/darkDeep.png"
                   : hexagon.writeItems.categoryName === "전체 글"
                   ? "/image/categories/all.png"
-                  : `/storage/categories/${hexagon.writeItems.writeListByCategory[0].category.categoryThumbnail}`
+                  : hexagon.writeItems.writeListByCategory[0].category
+                      .categoryThumbnail
               }
               writeAccount={hexagon.length}
             />
@@ -113,7 +116,8 @@ const DevlogLeft = ({
                   ? "/image/categories/darkDeep.png"
                   : hexagon.writeItems.categoryName === "전체 글"
                   ? "/image/categories/all.png"
-                  : `/storage/categories/${hexagon.writeItems.writeListByCategory[0].category.categoryThumbnail}`
+                  : hexagon.writeItems.writeListByCategory[0].category
+                      .categoryThumbnail
               }
               writeAccount={hexagon.length}
             />

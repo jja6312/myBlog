@@ -27,9 +27,7 @@ const WriteForm = () => {
   ); //카테고리 썸네일 미리보기 이미지
   const [imgListWrite, setImgListWrite] = useState(
     `${process.env.PUBLIC_URL}/image/nullImage/nullImage1.png`
-  ); //글 썸네일 미리보기 이미지
-  const [imgFileCategory, setImgFileCategory] = useState([]); //이미지저장
-  const [imgFileWrite, setImgFileWrite] = useState([]); //이미지저장
+  );
 
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
@@ -38,7 +36,19 @@ const WriteForm = () => {
     tagName: "",
     notionPageId: "",
     topic: "",
+    categoryThumbnail: "",
+    writeThumbnail: "",
   });
+
+  // 파일을 Base64 문자열로 변환하는 함수
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
 
   // 변경되는 input을 DTO에 저장
   const onChangeInput = (e) => {
@@ -49,15 +59,20 @@ const WriteForm = () => {
     });
   };
 
-  const onImgInput = (e) => {
-    if (e.target.id === "imgCategoryInput") {
-      setImgFileCategory(e.target.files[0]);
-      setImgListCategory(URL.createObjectURL(e.target.files[0]));
-      console.log("onImgInput, imgCategoryInput", e.target.files[0]);
-    } else if (e.target.id === "imgWriteInput") {
-      setImgFileWrite(e.target.files[0]);
-      setImgListWrite(URL.createObjectURL(e.target.files[0]));
-      console.log("onImgInput, imgWriteInput", e.target.files[0]);
+  const onImgInput = async (e) => {
+    const { name, files } = e.target;
+    //미리보기설정 setImgListCategory
+    if (name === "categoryThumbnail") {
+      setImgListCategory(URL.createObjectURL(files[0]));
+    } else if (name === "writeThumbnail") {
+      setImgListWrite(URL.createObjectURL(files[0]));
+    }
+    //base64로 변환하여 DTO에 저장
+
+    if (files.length > 0) {
+      const base64 = await convertToBase64(files[0]);
+      alert("base64:" + base64);
+      setWriteDTO((prev) => ({ ...prev, [name]: base64 }));
     }
   };
 
@@ -114,18 +129,15 @@ const WriteForm = () => {
       alert("노션 페이지 아이디를 입력하세요.");
       return;
     }
-    const formData = new FormData();
-    formData.append("title", writeDTO.title);
-    formData.append("categoryName", writeDTO.categoryName);
-    formData.append("tagName", writeDTO.tagName);
-    formData.append("notionPageId", writeDTO.notionPageId);
-    formData.append("topic", writeDTO.topic);
-    formData.append("categoryThumbnail", imgFileCategory); // 이미지 파일 추가
-    formData.append("writeThumbnail", imgFileWrite); // 이미지 파일 추가
+
+    alert("writeDTO.categoryThumbnail", writeDTO.categoryThumbnail);
+
+    alert("writeDTO.writeThumbnail", writeDTO.writeThumbnail);
+
     axios
-      .post("http://localhost:8080/devlog/save", formData, {
+      .post("/devlog/save", writeDTO, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       })
       .then((res) => {
@@ -141,11 +153,11 @@ const WriteForm = () => {
 
   useEffect(() => {
     // 카테고리 리스트 불러오기
-    axios.get("http://localhost:8080/devlog/getCategoryList").then((res) => {
+    axios.get("http://43.203.18.91:8080/devlog/getCategoryList").then((res) => {
       setCategoryList(res.data);
     });
     // 태그 리스트 불러오기
-    axios.get("http://localhost:8080/devlog/getTagList").then((res) => {
+    axios.get("http://43.203.18.91:8080/devlog/getTagList").then((res) => {
       setTagList(res.data);
     });
   }, []);
@@ -272,6 +284,7 @@ const WriteForm = () => {
             >
               <input
                 id="imgCategoryInput"
+                name="categoryThumbnail"
                 ref={imgRefCategory}
                 type="file"
                 onChange={onImgInput}
@@ -300,6 +313,7 @@ const WriteForm = () => {
             {/* 썸네일 input */}
             <input
               id="imgWriteInput"
+              name="writeThumbnail"
               ref={imgRefWrite}
               type="file"
               onChange={onImgInput}

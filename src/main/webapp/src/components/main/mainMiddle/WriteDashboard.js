@@ -14,7 +14,7 @@ const WriteDashboard = ({ clickedDate }) => {
   useEffect(() => {
     if (clickedDate === "") return;
     axios
-      .get("http://localhost:8080/myBlog/getDevlogWriteListByDate", {
+      .get("http://43.203.18.91:8080/myBlog/getDevlogWriteListByDate", {
         params: {
           clickedDate: clickedDate,
         },
@@ -56,7 +56,7 @@ const WriteDashboard = ({ clickedDate }) => {
               tag={devlog.tag.name}
               topic={devlog.topic}
               notionPageId={devlog.notionPageId}
-              imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
+              imgSrcWriteThumbnail={devlog.writeThumbnail}
             ></DevlogListElement>
           ))}
         {/* 개발일지 바로가기 버튼 */}

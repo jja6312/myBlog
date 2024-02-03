@@ -25,7 +25,7 @@ const Hexagon = ({
           className="object-cover w-full h-full"
           src={
             imgSrc //카테고리 이미지
-              ? process.env.PUBLIC_URL + imgSrc
+              ? imgSrc
               : process.env.PUBLIC_URL + "/image/test/oops.png" //상위 컴포넌트에서 이미지를 전달하지 않았을 때 보여줄 이미지
           }
         ></img>

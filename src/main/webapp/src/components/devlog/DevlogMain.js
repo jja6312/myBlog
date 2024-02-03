@@ -113,7 +113,7 @@ const DevlogMain = ({
                   tag={devlog.tag.name}
                   topic={devlog.topic}
                   notionPageId={devlog.notionPageId}
-                  imgSrcWriteThumbnail={`/storage/write/${devlog.writeThumbnail}`}
+                  imgSrcWriteThumbnail={devlog.writeThumbnail}
                 ></DevlogListElement>
               ))}
           </div>

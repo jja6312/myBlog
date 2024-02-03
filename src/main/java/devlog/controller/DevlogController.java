@@ -3,9 +3,11 @@ package devlog.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,18 +29,10 @@ public class DevlogController {
     // ----------------------글쓰기----------------------
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/devlog/save")
-    public void saveDevlog(@RequestParam("title") String title,
-            @RequestParam("categoryName") String categoryName,
-            @RequestParam("tagName") String tagName,
-            @RequestParam("notionPageId") String notionPageId,
-            @RequestParam("topic") String topic,
-            @RequestParam(value = "categoryThumbnail", required = false) MultipartFile categoryThumbnail,
-            @RequestParam("writeThumbnail") MultipartFile writeThumbnail,
-            HttpSession session) {
+    public void saveDevlog(@RequestBody DevlogWriteDTO devlogWriteDTO) {
+        System.out.println("!!!devlogWriteDTO.get"+devlogWriteDTO.getCategoryThumbnail());
+        devlogService.saveWrite(devlogWriteDTO);
 
-        DevlogWriteDTO devlogWriteDTO = new DevlogWriteDTO(title, topic, notionPageId, categoryName, tagName);
-
-        devlogService.saveWrite(devlogWriteDTO, categoryThumbnail, writeThumbnail, session);
     }
 
     // (글쓰기에서 카테고리 선택을 위한) 카테고리 리스트 가져오기
