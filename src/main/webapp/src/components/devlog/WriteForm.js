@@ -123,7 +123,7 @@ const WriteForm = () => {
     formData.append("categoryThumbnail", imgFileCategory); // 이미지 파일 추가
     formData.append("writeThumbnail", imgFileWrite); // 이미지 파일 추가
     axios
-      .post("/devlog/save", formData, {
+      .post("http://43.203.18.91:8080/devlog/save", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
