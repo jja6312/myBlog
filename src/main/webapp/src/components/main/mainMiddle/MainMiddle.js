@@ -12,7 +12,9 @@ const MainMiddle = () => {
   // 일별 공부량 데이터 불러오기
   const getYearlyStudyTime = async () => {
     try {
-      const response = await axios.get("/studyTime/getYearlyStudyTime");
+      const response = await axios.get(
+        "http://43.203.18.91:8080/studyTime/getYearlyStudyTime"
+      );
       setYearlyStudyTime(response.data);
       console.log("yearlyStudyTime", response.data);
     } catch (error) {

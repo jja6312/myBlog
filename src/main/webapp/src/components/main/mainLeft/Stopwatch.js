@@ -68,7 +68,10 @@ const Stopwatch = () => {
     console.log("studyTimeDTO", studyTimeDTO);
     // 스톱워치 저장
     try {
-      await axios.post("/studyTime/saveTime", studyTimeDTO);
+      await axios.post(
+        "http://43.203.18.91:8080/studyTime/saveTime",
+        studyTimeDTO
+      );
       getTodayStudyTime();
     } catch (e) {
       alert("저장 실패");
