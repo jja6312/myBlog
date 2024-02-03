@@ -24,47 +24,46 @@ public class DevlogController {
     @Autowired
     private DevlogService devlogService; // 개발일지 서비스
 
-    //----------------------글쓰기----------------------
+    // ----------------------글쓰기----------------------
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/devlog/save")
-    public void saveDevlog( @RequestParam("title") String title,
-    	    @RequestParam("categoryName") String categoryName,
-    	    @RequestParam("tagName") String tagName,
-    	    @RequestParam("notionPageId") String notionPageId,
-    	    @RequestParam("topic") String topic,
+    public void saveDevlog(@RequestParam("title") String title,
+            @RequestParam("categoryName") String categoryName,
+            @RequestParam("tagName") String tagName,
+            @RequestParam("notionPageId") String notionPageId,
+            @RequestParam("topic") String topic,
             @RequestParam(value = "categoryThumbnail", required = false) MultipartFile categoryThumbnail,
-    	    @RequestParam("writeThumbnail") MultipartFile writeThumbnail,
-    	    HttpSession session) {
-    	
-        DevlogWriteDTO devlogWriteDTO = new DevlogWriteDTO(title, topic, notionPageId, categoryName, tagName);
-        
+            @RequestParam("writeThumbnail") MultipartFile writeThumbnail,
+            HttpSession session) {
 
-        devlogService.saveWrite(devlogWriteDTO,categoryThumbnail,writeThumbnail,session);
+        DevlogWriteDTO devlogWriteDTO = new DevlogWriteDTO(title, topic, notionPageId, categoryName, tagName);
+
+        devlogService.saveWrite(devlogWriteDTO, categoryThumbnail, writeThumbnail, session);
     }
-    
+
     // (글쓰기에서 카테고리 선택을 위한) 카테고리 리스트 가져오기
-    @PostMapping(value = "/devlog/getCategoryList")
+    @GetMapping(value = "/devlog/getCategoryList")
     public List<Category> getCategoryList() {
         return devlogService.getCategoryList();
     }
+
     // (글쓰기에서 태그 선택을 위한) 태그 리스트 가져오기
-    @PostMapping(value = "/devlog/getTagList")
+    @GetMapping(value = "/devlog/getTagList")
     public List<Tag> getTagList() {
-    	return devlogService.getTagList();
+        return devlogService.getTagList();
     }
-    
-    //----------------------개발일지 메인----------------------
+
+    // ----------------------개발일지 메인----------------------
 
     @PostMapping(value = "/devlog/getDevlogWriteList")
     public List<DevlogWrite> getDevlogWriteList() {
-    	return devlogService.getDevlogWriteList();
+        return devlogService.getDevlogWriteList();
     }
-    
-    
-    //---------------------myBlog 메인에서 요청---------------------
-    @GetMapping(value="/myBlog/getDevlogWriteListByDate")
+
+    // ---------------------myBlog 메인에서 요청---------------------
+    @GetMapping(value = "/myBlog/getDevlogWriteListByDate")
     public List<DevlogWrite> getDevlogWriteListByDate(@RequestParam("clickedDate") String clickedDate) {
-    	return devlogService.getDevlogWriteListByDate(clickedDate);
+        return devlogService.getDevlogWriteListByDate(clickedDate);
     }
-    
+
 }

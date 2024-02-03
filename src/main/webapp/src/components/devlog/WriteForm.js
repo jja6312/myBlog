@@ -141,11 +141,11 @@ const WriteForm = () => {
 
   useEffect(() => {
     // 카테고리 리스트 불러오기
-    axios.post("/devlog/getCategoryList").then((res) => {
+    axios.get("/devlog/getCategoryList").then((res) => {
       setCategoryList(res.data);
     });
     // 태그 리스트 불러오기
-    axios.post("/devlog/getTagList").then((res) => {
+    axios.get("/devlog/getTagList").then((res) => {
       setTagList(res.data);
     });
   }, []);

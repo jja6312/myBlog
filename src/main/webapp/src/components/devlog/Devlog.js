@@ -33,7 +33,7 @@ const Devlog = () => {
     // 카테고리와 개발일지 리스트를 모두 불러오고, 그룹화된 데이터를 생성함
     const fetchCategoryAndDevlogLists = async () => {
       try {
-        const categoryRes = await axios.post("/devlog/getCategoryList");
+        const categoryRes = await axios.get("/devlog/getCategoryList");
         const devlogRes = await axios.post("/devlog/getDevlogWriteList");
 
         setDevlogWriteList(devlogRes.data);
