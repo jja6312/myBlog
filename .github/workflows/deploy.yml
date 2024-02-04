@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
-  REACT_AWS_S3_BUCKET: myblog-react
+  REACT_AWS_S3_BUCKET: law10000hours.com
   SPRINGBOOT_AWS_S3_BUCKET: myblog-springboot
   AWS_CODE_DEPLOY_APPLICATION: myBlogCodeDeploy
   AWS_CODE_DEPLOY_GROUP: myBlogCodeDeploy
