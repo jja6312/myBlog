@@ -12,7 +12,7 @@ const DevlogTag = ({ tagName }) => {
     
     "
     >
-      <span>{tagName}</span>
+      <div className="text-[12px]">{tagName}</div>
     </div>
   );
 };

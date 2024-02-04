@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DevlogTag from "./read/DevlogTag";
 import DevlogCategories from "./read/DevlogCategories";
 
-// 개발일지 목록에 보이는 게시글 --[24.01.26 16:32 정지안]
+// 홈하단 및 개발일지 중간에 보이는 게시글 덩어리. --[24.01.26 16:32 정지안]
 const DevlogListElement = ({
   title,
   createdAt,
@@ -31,11 +31,19 @@ const DevlogListElement = ({
               {/* 내용 */}
               <span className="text-sm mt-1 text-gray-400">{topic}</span>
               {/* 카테고리 및 태그 */}
-              <div className="flex space-x-2 mt-10">
-                <div className="min-w-20 h-10 ">
+              <div
+                className=" mt-10 
+                              block 
+                              md:flex md:space-x-2"
+              >
+                <div className="w-[85vw] md:w-auto md:min-w-20 h-10 ">
                   <DevlogCategories categoryName={category}></DevlogCategories>
-                </div>{" "}
-                <div className="min-w-20 h-10">
+                </div>
+                <div
+                  className="w-[85vw] md:w-auto md:min-w-20 h-10
+                mt-2
+                md:mt-0"
+                >
                   <DevlogTag tagName={tag}></DevlogTag>
                 </div>
               </div>

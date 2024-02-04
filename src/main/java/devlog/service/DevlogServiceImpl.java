@@ -43,30 +43,34 @@ public class DevlogServiceImpl implements DevlogService {
 		devlogWrite.setTopic(devlogWriteDTO.getTopic());
 		devlogWrite.setNotionPageId(devlogWriteDTO.getNotionPageId());
 
-		// 카테고리를 처리합니다.
+		// 카테고리 처리
 		Category category = categoryRepository.findByName(devlogWriteDTO.getCategoryName())
 				.orElseGet(() -> new Category(devlogWriteDTO.getCategoryName()));
-		category.setCategoryThumbnail(devlogWriteDTO.getCategoryThumbnail());
 
-		// Category 객체가 새로 생성되었을 때만 저장합니다.
+		// 썸네일 값이 비어 있지 않은 경우에만 설정
+		if (!devlogWriteDTO.getCategoryThumbnail().isEmpty()) {
+			category.setCategoryThumbnail(devlogWriteDTO.getCategoryThumbnail());
+		}
+
+		// Category 객체가 새로 생성되었을 때만 저장
 		if (category.getId() == null) {
 			category = categoryRepository.save(category);
 		}
 
-		// 태그를 처리합니다. Tag 엔티티에 카테고리를 설정합니다.
+		// 태그를 처리합니다. Tag 엔티티에 카테고리를 설정
 		Category finalCategory = category;
 		Tag tag = tagRepository.findByName(devlogWriteDTO.getTagName())
 				.orElseGet(() -> new Tag(devlogWriteDTO.getTagName(), finalCategory));
 
-		// Tag 객체가 새로 생성되었을 때만 저장합니다.
+		// Tag 객체가 새로 생성되었을 때만 저장
 		if (tag.getId() == null) {
 			tag = tagRepository.save(tag); // Tag 저장 로직 추가
 		}
 
-		// DevlogWrite 엔티티에 writeThumbnail을 설정합니다.
+		// DevlogWrite 엔티티에 writeThumbnail을 설정
 		devlogWrite.setWriteThumbnail(devlogWriteDTO.getWriteThumbnail());
 
-		// 최종적으로 Category와 Tag를 DevlogWrite 엔티티에 설정합니다.
+		// 최종적으로 Category와 Tag를 DevlogWrite 엔티티에 설정
 		devlogWrite.setCategory(category);
 		devlogWrite.setTag(tag);
 

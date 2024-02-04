@@ -34,10 +34,10 @@ const Devlog = () => {
     const fetchCategoryAndDevlogLists = async () => {
       try {
         const categoryRes = await axios.get(
-          "http://43.203.18.91:8080/devlog/getCategoryList"
+          "http://localhost:8080/devlog/getCategoryList"
         );
         const devlogRes = await axios.post(
-          "http://43.203.18.91:8080/devlog/getDevlogWriteList"
+          "http://localhost:8080/devlog/getDevlogWriteList"
         );
 
         setDevlogWriteList(devlogRes.data);
@@ -117,6 +117,7 @@ const Devlog = () => {
   return (
     <div className="flex justify-between text-white">
       {/* 카테고리 */}
+
       <DevlogLeft
         isSelected={isSelected}
         setIsSelected={setIsSelected}
@@ -124,6 +125,7 @@ const Devlog = () => {
       />
 
       {/* 콘텐츠(개발일지 목록) 표시 */}
+
       <DevlogMain
         isSelected={isSelected}
         selectedDevlogWriteList={selectedDevlogWriteList}
@@ -132,6 +134,7 @@ const Devlog = () => {
       />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
+
       <DevlogRight
         isSelected={isSelected}
         selectedDevlogWriteList={selectedDevlogWriteList}

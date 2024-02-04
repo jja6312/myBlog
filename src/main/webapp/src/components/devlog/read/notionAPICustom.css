@@ -1,8 +1,12 @@
-/* 노션에서 작성한 글을 아래와 같이 커스텀 */
 .notion-text,
 .notion-h2,
 .notion-h3,
-.notion-callout-text {
+.notion-callout-text,
+li::marker,
+span,
+li,
+summary,
+blockquote {
   color: white;
 }
 
@@ -11,24 +15,45 @@
 }
 
 .notion-teal_background {
-  background-color: rgb(60, 139, 82) !important;
+  background-color: inherit;
+  color: rgb(54, 245, 245);
 }
 
 .notion-blue_background {
-  background-color: rgb(62, 101, 160) !important;
+  color: rgb(61, 149, 249);
+  background-color: inherit;
 }
 
 .notion-purple_background {
-  background-color: rgb(99, 38, 117) !important;
+  color: rgb(148, 50, 148);
+  background-color: inherit;
 }
 
 .notion-pink_background {
-  background-color: rgb(223, 91, 142) !important;
+  background-color: inherit;
+  color: rgb(255, 96, 122);
 }
 
 .notion-brown_background {
-  background-color: rgb(147, 120, 62) !important;
+  color: rgb(164, 107, 66);
+  background-color: inherit;
 }
 .notion-gray_background {
-  background-color: rgb(108, 108, 108) !important;
+  color: gray;
+  background-color: inherit;
+}
+
+.notion-red_background {
+  color: rgb(255, 96, 122);
+  background-color: inherit;
+}
+
+.notion-orange_background {
+  color: rgb(255, 165, 0);
+  background-color: inherit;
+}
+
+.notion-yellow_background {
+  color: rgb(255, 255, 0);
+  background-color: inherit;
 }

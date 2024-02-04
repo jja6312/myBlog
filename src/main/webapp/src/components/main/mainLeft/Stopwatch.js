@@ -54,7 +54,7 @@ const Stopwatch = () => {
   const getTodayStudyTime = () => {
     // 오늘 총 공부량 불러오기
     axios
-      .get("http://43.203.18.91:8080/studyTime/getTodayStudyTime")
+      .get("http://localhost:8080/studyTime/getTodayStudyTime")
       .then((res) => {
         console.log("todayStudyTime", res.data);
         setTodayStudyTime(res.data);
@@ -69,7 +69,7 @@ const Stopwatch = () => {
     // 스톱워치 저장
     try {
       await axios.post(
-        "http://43.203.18.91:8080/studyTime/saveTime",
+        "http://localhost:8080/studyTime/saveTime",
         studyTimeDTO
       );
       getTodayStudyTime();
@@ -86,7 +86,7 @@ const Stopwatch = () => {
     getTodayStudyTime();
     // 카테고리 목록 불러오기
     axios
-      .get("http://43.203.18.91:8080/devlog/getCategoryList")
+      .get("http://localhost:8080/devlog/getCategoryList")
       .then((res) => {
         console.log("categoryList", res.data);
         setCategoryList(res.data);
@@ -117,8 +117,8 @@ const Stopwatch = () => {
   return (
     <div className="stopwatch flex flex-col justify-between w-full h-[250px] md:h-[50vh] xl:h-[180px] bg-black xl:mt-11 ">
       <div className="flex justify-between p-3">
-        <span className="text-sm text-blue-200">자동 저장</span>
-        <span className="text-sm text-gray-400">
+        <span className="text-[10px] md:text-sm text-blue-200">자동 저장</span>
+        <span className="text-[10px] md:text-sm text-gray-400">
           오늘 총 공부량, {formatTime(todayStudyTime)}
         </span>
       </div>

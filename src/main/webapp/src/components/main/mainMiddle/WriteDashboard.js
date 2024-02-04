@@ -14,7 +14,7 @@ const WriteDashboard = ({ clickedDate }) => {
   useEffect(() => {
     if (clickedDate === "") return;
     axios
-      .get("http://43.203.18.91:8080/myBlog/getDevlogWriteListByDate", {
+      .get("http://localhost:8080/myBlog/getDevlogWriteListByDate", {
         params: {
           clickedDate: clickedDate,
         },
@@ -34,7 +34,13 @@ const WriteDashboard = ({ clickedDate }) => {
       className="text-lg font-semibold w-full bg-darkDeep flex flex-col my-6"
     >
       <div className="flex">
-        <span className=" ml-2">기간별 등록 게시물 : </span>
+        <span
+          className="ml-2 
+                          text-[12px]
+                          md:text-md "
+        >
+          기간별 등록 게시물 :{" "}
+        </span>
         <span className=" ml-2 text-green-300">{clickedDate}</span>
         <span
           className={` ml-2 ${
@@ -62,7 +68,7 @@ const WriteDashboard = ({ clickedDate }) => {
         {/* 개발일지 바로가기 버튼 */}
         <Link to="/devlog">
           <div
-            className=" bg-gray-700 border-2 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
+            className=" mt-10 bg-gray-700 border-2 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
                         hover:bg-amber-500 hover:text-black
                         
                         w-40 h-10 rounded-[20px] text-sm bottom-5 right-5

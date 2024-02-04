@@ -81,13 +81,17 @@ const DevlogMain = ({
   return (
     <div
       className=" bg-darkDeep text-white flex flex-col items-center px-5 min-h-screen 
-      w-10/12
+      w-full
       md:w-6/12
       "
     >
       {/* 글쓰기 버튼 */}
       <DevlogWriteBtn></DevlogWriteBtn>
-
+      <div className="text-yellow-700 font-semibold flex md:hidden mt-8 bg-yellow-300 border-[2px] border-yellow-600 rounded-xl w-full p-2">
+        <div>⚠ 현재, </div>카테고리 및 태그 필터는{" "}
+        <div className="text-red-500 ml-1">태블릿 이상 화면에서 자원</div>
+        됩니다.
+      </div>
       <div className="text-[8px] flex flex-col md:text-sm mt-10 w-full">
         <span className=" font-semibold">
           {/* 카테고리이름 */}

@@ -3,7 +3,7 @@ import React from "react";
 const GithubAbout = () => {
   return (
     <div
-      className="w-1/3  flex flex-col rounded-lg border border-gray-800  p-4 
+      className="w-1/2  flex flex-col rounded-lg border border-gray-800  p-4 
     h-[300px]
     xl:h-[265px] xl:w-full xl:mt-[70px]  
     "

@@ -33,7 +33,7 @@ const DevlogLeft = ({
   };
 
   return (
-    <div className="relative w-[25vw] flex justify-center pb-10">
+    <div className="relative w-[25vw] hidden md:flex  justify-center pb-10">
       <span className="absolute top-7 right-8 text-3xl italic">Categories</span>
 
       {/* 첫 번째 육각형 줄 */}

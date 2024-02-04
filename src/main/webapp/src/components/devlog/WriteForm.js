@@ -71,7 +71,7 @@ const WriteForm = () => {
 
     if (files.length > 0) {
       const base64 = await convertToBase64(files[0]);
-      alert("base64:" + base64);
+
       setWriteDTO((prev) => ({ ...prev, [name]: base64 }));
     }
   };
@@ -130,12 +130,8 @@ const WriteForm = () => {
       return;
     }
 
-    alert("writeDTO.categoryThumbnail", writeDTO.categoryThumbnail);
-
-    alert("writeDTO.writeThumbnail", writeDTO.writeThumbnail);
-
     axios
-      .post("/devlog/save", writeDTO, {
+      .post("http://localhost:8080/devlog/save", writeDTO, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -153,11 +149,11 @@ const WriteForm = () => {
 
   useEffect(() => {
     // 카테고리 리스트 불러오기
-    axios.get("http://43.203.18.91:8080/devlog/getCategoryList").then((res) => {
+    axios.get("http://localhost:8080/devlog/getCategoryList").then((res) => {
       setCategoryList(res.data);
     });
     // 태그 리스트 불러오기
-    axios.get("http://43.203.18.91:8080/devlog/getTagList").then((res) => {
+    axios.get("http://localhost:8080/devlog/getTagList").then((res) => {
       setTagList(res.data);
     });
   }, []);
