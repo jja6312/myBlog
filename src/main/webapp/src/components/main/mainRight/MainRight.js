@@ -4,7 +4,6 @@ import DataAbout from "./DataAbout";
 
 const MainRight = () => {
   return (
-    // <div className="mainRight flex flex-col px-5">
     <div
       className="w-full bg-dark flex justify-between items-start 
     mt-10

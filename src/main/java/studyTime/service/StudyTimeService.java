@@ -2,6 +2,7 @@ package studyTime.service;
 
 import java.util.List;
 
+import studyTime.bean.StudyTimeAverageDTO;
 import studyTime.bean.StudyTimeDTO;
 import studyTime.bean.StudyTimeSummaryDTO;
 
@@ -9,11 +10,12 @@ import studyTime.bean.StudyTimeSummaryDTO;
 public interface StudyTimeService {
 
 	void createStudyTime(StudyTimeDTO studyTimeDTO);
-	
+
 	long getTodayStudyTime();
 
-//	Map<LocalDate, Long> getYearlyStudyTime();
-	
+	// Map<LocalDate, Long> getYearlyStudyTime();
+
 	List<StudyTimeSummaryDTO> getYearlyStudyTime();
 
+	StudyTimeAverageDTO getAverageStudyTime();
 }

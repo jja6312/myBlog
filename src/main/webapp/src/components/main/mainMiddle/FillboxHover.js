@@ -12,7 +12,7 @@ const FillboxHover = ({ durationHourAndMinute, isClicked, id, isToday }) => {
         group-hover:flex group-hover:flex-col
         w-28 h-10 text-[7px] rounded-sm -translate-y-14
         
-        lg:w-44 lg:h-14 lg:text-sm lg:rounded-lg lg:-translate-y-20
+        lg:w-48 lg:h-14 lg:text-[14px] lg:rounded-lg lg:-translate-y-20
         `}
       >
         <div className="z-10 flex flex-col items-center">

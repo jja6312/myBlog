@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import DevlogListElement from "../../devlog/DevlogListElement";
 import { formatCreatedAt } from "../../formatCreatedAt";
 import { Link } from "react-router-dom";
+import { useStudyTimeStore } from "../../../store/StudyTimeStore";
 
 // 특정 날짜의 개발일지 --[24.01.24 18:22 정지안]
-const WriteDashboard = ({ clickedDate }) => {
-  const [devlogList, setDevlogList] = useState([]);
+const WriteDashboard = () => {
+  const { clickedDate } = useStudyTimeStore();
+  const { devlogListAtDate, setDevlogListAtDate } = useStudyTimeStore();
 
-  // clickedDate가 바뀔 때마다 개발일지 목록을 불러옴.
-  // clickedDate의 기본 형식은 "2024-01-08" 과 같은 텍스트타입.
-
-  useEffect(() => {
-    if (clickedDate === "") return;
+  //일자에 따른 개발일지 가져오기
+  const getDevlogWriteListByDate = () => {
     axios
       .get("http://43.203.18.91:8080/myBlog/getDevlogWriteListByDate", {
         params: {
@@ -20,12 +19,17 @@ const WriteDashboard = ({ clickedDate }) => {
         },
       })
       .then((response) => {
-        setDevlogList(response.data);
-        console.log("devlogList", response.data);
+        setDevlogListAtDate(response.data);
+        console.log("devlogListAtDate", response.data);
       })
       .catch((e) => {
         console.log(e);
       });
+  };
+
+  useEffect(() => {
+    if (clickedDate === "") return;
+    getDevlogWriteListByDate(); // 선택된 날짜에 따른 개발일지 가져오기
   }, [clickedDate]);
 
   return (
@@ -39,7 +43,7 @@ const WriteDashboard = ({ clickedDate }) => {
                           text-[12px]
                           md:text-md "
         >
-          기간별 등록 게시물 :{" "}
+          선택 일자별 등록 게시물 표시 :{" "}
         </span>
         <span className=" ml-2 text-green-300">{clickedDate}</span>
         <span
@@ -52,8 +56,9 @@ const WriteDashboard = ({ clickedDate }) => {
       </div>
       <hr className="border-gray-800 mt-5 mb-5"></hr>
       <div className="flex flex-col items-center w-full">
-        {devlogList.length > 0 &&
-          devlogList.map((devlog) => (
+        {/* 메인화면 하단, 일자별 개발일지 */}
+        {devlogListAtDate.length > 0 &&
+          devlogListAtDate.map((devlog) => (
             <DevlogListElement
               key={devlog.id}
               title={devlog.title}
@@ -65,6 +70,7 @@ const WriteDashboard = ({ clickedDate }) => {
               imgSrcWriteThumbnail={devlog.writeThumbnail}
             ></DevlogListElement>
           ))}
+
         {/* 개발일지 바로가기 버튼 */}
         <Link to="/devlog">
           <div
@@ -81,16 +87,6 @@ const WriteDashboard = ({ clickedDate }) => {
           </div>
         </Link>
       </div>
-      {/* <WriteElement
-        title="지안"
-        createdDate="2024.01.15"
-        content="안녕?"
-      ></WriteElement>
-      <WriteElement
-        title="지안"
-        createdDate="2024.01.15"
-        content="안녕?"
-      ></WriteElement> */}
     </div>
   );
 };
