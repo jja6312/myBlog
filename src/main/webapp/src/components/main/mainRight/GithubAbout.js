@@ -1,27 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useStudyTimeStore } from "../../../store/StudyTimeStore";
 
 const GithubAbout = () => {
+  const { averageStudyTimePerWeekend, setAverageStudyTimePerWeekend } =
+    useStudyTimeStore();
+  const { averageStudyTimePerDay, setAverageStudyTimePerDay } =
+    useStudyTimeStore();
+  const { averageStudyTimeAll, setAverageStudyTimeAll } = useStudyTimeStore();
+
+  const convertToFormat = (minute) => {
+    let hour = Math.floor(minute / 60);
+    let min = Math.floor(minute % 60);
+    return `${hour}h ${min}m`;
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/studyTime/averageStudyTime")
+      .then((res) => {
+        setAverageStudyTimePerWeekend(res.data.averageStudyTimePerWeekend);
+        setAverageStudyTimePerDay(res.data.averageStudyTimePerDay);
+        setAverageStudyTimeAll(res.data.averageStudyTimeAll);
+        console.log(
+          "res.data.averageStudyTimePerWeekend",
+          res.data.averageStudyTimePerWeekend
+        );
+        console.log(
+          "res.data.averageStudyTimePerDay",
+          res.data.averageStudyTimePerDay
+        );
+        console.log(
+          "res.data.averageStudyTimeAll",
+          res.data.averageStudyTimeAll
+        );
+      });
+  }, []);
+
   return (
     <div
       className="w-1/3  flex flex-col rounded-lg border border-gray-800  p-4 
     h-[300px]
-    xl:h-[265px] xl:w-full xl:mt-[70px]  
+    xl:h-[265px] xl:w-full xl:mt-[68px]  
     "
     >
       <span className="text-lg font-semibold">📖 평균 학습 시간</span>
       <br></br>
-      <br></br>
-      <div className="flex">
-        <span className="text-gray-500 text-lg">평일 평균 :</span>
-        <span className="ml-3 text-md">7h 31m</span>
+
+      <div className="flex flex-col">
+        <span className="text-gray-500 text-lg">평일 평균</span>
+        <span className="text-md">
+          {convertToFormat(averageStudyTimePerDay)}
+        </span>
       </div>
-      <div className="flex">
-        <span className="text-gray-500 text-lg">주말 평균 :</span>
-        <span className="ml-3 text-md">4h 53m</span>
+      <div className="flex flex-col">
+        <span className="text-gray-500 text-lg">주말 평균</span>
+        <span className="text-md">
+          {convertToFormat(averageStudyTimePerWeekend)}
+        </span>
       </div>
-      <div className="flex">
-        <span className="text-gray-500 text-lg">합계 평균 :</span>
-        <span className="ml-3 text-md">6h 57m</span>
+      <div className="flex flex-col">
+        <span className="text-gray-500 text-lg">합계 평균</span>
+        <span className="text-md">{convertToFormat(averageStudyTimeAll)}</span>
       </div>
     </div>
   );

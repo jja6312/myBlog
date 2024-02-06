@@ -2,33 +2,62 @@
 .notion-text,
 .notion-h2,
 .notion-h3,
+li::marker,
+span,
+li,
+summary,
+blockquote {
+  color: white;
+}
+
 .notion-callout-text {
   color: white;
 }
 
 .notion-h1 {
-  color: rgb(240, 235, 126);
+  color: rgb(199, 194, 103);
+}
+
+.notion-h2 {
+  color: rgb(192, 128, 139);
+}
+
+.notion-h3 {
+  color: rgb(173, 146, 113);
 }
 
 .notion-teal_background {
-  background-color: rgb(60, 139, 82) !important;
+  background-color: rgb(44, 101, 59);
 }
 
 .notion-blue_background {
-  background-color: rgb(62, 101, 160) !important;
+  background-color: rgb(33, 69, 109);
 }
 
 .notion-purple_background {
-  background-color: rgb(99, 38, 117) !important;
+  background-color: rgb(105, 66, 105);
 }
 
 .notion-pink_background {
-  background-color: rgb(223, 91, 142) !important;
+  background-color: rgb(168, 65, 82);
 }
 
 .notion-brown_background {
-  background-color: rgb(147, 120, 62) !important;
+  background-color: rgb(164, 107, 66);
 }
 .notion-gray_background {
-  background-color: rgb(108, 108, 108) !important;
+  background-color: rgb(41, 41, 41);
+  border: none;
+}
+
+.notion-red_background {
+  background-color: rgb(154, 59, 74);
+}
+
+.notion-orange_background {
+  background-color: rgb(255, 165, 0);
+}
+
+.notion-yellow_background {
+  background-color: rgb(123, 109, 39);
 }

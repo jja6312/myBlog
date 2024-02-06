@@ -2,6 +2,7 @@ package studyTime.service;
 
 import java.util.List;
 
+import studyTime.bean.StudyTimeAverageDTO;
 import studyTime.bean.StudyTimeDTO;
 import studyTime.bean.StudyTimeSummaryDTO;
 
@@ -16,4 +17,5 @@ public interface StudyTimeService {
 	
 	List<StudyTimeSummaryDTO> getYearlyStudyTime();
 
+    StudyTimeAverageDTO getAverageStudyTime();
 }

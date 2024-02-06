@@ -65,7 +65,7 @@ const Stopwatch = () => {
   };
 
   const handleSave = async (studyTimeDTO) => {
-  console.log("studyTimeDTO",studyTimeDTO);
+    console.log("studyTimeDTO", studyTimeDTO);
     // 스톱워치 저장
     try {
       await axios.post(
@@ -86,7 +86,7 @@ const Stopwatch = () => {
     getTodayStudyTime();
     // 카테고리 목록 불러오기
     axios
-      .post("http://localhost:8080/devlog/getCategoryList")
+      .get("http://localhost:8080/devlog/getCategoryList")
       .then((res) => {
         console.log("categoryList", res.data);
         setCategoryList(res.data);
