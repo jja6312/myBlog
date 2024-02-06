@@ -3,8 +3,11 @@ import Fillbox from "./Fillbox";
 import GithubDashboardMonthAtTop from "./githubDashboard/GithubDashboardMonthAtTop";
 import GithubDashboardDayOfWeekAtMiddle from "./githubDashboard/GithubDashboardDayOfWeekAtMiddle";
 import GithubDashboardDescriptionAtBottom from "./githubDashboard/GithubDashboardDescriptionAtBottom";
+import { useStudyTimeStore } from "../../../store/StudyTimeStore";
 
-const GithubDashboard = ({ yearlyStudyTime, clickedDate, setClickedDate }) => {
+const GithubDashboard = () => {
+  const { yearlyStudyTime } = useStudyTimeStore();
+  const { clickedDate, setClickedDate } = useStudyTimeStore();
   const year = 2024; // 2024년
   const [dates, setDates] = useState([]); // 달력 데이터 저장 state
 

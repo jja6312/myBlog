@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
 import { faPersonDigging } from "@fortawesome/free-solid-svg-icons";
@@ -83,7 +82,7 @@ const DevlogRight = ({
   }, [filteredTagByTopic]);
 
   return (
-    <div className="relative w-3/12 flex flex-col items-center">
+    <div className="relative w-3/12 hidden md:flex  flex-col items-center">
       <div className="absolute  top-[1.7vw] right-[3vw] italic z-40 text-3xl">
         <span className="text-green-200">Topic </span>
         <span>&</span>
@@ -106,26 +105,25 @@ const DevlogRight = ({
             alt=""
             className="object-cover w-full h-full"
             src={
-              process.env.PUBLIC_URL +
-              `/storage/categories/${
-                isSelected === "전체 글"
-                  ? "all.png"
-                  : selectedDevlogWriteList[0] &&
-                    selectedDevlogWriteList[0].category.categoryThumbnail
-              }`
+              isSelected === "전체 글"
+                ? `${process.env.PUBLIC_URL}/storage/categories/all.png`
+                : selectedDevlogWriteList[0]?.category.categoryThumbnail
             }
           ></img>
-          <span
+          <div
             className="absolute top-2/3 left-1/2 -translate-x-1/2
-        text-[1.2vw]
+        text-[1.2vw] bg-white/50 w-full
         "
           >
-            {/* 선택된 카테고리가 있으면 그것의 글갯수, 없으면 총글의 갯수. */}(
-            {selectedDevlogWriteList[0]
-              ? selectedDevlogWriteList.length
-              : devlogWriteList.length}
-            )
-          </span>
+            {/* 선택된 카테고리가 있으면 그것의 글갯수, 없으면 총글의 갯수. */}
+            <span className="text-black">
+              (
+              {selectedDevlogWriteList[0]
+                ? selectedDevlogWriteList.length
+                : devlogWriteList.length}
+              )
+            </span>
+          </div>
         </button>
       </div>
       {/* Hexagon.end --------------------------------------------------------*/}

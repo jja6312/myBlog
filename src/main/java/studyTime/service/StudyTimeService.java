@@ -10,12 +10,12 @@ import studyTime.bean.StudyTimeSummaryDTO;
 public interface StudyTimeService {
 
 	void createStudyTime(StudyTimeDTO studyTimeDTO);
-	
+
 	long getTodayStudyTime();
 
-//	Map<LocalDate, Long> getYearlyStudyTime();
-	
+	// Map<LocalDate, Long> getYearlyStudyTime();
+
 	List<StudyTimeSummaryDTO> getYearlyStudyTime();
 
-    StudyTimeAverageDTO getAverageStudyTime();
+	StudyTimeAverageDTO getAverageStudyTime();
 }

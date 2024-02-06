@@ -5,21 +5,21 @@ const FillboxHover = ({ durationHourAndMinute, isClicked, id, isToday }) => {
   return (
     <>
       <div
-        className={`z-40 absolute left-1/2 transform -translate-x-1/2  justify-center items-center bg-slate-700 
+        className={`z-40 absolute left-1/2 transform -translate-x-1/2  justify-center items-center bg-slate-700 p-4
         ${isClicked ? "flex flex-col" : "hidden"}
         hover:opacity-50
 
         group-hover:flex group-hover:flex-col
-        w-16 h-6 text-[7px] rounded-sm -translate-y-10
+        w-28 h-10 text-[7px] rounded-sm -translate-y-14
         
-        lg:w-32 lg:h-14 lg:text-sm lg:rounded-lg lg:-translate-y-20
+        lg:w-48 lg:h-14 lg:text-[14px] lg:rounded-lg lg:-translate-y-20
         `}
       >
-        <div className="z-10 flex flex-col">
+        <div className="z-10 flex flex-col items-center">
           {isToday ? (
             <span>💞 Today 💞</span>
           ) : (
-            <span>{id.includes("20") ? id : ""}</span>
+            <span>{id.includes("20") ? id : ""}</span> //
           )}
           {id === "smEvaluation" ? (
             <span>4시간 이상</span>

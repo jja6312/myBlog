@@ -15,7 +15,6 @@ const Hexagon = ({
       <button
         className={`relative w-[7.3vw] h-[6.35vw] mt-[0.5vw] 
         ${hexagon.hexagon} 
-        ${imgSrc ? "text-black" : "text-white"} 
         ${isSelected === writeItems.categoryName ? "opacity-100" : "opacity-50"}
         hover:opacity-100  transition-all ease-in-out duration-300 `}
         onClick={() => setIsSelected(writeItems.categoryName)}
@@ -25,18 +24,18 @@ const Hexagon = ({
           className="object-cover w-full h-full"
           src={
             imgSrc //카테고리 이미지
-              ? process.env.PUBLIC_URL + imgSrc
+              ? imgSrc
               : process.env.PUBLIC_URL + "/image/test/oops.png" //상위 컴포넌트에서 이미지를 전달하지 않았을 때 보여줄 이미지
           }
         ></img>
         {/* 카테고리별 글 개수 === writeAccount */}
-        <span
+        <div
           className="absolute top-2/3 left-1/2 -translate-x-1/2
-        text-[1.2vw]
+        text-[1.2vw] text-black bg-white/50 rounded-full w-full
         "
         >
-          {writeAccount}
-        </span>
+          <span className="opacity-100 text-black">{writeAccount}</span>
+        </div>
       </button>
     </>
   );

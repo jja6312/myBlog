@@ -9,7 +9,7 @@ pointer font-semibold transition-all duration-300
   bg-gray-800 text-yellow-400 border-[1px] border-dark
 "
     >
-      <span>{categoryName}</span>
+      <div className="text-[12px]">{categoryName}</div>
     </div>
   );
 };

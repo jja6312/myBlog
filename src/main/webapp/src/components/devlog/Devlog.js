@@ -9,7 +9,6 @@ const Devlog = () => {
   const [isSelected, setIsSelected] = useState("전체 글"); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
   const [selectedDevlogWriteList, setSelectedDevlogWriteList] = useState({}); // 선택된 카테고리에 대해 filter된 devlogWriteList(개발일지)를 저장하는 state
 
-  const [categoryList, setCategoryList] = useState([]); // DB에서 불러온 카테고리 리스트
   const [devlogWriteList, setDevlogWriteList] = useState([]); // DB에서 불러온 개발일지 리스트
   const [groupedDevlogs, setGroupedDevlogs] = useState({}); // 카테고리별로 그룹화된 개발일지 리스트
 
@@ -38,10 +37,9 @@ const Devlog = () => {
           "http://localhost:8080/devlog/getCategoryList"
         );
         const devlogRes = await axios.post(
-          "http://localhost:8080/devlog/getDevlogWriteList"
+          "http://43.203.18.91:8080/devlog/getDevlogWriteList"
         );
 
-        setCategoryList(categoryRes.data);
         setDevlogWriteList(devlogRes.data);
         console.log("devlogWriteList", devlogRes.data);
 
@@ -69,7 +67,9 @@ const Devlog = () => {
           categoryName,
           writeListByCategory: writeListByCategory,
         }))
-        .sort((a, b) => b.length - a.length);
+        .sort(
+          (a, b) => b.writeListByCategory.length - a.writeListByCategory.length
+        );
 
       // 전체 글을 나타내는 항목을 첫 번째 요소로 추가
       groupedDevlogsArray.unshift({
@@ -117,6 +117,7 @@ const Devlog = () => {
   return (
     <div className="flex justify-between text-white">
       {/* 카테고리 */}
+
       <DevlogLeft
         isSelected={isSelected}
         setIsSelected={setIsSelected}
@@ -124,6 +125,7 @@ const Devlog = () => {
       />
 
       {/* 콘텐츠(개발일지 목록) 표시 */}
+
       <DevlogMain
         isSelected={isSelected}
         selectedDevlogWriteList={selectedDevlogWriteList}
@@ -132,6 +134,7 @@ const Devlog = () => {
       />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
+
       <DevlogRight
         isSelected={isSelected}
         selectedDevlogWriteList={selectedDevlogWriteList}

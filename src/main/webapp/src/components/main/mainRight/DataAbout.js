@@ -4,7 +4,7 @@ const DataAbout = () => {
   return (
     <div
       className=" flex flex-col rounded-lg border border-gray-800 p-4
-    w-1/3 h-[300px]
+    w-1/2 h-[300px]
     xl:w-full xl:h-[287px] xl:mt-16
     "
     >

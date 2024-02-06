@@ -28,7 +28,7 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(name = "category_thumbnail", nullable = true)
+    @Column(name = "category_thumbnail", columnDefinition="MEDIUMTEXT", nullable = true)
     private String categoryThumbnail;
 
     // ------------다른 테이블과의 관계---------------

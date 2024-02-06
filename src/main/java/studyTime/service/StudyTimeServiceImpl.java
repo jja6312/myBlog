@@ -1,19 +1,23 @@
 package studyTime.service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import devlog.bean.Category;
 import devlog.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import studyTime.bean.StudyTime;
 import studyTime.bean.StudyTimeAverageDTO;
 import studyTime.bean.StudyTimeDTO;
 import studyTime.bean.StudyTimeSummaryDTO;
 import studyTime.repository.StudyTimeRepository;
+
+import java.text.DecimalFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 //스터디 시간과 관련된 service --[24.01.27 20:41 정지안]
 @Service
