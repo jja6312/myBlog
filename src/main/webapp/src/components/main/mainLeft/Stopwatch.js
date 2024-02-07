@@ -86,7 +86,7 @@ const Stopwatch = () => {
     getTodayStudyTime();
     // 카테고리 목록 불러오기
     axios
-      .get("http://localhost:8080/devlog/getCategoryList")
+      .get("http://43.203.18.91:8080/devlog/getCategoryList")
       .then((res) => {
         console.log("categoryList", res.data);
         setCategoryList(res.data);

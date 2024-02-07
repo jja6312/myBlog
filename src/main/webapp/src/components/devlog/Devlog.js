@@ -34,7 +34,7 @@ const Devlog = () => {
     const fetchCategoryAndDevlogLists = async () => {
       try {
         const categoryRes = await axios.get(
-          "http://localhost:8080/devlog/getCategoryList"
+          "http://43.203.18.91:8080/devlog/getCategoryList"
         );
         const devlogRes = await axios.post(
           "http://43.203.18.91:8080/devlog/getDevlogWriteList"
