@@ -34,7 +34,15 @@ const DevlogLeft = ({
 
   return (
     <div className="relative w-[25vw] hidden md:flex  justify-center pb-10">
-      <span className="absolute top-7 right-8 text-3xl italic">Categories</span>
+      <span
+        className="absolute top-7   italic
+      text-[10px]
+      md:text-[13px] md:right-[10px]
+      xl:text-3xl xl:right-8
+      "
+      >
+        Categories
+      </span>
 
       {/* 첫 번째 육각형 줄 */}
       <div className="w-1/4 flex flex-col mt-[0vw] -translate-x-[0vw]">

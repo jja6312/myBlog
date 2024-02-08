@@ -30,7 +30,7 @@ const Fillbox = ({
       hover:border-white  hover:border-2
 
       w-[4px] h-[4px]  rounded-[1px]
-      md:w-2 md:h-2 md:rounded-sm
+      sm:w-2 sm:h-2 sm:rounded-sm
       xl:w-[10px] xl:h-[10px]
       2xl:w-3 2xl:h-3 
       ${brightness} 

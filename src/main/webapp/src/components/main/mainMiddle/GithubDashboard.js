@@ -118,7 +118,10 @@ const GithubDashboard = () => {
       weeks.push(
         <div
           key={i}
-          className="flex flex-col mt-2 justify-start items-center gap-[1px] md:gap-[4px] lg:gap-1"
+          className="flex flex-col mt-2 justify-start items-center 
+          gap-[1px] 
+          md:gap-[4px]
+          lg:gap-1"
         >
           {dates.slice(i * 7, (i + 1) * 7).map((date, index) => (
             <div key={index}>{fillBoxWithDate(date)}</div>

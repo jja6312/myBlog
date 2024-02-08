@@ -6,13 +6,34 @@ import React from "react";
 const GithubDashboardDayOfWeekAtMiddle = () => {
   return (
     <div className="flex flex-col justify-center items-start gap-[4px] md:gap-[11px]">
-      <span className="text-[8px] w-[20px] md:text-[12px] md:w-[30px] xl:w-[40px] xl:text-[14px] 2xl:text-[16px]">
+      <span
+        className="
+      text-[8px] w-[20px] 
+      sm:text-[12px] sm:w-[30px]
+      md:text-[12px] md:w-[30px] 
+      xl:w-[40px] xl:text-[14px] 
+      2xl:text-[16px]"
+      >
         Mon
       </span>
-      <span className="text-[8px] w-[20px] md:text-[12px] md:w-[30px] xl:w-[40px] xl:text-[14px] 2xl:text-[16px]">
+      <span
+        className="
+      text-[8px] w-[20px] 
+      sm:text-[12px] sm:w-[30px]
+      md:text-[12px] md:w-[30px] 
+      xl:w-[40px] xl:text-[14px] 
+      2xl:text-[16px]"
+      >
         Wed
       </span>
-      <span className="text-[8px] w-[20px] md:text-[12px] md:w-[30px] xl:w-[40px] xl:text-[14px] 2xl:text-[16px]">
+      <span
+        className="
+      text-[8px] w-[20px] 
+      sm:text-[12px] sm:w-[30px]
+      md:text-[12px] md:w-[30px] 
+      xl:w-[40px] xl:text-[14px] 
+      2xl:text-[16px]"
+      >
         Fri
       </span>
     </div>

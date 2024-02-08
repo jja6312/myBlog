@@ -9,8 +9,8 @@ const GithubDashboardDescriptionAtBottom = ({
 }) => {
   return (
     <div className="bottomContainer  flex justify-between items-center mr-11 mt-3">
-      <span className="text-[5px] md:text-lg">Find Out What Jian Learned</span>
-      <div className="flex gap-2 items-center">
+      <span className="text-[12px] lg:text-lg">Find Out What Jian Learned</span>
+      <div className="flex gap-2 items-center text-[12px]">
         <span>4시간</span>
         <Fillbox
           id="smEvaluation"

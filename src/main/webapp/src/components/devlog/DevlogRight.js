@@ -83,12 +83,23 @@ const DevlogRight = ({
 
   return (
     <div className="relative w-3/12 hidden md:flex  flex-col items-center">
-      <div className="absolute  top-[1.7vw] right-[3vw] italic z-40 text-3xl">
+      <div
+        className="absolute top-[1.7vw]  italic z-40 
+      text-[10px]
+      md:text-[13px] md:right-[30px]
+      xl:text-3xl xl:right-[3vw]"
+      >
         <span className="text-green-200">Topic </span>
         <span>&</span>
         <span className="text-yellow-500"> Tag</span>
       </div>
-      <span className="absolute  top-[4.8vw] right-[3vw] italic z-40 text-2xl text-gray-400">
+      <span
+        className="absolute text-gray-400 top-[4.8vw] italic z-40 
+        md:text-[13px] md:right-[30px]
+        xl:right-[3vw] xl:text-2xl
+
+       "
+      >
         by Category
       </span>
 
