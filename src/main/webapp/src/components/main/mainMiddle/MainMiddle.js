@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import GithubDashboard from "./GithubDashboard";
-import DataDashboard from "./DataDashboard";
+import DataDashboard from "./DataDashboard/DataDashboard";
 import WriteDashboard from "./WriteDashboard";
 import axios from "axios";
 import { useStudyTimeStore } from "../../../store/StudyTimeStore";
@@ -34,10 +34,25 @@ const MainMiddle = () => {
     xl:ml-0"
     >
       {/* 1년간 일별 공부시간 대시보드 */}
-      <span className="text-lg font-semibold mt-8 mb-2">연간 학습</span>
+      <div
+        className="text-lg font-semibold mt-8 mb-2 flex 
+      flex-col justify-center items-start
+      md:flex-row md:justify-start md:items-center "
+      >
+        연간 학습
+        <span
+          className="text-gray-500 text-sm
+         ml-0 
+         md:ml-4"
+        >
+          색칠된 상자를 클릭하면 선택 날짜별 학습 데이터를 볼 수 있습니다.
+        </span>
+      </div>
       <GithubDashboard></GithubDashboard>
       {/* 특정 날짜의 공부종류 및 공부량 데이터 시각화 */}
-      <span className="text-lg font-semibold mt-8 mb-2">기간별 학습 종류</span>
+      <span className="text-lg text-center xl:text-left font-semibold mt-8 mb-2">
+        기간별 학습 종류
+      </span>
       <DataDashboard></DataDashboard>
       {/* 특정 날짜의 개발일지 */}
       <WriteDashboard></WriteDashboard>
