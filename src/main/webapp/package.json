@@ -19,6 +19,7 @@
     "react-notion-x": "^6.16.0",
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
+    "recharts": "^2.11.0",
     "web-vitals": "^2.1.4",
     "zustand": "^4.5.0"
   },
