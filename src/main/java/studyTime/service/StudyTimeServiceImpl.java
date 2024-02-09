@@ -4,20 +4,12 @@ import devlog.bean.Category;
 import devlog.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import studyTime.bean.StudyTime;
-import studyTime.bean.StudyTimeAverageDTO;
-import studyTime.bean.StudyTimeDTO;
-import studyTime.bean.StudyTimeSummaryDTO;
+import studyTime.bean.*;
 import studyTime.repository.StudyTimeRepository;
 
-import java.text.DecimalFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 //스터디 시간과 관련된 service --[24.01.27 20:41 정지안]
 @Service
@@ -99,5 +91,21 @@ public class StudyTimeServiceImpl implements StudyTimeService {
         return studyTimeAverageDTO;
 
     }
+
+    @Override
+    public List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory() {
+
+        return studyTimeRepository.findStudyTimeGroupByCategory();
+    }
+
+    @Override
+    public List<StudyTimeByDayGroupByCategoryDTO> getStudyTimeByDayGroupByCategory(String clickedDate) {
+        LocalDate date = LocalDate.parse(clickedDate);
+        LocalDateTime startOfDay = date.atStartOfDay(); // 해당 날짜의 시작 시간
+        LocalDateTime startOfNextDay = date.plusDays(1).atStartOfDay(); // 다음 날짜의 시작 시간
+
+        return studyTimeRepository.findStudyTimeByDayGroupByCategory(startOfDay, startOfNextDay);
+    }
+
 
 }

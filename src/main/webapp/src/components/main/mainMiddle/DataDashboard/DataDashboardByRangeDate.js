@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -9,8 +9,20 @@ import {
   Legend,
 } from "recharts";
 import BtnRangeDate from "./BtnRangeDate";
+import axios from "axios";
 
 const DataDashboardByRangeDate = () => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/studyTime/getStudyTimeGroupByCategory")
+      .then((res) => {
+        console.log("getStudyTimeGroupByCategory:", res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const data = [
     {
       name: "Page A",

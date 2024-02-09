@@ -1,10 +1,8 @@
 package studyTime.service;
 
-import java.util.List;
+import studyTime.bean.*;
 
-import studyTime.bean.StudyTimeAverageDTO;
-import studyTime.bean.StudyTimeDTO;
-import studyTime.bean.StudyTimeSummaryDTO;
+import java.util.List;
 
 //스터디 시간과 관련된 service --[24.01.27 20:41 정지안]
 public interface StudyTimeService {
@@ -18,4 +16,8 @@ public interface StudyTimeService {
 	List<StudyTimeSummaryDTO> getYearlyStudyTime();
 
 	StudyTimeAverageDTO getAverageStudyTime();
+
+    List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory();
+
+	List<StudyTimeByDayGroupByCategoryDTO> getStudyTimeByDayGroupByCategory(String clickedDate);
 }

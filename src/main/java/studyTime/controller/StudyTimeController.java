@@ -3,9 +3,7 @@ package studyTime.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import studyTime.bean.StudyTimeAverageDTO;
-import studyTime.bean.StudyTimeDTO;
-import studyTime.bean.StudyTimeSummaryDTO;
+import studyTime.bean.*;
 import studyTime.service.StudyTimeService;
 
 import java.util.List;
@@ -45,6 +43,18 @@ public class StudyTimeController {
 	public ResponseEntity<StudyTimeAverageDTO> getAverageStudyTime(){
 		StudyTimeAverageDTO studyTimeAverageDTO = studyTimeService.getAverageStudyTime();
 		return ResponseEntity.ok(studyTimeAverageDTO);
+	}
+
+	@GetMapping("/studyTime/getStudyTimeGroupByCategory")
+	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategory(){
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory();
+		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
+	}
+
+	@GetMapping("/studyTime/getStudyTimeByDayGroupByCategory")
+	public ResponseEntity<List<StudyTimeByDayGroupByCategoryDTO>> getStudyTimeByDayGroupByCategory(@RequestParam("clickedDate")String clickedDate){
+		List<StudyTimeByDayGroupByCategoryDTO> studyTimeByDayGroupByCategoryDTO = studyTimeService.getStudyTimeByDayGroupByCategory(clickedDate);
+		return ResponseEntity.ok(studyTimeByDayGroupByCategoryDTO);
 	}
 
 }

@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import studyTime.bean.StudyTime;
+import studyTime.bean.StudyTimeByDayGroupByCategoryDTO;
+import studyTime.bean.StudyTimeGroupByCategoryDTO;
 import studyTime.bean.StudyTimeSummaryDTO;
 
 //스터디 시간과 관련된 repository --[24.01.27 20:41 정지안]
@@ -55,16 +57,21 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageAllStudyTimeInMinutes();
 
-	// // 시작 시간과 종료 시간 사이에 있는 StudyTime 엔티티 조회
-	// List<StudyTime> findByStartTimeBetween(LocalDateTime startDateTime,
-	// LocalDateTime endDateTime);
-	//
-	// // 주말에 해당하는 StudyTime 데이터만 조회
-	// @Query("SELECT st FROM StudyTime st WHERE st.startTime >= :startDateTime AND
-	// st.endTime <= :endDateTime AND FUNCTION('DAYOFWEEK', st.startTime) IN (1,
-	// 7)")
-	// List<StudyTime> findWeekendsBetweenDates(@Param("startDateTime")
-	// LocalDateTime startDateTime, @Param("endDateTime") LocalDateTime
-	// endDateTime);
+
+	@Query("SELECT new studyTime.bean.StudyTimeGroupByCategoryDTO(SUM(st.durationInSeconds) / 60, c.name) " +
+			"FROM StudyTime st " +
+			"JOIN st.category c " +
+			"GROUP BY c.name " +
+			"ORDER BY SUM(st.durationInSeconds) DESC")
+	List<StudyTimeGroupByCategoryDTO> findStudyTimeGroupByCategory();
+
+	@Query("SELECT new studyTime.bean.StudyTimeByDayGroupByCategoryDTO(SUM(st.durationInSeconds) / 60, c.name) " +
+			"FROM StudyTime st " +
+			"JOIN st.category c " +
+			"WHERE st.startTime >= :startOfDay AND st.startTime < :startOfNextDay " +
+			"GROUP BY c.name " +
+			"ORDER BY SUM(st.durationInSeconds) DESC")
+	List<StudyTimeByDayGroupByCategoryDTO> findStudyTimeByDayGroupByCategory(@Param("startOfDay") LocalDateTime startOfDay, @Param("startOfNextDay") LocalDateTime startOfNextDay);
+
 
 }
