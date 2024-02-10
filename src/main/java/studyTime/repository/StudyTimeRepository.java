@@ -57,14 +57,25 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageAllStudyTimeInMinutes();
 
+	//기간별 공부 종류
+//	@Query("SELECT new studyTime.bean.StudyTimeGroupByCategoryDTO(" +
+//			"CAST(FUNCTION('date', st.startTime) AS string) AS studyDate, " +
+//			"c.name AS categoryName, " +
+//			"SUM(st.durationInSeconds) / 60 AS studyMinutes) " +
+//			"FROM StudyTime st JOIN st.category c " +
+//			"WHERE st.startTime >= :startDateTime " +
+//			"GROUP BY FUNCTION('date', st.startTime), c.name " +
+//			"ORDER BY FUNCTION('date', st.startTime) DESC, SUM(st.durationInSeconds) DESC")
+//	List<StudyTimeGroupByCategoryDTO> findStudyTimeGroupByCategory(@Param("startDateTime") LocalDateTime startDateTime);
 
-	@Query("SELECT new studyTime.bean.StudyTimeGroupByCategoryDTO(SUM(st.durationInSeconds) / 60, c.name) " +
-			"FROM StudyTime st " +
-			"JOIN st.category c " +
-			"GROUP BY c.name " +
-			"ORDER BY SUM(st.durationInSeconds) DESC")
-	List<StudyTimeGroupByCategoryDTO> findStudyTimeGroupByCategory();
 
+
+
+
+
+
+
+	//클릭된 날짜에 대한 공부종류
 	@Query("SELECT new studyTime.bean.StudyTimeByDayGroupByCategoryDTO(SUM(st.durationInSeconds) / 60, c.name) " +
 			"FROM StudyTime st " +
 			"JOIN st.category c " +

@@ -5,6 +5,7 @@ import devlog.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studyTime.bean.*;
+import studyTime.mapper.StudyTimeMapper;
 import studyTime.repository.StudyTimeRepository;
 
 import java.time.LocalDate;
@@ -16,11 +17,15 @@ import java.util.List;
 public class StudyTimeServiceImpl implements StudyTimeService {
     private final StudyTimeRepository studyTimeRepository;
     private final CategoryRepository categoryRepository;
+    private final StudyTimeMapper studyTimeMapper;
+
 
     @Autowired
-    public StudyTimeServiceImpl(StudyTimeRepository studyTimeRepository, CategoryRepository categoryRepository) {
+    public StudyTimeServiceImpl(StudyTimeRepository studyTimeRepository, CategoryRepository categoryRepository,
+                                StudyTimeMapper studyTimeMapper) {
         this.studyTimeRepository = studyTimeRepository;
         this.categoryRepository = categoryRepository;
+        this.studyTimeMapper = studyTimeMapper;
     }
 
     // 스톱워치 중지시, 카테고리별로 공부시간을 저장한다.
@@ -94,8 +99,16 @@ public class StudyTimeServiceImpl implements StudyTimeService {
 
     @Override
     public List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory() {
+//        LocalDate startDate = LocalDate.now().minusDays(7); // 현재 날짜에서 7일을 빼서 시작 날짜를 계산
+//        LocalDateTime startDateTime = startDate.atStartOfDay(); // LocalDate를 LocalDateTime으로 변환 (시작 시간을 00:00으로 설정)
+//
+//        return studyTimeRepository.findStudyTimeGroupByCategory(startDateTime); // LocalDateTime 파라미터를 사용하여 메서드 호출
 
-        return studyTimeRepository.findStudyTimeGroupByCategory();
+
+        LocalDate startDate = LocalDate.now().minusDays(7);
+        LocalDateTime startDateTime = startDate.atStartOfDay();
+        return studyTimeMapper.findStudyTimeGroupByCategory(startDateTime);
+
     }
 
     @Override

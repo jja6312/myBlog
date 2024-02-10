@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studyTime.mapper.StudyTimeMapper">
+
+    <select id="findStudyTimeGroupByCategory" resultType="studyTime.bean.StudyTimeGroupByCategoryDTO">
+        SELECT
+            DATE_FORMAT(st.start_time, '%Y-%m-%d') AS studyDate,
+            c.name AS categoryName,
+            SUM(st.duration_in_seconds) / 60 AS studyMinutes
+        FROM
+            study_time st
+                JOIN category c ON st.category_id = c.id
+        WHERE
+            st.start_time >= #{startDateTime}
+        GROUP BY
+            studyDate, categoryName
+        ORDER BY
+            studyDate DESC, studyMinutes DESC
+    </select>
+</mapper>

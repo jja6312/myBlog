@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Fillbox from "../Fillbox";
 import axios from "axios";
+import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
 {
   /* 하단의 부연설명 --[24.01.29 10:17 정지안*/
 }
@@ -8,17 +9,22 @@ const GithubDashboardDescriptionAtBottom = ({
   clickedDate,
   setClickedDate,
 }) => {
+  const { setStudyTimeByDayGroupByCategory } = useStudyTimeStore();
   useEffect(() => {
     console.log("clickedDate:", clickedDate);
 
     if (clickedDate === "") return;
     axios
-      .get("http://localhost:8080/studyTime/getStudyTimeByDayGroupByCategory", {
-        params: {
-          clickedDate: clickedDate,
-        },
-      })
+      .get(
+        "http://43.203.18.91:8080/studyTime/getStudyTimeByDayGroupByCategory",
+        {
+          params: {
+            clickedDate: clickedDate,
+          },
+        }
+      )
       .then((res) => {
+        setStudyTimeByDayGroupByCategory(res.data);
         console.log("getStudyTimeByDayGroupByCategory:", res.data);
       });
   }, [clickedDate]);

@@ -1,14 +1,21 @@
 package studyTime.bean;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class StudyTimeGroupByCategoryDTO {
-    private double studyMinutes;
+    private String studyDate;
     private String categoryName;
+    private Double studyMinutes;
 
+    public StudyTimeGroupByCategoryDTO(String studyDate, String categoryName, Double studyMinutes){
+        this.studyDate = studyDate;
+        this.categoryName = categoryName;
+        this.studyMinutes = studyMinutes;
+    }
 }
