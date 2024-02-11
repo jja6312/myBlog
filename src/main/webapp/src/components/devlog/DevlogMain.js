@@ -8,15 +8,15 @@ import { useDevlogStore } from "../../store/DevlogStore";
 // 개발일지의 가운데 영역으로, 개발일지 목록을 표시하는 페이지 --[24.01.26 16:47 정지안]
 const DevlogMain = () => {
   const {
+    isLoading,
     isSelected,
     selectedDevlogWriteList,
     devlogWriteList,
     selectedFilter,
   } = useDevlogStore();
-
   // ------------------무한로딩------------------
   const [visibleCount, setVisibleCount] = useState(6); // 초기에 표시할 게시글의 수
-  const [isLoading, setIsLoading] = useState(false); // 로딩 상태
+  const [isLoadingInfinite, setIsLoadingInfinite] = useState(false); // 로딩 상태
 
   const totalLength =
     isSelected === "전체 글"
@@ -65,10 +65,10 @@ const DevlogMain = () => {
 
     // 전체 길이와 visibleCount를 비교
     if (visibleCount < totalLength) {
-      setIsLoading(true);
+      setIsLoadingInfinite(true);
       setTimeout(() => {
         setVisibleCount((prevCount) => Math.min(prevCount + 10, totalLength)); // 최대 길이를 초과하지 않도록 설정
-        setIsLoading(false);
+        setIsLoadingInfinite(false);
       }, 1700);
     }
   };
@@ -90,6 +90,18 @@ const DevlogMain = () => {
     >
       {/* 글쓰기 버튼 */}
       <DevlogWriteBtn></DevlogWriteBtn>
+      {isLoading && !devlogWriteList.length && (
+        <div className="relative flex justify-center items-center w-full mt-20 ">
+          <img
+            className="w-1/2 rounded-full"
+            src={`${process.env.PUBLIC_URL}/image/loading/loading3.gif`}
+            alt="loading"
+          />
+          <span className="opacity-50 absolute top-5 left-1/2 -translate-x-1/2 text-white text-3xl italic">
+            Loading ...
+          </span>
+        </div>
+      )}
       <div className="text-[10px] text-yellow-700 font-semibold flex md:hidden mt-8 bg-yellow-300 border-[2px] border-yellow-600 rounded-xl w-full p-2">
         <div>
           ⚠ 현재 카테고리 및 태그 필터는{" "}
@@ -97,17 +109,20 @@ const DevlogMain = () => {
         </div>{" "}
       </div>
       <div className="text-[8px] flex flex-col md:text-sm mt-10 w-full">
-        <span className=" font-semibold">
-          {/* 카테고리이름 */}
-          {isSelected}
-          {/* 게시글 수 */}({totalLength})
-        </span>
+        {!isLoading && (
+          <span className=" font-semibold">
+            {/* 카테고리이름 */}
+            {isSelected}
+            {/* 게시글 수 */}({totalLength})
+          </span>
+        )}
+
         {/* 하단, 개발일지 게시글 */}
         <InfiniteScroll
           visibleCount={visibleCount}
           setVisibleCount={setVisibleCount}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
+          isLoadingInfinite={isLoadingInfinite}
+          setIsLoadingInfinite={setIsLoadingInfinite}
           totalLength={totalLength}
         >
           <div className="flex flex-col w-full">
