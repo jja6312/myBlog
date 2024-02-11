@@ -1,43 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
 
 const DataDashboardByDate = () => {
-  const { clickedDate } = useStudyTimeStore();
-  const data = [
-    {
-      name: "Group A",
-      value: 400,
-    },
-    {
-      name: "Group B",
-      value: 300,
-    },
-    {
-      name: "Group C",
-      value: 500,
-    },
-    {
-      name: "Group D",
-      value: 200,
-    },
-    {
-      name: "Group E",
-      value: 278,
-    },
-    {
-      name: "Group F",
-      value: 189,
-    },
-  ];
+  const { studyTimeByDayGroupByCategory, clickedDate } = useStudyTimeStore();
+  const [data, setData] = useState([]); // 상태로 관리되는 data 배열
   const colors = [
-    "#0DCAF0", // 밝은 스카이 블루
-    "#007BFF", // 비비드 블루
-    "#0056B3", // 미디엄 블루
-    "#003F88", // 딥 블루
-    "#002855", // 네이비 블루
-    "#001D3D", // 다크 네이비
+    "#35f2ff", // 밝은 스카이 블루
+    "#28a3ff", // 비비드 블루
+    "#287edb", // 미디엄 블루
+    "#2867b0", // 딥 블루
+    "#28507d", // 네이비 블루
+    "#284565", // 다크 네이비
   ];
+
+  useEffect(() => {
+    if (studyTimeByDayGroupByCategory.length === 0) return;
+    const newData = studyTimeByDayGroupByCategory.map((element) => ({
+      name: element.categoryName,
+      value: element.studyMinutesDay,
+    }));
+    setData(newData);
+    console.log("data", newData);
+  }, [studyTimeByDayGroupByCategory]);
 
   return (
     <div
@@ -67,11 +52,21 @@ const DataDashboardByDate = () => {
           {clickedDate === "" ? "날짜를 선택해주세요." : "선택됨"}
         </span>
       </div>
-      <div className="mt-3">
-        <PieChart width={400} height={250}>
-          <Pie data={data} cx="50%" cy="50%" outerRadius={80} label>
+      <div className="mt-3 z-30">
+        <PieChart width={600} height={250}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            label={(entry) => `${entry.name}: ${entry.value}분`}
+            labelLine={false} // 라벨과 섹션 사이의 선을 숨기려면 이를 false로 설정
+          >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors[index]} />
+              <Cell
+                key={`cell-${index}`}
+                fill={colors[index % colors.length]}
+              />
             ))}
           </Pie>
         </PieChart>

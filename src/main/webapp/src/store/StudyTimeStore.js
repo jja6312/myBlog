@@ -9,13 +9,13 @@ export const useStudyTimeStore = create((set) => ({
 
   // 메인 중간-중단, 기간별학습종류
   clickedRange: "최근 1주일", //선택된 기간
-  studyTimeByDayGroupByCategory: [], //일별 학습 종류 및 시간
+  studyTimeByDayGroupByCategory: [], //일자별 학습 종류 및 시간
   studyTimeGroupByCategory: [], //기간별 학습 종류 및 시간
 
   // 메인 오른쪽, 기간별 학습시간
   averageStudyTimePerDay: 0, //평균 주중 공부시간(분단위)
   averageStudyTimePerWeekend: 0, //평균 주말 공부시간(분단위)
-  averageStudyTimeAll: 0, //평균 일별 공부시간(분단위)
+  averageStudyTimeAll: 0, //평균 일자별 공부시간(분단위)
 
   setYearlyStudyTime: (data) => set({ yearlyStudyTime: data }),
   setClickedDate: (date) => set({ clickedDate: date }),
