@@ -4,8 +4,6 @@ import Hexagon from "./Hexagon";
 // 개발일지의 카테고리 선택 페이지 [24.01.24 15:50 정지안]
 
 const DevlogLeft = ({
-  isSelected,
-  setIsSelected,
   hexagonArrays, // 화면상 왼쪽으로부터 구성된 4개의 Hexagon 배열.
 }) => {
   // 각 배열을 6개의 육각형요소 구성하는 함수
@@ -50,8 +48,6 @@ const DevlogLeft = ({
           ensureSixHexagons(hexagonArrays[0], 0).map((hexagon, index) => (
             <Hexagon
               key={`hexagon-0-${index}`}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
@@ -62,6 +58,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="0"
             />
           ))}
       </div>
@@ -72,8 +69,6 @@ const DevlogLeft = ({
           ensureSixHexagons(hexagonArrays[1], 1).map((hexagon, index) => (
             <Hexagon
               key={`hexagon-1-${index}`}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
@@ -84,6 +79,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="1"
             />
           ))}
       </div>
@@ -94,8 +90,6 @@ const DevlogLeft = ({
           ensureSixHexagons(hexagonArrays[2], 2).map((hexagon, index) => (
             <Hexagon
               key={`hexagon-2-${index}`}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
@@ -106,6 +100,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="2"
             />
           ))}
       </div>
@@ -116,8 +111,6 @@ const DevlogLeft = ({
           ensureSixHexagons(hexagonArrays[3], 3).map((hexagon, index) => (
             <Hexagon
               key={`hexagon-3-${index}`}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
               writeItems={hexagon.writeItems}
               imgSrc={
                 hexagon.notYetFilledCategory
@@ -128,6 +121,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="3"
             />
           ))}
       </div>

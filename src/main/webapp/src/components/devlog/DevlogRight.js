@@ -6,16 +6,16 @@ import { faBrain } from "@fortawesome/free-solid-svg-icons";
 import { faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 import hexagon from "./hexagon.module.css";
 import TopicTagFilter from "./TopicTagFilter";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 // 개발일지의 오른쪽 영역으로, 선택된 카테고리의 하위 구성 및 필터기능 제공 --[24.01.27 12:47 정지안]
-const DevlogRight = ({
-  isSelected,
-  selectedDevlogWriteList,
-  devlogWriteList,
-
-  selectedFilter,
-  setSelectedFilter,
-}) => {
+const DevlogRight = () => {
+  const {
+    isSelected,
+    selectedDevlogWriteList,
+    devlogWriteList,
+    setSelectedFilter,
+  } = useDevlogStore();
   const [filteredTagByTopic, setFilteredTagByTopic] = useState({
     officialDocument: [], // 공식문서 탐독
     projectAndTroubleShooting: [], // 프로젝트 / 트러블슈팅
@@ -146,52 +146,30 @@ const DevlogRight = ({
           topicName="공식문서 탐독"
           tagList={filteredTagByTopic.officialDocument}
           countTagFunc={countTagOccurrencesInTopic}
-          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          //--------------------------------------------------------------
         />
         <TopicTagFilter
           icon={faPersonDigging}
           topicName="프로젝트 / 트러블슈팅"
           tagList={filteredTagByTopic.projectAndTroubleShooting}
           countTagFunc={countTagOccurrencesInTopic}
-          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          //--------------------------------------------------------------
         />
         <TopicTagFilter
           icon={faBook}
           topicName="학습 도서 관련 글"
           tagList={filteredTagByTopic.book}
           countTagFunc={countTagOccurrencesInTopic}
-          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          //--------------------------------------------------------------
         />
         <TopicTagFilter
           icon={faHeadphones}
           topicName="학습 강의 관련 글"
           tagList={filteredTagByTopic.lecture}
           countTagFunc={countTagOccurrencesInTopic}
-          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          //--------------------------------------------------------------
         />
         <TopicTagFilter
           icon={faBrain}
           topicName="개념 정리"
           tagList={filteredTagByTopic.concept}
           countTagFunc={countTagOccurrencesInTopic}
-          // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-          selectedFilter={selectedFilter}
-          setSelectedFilter={setSelectedFilter}
-          //--------------------------------------------------------------
         />
       </div>
     </div>

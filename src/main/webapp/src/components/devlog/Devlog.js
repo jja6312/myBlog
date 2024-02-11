@@ -3,19 +3,25 @@ import DevlogLeft from "./DevlogLeft";
 import DevlogMain from "./DevlogMain";
 import DevlogRight from "./DevlogRight";
 import axios from "axios";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 //개발일지 페이지 --[24.01.26 15:48 정지안]
 const Devlog = () => {
-  const [isSelected, setIsSelected] = useState("전체 글"); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
-  const [selectedDevlogWriteList, setSelectedDevlogWriteList] = useState({}); // 선택된 카테고리에 대해 filter된 devlogWriteList(개발일지)를 저장하는 state
-
-  const [devlogWriteList, setDevlogWriteList] = useState([]); // DB에서 불러온 개발일지 리스트
-  const [groupedDevlogs, setGroupedDevlogs] = useState({}); // 카테고리별로 그룹화된 개발일지 리스트
+  const {
+    setIsLoading,
+    isSelected,
+    selectedDevlogWriteList,
+    setSelectedDevlogWriteList,
+    devlogWriteList,
+    setDevlogWriteList,
+    groupedDevlogs,
+    setGroupedDevlogs,
+  } = useDevlogStore();
 
   const [hexagonArrays, setHexagonArrays] = useState([[], [], [], []]); // Hexagon 배열을 관리하는 state
 
   // ------------/Devlog/DevlogRight/TopicTagFilter에서 set되고, /Devlog/DevlogMain에서 선택된 토픽과 태그를 기준으로 필터됨.------------
-  const [selectedFilter, setSelectedFilter] = useState({ topic: "", tag: "" });
+
   //--------------------------------------------------------------
 
   // 카테고리별로 devlogWriteList를 그룹화하는 함수
@@ -30,6 +36,7 @@ const Devlog = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     // 카테고리와 개발일지 리스트를 모두 불러오고, 그룹화된 데이터를 생성함
     const fetchCategoryAndDevlogLists = async () => {
       try {
@@ -52,6 +59,8 @@ const Devlog = () => {
         setGroupedDevlogs(groupedData);
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -118,32 +127,15 @@ const Devlog = () => {
     <div className="flex justify-between text-white">
       {/* 카테고리 */}
 
-      <DevlogLeft
-        isSelected={isSelected}
-        setIsSelected={setIsSelected}
-        hexagonArrays={hexagonArrays}
-      />
+      <DevlogLeft hexagonArrays={hexagonArrays} />
 
       {/* 콘텐츠(개발일지 목록) 표시 */}
 
-      <DevlogMain
-        isSelected={isSelected}
-        selectedDevlogWriteList={selectedDevlogWriteList}
-        devlogWriteList={devlogWriteList}
-        selectedFilter={selectedFilter}
-      />
+      <DevlogMain />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
 
-      <DevlogRight
-        isSelected={isSelected}
-        selectedDevlogWriteList={selectedDevlogWriteList}
-        devlogWriteList={devlogWriteList}
-        // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-        selectedFilter={selectedFilter}
-        setSelectedFilter={setSelectedFilter}
-        //--------------------------------------------------------------
-      />
+      <DevlogRight />
     </div>
   );
 };

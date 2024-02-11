@@ -32,7 +32,11 @@ const HeaderCategory = ({
   return (
     <>
       <Link to={link} onClick={() => setIsClickedCategory(link)}>
-        <div className="flex-col mt-3 ">
+        <div
+          className={`flex-col mt-3 ${
+            text === "홈" ? "" : text === "개발일지" ? "" : "text-gray-600"
+          }`}
+        >
           {/* 아이콘과 카테고리 이름 */}
           <div className="flex justify-evenly pl-3 pr-3 hover:text-gray-400 transition-all duration-150">
             <FontAwesomeIcon
@@ -60,7 +64,13 @@ const HeaderCategory = ({
               }
             />
 
-            <span className="ml-2 text-sm">{text}</span>
+            <span
+              className={`ml-2 text-sm ${
+                text === "홈" ? "" : text === "개발일지" ? "" : "text-gray-600"
+              }`}
+            >
+              {text}
+            </span>
           </div>
           {/* 선택된 카테고리와 url 의 path가 일치하면, 주황색 바로 표시 */}
           {isClickedCategory === link ? (
