@@ -97,20 +97,7 @@ public class StudyTimeServiceImpl implements StudyTimeService {
 
     }
 
-    @Override
-    public List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory() {
-//        LocalDate startDate = LocalDate.now().minusDays(7); // 현재 날짜에서 7일을 빼서 시작 날짜를 계산
-//        LocalDateTime startDateTime = startDate.atStartOfDay(); // LocalDate를 LocalDateTime으로 변환 (시작 시간을 00:00으로 설정)
-//
-//        return studyTimeRepository.findStudyTimeGroupByCategory(startDateTime); // LocalDateTime 파라미터를 사용하여 메서드 호출
-
-
-        LocalDate startDate = LocalDate.now().minusDays(7);
-        LocalDateTime startDateTime = startDate.atStartOfDay();
-        return studyTimeMapper.findStudyTimeGroupByCategory(startDateTime);
-
-    }
-
+    //(메인화면 중간 왼쪽)일별, 카테고리별 공부량
     @Override
     public List<StudyTimeByDayGroupByCategoryDTO> getStudyTimeByDayGroupByCategory(String clickedDate) {
         LocalDate date = LocalDate.parse(clickedDate);
@@ -119,6 +106,27 @@ public class StudyTimeServiceImpl implements StudyTimeService {
 
         return studyTimeRepository.findStudyTimeByDayGroupByCategory(startOfDay, startOfNextDay);
     }
+    //(메인화면 중간 오른쪽)최근 1주일,최근 1달,최근 1년 카테고리별 공부 시간
+    @Override
+    public List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory(String range) {
+        LocalDate startDate = LocalDate.now(); // 기본값 설정
+
+        if ("최근 1주일".equals(range)) {
+            startDate = startDate.minusWeeks(1);
+        } else if ("최근 1달".equals(range)) {
+            startDate = startDate.minusMonths(1);
+        } else if ("최근 1년".equals(range)) {
+            startDate = startDate.minusYears(1);
+        } else {
+            throw new IllegalArgumentException("지원하지 않는 범위: " + range);
+        }
+
+        LocalDateTime startDateTime = startDate.atStartOfDay();
+        return studyTimeMapper.findStudyTimeGroupByCategory(startDateTime);
+    }
+
+
+
 
 
 }

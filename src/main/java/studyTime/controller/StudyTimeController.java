@@ -45,12 +45,28 @@ public class StudyTimeController {
 		return ResponseEntity.ok(studyTimeAverageDTO);
 	}
 
+	//(메인화면 중간 오른쪽)최근 1주일, 카테고리별 공부 시간
 	@GetMapping("/studyTime/getStudyTimeGroupByCategory")
 	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategory(){
-		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory();
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory("최근 1주일");
 		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
 	}
 
+	//(메인화면 중간 오른쪽)최근 1달, 카테고리별 공부 시간(메인화면 중간 오른쪽)
+
+	@GetMapping("/studyTime/getStudyTimeGroupByCategoryRecentOneMonth")
+	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategoryRecentOneMonth(){
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory("최근 1달");
+		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
+	}
+	//(메인화면 중간 오른쪽)최근 1년, 카테고리별 공부 시간
+	@GetMapping("/studyTime/getStudyTimeGroupByCategoryRecentOneYear")
+	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategoryRecentOneYear(){
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory("최근 1년");
+		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
+	}
+
+	//(메인화면 중간 왼쪽)일별, 카테고리별 공부량
 	@GetMapping("/studyTime/getStudyTimeByDayGroupByCategory")
 	public ResponseEntity<List<StudyTimeByDayGroupByCategoryDTO>> getStudyTimeByDayGroupByCategory(@RequestParam("clickedDate")String clickedDate){
 		List<StudyTimeByDayGroupByCategoryDTO> studyTimeByDayGroupByCategoryDTO = studyTimeService.getStudyTimeByDayGroupByCategory(clickedDate);

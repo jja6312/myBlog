@@ -12,4 +12,5 @@ import java.util.List;
 public interface StudyTimeMapper {
     List<StudyTimeGroupByCategoryDTO> findStudyTimeGroupByCategory(@Param("startDateTime") LocalDateTime startDateTime);
 
+
 }

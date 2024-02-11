@@ -17,7 +17,11 @@ public interface StudyTimeService {
 
 	StudyTimeAverageDTO getAverageStudyTime();
 
-    List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory();
-
+	//(메인화면 중간 왼쪽)일별, 카테고리별 공부량
 	List<StudyTimeByDayGroupByCategoryDTO> getStudyTimeByDayGroupByCategory(String clickedDate);
+
+	//(메인화면 중간 오른쪽)최근 1주일,최근 1달,최근 1년 카테고리별 공부 시간
+    List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory(String range);
+
+
 }

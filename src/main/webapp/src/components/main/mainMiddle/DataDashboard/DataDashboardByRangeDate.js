@@ -14,7 +14,7 @@ import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
 
 //메인화면 중간의 기간별 학습 종류 중 우측 데이터 대시보드
 const DataDashboardByRangeDate = () => {
-  const { setStudyTimeGroupByCategory } = useStudyTimeStore();
+  const { clickedRange, setStudyTimeGroupByCategory } = useStudyTimeStore();
   const [chartWidth, setChartWidth] = useState(500); // 차트 너비 상태 초기화
   const handleResize = () => {
     const width = window.innerWidth;
@@ -27,7 +27,7 @@ const DataDashboardByRangeDate = () => {
   };
   const getStudyTimeGroupByCategory = () => {
     axios
-      .get("http://43.203.18.91:8080/studyTime/getStudyTimeGroupByCategory")
+      .get("http://localhost:8080/studyTime/getStudyTimeGroupByCategory")
       .then((res) => {
         console.log("getStudyTimeGroupByCategory:", res.data);
         setStudyTimeGroupByCategory(res.data);
@@ -37,12 +37,50 @@ const DataDashboardByRangeDate = () => {
       });
   };
 
+  const getStudyTimeGroupByCategoryRecentOneMonth = () => {
+    axios
+      .get(
+        "http://localhost:8080/studyTime/getStudyTimeGroupByCategoryRecentOneMonth"
+      )
+      .then((res) => {
+        console.log("getStudyTimeGroupByCategoryRecentOneMonth:", res.data);
+        setStudyTimeGroupByCategory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const getStudyTimeGroupByCategoryRecentOneYear = () => {
+    axios
+
+      .get(
+        "http://localhost:8080/studyTime/getStudyTimeGroupByCategoryRecentOneYear"
+      )
+      .then((res) => {
+        console.log("getStudyTimeGroupByCategoryRecentOneYear:", res.data);
+        setStudyTimeGroupByCategory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    getStudyTimeGroupByCategory();
     handleResize();
     window.addEventListener("resize", handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
     return () => window.removeEventListener("resize", handleResize); // 컴포넌트 언마운트 시 이벤트 리스너 제거
   }, []);
+
+  useEffect(() => {
+    if (clickedRange === "최근 1주일") {
+      getStudyTimeGroupByCategory();
+    } else if (clickedRange === "최근 1달") {
+      getStudyTimeGroupByCategoryRecentOneMonth();
+    } else if (clickedRange === "최근 1년") {
+      getStudyTimeGroupByCategoryRecentOneYear();
+    }
+  }, [clickedRange]);
 
   const data = [
     {

@@ -33,6 +33,7 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 	List<StudyTimeSummaryDTO> findDurationByDateRange(@Param("startDate") LocalDateTime startDate,
 			@Param("endDate") LocalDateTime endDate);
 
+	//평균 학습시간(평일 평균)
 	@Query(value = "SELECT (SUM(duration_in_seconds) / COUNT(DISTINCT DATE(start_time))) / 60 AS avgDayStudyTimeAsMinute "
 			+
 			"FROM study_time " +
@@ -41,6 +42,7 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageWeekdayStudyTimeInMinutes();
 
+	//평균 학습시간(주말평균)
 	@Query(value = "SELECT (SUM(duration_in_seconds) / COUNT(DISTINCT DATE(start_time))) / 60 AS weekendStudyTimeAsMinute "
 			+
 			"FROM study_time " +
@@ -49,6 +51,7 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageWeekendStudyTimeInMinutes();
 
+	//평균 학습시간(평일+주말평균)
 	@Query(value = "SELECT (SUM(duration_in_seconds) / COUNT(DISTINCT DATE(start_time))) / 60 AS avgDayStudyTimeAsMinute "
 			+
 			"FROM study_time " +
@@ -56,23 +59,6 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time >= '2024-02-03' " +
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageAllStudyTimeInMinutes();
-
-	//기간별 공부 종류
-//	@Query("SELECT new studyTime.bean.StudyTimeGroupByCategoryDTO(" +
-//			"CAST(FUNCTION('date', st.startTime) AS string) AS studyDate, " +
-//			"c.name AS categoryName, " +
-//			"SUM(st.durationInSeconds) / 60 AS studyMinutes) " +
-//			"FROM StudyTime st JOIN st.category c " +
-//			"WHERE st.startTime >= :startDateTime " +
-//			"GROUP BY FUNCTION('date', st.startTime), c.name " +
-//			"ORDER BY FUNCTION('date', st.startTime) DESC, SUM(st.durationInSeconds) DESC")
-//	List<StudyTimeGroupByCategoryDTO> findStudyTimeGroupByCategory(@Param("startDateTime") LocalDateTime startDateTime);
-
-
-
-
-
-
 
 
 	//클릭된 날짜에 대한 공부종류
