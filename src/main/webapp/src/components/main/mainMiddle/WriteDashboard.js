@@ -13,7 +13,7 @@ const WriteDashboard = () => {
   //일자에 따른 개발일지 가져오기
   const getDevlogWriteListByDate = () => {
     axios
-      .get("http://localhost:8080/myBlog/getDevlogWriteListByDate", {
+      .get("http://43.203.18.91:8080/myBlog/getDevlogWriteListByDate", {
         params: {
           clickedDate: clickedDate,
         },
@@ -77,18 +77,20 @@ const WriteDashboard = () => {
       <div className="flex flex-col items-center w-full">
         {/* 메인화면 하단, 일자별 개발일지 */}
         {devlogListAtDate.length > 0 &&
-          devlogListAtDate.map((devlog) => (
-            <DevlogListElement
-              key={devlog.id}
-              title={devlog.title}
-              createdAt={formatCreatedAt(devlog.createdAt)}
-              category={devlog.category.name}
-              tag={devlog.tag.name}
-              topic={devlog.topic}
-              notionPageId={devlog.notionPageId}
-              imgSrcWriteThumbnail={devlog.writeThumbnail}
-            ></DevlogListElement>
-          ))}
+          [...devlogListAtDate]
+            .reverse()
+            .map((devlog) => (
+              <DevlogListElement
+                key={devlog.id}
+                title={devlog.title}
+                createdAt={formatCreatedAt(devlog.createdAt)}
+                category={devlog.category.name}
+                tag={devlog.tag.name}
+                topic={devlog.topic}
+                notionPageId={devlog.notionPageId}
+                imgSrcWriteThumbnail={devlog.writeThumbnail}
+              ></DevlogListElement>
+            ))}
 
         {/* 개발일지 바로가기 버튼 */}
         <Link to="/devlog">
