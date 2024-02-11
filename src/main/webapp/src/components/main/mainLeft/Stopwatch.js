@@ -31,6 +31,16 @@ const Stopwatch = () => {
   };
 
   const toggleTimer = () => {
+    if (!isActive) {
+      const tmpInput = prompt(
+        "당신은 정지안입니까? 그렇지 않으면 시작할 수 없습니다."
+      );
+      if (tmpInput !== "정지안") {
+        alert("정지안이 아닙니다. 시작할 수 없습니다.");
+        return;
+      }
+    }
+
     if (studySession.categoryName === "") {
       alert("카테고리를 선택해주세요");
       return;

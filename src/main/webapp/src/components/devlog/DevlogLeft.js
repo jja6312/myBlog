@@ -62,6 +62,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="0"
             />
           ))}
       </div>
@@ -84,6 +85,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="1"
             />
           ))}
       </div>
@@ -106,6 +108,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="2"
             />
           ))}
       </div>
@@ -128,6 +131,7 @@ const DevlogLeft = ({
                       .categoryThumbnail
               }
               writeAccount={hexagon.length}
+              loadingIndex="3"
             />
           ))}
       </div>

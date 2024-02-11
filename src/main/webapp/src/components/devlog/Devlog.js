@@ -6,11 +6,16 @@ import axios from "axios";
 
 //개발일지 페이지 --[24.01.26 15:48 정지안]
 const Devlog = () => {
-  const [isSelected, setIsSelected] = useState("전체 글"); // 선택된 육각형 구분을 위해 선택된 Hexagon.js의 id를 저장하는 state
-  const [selectedDevlogWriteList, setSelectedDevlogWriteList] = useState({}); // 선택된 카테고리에 대해 filter된 devlogWriteList(개발일지)를 저장하는 state
-
-  const [devlogWriteList, setDevlogWriteList] = useState([]); // DB에서 불러온 개발일지 리스트
-  const [groupedDevlogs, setGroupedDevlogs] = useState({}); // 카테고리별로 그룹화된 개발일지 리스트
+  const {
+    setIsLoading,
+    isSelected,
+    selectedDevlogWriteList,
+    setSelectedDevlogWriteList,
+    devlogWriteList,
+    setDevlogWriteList,
+    groupedDevlogs,
+    setGroupedDevlogs,
+  } = useDevlogStore();
 
   const [hexagonArrays, setHexagonArrays] = useState([[], [], [], []]); // Hexagon 배열을 관리하는 state
 
@@ -30,6 +35,7 @@ const Devlog = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     // 카테고리와 개발일지 리스트를 모두 불러오고, 그룹화된 데이터를 생성함
     const fetchCategoryAndDevlogLists = async () => {
       try {
@@ -52,6 +58,8 @@ const Devlog = () => {
         setGroupedDevlogs(groupedData);
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
 

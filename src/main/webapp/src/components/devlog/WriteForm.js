@@ -108,6 +108,12 @@ const WriteForm = () => {
   const onSaveWrite = () => {
     console.log(writeDTO);
 
+    const tmpInput = prompt("정지안이 아니면 저장하지 마세요.");
+    if (tmpInput !== "정지안") {
+      alert("You are not 정지안. 저장하지 않습니다");
+      return;
+    }
+
     //유효성검사
     if (writeDTO.title === "") {
       alert("제목을 입력하세요.");
