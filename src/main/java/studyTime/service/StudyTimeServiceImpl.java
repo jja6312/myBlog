@@ -4,31 +4,28 @@ import devlog.bean.Category;
 import devlog.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import studyTime.bean.StudyTime;
-import studyTime.bean.StudyTimeAverageDTO;
-import studyTime.bean.StudyTimeDTO;
-import studyTime.bean.StudyTimeSummaryDTO;
+import studyTime.bean.*;
+import studyTime.mapper.StudyTimeMapper;
 import studyTime.repository.StudyTimeRepository;
 
-import java.text.DecimalFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 //스터디 시간과 관련된 service --[24.01.27 20:41 정지안]
 @Service
 public class StudyTimeServiceImpl implements StudyTimeService {
     private final StudyTimeRepository studyTimeRepository;
     private final CategoryRepository categoryRepository;
+    private final StudyTimeMapper studyTimeMapper;
+
 
     @Autowired
-    public StudyTimeServiceImpl(StudyTimeRepository studyTimeRepository, CategoryRepository categoryRepository) {
+    public StudyTimeServiceImpl(StudyTimeRepository studyTimeRepository, CategoryRepository categoryRepository,
+                                StudyTimeMapper studyTimeMapper) {
         this.studyTimeRepository = studyTimeRepository;
         this.categoryRepository = categoryRepository;
+        this.studyTimeMapper = studyTimeMapper;
     }
 
     // 스톱워치 중지시, 카테고리별로 공부시간을 저장한다.
@@ -99,5 +96,37 @@ public class StudyTimeServiceImpl implements StudyTimeService {
         return studyTimeAverageDTO;
 
     }
+
+    //(메인화면 중간 왼쪽)일별, 카테고리별 공부량
+    @Override
+    public List<StudyTimeByDayGroupByCategoryDTO> getStudyTimeByDayGroupByCategory(String clickedDate) {
+        LocalDate date = LocalDate.parse(clickedDate);
+        LocalDateTime startOfDay = date.atStartOfDay(); // 해당 날짜의 시작 시간
+        LocalDateTime startOfNextDay = date.plusDays(1).atStartOfDay(); // 다음 날짜의 시작 시간
+
+        return studyTimeRepository.findStudyTimeByDayGroupByCategory(startOfDay, startOfNextDay);
+    }
+    //(메인화면 중간 오른쪽)최근 1주일,최근 1달,최근 1년 카테고리별 공부 시간
+    @Override
+    public List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory(String range) {
+        LocalDate startDate = LocalDate.now(); // 기본값 설정
+
+        if ("최근 1주일".equals(range)) {
+            startDate = startDate.minusWeeks(1);
+        } else if ("최근 1달".equals(range)) {
+            startDate = startDate.minusMonths(1);
+        } else if ("최근 1년".equals(range)) {
+            startDate = startDate.minusYears(1);
+        } else {
+            throw new IllegalArgumentException("지원하지 않는 범위: " + range);
+        }
+
+        LocalDateTime startDateTime = startDate.atStartOfDay();
+        return studyTimeMapper.findStudyTimeGroupByCategory(startDateTime);
+    }
+
+
+
+
 
 }

@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import studyTime.bean.StudyTime;
+import studyTime.bean.StudyTimeByDayGroupByCategoryDTO;
+import studyTime.bean.StudyTimeGroupByCategoryDTO;
 import studyTime.bean.StudyTimeSummaryDTO;
 
 //스터디 시간과 관련된 repository --[24.01.27 20:41 정지안]
@@ -31,6 +33,7 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 	List<StudyTimeSummaryDTO> findDurationByDateRange(@Param("startDate") LocalDateTime startDate,
 			@Param("endDate") LocalDateTime endDate);
 
+	//평균 학습시간(평일 평균)
 	@Query(value = "SELECT (SUM(duration_in_seconds) / COUNT(DISTINCT DATE(start_time))) / 60 AS avgDayStudyTimeAsMinute "
 			+
 			"FROM study_time " +
@@ -39,6 +42,7 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageWeekdayStudyTimeInMinutes();
 
+	//평균 학습시간(주말평균)
 	@Query(value = "SELECT (SUM(duration_in_seconds) / COUNT(DISTINCT DATE(start_time))) / 60 AS weekendStudyTimeAsMinute "
 			+
 			"FROM study_time " +
@@ -47,6 +51,7 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageWeekendStudyTimeInMinutes();
 
+	//평균 학습시간(평일+주말평균)
 	@Query(value = "SELECT (SUM(duration_in_seconds) / COUNT(DISTINCT DATE(start_time))) / 60 AS avgDayStudyTimeAsMinute "
 			+
 			"FROM study_time " +
@@ -55,16 +60,15 @@ public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 			"AND start_time < CURDATE()", nativeQuery = true)
 	Double findAverageAllStudyTimeInMinutes();
 
-	// // 시작 시간과 종료 시간 사이에 있는 StudyTime 엔티티 조회
-	// List<StudyTime> findByStartTimeBetween(LocalDateTime startDateTime,
-	// LocalDateTime endDateTime);
-	//
-	// // 주말에 해당하는 StudyTime 데이터만 조회
-	// @Query("SELECT st FROM StudyTime st WHERE st.startTime >= :startDateTime AND
-	// st.endTime <= :endDateTime AND FUNCTION('DAYOFWEEK', st.startTime) IN (1,
-	// 7)")
-	// List<StudyTime> findWeekendsBetweenDates(@Param("startDateTime")
-	// LocalDateTime startDateTime, @Param("endDateTime") LocalDateTime
-	// endDateTime);
+
+	//클릭된 날짜에 대한 공부종류
+	@Query("SELECT new studyTime.bean.StudyTimeByDayGroupByCategoryDTO(SUM(st.durationInSeconds) / 60, c.name) " +
+			"FROM StudyTime st " +
+			"JOIN st.category c " +
+			"WHERE st.startTime >= :startOfDay AND st.startTime < :startOfNextDay " +
+			"GROUP BY c.name " +
+			"ORDER BY SUM(st.durationInSeconds) DESC")
+	List<StudyTimeByDayGroupByCategoryDTO> findStudyTimeByDayGroupByCategory(@Param("startOfDay") LocalDateTime startOfDay, @Param("startOfNextDay") LocalDateTime startOfNextDay);
+
 
 }

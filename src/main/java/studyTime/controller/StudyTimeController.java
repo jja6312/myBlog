@@ -3,9 +3,7 @@ package studyTime.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import studyTime.bean.StudyTimeAverageDTO;
-import studyTime.bean.StudyTimeDTO;
-import studyTime.bean.StudyTimeSummaryDTO;
+import studyTime.bean.*;
 import studyTime.service.StudyTimeService;
 
 import java.util.List;
@@ -45,6 +43,34 @@ public class StudyTimeController {
 	public ResponseEntity<StudyTimeAverageDTO> getAverageStudyTime(){
 		StudyTimeAverageDTO studyTimeAverageDTO = studyTimeService.getAverageStudyTime();
 		return ResponseEntity.ok(studyTimeAverageDTO);
+	}
+
+	//(메인화면 중간 오른쪽)최근 1주일, 카테고리별 공부 시간
+	@GetMapping("/studyTime/getStudyTimeGroupByCategory")
+	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategory(){
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory("최근 1주일");
+		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
+	}
+
+	//(메인화면 중간 오른쪽)최근 1달, 카테고리별 공부 시간(메인화면 중간 오른쪽)
+
+	@GetMapping("/studyTime/getStudyTimeGroupByCategoryRecentOneMonth")
+	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategoryRecentOneMonth(){
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory("최근 1달");
+		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
+	}
+	//(메인화면 중간 오른쪽)최근 1년, 카테고리별 공부 시간
+	@GetMapping("/studyTime/getStudyTimeGroupByCategoryRecentOneYear")
+	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategoryRecentOneYear(){
+		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService.getStudyTimeGroupByCategory("최근 1년");
+		return ResponseEntity.ok(studyTimeGroupByCategoryDTO);
+	}
+
+	//(메인화면 중간 왼쪽)일별, 카테고리별 공부량
+	@GetMapping("/studyTime/getStudyTimeByDayGroupByCategory")
+	public ResponseEntity<List<StudyTimeByDayGroupByCategoryDTO>> getStudyTimeByDayGroupByCategory(@RequestParam("clickedDate")String clickedDate){
+		List<StudyTimeByDayGroupByCategoryDTO> studyTimeByDayGroupByCategoryDTO = studyTimeService.getStudyTimeByDayGroupByCategory(clickedDate);
+		return ResponseEntity.ok(studyTimeByDayGroupByCategoryDTO);
 	}
 
 }
