@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 // 개발일지 우측, 토픽 및 태그 필터링 기능 제공 --[24.01.28 12:47 정지안]
-const TopicTagFilter = ({
-  icon,
-  topicName,
-  tagList,
-  countTagFunc,
-  selectedFilter,
-  setSelectedFilter,
-}) => {
+const TopicTagFilter = ({ icon, topicName, tagList, countTagFunc }) => {
+  const { selectedFilter, setSelectedFilter } = useDevlogStore();
   // 고유한 태그 이름만 추출
   const uniqueTagNames = Array.from(
     new Set(tagList.map((write) => write.tag.name))

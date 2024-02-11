@@ -3,11 +3,11 @@ import DevlogListElement from "./DevlogListElement";
 import DevlogWriteBtn from "./DevlogWriteBtn";
 import { formatCreatedAt } from "../formatCreatedAt";
 import InfiniteScroll from "../InpiniteScroll";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 // 개발일지의 가운데 영역으로, 개발일지 목록을 표시하는 페이지 --[24.01.26 16:47 정지안]
 const DevlogMain = () => {
   const {
-    isLoading,
     isSelected,
     selectedDevlogWriteList,
     devlogWriteList,

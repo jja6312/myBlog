@@ -3,11 +3,11 @@ import DevlogLeft from "./DevlogLeft";
 import DevlogMain from "./DevlogMain";
 import DevlogRight from "./DevlogRight";
 import axios from "axios";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 //개발일지 페이지 --[24.01.26 15:48 정지안]
 const Devlog = () => {
   const {
-    setIsLoading,
     isSelected,
     selectedDevlogWriteList,
     setSelectedDevlogWriteList,
@@ -19,8 +19,6 @@ const Devlog = () => {
 
   const [hexagonArrays, setHexagonArrays] = useState([[], [], [], []]); // Hexagon 배열을 관리하는 state
 
-  // ------------/Devlog/DevlogRight/TopicTagFilter에서 set되고, /Devlog/DevlogMain에서 선택된 토픽과 태그를 기준으로 필터됨.------------
-  const [selectedFilter, setSelectedFilter] = useState({ topic: "", tag: "" });
   //--------------------------------------------------------------
 
   // 카테고리별로 devlogWriteList를 그룹화하는 함수
@@ -40,10 +38,10 @@ const Devlog = () => {
     const fetchCategoryAndDevlogLists = async () => {
       try {
         const categoryRes = await axios.get(
-          "http://43.203.18.91:8080/devlog/getCategoryList"
+          "http://localhost:8080/devlog/getCategoryList"
         );
         const devlogRes = await axios.post(
-          "http://43.203.18.91:8080/devlog/getDevlogWriteList"
+          "http://localhost:8080/devlog/getDevlogWriteList"
         );
 
         setDevlogWriteList(devlogRes.data);
@@ -125,33 +123,13 @@ const Devlog = () => {
   return (
     <div className="flex justify-between text-white">
       {/* 카테고리 */}
-
-      <DevlogLeft
-        isSelected={isSelected}
-        setIsSelected={setIsSelected}
-        hexagonArrays={hexagonArrays}
-      />
+      <DevlogLeft hexagonArrays={hexagonArrays} />
 
       {/* 콘텐츠(개발일지 목록) 표시 */}
-
-      <DevlogMain
-        isSelected={isSelected}
-        selectedDevlogWriteList={selectedDevlogWriteList}
-        devlogWriteList={devlogWriteList}
-        selectedFilter={selectedFilter}
-      />
+      <DevlogMain />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
-
-      <DevlogRight
-        isSelected={isSelected}
-        selectedDevlogWriteList={selectedDevlogWriteList}
-        devlogWriteList={devlogWriteList}
-        // ------------/Devlog/DevlogRight/TopicTagFilter.js ------------
-        selectedFilter={selectedFilter}
-        setSelectedFilter={setSelectedFilter}
-        //--------------------------------------------------------------
-      />
+      <DevlogRight />
     </div>
   );
 };
