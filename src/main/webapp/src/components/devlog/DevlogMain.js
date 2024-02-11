@@ -3,14 +3,17 @@ import DevlogListElement from "./DevlogListElement";
 import DevlogWriteBtn from "./DevlogWriteBtn";
 import { formatCreatedAt } from "../formatCreatedAt";
 import InfiniteScroll from "../InpiniteScroll";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 // 개발일지의 가운데 영역으로, 개발일지 목록을 표시하는 페이지 --[24.01.26 16:47 정지안]
-const DevlogMain = ({
-  isSelected,
-  selectedDevlogWriteList,
-  devlogWriteList,
-  selectedFilter,
-}) => {
+const DevlogMain = () => {
+  const {
+    isSelected,
+    selectedDevlogWriteList,
+    devlogWriteList,
+    selectedFilter,
+  } = useDevlogStore();
+
   // ------------------무한로딩------------------
   const [visibleCount, setVisibleCount] = useState(6); // 초기에 표시할 게시글의 수
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태
