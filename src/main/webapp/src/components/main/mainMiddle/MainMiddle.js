@@ -39,7 +39,7 @@ const MainMiddle = () => {
       flex-col justify-center items-start
       md:flex-row md:justify-start md:items-center "
       >
-        연간 학습
+        <span>연간 학습</span>
         <span
           className="text-gray-500 text-sm
          ml-0 
@@ -50,9 +50,7 @@ const MainMiddle = () => {
       </div>
       <GithubDashboard></GithubDashboard>
       {/* 특정 날짜의 공부종류 및 공부량 데이터 시각화 */}
-      <span className="text-lg text-center xl:text-left font-semibold mt-8 mb-2">
-        기간별 학습 종류
-      </span>
+
       <DataDashboard></DataDashboard>
       {/* 특정 날짜의 개발일지 */}
       <WriteDashboard></WriteDashboard>

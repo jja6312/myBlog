@@ -46,8 +46,11 @@ const DataDashboardByDate = () => {
     xl:w-5/12
     "
     >
+      <span className="text-lg text-center xl:text-left font-semibold mt-8 mb-2">
+        일자별 학습 종류
+      </span>
       <div
-        className="flex mt-6
+        className="flex
         text-[14px]
         sm:text-[16px]
         lg:text-sm

@@ -35,15 +35,46 @@ const WriteDashboard = () => {
   return (
     <div
       id="writeDashboard"
-      className="text-lg font-semibold w-full bg-darkDeep flex flex-col my-6"
+      className="text-lg font-semibold w-full bg-darkDeep flex flex-col  mt-8 mb-2"
     >
       <hr className="border-gray-800 mt-5 mb-5"></hr>
       <div
-        className="flex flex-col items-center w-full
-      mt-16
-      xl:mt-0
-      "
+        className="
+      block
+      xl:flex xl:items-center"
       >
+        <div
+          className="text-lg flex font-semibold
+        w-full
+        justify-center
+        xl:w-auto xl:justify-start
+         "
+        >
+          일자별 개발일지
+        </div>
+        <div
+          className="flex items-center justify-center
+            w-full
+            text-[14px]
+            sm:text-[16px]
+            lg:text-sm
+            xl:ml-3 xl:w-auto xl:justify-start
+        
+        "
+        >
+          <span className="ml-2">선택 날짜 : </span>
+          <span className=" ml-2 text-green-300">{clickedDate}</span>
+          <span
+            className={` ml-2 ${
+              clickedDate === "" ? "text-yellow-400" : "text-green-400"
+            }`}
+          >
+            {clickedDate === "" ? "날짜를 선택해주세요." : "선택됨"}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center w-full">
         {/* 메인화면 하단, 일자별 개발일지 */}
         {devlogListAtDate.length > 0 &&
           devlogListAtDate.map((devlog) => (

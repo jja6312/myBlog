@@ -133,10 +133,17 @@ const DataDashboardByRangeDate = () => {
     xl:w-7/12 xl:mt-0 xl:h-72
     "
     >
-      <div className="w-full flex justify-end">
-        <BtnRangeDate text="최근 1주일"></BtnRangeDate>
-        <BtnRangeDate text="최근 1달"></BtnRangeDate>
-        <BtnRangeDate text="최근 1년"></BtnRangeDate>
+      <div className="w-full block xl:flex justify-end">
+        <div className="w-full xl:w-1/3 flex justify-center items-center">
+          <span className="text-lg text-center font-semibold my-2">
+            기간별 학습 추이
+          </span>
+        </div>
+        <div className="flex">
+          <BtnRangeDate text="최근 1주일"></BtnRangeDate>
+          <BtnRangeDate text="최근 1달"></BtnRangeDate>
+          <BtnRangeDate text="최근 1년"></BtnRangeDate>
+        </div>
       </div>
       <div className="flex justify-center items-center h-[350px]">
         <LineChart
