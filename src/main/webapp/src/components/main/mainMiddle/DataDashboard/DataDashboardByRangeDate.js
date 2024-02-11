@@ -12,9 +12,39 @@ import BtnRangeDate from "./BtnRangeDate";
 import axios from "axios";
 import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
 
-//메인화면 중간의 기간별 학습 종류 중 우측 데이터 대시보드
+// 차트 색상
+const colors = [
+  "#8884d8",
+  "#82ca9d",
+  "#ffc658",
+  "#ff7300",
+  "#413ea0",
+  "#e51717",
+  "#17e5e5",
+  "#123456",
+  "#abcdef",
+  "#330033",
+  "#ff00ff",
+  "#808080",
+  "#008000",
+  "#00ffff",
+  "#000080",
+  "#800080",
+  "#800000",
+  "#008080",
+  "#0000ff",
+  "#00ff00",
+];
+
+//메인화면 중간의 기간별 학습 종류 중 우측 데이터 대시보드 --[24.02.11 정지안]
 const DataDashboardByRangeDate = () => {
-  const { clickedRange, setStudyTimeGroupByCategory } = useStudyTimeStore();
+  const {
+    clickedRange,
+    studyTimeGroupByCategory,
+    setStudyTimeGroupByCategory,
+    sortedCategoryNames,
+    setSortedCategoryNames,
+  } = useStudyTimeStore();
   const [chartWidth, setChartWidth] = useState(500); // 차트 너비 상태 초기화
   const handleResize = () => {
     const width = window.innerWidth;
@@ -25,6 +55,91 @@ const DataDashboardByRangeDate = () => {
       setChartWidth(500); // 그 외의 경우는 기본 너비 500으로 설정
     }
   };
+
+  const accumulateData = (data) => {
+    const accumulatedData = {};
+    const sortedDates = [...new Set(data.map((item) => item.studyDate))].sort(
+      (a, b) => a.localeCompare(b)
+    );
+
+    sortedDates.forEach((date) => {
+      data.forEach((item) => {
+        if (item.studyDate === date) {
+          if (!accumulatedData[date]) {
+            accumulatedData[date] = {};
+          }
+          accumulatedData[date][item.categoryName] =
+            (accumulatedData[date][item.categoryName] || 0) + item.studyMinutes;
+        }
+      });
+    });
+
+    // 각 날짜에 대해 이전 날짜의 누적값을 더해줌
+    const categoryNames = [...new Set(data.map((item) => item.categoryName))];
+    let lastAccumulatedValues = categoryNames.reduce(
+      (acc, categoryName) => ({ ...acc, [categoryName]: 0 }),
+      {}
+    );
+
+    return sortedDates.map((date) => {
+      const dailyData = accumulatedData[date];
+      const result = { studyDate: date };
+
+      categoryNames.forEach((categoryName) => {
+        lastAccumulatedValues[categoryName] += dailyData[categoryName] || 0;
+        result[categoryName] = lastAccumulatedValues[categoryName];
+      });
+
+      return result;
+    });
+  };
+
+  const chartData = accumulateData(studyTimeGroupByCategory);
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          className="custom-tooltip bg-dark"
+          style={{
+            padding: "10px",
+            border: "1px solid #cccccc",
+          }}
+        >
+          <p className="label">{`날짜: ${label}`}</p>
+          {payload.map((entry, index) => {
+            // 분을 시간과 분으로 변환
+            const hours = Math.floor(entry.value / 60);
+            const minutes = Math.floor(entry.value % 60);
+
+            return (
+              <p key={`item-${index}`} style={{ color: entry.color }}>
+                {`${entry.name}: ${hours}시간 ${minutes}분`}
+              </p>
+            );
+          })}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
+  // 각 카테고리별 총 학습 시간 계산
+  const calculateTotalStudyTimePerCategory = (data) => {
+    const totalStudyTimePerCategory = {};
+
+    data.forEach((item) => {
+      if (totalStudyTimePerCategory[item.categoryName]) {
+        totalStudyTimePerCategory[item.categoryName] += item.studyMinutes;
+      } else {
+        totalStudyTimePerCategory[item.categoryName] = item.studyMinutes;
+      }
+    });
+
+    return totalStudyTimePerCategory;
+  };
+
   const getStudyTimeGroupByCategory = () => {
     axios
       .get("http://localhost:8080/studyTime/getStudyTimeGroupByCategory")
@@ -82,50 +197,21 @@ const DataDashboardByRangeDate = () => {
     }
   }, [clickedRange]);
 
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+  useEffect(() => {
+    // 카테고리별 총 학습 시간 계산
+    const totalStudyTimePerCategory = calculateTotalStudyTimePerCategory(
+      studyTimeGroupByCategory
+    );
+
+    // 총 학습 시간을 기준으로 카테고리 이름 정렬
+    const sortedNames = Object.keys(totalStudyTimePerCategory).sort(
+      (a, b) => totalStudyTimePerCategory[b] - totalStudyTimePerCategory[a]
+    );
+
+    // 정렬된 카테고리 이름을 상태에 저장
+    setSortedCategoryNames(sortedNames);
+  }, [studyTimeGroupByCategory]);
+
   return (
     <div
       className="bg-darkDeep border border-gray-800  -translate-x-1 flex flex-col items-center
@@ -149,26 +235,23 @@ const DataDashboardByRangeDate = () => {
         <LineChart
           width={chartWidth}
           height={250}
-          data={data}
+          data={chartData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <XAxis dataKey="name" />
+          <XAxis dataKey="studyDate" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Legend verticalAlign="top" height={36} />
-          <Line
-            name="pv of pages"
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-          />
-          <Line
-            name="uv of pages"
-            type="monotone"
-            dataKey="uv"
-            stroke="#82ca9d"
-          />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend />
+          {sortedCategoryNames.map((categoryName, index) => (
+            <Line
+              key={categoryName}
+              type="monotone"
+              dataKey={categoryName}
+              stroke={colors[index % colors.length]}
+              name={categoryName}
+            />
+          ))}
         </LineChart>
       </div>
     </div>

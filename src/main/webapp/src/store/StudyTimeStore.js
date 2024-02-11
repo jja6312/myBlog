@@ -11,6 +11,7 @@ export const useStudyTimeStore = create((set) => ({
   clickedRange: "최근 1주일", //선택된 기간
   studyTimeByDayGroupByCategory: [], //일자별 학습 종류 및 시간
   studyTimeGroupByCategory: [], //기간별 학습 종류 및 시간
+  sortedCategoryNames: [], //
 
   // 메인 오른쪽, 기간별 학습시간
   averageStudyTimePerDay: 0, //평균 주중 공부시간(분단위)
@@ -29,4 +30,5 @@ export const useStudyTimeStore = create((set) => ({
     set({ studyTimeByDayGroupByCategory: data }),
   setStudyTimeGroupByCategory: (data) =>
     set({ studyTimeGroupByCategory: data }),
+  setSortedCategoryNames: (data) => set({ sortedCategoryNames: data }),
 }));
