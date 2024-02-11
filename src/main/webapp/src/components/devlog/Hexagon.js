@@ -1,14 +1,15 @@
 import React from "react";
 import hexagon from "./hexagon.module.css";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 // 개발일지의 카테고리 기능을 하는 육각형 --[24.01.26 17:29 정지안]
 const Hexagon = ({
-  isSelected, // DevlogLeft에서 선택한 카테고리를 저장하는 state
-  setIsSelected,
   imgSrc, //카테고리 이미지
   writeAccount, //카테고리별 글 개수
   writeItems, //카테고리 식별자
 }) => {
+  const { isSelected, setIsSelected } = useDevlogStore();
+
   return (
     <>
       {/* imgSrc를 전달받으면, writeAccount를 까만글씨. 전달받지 않으면 하얀글씨. */}
