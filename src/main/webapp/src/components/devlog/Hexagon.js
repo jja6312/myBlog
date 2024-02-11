@@ -1,11 +1,16 @@
 import React from "react";
-import styles from "./hexagon.module.css"; // CSS 모듈 임포트 경로가 정확한지 확인하세요.
+import styles from "./hexagon.module.css";
 import { useDevlogStore } from "../../store/DevlogStore";
 
-const Hexagon = ({ imgSrc, writeAccount, writeItems, loadingIndex }) => {
-  const { devlogWriteList, isLoading } = useDevlogStore();
-  const { isSelected, setIsSelected } = useDevlogStore();
-
+// 개발일지의 카테고리 기능을 하는 육각형 --[24.01.26 17:29 정지안]
+const Hexagon = ({
+  imgSrc, //카테고리 이미지
+  writeAccount, //카테고리별 글 개수
+  writeItems, //카테고리 식별자
+  loadingIndex,
+}) => {
+  const { isLoading, isSelected, setIsSelected, devlogWriteList } =
+    useDevlogStore();
   const animationClass = styles[`opacityAnimation-${loadingIndex}`];
 
   return (

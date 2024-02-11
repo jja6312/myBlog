@@ -8,6 +8,7 @@ import { useDevlogStore } from "../../store/DevlogStore";
 //개발일지 페이지 --[24.01.26 15:48 정지안]
 const Devlog = () => {
   const {
+    setIsLoading,
     isSelected,
     selectedDevlogWriteList,
     setSelectedDevlogWriteList,
@@ -18,6 +19,8 @@ const Devlog = () => {
   } = useDevlogStore();
 
   const [hexagonArrays, setHexagonArrays] = useState([[], [], [], []]); // Hexagon 배열을 관리하는 state
+
+  // ------------/Devlog/DevlogRight/TopicTagFilter에서 set되고, /Devlog/DevlogMain에서 선택된 토픽과 태그를 기준으로 필터됨.------------
 
   //--------------------------------------------------------------
 
@@ -123,12 +126,15 @@ const Devlog = () => {
   return (
     <div className="flex justify-between text-white">
       {/* 카테고리 */}
+
       <DevlogLeft hexagonArrays={hexagonArrays} />
 
       {/* 콘텐츠(개발일지 목록) 표시 */}
+
       <DevlogMain />
 
       {/* 선택된 카테고리 내 세부 분류. 필터 기능 제공함.*/}
+
       <DevlogRight />
     </div>
   );

@@ -8,12 +8,12 @@ import { useDevlogStore } from "../../store/DevlogStore";
 // 개발일지의 가운데 영역으로, 개발일지 목록을 표시하는 페이지 --[24.01.26 16:47 정지안]
 const DevlogMain = () => {
   const {
+    isLoading,
     isSelected,
     selectedDevlogWriteList,
     devlogWriteList,
     selectedFilter,
   } = useDevlogStore();
-
   // ------------------무한로딩------------------
   const [visibleCount, setVisibleCount] = useState(6); // 초기에 표시할 게시글의 수
   const [isLoadingInfinite, setIsLoadingInfinite] = useState(false); // 로딩 상태
@@ -102,6 +102,7 @@ const DevlogMain = () => {
         </div>
       )}
       <DevlogWriteBtn></DevlogWriteBtn>
+
       <div className="text-[10px] text-yellow-700 font-semibold flex md:hidden mt-8 bg-yellow-300 border-[2px] border-yellow-600 rounded-xl w-full p-2">
         <div>
           ⚠ 현재 카테고리 및 태그 필터는{" "}
