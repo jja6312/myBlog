@@ -81,13 +81,13 @@ const GithubDashboard = () => {
           isToday(id)
             ? `bg-yellow-500` //오늘날짜라면 노란색 배경
             : durationHours >= 10 // 공부시간이 10시간 이상일 때 밝은 배경
-            ? "bg-blue-300"
+            ? "bg-[#4F93FF]"
             : durationHours >= 8
-            ? "bg-blue-500"
+            ? "bg-[#3360A6]"
             : durationHours >= 6
-            ? "bg-blue-700"
+            ? "bg-[#244273]"
             : durationHours >= 4
-            ? "bg-blue-900"
+            ? "bg-[#182E4F]"
             : "bg-dark" // 공부시간이 4시간 미만일 때 어두운 배경
         }
         durationHourAndMinute={durationHourAndMinute}

@@ -24,4 +24,5 @@ public interface StudyTimeService {
     List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory(String range);
 
 
+	String getStudyTimeHourSum();
 }

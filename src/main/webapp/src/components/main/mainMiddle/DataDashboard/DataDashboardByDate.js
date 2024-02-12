@@ -53,7 +53,7 @@ const DataDashboardByDate = () => {
         </span>
       </div>
       <div className="mt-3 z-30">
-        <PieChart width={600} height={250}>
+        <PieChart width={400} height={250}>
           <Pie
             data={data}
             cx="50%"
