@@ -125,8 +125,10 @@ public class StudyTimeServiceImpl implements StudyTimeService {
         return studyTimeMapper.findStudyTimeGroupByCategory(startDateTime);
     }
 
-
-
+    @Override
+    public String getStudyTimeHourSum() {
+        return studyTimeMapper.getStudyTimeHourSum();
+    }
 
 
 }

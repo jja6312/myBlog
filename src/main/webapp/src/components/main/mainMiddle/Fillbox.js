@@ -35,7 +35,7 @@ const Fillbox = ({
       2xl:w-3 2xl:h-3 
       ${brightness} 
       ${isClicked && "border-white border-[1px] lg:border-2"}
-      ${brightness === "bg-blue-300" ? "border border-white" : ""}`}
+      `}
     >
       <FillboxHover
         id={id}

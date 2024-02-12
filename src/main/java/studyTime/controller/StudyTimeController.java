@@ -73,4 +73,13 @@ public class StudyTimeController {
 		return ResponseEntity.ok(studyTimeByDayGroupByCategoryDTO);
 	}
 
+	//(메인화면 왼쪽)경험치바를 표현하기 위한 전체 공부 시간 계산
+	@GetMapping("/studyTime/getStudyTimeHourSum")
+	public ResponseEntity<String> getStudyTimeHourSum(){
+		String studyTimeHourSum = studyTimeService.getStudyTimeHourSum();
+		return ResponseEntity.ok(studyTimeHourSum);
+	}
+
+
+
 }
