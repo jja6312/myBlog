@@ -11,6 +11,7 @@ import {
 import BtnRangeDate from "./BtnRangeDate";
 import axios from "axios";
 import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
+// import { useDevlogStore } from "../../../../store/DevlogStore";
 
 // 차트 색상
 const colors = [
@@ -45,7 +46,9 @@ const DataDashboardByRangeDate = () => {
     sortedCategoryNames,
     setSortedCategoryNames,
   } = useStudyTimeStore();
+
   const [chartWidth, setChartWidth] = useState(500); // 차트 너비 상태 초기화
+
   const handleResize = () => {
     const width = window.innerWidth;
     if (width <= 640) {
@@ -98,6 +101,14 @@ const DataDashboardByRangeDate = () => {
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
+      // 총 학습 시간 계산
+      const totalMinutes = payload.reduce(
+        (total, entry) => total + entry.value,
+        0
+      );
+      const totalHours = Math.floor(totalMinutes / 60);
+      const remainingMinutes = totalMinutes % 60;
+
       return (
         <div
           className="custom-tooltip bg-dark"
@@ -118,6 +129,12 @@ const DataDashboardByRangeDate = () => {
               </p>
             );
           })}
+          {/* 총 학습 시간 표시 */}
+          <p className="total" style={{ fontWeight: "bold" }}>
+            {`총 학습 시간: ${totalHours}시간 ${Math.floor(
+              remainingMinutes
+            )}분`}
+          </p>
         </div>
       );
     }
@@ -210,6 +227,7 @@ const DataDashboardByRangeDate = () => {
 
     // 정렬된 카테고리 이름을 상태에 저장
     setSortedCategoryNames(sortedNames);
+    console.log("sortedCategoryNames", sortedNames);
   }, [studyTimeGroupByCategory]);
 
   return (

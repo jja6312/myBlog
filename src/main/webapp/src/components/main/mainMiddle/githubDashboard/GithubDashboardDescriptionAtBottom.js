@@ -35,25 +35,25 @@ const GithubDashboardDescriptionAtBottom = ({
         <span>4시간</span>
         <Fillbox
           id="smEvaluation"
-          brightness="bg-blue-900"
+          brightness="bg-[#182E4F]"
           clickedDate={clickedDate}
           setClickedDate={setClickedDate}
         ></Fillbox>
         <Fillbox
           id="mdEvaluation"
-          brightness="bg-blue-700"
+          brightness="bg-[#244273]"
           clickedDate={clickedDate}
           setClickedDate={setClickedDate}
         ></Fillbox>
         <Fillbox
           id="lgEvaluation"
-          brightness="bg-blue-500"
+          brightness="bg-[#3360A6]"
           clickedDate={clickedDate}
           setClickedDate={setClickedDate}
         ></Fillbox>
         <Fillbox
           id="xlEvaluation"
-          brightness="bg-blue-300"
+          brightness="bg-[#4F93FF]"
           clickedDate={clickedDate}
           setClickedDate={setClickedDate}
         ></Fillbox>
