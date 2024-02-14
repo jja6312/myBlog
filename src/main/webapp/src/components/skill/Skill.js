@@ -1,13 +1,18 @@
 import React from "react";
-import Developing from "../Developing";
+
+import Card from "./card/Card";
 
 const Skill = () => {
   return (
     <div
       id="skillContainer"
-      className="bg-dark text-white flex pl-5 min-h-screen"
+      className="bg-dark text-white pl-5 min-h-screen flex justify-center"
     >
-      <Developing />
+      <div className="grid grid-cols-3 gap-10 p-4 mt-10">
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+      </div>
     </div>
   );
 };
