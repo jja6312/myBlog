@@ -35,7 +35,7 @@ const DevlogMain = () => {
                 devlog.tag.name === selectedFilter.tag)
             );
           })
-          .slice(-visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
+          .slice(0, visibleCount) // 현재 설정된 최대 개수만큼 게시글을 표시
       : // 선택된 카테고리가 있을 경우, 그 카테고리의 글들을 기준으로 필터.
       selectedFilter.topic || selectedFilter.tag
       ? selectedDevlogWriteList

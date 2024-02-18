@@ -5,6 +5,7 @@ import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
 const DataDashboardByDate = () => {
   const { studyTimeByDayGroupByCategory, clickedDate } = useStudyTimeStore();
   const [data, setData] = useState([]); // 상태로 관리되는 data 배열
+
   const colors = [
     "#35f2ff", // 밝은 스카이 블루
     "#28a3ff", // 비비드 블루
@@ -26,7 +27,7 @@ const DataDashboardByDate = () => {
 
   return (
     <div
-      className="bg-darkDeep border border-gray-800  h-72 flex flex-col items-center justify-center
+      className="bg-darkDeep border border-gray-800  h-[340px] flex flex-col items-center justify-center
     w-full
     xl:w-5/12
     "
@@ -52,7 +53,7 @@ const DataDashboardByDate = () => {
           {clickedDate === "" ? "날짜를 선택해주세요." : "선택됨"}
         </span>
       </div>
-      <div className="mt-3 z-30">
+      <div className="mt-3 z-30 h-[550px] text-[10px] xl:text-[14px]">
         <PieChart width={400} height={250}>
           <Pie
             data={data}

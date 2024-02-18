@@ -15,8 +15,10 @@ const TopicTagFilter = ({ icon, topicName, tagList, countTagFunc }) => {
     let filterName;
 
     if (filterType === "tag") {
+      const stringRange = e.target.innerText.indexOf("(");
       // 태그의 경우, 이름만 추출
-      filterName = e.target.innerText.split(" ")[0];
+      filterName = e.target.innerText.slice(0, stringRange - 1);
+      // filterName = e.target.innerText.split(" ")[0];
     } else if (filterType === "topic") {
       // 토픽의 경우, 전체 텍스트 사용
       filterName = e.target.innerText;

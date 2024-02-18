@@ -23,7 +23,7 @@ const DataAbout = () => {
     <div
       className=" flex flex-col rounded-lg border border-gray-800 p-4
     w-1/2 h-[300px]
-    xl:w-full xl:h-[287px] xl:mt-0
+    xl:w-full xl:h-[340px] xl:mt-0
     "
     >
       <span className="text-lg font-semibold">👀 관심기술</span>

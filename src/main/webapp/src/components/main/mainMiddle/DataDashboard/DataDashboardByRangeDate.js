@@ -234,7 +234,7 @@ const DataDashboardByRangeDate = () => {
     <div
       className="bg-darkDeep border border-gray-800  -translate-x-1 flex flex-col items-center
     w-full mt-16 h-auto
-    xl:w-7/12 xl:mt-0 xl:h-72
+    xl:w-7/12 xl:mt-0 xl:h-[340px]
     "
     >
       <div className="w-full block xl:flex justify-end">
