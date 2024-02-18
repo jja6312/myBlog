@@ -2,6 +2,11 @@ import { create } from "zustand";
 
 //주로 메인 화면, 공부 시간 관련 데이터를 저장하는 store
 export const useStudyTimeStore = create((set) => ({
+  //메인 왼쪽, 레벨 및 경험치
+  level: "",
+  exp: "",
+  studyTimeHourSum: 0, //총 공부시간(시간단위)
+
   // 메인 중간-상단 깃허브 대시보드
   yearlyStudyTime: [], // 연간, 날짜별 공부량
   clickedDate: "", //선택된 날짜
@@ -31,4 +36,7 @@ export const useStudyTimeStore = create((set) => ({
   setStudyTimeGroupByCategory: (data) =>
     set({ studyTimeGroupByCategory: data }),
   setSortedCategoryNames: (data) => set({ sortedCategoryNames: data }),
+  setLevel: (data) => set({ level: data }),
+  setExp: (data) => set({ exp: data }),
+  setStudyTimeHourSum: (data) => set({ studyTimeHourSum: data }),
 }));
