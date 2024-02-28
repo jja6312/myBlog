@@ -1,9 +1,23 @@
+@keyframes containerGrow {
+  from {
+    transform: rotate(0deg);
+    width: 220px;
+    height: 310px;
+  }
+  to {
+    transform: rotate(360deg);
+    transform: scale(2);
+  }
+}
+
 .container {
   width: 220px;
   height: 310px;
   transition: all 0.2s;
   position: relative;
+  cursor: pointer;
 }
+
 .overlay {
   position: absolute;
   width: 220px;
@@ -27,4 +41,10 @@
   height: 310px;
   background-image: url(pika.webp);
   background-size: cover;
+  position: absolute;
+}
+
+.cardActive {
+  animation: containerGrow 0.5s forwards;
+  position: absolute;
 }
