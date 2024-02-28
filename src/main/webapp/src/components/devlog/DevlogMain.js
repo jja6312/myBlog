@@ -99,12 +99,14 @@ const DevlogMain = () => {
         </div>{" "}
       </div>
       <div className="text-[8px] flex flex-col md:text-sm mt-10 w-full">
-        {!isLoading && (
+        {!isLoading && devlogWriteList.length > 0 ? (
           <span className=" font-semibold">
             {/* 카테고리이름 */}
             {isSelected}
             {/* 게시글 수 */}({totalLength})
           </span>
+        ) : (
+          <span className=" font-semibold">Loading...</span>
         )}
         {/* 하단, 개발일지 게시글 */}
         <InfiniteScroll
@@ -114,7 +116,7 @@ const DevlogMain = () => {
           setIsLoadingInfinite={setIsLoadingInfinite}
           totalLength={totalLength}
         >
-          {isLoading ? (
+          {isLoading && !devlogWriteList.length ? (
             <LoadingDevlogListElement></LoadingDevlogListElement>
           ) : (
             <div className="flex flex-col w-full">
