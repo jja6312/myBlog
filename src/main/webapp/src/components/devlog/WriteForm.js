@@ -137,7 +137,7 @@ const WriteForm = () => {
     }
 
     axios
-      .post("http://localhost:8080/devlog/save", writeDTO, {
+      .post("http://43.203.18.91:8080/devlog/save", writeDTO, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -155,11 +155,11 @@ const WriteForm = () => {
 
   useEffect(() => {
     // 카테고리 리스트 불러오기
-    axios.get("http://localhost:8080/devlog/getCategoryList").then((res) => {
+    axios.get("http://43.203.18.91:8080/devlog/getCategoryList").then((res) => {
       setCategoryList(res.data);
     });
     // 태그 리스트 불러오기
-    axios.get("http://localhost:8080/devlog/getTagList").then((res) => {
+    axios.get("http://43.203.18.91:8080/devlog/getTagList").then((res) => {
       setTagList(res.data);
     });
   }, []);
