@@ -9,19 +9,19 @@
   }
 }
 
-.opacityAnimation-0 {
+.opacityAnimation0 {
   animation: opacityPulse 1s ease-in-out 0s infinite;
 }
 
-.opacityAnimation-1 {
+.opacityAnimation1 {
   animation: opacityPulse 1s ease-in-out 0.25s infinite;
 }
 
-.opacityAnimation-2 {
+.opacityAnimation2 {
   animation: opacityPulse 1s ease-in-out 0.5s infinite;
 }
 
-.opacityAnimation-3 {
+.opacityAnimation3 {
   animation: opacityPulse 1s ease-in-out 0.75s infinite;
 }
 

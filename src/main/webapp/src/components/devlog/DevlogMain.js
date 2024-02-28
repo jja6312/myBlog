@@ -4,6 +4,7 @@ import DevlogWriteBtn from "./DevlogWriteBtn";
 import { formatCreatedAt } from "../formatCreatedAt";
 import InfiniteScroll from "../InpiniteScroll";
 import { useDevlogStore } from "../../store/DevlogStore";
+import LoadingDevlogListElement from "./loading/LoadingDevlogListElement";
 
 // 개발일지의 가운데 영역으로, 개발일지 목록을 표시하는 페이지 --[24.01.26 16:47 정지안]
 const DevlogMain = () => {
@@ -89,18 +90,6 @@ const DevlogMain = () => {
       "
     >
       {/* 글쓰기 버튼 */}
-      {isLoading && !devlogWriteList.length && (
-        <div className="relative w-full flex justify-center mt-40">
-          <img
-            src={process.env.PUBLIC_URL + "/image/loading/loading3.gif"}
-            alt="Loading..."
-            className="w-96 rounded-full"
-          />
-          <span className="opacity-50 text-3xl italic absolute top-10 left-1/2 -translate-x-1/2 text-white">
-            Loading ...
-          </span>
-        </div>
-      )}
       <DevlogWriteBtn></DevlogWriteBtn>
 
       <div className="text-[10px] text-yellow-700 font-semibold flex md:hidden mt-8 bg-yellow-300 border-[2px] border-yellow-600 rounded-xl w-full p-2">
@@ -125,21 +114,25 @@ const DevlogMain = () => {
           setIsLoadingInfinite={setIsLoadingInfinite}
           totalLength={totalLength}
         >
-          <div className="flex flex-col w-full">
-            {sortedFilteredDevlogList.length > 0 &&
-              sortedFilteredDevlogList.map((devlog) => (
-                <DevlogListElement
-                  key={devlog.id}
-                  title={devlog.title}
-                  createdAt={formatCreatedAt(devlog.createdAt)}
-                  category={devlog.category.name}
-                  tag={devlog.tag.name}
-                  topic={devlog.topic}
-                  notionPageId={devlog.notionPageId}
-                  imgSrcWriteThumbnail={devlog.writeThumbnail}
-                ></DevlogListElement>
-              ))}
-          </div>
+          {isLoading ? (
+            <LoadingDevlogListElement></LoadingDevlogListElement>
+          ) : (
+            <div className="flex flex-col w-full">
+              {sortedFilteredDevlogList.length > 0 &&
+                sortedFilteredDevlogList.map((devlog) => (
+                  <DevlogListElement
+                    key={devlog.id}
+                    title={devlog.title}
+                    createdAt={formatCreatedAt(devlog.createdAt)}
+                    category={devlog.category.name}
+                    tag={devlog.tag.name}
+                    topic={devlog.topic}
+                    notionPageId={devlog.notionPageId}
+                    imgSrcWriteThumbnail={devlog.writeThumbnail}
+                  ></DevlogListElement>
+                ))}
+            </div>
+          )}
         </InfiniteScroll>
       </div>
     </div>

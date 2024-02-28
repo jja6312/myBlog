@@ -11,7 +11,7 @@ const Hexagon = ({
 }) => {
   const { isLoading, isSelected, setIsSelected, devlogWriteList } =
     useDevlogStore();
-  const animationClass = styles[`opacityAnimation-${loadingIndex}`];
+  const animationClass = styles[`opacityAnimation${loadingIndex}`];
 
   return (
     <>
