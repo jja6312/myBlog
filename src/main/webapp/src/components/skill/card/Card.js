@@ -1,21 +1,33 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./card.module.css";
 
-const Card = () => {
+const Card = ({ selectedCard }) => {
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
+  const cardRef = useRef(null);
+
+  const handleClick = () => {
+    cardRef.current.classList.toggle(styles.cardActive);
+  };
+
+  useEffect(() => {
+    if (selectedCard) {
+      cardRef.current.classList.add(styles.cardActive);
+    } else {
+      cardRef.current.classList.remove(styles.cardActive);
+    }
+  }, [selectedCard]);
 
   const handleMouseMove = (e) => {
-    const { offsetX: x, offsetY: y } = e.nativeEvent;
-    const rotateY = (-1 / 5) * x + 20;
-    const rotateX = (4 / 30) * y - 20;
+    // 마우스 이동 이벤트 핸들러 함수
+    const { offsetX: x, offsetY: y } = e.nativeEvent; // 이벤트에서 x, y 좌표 추출
+    const rotateY = (-1 / 5) * x + 20; // Y 축 회전값 계산
+    const rotateX = (4 / 30) * y - 20; // X 축 회전값 계산
 
-    if (overlayRef.current && containerRef.current) {
-      overlayRef.current.style.backgroundPosition = `${x / 5 + y / 5}%`;
-      overlayRef.current.style.filter = `opacity(${x / 200}) brightness(1.2)`;
+    overlayRef.current.style.backgroundPosition = `${1.5 * x + 1.5 * y}%`; // overlay 배경 위치 설정
+    overlayRef.current.style.filter = `opacity(${x / 150}) brightness(1.2)`; // overlay 필터 설정
 
-      containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    }
+    containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`; // container 회전 및 원근 변환 설정
   };
 
   const handleMouseOut = () => {
@@ -35,9 +47,10 @@ const Card = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseOut={handleMouseOut}
+      onClick={handleClick}
     >
-      <div className={styles.overlay} ref={overlayRef}></div>
-      <div className={styles.card}></div>
+      <div ref={overlayRef} className={styles.overlay}></div>
+      <div ref={cardRef} className={styles.card}></div>
     </div>
   );
 };
