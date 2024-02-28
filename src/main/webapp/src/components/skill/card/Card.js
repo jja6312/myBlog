@@ -1,22 +1,31 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./card.module.css";
+import CardContent from "./CardContent";
 
-const Card = ({ selectedCard }) => {
+const Card = ({ isSelected, setSelectedCard }) => {
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
-  const cardRef = useRef(null);
+  const cardRefFront = useRef(null);
+  const cardRefBack = useRef(null);
 
   const handleClick = () => {
-    cardRef.current.classList.toggle(styles.cardActive);
+    cardRefFront.current.classList.toggle(styles.cardActive);
+    cardRefBack.current.classList.toggle(styles.cardActive);
+
+    if (isSelected) {
+      setSelectedCard(null);
+    }
   };
 
   useEffect(() => {
-    if (selectedCard) {
-      cardRef.current.classList.add(styles.cardActive);
+    if (isSelected) {
+      cardRefFront.current.classList.add(styles.cardActive);
+      cardRefBack.current.classList.add(styles.cardActive);
     } else {
-      cardRef.current.classList.remove(styles.cardActive);
+      cardRefFront.current.classList.remove(styles.cardActive);
+      cardRefBack.current.classList.remove(styles.cardActive);
     }
-  }, [selectedCard]);
+  }, [isSelected]);
 
   const handleMouseMove = (e) => {
     // 마우스 이동 이벤트 핸들러 함수
@@ -28,6 +37,10 @@ const Card = ({ selectedCard }) => {
     overlayRef.current.style.filter = `opacity(${x / 150}) brightness(1.2)`; // overlay 필터 설정
 
     containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`; // container 회전 및 원근 변환 설정
+  };
+
+  const initMouseMove = () => {
+    containerRef.current.style.transform = `perspective(350px) rotateX(0deg) rotateY(0deg)`; // container 회전 및 원근 변환 설정
   };
 
   const handleMouseOut = () => {
@@ -42,15 +55,32 @@ const Card = ({ selectedCard }) => {
   };
 
   return (
-    <div
-      className={styles.container}
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseOut={handleMouseOut}
-      onClick={handleClick}
-    >
-      <div ref={overlayRef} className={styles.overlay}></div>
-      <div ref={cardRef} className={styles.card}></div>
+    <div className="flex">
+      <div
+        className={styles.container}
+        ref={containerRef}
+        onMouseMove={(e) => {
+          if (isSelected) {
+            initMouseMove();
+          } else {
+            handleMouseMove(e);
+          }
+        }}
+        onMouseOut={handleMouseOut}
+        onClick={handleClick}
+      >
+        <div ref={overlayRef} className={styles.overlay}></div>
+        <div
+          ref={cardRefFront}
+          className={`${styles.card} ${styles.cardFront}`}
+        ></div>
+        <div
+          ref={cardRefBack}
+          className={`${styles.card} ${styles.cardBack}`}
+        ></div>
+
+        <CardContent isSelected={isSelected}></CardContent>
+      </div>
     </div>
   );
 };

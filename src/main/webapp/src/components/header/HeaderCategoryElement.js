@@ -34,7 +34,9 @@ const HeaderCategory = ({
       <Link to={link} onClick={() => setIsClickedCategory(link)}>
         <div
           className={`flex-col mt-3 ${
-            text === "홈" ? "" : text === "개발일지" ? "" : "text-gray-600"
+            text === "홈" || text === "개발일지" || text === "기술스택"
+              ? ""
+              : "text-gray-600"
           }`}
         >
           {/* 아이콘과 카테고리 이름 */}
@@ -66,7 +68,9 @@ const HeaderCategory = ({
 
             <span
               className={`ml-2 text-sm ${
-                text === "홈" ? "" : text === "개발일지" ? "" : "text-gray-600"
+                text === "홈" || text === "개발일지" || text === "기술스택"
+                  ? ""
+                  : "text-gray-600"
               }`}
             >
               {text}

@@ -1,12 +1,9 @@
 @keyframes containerGrow {
   from {
-    transform: rotate(0deg);
-    width: 220px;
-    height: 310px;
+    transform: scale(1) translateX(0px) rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
-    transform: scale(2);
+    transform: scale(2) translateX(-120px) rotateY(540deg);
   }
 }
 
@@ -34,17 +31,33 @@
   background-size: 150% 150%;
   background-position: 100%;
   transition: all 0.2s;
+  z-index: 50;
 }
 
 .card {
+  position: absolute;
   width: 220px;
   height: 310px;
-  background-image: url(pika.webp);
+
   background-size: cover;
-  position: absolute;
+  background-position: center;
+}
+
+.cardFront {
+  background-image: url("../../../../public/image/card/fe.jpg");
+}
+.cardBack {
+  background-image: url("../../../../public/image/card/back.jpg");
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 
 .cardActive {
   animation: containerGrow 0.5s forwards;
   position: absolute;
+}
+
+.cardContents {
+  z-index: 0;
+  transition: all 0.2s;
 }

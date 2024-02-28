@@ -5,24 +5,30 @@ import Card from "./card/Card";
 const cards = ["card1", "card2", "card3", "card4", "card5", "card6", "card7"];
 
 const Skill = () => {
-  // 활성화된 Card의 인덱스를 관리하는 상태
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // Card 클릭 핸들러
   const handleCardClick = (id) => {
-    setSelectedCard(id); // 클릭된 Card의 인덱스로 상태 업데이트
+    if (selectedCard === null) {
+      setSelectedCard(id);
+    }
+
+    const cardElement = document.getElementById(id);
+    if (cardElement) {
+      cardElement.scrollIntoView({
+        behavior: "smooth", // 부드러운 스크롤 효과
+        block: "center", // 뷰포트의 중앙에 위치
+        inline: "nearest", // 가장 가까운 쪽으로 정렬
+      });
+    }
   };
 
   useEffect(() => {
-    // 카드 바깥을 클릭했을 때의 이벤트 핸들러
     const clickOutOfCard = (e) => {
-      // 클릭된 타겟이 카드 내부가 아니라면
       if (!cards.some((cardId) => e.target.closest(`#${cardId}`))) {
         setSelectedCard(null);
       }
     };
 
-    //카드 바깥을 클릭하면 setSelectedCard를 null로
     window.addEventListener("click", clickOutOfCard);
 
     return () => {
@@ -42,11 +48,14 @@ const Skill = () => {
             id={cardId}
             onClick={(e) => handleCardClick(e.currentTarget.id)}
             style={{
-              zIndex: selectedCard === cardId ? 1000 : 1, // 클릭된 카드의 ID와 현재 상태를 비교
+              zIndex: selectedCard === cardId ? 1000 : 1,
               position: "relative",
             }}
           >
-            <Card selectedCard={selectedCard === cardId} />
+            <Card
+              isSelected={selectedCard === cardId}
+              setSelectedCard={setSelectedCard}
+            />
           </div>
         ))}
       </div>
