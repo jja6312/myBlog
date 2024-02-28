@@ -11,19 +11,19 @@ const LoadingDevlogListElement = () => {
           <hr className="border-gray-500 mt-6 "></hr>
 
           <div
-            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimation0}`}
+            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimationDevlogList}`}
           ></div>
           <hr className="border-gray-500 mt-6 "></hr>
           <div
-            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimation0}`}
+            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimationDevlogList}`}
           ></div>
           <hr className="border-gray-500 mt-6 "></hr>
           <div
-            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimation0}`}
+            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimationDevlogList}`}
           ></div>
           <hr className="border-gray-500 mt-6 "></hr>
           <div
-            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimation0}`}
+            className={`flex justify-between p-4 rounded transition-all duration-150 bg-gray-800 h-48 mt-6 ${styles.opacityAnimationDevlogList}`}
           ></div>
         </div>
       </div>

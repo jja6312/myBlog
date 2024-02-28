@@ -7,12 +7,15 @@ import "./notionAPICustom.css";
 import DevlogTag from "./DevlogTag";
 import DevlogCategories from "./DevlogCategories";
 import { useLocation } from "react-router-dom";
+import loading from "../loading/loading.module.css";
 
 import WritenProfile from "../WritenProfile";
 
 // 개발일지 읽기 페이지 [24.01.26 15:46 정지안]
 const ReadForm = () => {
   const [notionData, setNotionData] = useState({}); // Notion API로 받아온 데이터 저장
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 관리
+
   const location = useLocation();
 
   // url의 params로부터 글 정보를 state에 저장
@@ -23,6 +26,8 @@ const ReadForm = () => {
   const [createdAt, setCreatedAt] = useState("");
 
   useEffect(() => {
+    setIsLoading(true); // 요청 시작 시 로딩 상태를 true로 설정
+
     const param = new URLSearchParams(location.search);
     const NOTION_PAGE_ID = param.get("notionPageId"); // Notion 페이지 ID
     setTitle(param.get("title")); // 제목
@@ -35,7 +40,13 @@ const ReadForm = () => {
       .get(`https://notion-api.splitbee.io/v1/page/${NOTION_PAGE_ID}`)
       .then(({ data }) => {
         setNotionData(data);
+        setIsLoading(false); // 요청 완료 시 로딩 상태를 false로 설정
+
         console.log(notionData);
+      })
+      .catch((e) => {
+        console.log(e);
+        setIsLoading(false); // 오류 발생 시 로딩 상태를 false로 설정
       });
   }, []);
   return (
@@ -71,12 +82,18 @@ const ReadForm = () => {
           <span className="text-xl text-gray-400">{createdAt}</span>
         </div>
         {/* Notion API로 노션페이지에서 받아온 개발일지를 NotionRenderer로 렌더 */}
-        <div className="mt-14 ">
-          <NotionRenderer
-            blockMap={notionData}
-            hideHeader={true}
-            darkMode={true}
-          />
+        <div className={isLoading ? "" : "mt-14"}>
+          {isLoading ? (
+            <div className="flex justify-center items-center mt-32">
+              <div className={`${loading.loadingSpiner}`}></div>
+            </div>
+          ) : (
+            <NotionRenderer
+              blockMap={notionData}
+              hideHeader={true}
+              darkMode={true}
+            />
+          )}
         </div>
         {/* 작성자 정보 */}
         <div className="my-10 ">

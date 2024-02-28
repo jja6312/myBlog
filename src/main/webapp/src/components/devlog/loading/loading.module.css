@@ -1,0 +1,28 @@
+.loadingSpiner {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #29333b;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* 사파리 */
+  animation: spin 2s linear infinite;
+}
+
+/* 사파리 */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
