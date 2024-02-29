@@ -1,24 +1,23 @@
 @keyframes containerGrow {
   from {
-    transform: scale(1) translateX(0px) rotateY(0deg);
+    transform: translateX(0px) rotateY(0deg);
   }
   to {
-    transform: scale(2) translateX(-120px) rotateY(540deg);
+    width: 440px;
+    height: 620px;
+    transform: translateX(-240px) translateY(-155px) rotateY(540deg);
   }
 }
 
 .container {
-  width: 220px;
-  height: 310px;
   transition: all 0.2s;
   position: relative;
   cursor: pointer;
+  perspective: 350px;
 }
 
 .overlay {
   position: absolute;
-  width: 220px;
-  height: 310px;
   background: linear-gradient(
     105deg,
     transparent 40%,
@@ -36,8 +35,6 @@
 
 .card {
   position: absolute;
-  width: 220px;
-  height: 310px;
 
   background-size: cover;
   background-position: center;
@@ -60,4 +57,8 @@
 .cardContents {
   z-index: 0;
   transition: all 0.2s;
+}
+
+.CardContentBG {
+  background-image: url("../../../../public/image/card/cardContentBG.jpg");
 }
