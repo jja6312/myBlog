@@ -1,64 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Card from "./card/Card";
-
-const cards = ["card1", "card2", "card3", "card4", "card5", "card6", "card7"];
+import CardContainer from "./CardContainer";
+import SkillFilterContainer from "./filter/SkillFilterContainer";
 
 const Skill = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
-
-  const handleCardClick = (id) => {
-    if (selectedCard === null) {
-      setSelectedCard(id);
-    }
-
-    const cardElement = document.getElementById(id);
-    if (cardElement) {
-      cardElement.scrollIntoView({
-        behavior: "smooth", // 부드러운 스크롤 효과
-        block: "center", // 뷰포트의 중앙에 위치
-        inline: "nearest", // 가장 가까운 쪽으로 정렬
-      });
-    }
-  };
-
-  useEffect(() => {
-    const clickOutOfCard = (e) => {
-      if (!cards.some((cardId) => e.target.closest(`#${cardId}`))) {
-        setSelectedCard(null);
-      }
-    };
-
-    window.addEventListener("click", clickOutOfCard);
-
-    return () => {
-      window.removeEventListener("click", clickOutOfCard);
-    };
-  }, []);
-
   return (
     <div
-      id="skillContainer"
-      className="bg-dark text-white pl-5 min-h-screen flex justify-center"
+      id="skill"
+      className="bg-dark text-white min-h-screen flex flex-col items-center"
     >
-      <div className="grid grid-cols-3 place-items-center gap-10 mt-10">
-        {cards.map((cardId) => (
-          <div
-            key={cardId}
-            id={cardId}
-            onClick={(e) => handleCardClick(e.currentTarget.id)}
-            style={{
-              zIndex: selectedCard === cardId ? 1000 : 1,
-              position: "relative",
-            }}
-          >
-            <Card
-              isSelected={selectedCard === cardId}
-              setSelectedCard={setSelectedCard}
-            />
-          </div>
-        ))}
-      </div>
+      <SkillFilterContainer></SkillFilterContainer>
+
+      <CardContainer></CardContainer>
     </div>
   );
 };
