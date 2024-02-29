@@ -6,7 +6,7 @@ const SkillSelectOneBox = ({ text }) => {
   const { selectedView, setSelectedView } = useSkillStore();
   return (
     <div
-      className={`group w-10/12 h-full flex flex-col justify-end items-center rounded-md  cursor-pointer
+      className={`group w-full h-full flex flex-col justify-end items-center rounded-md  cursor-pointer
 ${text === selectedView ? "bg-[#2a2a2e]" : "bg-[#39393E]"}
       hover:bg-[#2a2a2e]
     

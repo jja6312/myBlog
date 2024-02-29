@@ -1,10 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSkillStore } from "../../store/SkillStore";
 import Card from "./card/Card";
 
-const cards = ["card1", "card2", "card3", "card4", "card5", "card6", "card7"];
+const cards = [
+  "card1",
+  "card2",
+  "card3",
+  "card4",
+  "card5",
+  "card6",
+  "card7",
+  "card8",
+  "card9",
+  "card10",
+  "card11",
+  "card12",
+  "card13",
+  "card14",
+  "card15",
+  "card16",
+  "card17",
+];
 const CardContainer = () => {
-  const { selectedCard, setSelectedCard } = useSkillStore();
+  const { selectedCard, setSelectedCard, selectedView } = useSkillStore();
+  const [perNum, setPerNum] = useState(3);
+
   const handleCardClick = (id) => {
     if (selectedCard === null) {
       setSelectedCard(id);
@@ -34,8 +54,20 @@ const CardContainer = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const substringBeforeEA = selectedView.substring(
+      0,
+      selectedView.indexOf("개") //'개' 이전까지 문자열 반환(3,6,12)
+    );
+    setPerNum(substringBeforeEA);
+  }, [selectedView]);
+
   return (
-    <div className="grid grid-cols-3 place-items-center gap-10 mt-10">
+    <div
+      className={`grid grid-cols-${perNum} place-items-center mt-10
+      ${perNum === "3" ? "gap-10" : perNum === "6" ? "gap-6" : "gap-1"}
+      `}
+    >
       {cards.map((cardId) => (
         <div
           key={cardId}
@@ -47,6 +79,7 @@ const CardContainer = () => {
           }}
         >
           <Card
+            cardId={cardId}
             isSelected={selectedCard === cardId}
             setSelectedCard={setSelectedCard}
           />

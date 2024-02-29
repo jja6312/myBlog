@@ -1,16 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./card.module.css";
 import CardContent from "./CardContent";
+import { useSkillStore } from "../../../store/SkillStore";
 
-const Card = ({ isSelected, setSelectedCard }) => {
+const Card = ({ isSelected, setSelectedCard, cardId }) => {
+  const { selectedView } = useSkillStore();
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
   const cardRefFront = useRef(null);
   const cardRefBack = useRef(null);
+  const [width, setWidth] = useState(220);
+  const [height, setHeight] = useState(310);
 
   const handleClick = () => {
+    initMouseMove(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
     cardRefFront.current.classList.toggle(styles.cardActive);
     cardRefBack.current.classList.toggle(styles.cardActive);
+    setSelectedCard(cardId);
 
     if (isSelected) {
       setSelectedCard(null);
@@ -27,6 +33,19 @@ const Card = ({ isSelected, setSelectedCard }) => {
     }
   }, [isSelected]);
 
+  useEffect(() => {
+    if (selectedView === "3개씩 보기") {
+      setWidth(330);
+      setHeight(465);
+    } else if (selectedView === "6개씩 보기") {
+      setWidth(220);
+      setHeight(310);
+    } else if (selectedView === "12개씩 보기") {
+      setWidth(110);
+      setHeight(155);
+    }
+  }, [selectedView]);
+
   const handleMouseMove = (e) => {
     // 마우스 이동 이벤트 핸들러 함수
     const { offsetX: x, offsetY: y } = e.nativeEvent; // 이벤트에서 x, y 좌표 추출
@@ -41,23 +60,15 @@ const Card = ({ isSelected, setSelectedCard }) => {
 
   const initMouseMove = () => {
     containerRef.current.style.transform = `perspective(350px) rotateX(0deg) rotateY(0deg)`; // container 회전 및 원근 변환 설정
-  };
-
-  const handleMouseOut = () => {
-    // overlayRef와 containerRef가 존재하는지 확인
-    if (overlayRef.current && containerRef.current) {
-      // overlay의 filter 속성을 변경하여 투명도를 0으로 설정
-      overlayRef.current.style.filter = "opacity(0)";
-      // container의 transform 속성을 변경하여 3D 회전을 초기화
-      containerRef.current.style.transform =
-        "perspective(350px) rotateY(0deg) rotateX(0deg)";
-    }
+    overlayRef.current.style.filter = "opacity(0)";
+    containerRef.current.style.perspective = "350px";
   };
 
   return (
     <div className="flex">
       <div
         className={styles.container}
+        style={{ width: width, height: height }}
         ref={containerRef}
         onMouseMove={(e) => {
           if (isSelected) {
@@ -66,17 +77,23 @@ const Card = ({ isSelected, setSelectedCard }) => {
             handleMouseMove(e);
           }
         }}
-        onMouseOut={handleMouseOut}
+        onMouseOut={initMouseMove}
         onClick={handleClick}
       >
-        <div ref={overlayRef} className={styles.overlay}></div>
+        <div
+          ref={overlayRef}
+          className={styles.overlay}
+          style={{ width: width, height: height }}
+        ></div>
         <div
           ref={cardRefFront}
           className={`${styles.card} ${styles.cardFront}`}
+          style={{ width: width, height: height }}
         ></div>
         <div
           ref={cardRefBack}
           className={`${styles.card} ${styles.cardBack}`}
+          style={{ width: width, height: height }}
         ></div>
 
         <CardContent isSelected={isSelected}></CardContent>
