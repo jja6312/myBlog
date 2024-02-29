@@ -13,6 +13,19 @@ const SkillCheckBox = ({ category }) => {
     setCheckBoxesFalse,
   } = useSkillStore();
 
+  const handleCheckBoxClick = () => {
+    if (category === "All" && checkBoxes["All"] === false) {
+      //모든 카테고리를 true로 check
+      setCheckBoxesTrue();
+      return;
+    } else if (category === "All" && checkBoxes["All"] === true) {
+      //모든 카테고리를 false로 check
+      setCheckBoxesFalse();
+      return;
+    }
+    setCheckBoxes(category); // category를 전달하면 해당 category에 대해 반대 boolean으로 스위칭시킴.
+  };
+
   useEffect(() => {
     // "All" 체크박스를 제외한 나머지 체크박스 상태 확인
     const allCheckedState = Object.entries(checkBoxes).every(([key, value]) => {
@@ -34,18 +47,7 @@ const SkillCheckBox = ({ category }) => {
     cursor-pointer
     hover:opacity-80
     "
-      onClick={() => {
-        if (category === "All" && checkBoxes["All"] === false) {
-          //모든 카테고리를 true로 check
-          setCheckBoxesTrue();
-          return;
-        } else if (category === "All" && checkBoxes["All"] === true) {
-          //모든 카테고리를 false로 check
-          setCheckBoxesFalse();
-          return;
-        }
-        setCheckBoxes(category); // category를 전달하면 해당 category에 대해 반대 boolean으로 스위칭시킴.
-      }}
+      onClick={handleCheckBoxClick}
     >
       {checkBoxes[category] ? (
         <span className="text-[20px] text-yellow-200">

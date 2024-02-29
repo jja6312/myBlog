@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export const useSkillStore = create((set) => ({
+  // 1.종류----------------------------------------------------
   selectedCard: null,
   checkBoxes: {
     All: true,
@@ -9,6 +10,11 @@ export const useSkillStore = create((set) => ({
     DevOps: true,
     Certificate: true,
   },
+  //-------------------------------------------------------------
+  // 2.모아보기-----------------------------------------------------
+  selectedView: "3개씩 보기",
+  //-------------------------------------------------------------
+  // 1.종류-set----------------------------------------------------
   setSelectedCard: (id) => set({ selectedCard: id }),
   setCheckBoxes: (category) =>
     set((state) => ({
@@ -48,4 +54,8 @@ export const useSkillStore = create((set) => ({
         Certificate: false,
       },
     })),
+  //---------------------------------------------------
+  // 2.모아보기-set-------------------------------------
+  setSelectedView: (data) => set({ selectedView: data }),
+  //---------------------------------------------------
 }));

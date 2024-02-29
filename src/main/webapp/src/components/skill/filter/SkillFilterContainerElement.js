@@ -8,7 +8,7 @@ const SkillFilterContainerElement = ({ width, title, children }) => {
       >
         <span className="text-2xl text-[#CBC3AD]">{title}</span>
       </div>
-      <div>{children}</div>
+      <div className="h-1/2">{children}</div>
     </div>
   );
 };
