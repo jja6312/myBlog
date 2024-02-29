@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DevlogWriteDTO {
-	private String title;
+    private String title;
     private String topic;
     private String notionPageId;
     private String categoryName;
     private String tagName;
+    private String categoryThumbnail;
+    private String writeThumbnail;
 }

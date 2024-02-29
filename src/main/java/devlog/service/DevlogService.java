@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 
 public interface DevlogService {
 
-	void saveWrite(DevlogWriteDTO devlogWriteDTO, MultipartFile categoryThumnail,MultipartFile writeThumbnail,HttpSession session);
+
 
 	List<Category> getCategoryList();
 
@@ -22,4 +22,5 @@ public interface DevlogService {
 
 	List<DevlogWrite> getDevlogWriteListByDate(String clickedDate);
 
+    void saveWrite(DevlogWriteDTO devlogWriteDTO);
 }

@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 // ********************컴포넌트 사용법********************
 //  1. 아래 코드를 복사해서 사용할 컴포넌트에 붙여넣기
 // const [visibleCount, setVisibleCount] = useState(6); // 초기에 표시할 게시글의 수
-// const [isLoading, setIsLoading] = useState(false); // 로딩 상태
+// const [isLoading, setIsLoadingInfinite] = useState(false); // 로딩 상태
 // const totalLength = 게시글의 적절한 길이
 //
 // // 스크롤 이벤트 핸들러
@@ -17,10 +17,10 @@ import React, { useEffect } from "react";
 //       return;
 //     // 전체 길이와 visibleCount를 비교
 //     if (visibleCount < totalLength) {
-//       setIsLoading(true);
+//       setIsLoadingInfinite(true);
 //       setTimeout(() => {
 //         setVisibleCount((prevCount) => Math.min(prevCount + 10, totalLength)); // 최대 길이를 초과하지 않도록 설정
-//         setIsLoading(false);
+//         setIsLoadingInfinite(false);
 //       }, 1700);
 //     }
 //   };
@@ -32,16 +32,16 @@ import React, { useEffect } from "react";
 //   visibleCount={visibleCount}
 //   setVisibleCount={setVisibleCount}
 //   isLoading={isLoading}
-//   setIsLoading={setIsLoading}
+//   setIsLoadingInfinite={setIsLoadingInfinite}
 //   totalLength={totalLength}
 // > </InfiniteScroll>
 // ********************************************************
 
 const InfiniteScroll = ({
   visibleCount,
-  isLoading,
+  isLoadingInfinite,
   setVisibleCount,
-  setIsLoading,
+  setIsLoadingInfinite,
   totalLength,
   children,
 }) => {
@@ -54,10 +54,10 @@ const InfiniteScroll = ({
     }
 
     if (visibleCount < totalLength) {
-      setIsLoading(true);
+      setIsLoadingInfinite(true);
       setTimeout(() => {
         setVisibleCount((prevCount) => Math.min(prevCount + 10, totalLength));
-        setIsLoading(false);
+        setIsLoadingInfinite(false);
       }, 1700);
     }
   };
@@ -72,7 +72,7 @@ const InfiniteScroll = ({
   return (
     <div>
       {children}
-      {isLoading && (
+      {isLoadingInfinite && (
         <div className="w-full flex justify-center">
           <img
             src={process.env.PUBLIC_URL + "/image/loading/loading2.gif"}

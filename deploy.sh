@@ -1,25 +1,31 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# AWS Secrets Manager에서 환경 변수 조회
+SECRET_NAME="myBlogDatabase"
+REGION="ap-northeast-2"
+
+# AWS CLI를 사용하여 비밀 값을 조회
+SECRET=$(aws secretsmanager get-secret-value --secret-id $SECRET_NAME --region $REGION --query SecretString --output text)
+
+# 조회된 비밀 값을 환경 변수로 설정
+export DATABASE_URL=$(echo $SECRET | jq -r .DATABASE_URL)
+export DATABASE_USERNAME=$(echo $SECRET | jq -r .DATABASE_USERNAME)
+export DATABASE_PASSWORD=$(echo $SECRET | jq -r .DATABASE_PASSWORD)
 
 # Spring Boot 애플리케이션 디렉터리
-SPRINGBOOT_REPOSITORY=/opt/myBlog/springboot
+SPRINGBOOT_DIR="/opt/myBlog/springboot"
 
-# Spring Boot 애플리케이션 JAR 파일
-SPRINGBOOT_JAR_NAME=myBlog-0.0.1-SNAPSHOT.jar
-SPRINGBOOT_JAR_PATH=$SPRINGBOOT_REPOSITORY/$SPRINGBOOT_JAR_NAME
-
-# 실행 중인 Spring Boot 애플리케이션의 PID 확인
-CURRENT_PID=$(pgrep -f $SPRINGBOOT_JAR_NAME)
-
-if [ -z "$CURRENT_PID" ]; then
-  echo "> 종료할 것 없음."
-else
-  echo "> 기존 애플리케이션 종료: kill -15 $CURRENT_PID"
-  kill -15 $CURRENT_PID
-  sleep 5
+# 이전에 실행된 Spring Boot 애플리케이션 종료
+CURRENT_PID=$(pgrep -f 'myBlog.*.jar')
+if [ -n "$CURRENT_PID" ]; then
+    echo "Stopping running Spring Boot application"
+    kill -15 "$CURRENT_PID"
 fi
 
-# Spring Boot 애플리케이션 실행
-echo "> 새 애플리케이션 배포: $SPRINGBOOT_JAR_PATH"
-nohup java -jar $SPRINGBOOT_JAR_PATH > /dev/null 2>&1 < /dev/null &
+# 잠시 대기
+sleep 5
 
-echo "> 배포 스크립트 종료"
+# 새 Spring Boot 애플리케이션 배포
+JAR_NAME=$(ls $SPRINGBOOT_DIR | grep '.jar' | tail -n 1)
+echo "Deploying $JAR_NAME"
+nohup java -Duser.timezone=Asia/Seoul -jar $SPRINGBOOT_DIR/$JAR_NAME > $SPRINGBOOT_DIR/$(date +%F_%T)-nohup.out 2>&1 &

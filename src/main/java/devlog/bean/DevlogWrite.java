@@ -34,8 +34,8 @@ public class DevlogWrite {
     
     @Column(name = "category_thumbnail", nullable = true)
     private String categoryThumbnail;//카테고리 썸네일 
-    
-    @Column(name = "write_thumbnail", nullable = true)
+
+    @Column(name = "write_thumbnail", columnDefinition="MEDIUMTEXT", nullable = true)
     private String writeThumbnail; //게시글 썸네일
 
     @Column(name = "created_at", nullable = false)

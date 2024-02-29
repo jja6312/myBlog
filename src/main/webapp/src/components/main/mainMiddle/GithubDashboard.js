@@ -3,8 +3,11 @@ import Fillbox from "./Fillbox";
 import GithubDashboardMonthAtTop from "./githubDashboard/GithubDashboardMonthAtTop";
 import GithubDashboardDayOfWeekAtMiddle from "./githubDashboard/GithubDashboardDayOfWeekAtMiddle";
 import GithubDashboardDescriptionAtBottom from "./githubDashboard/GithubDashboardDescriptionAtBottom";
+import { useStudyTimeStore } from "../../../store/StudyTimeStore";
 
-const GithubDashboard = ({ yearlyStudyTime, clickedDate, setClickedDate }) => {
+const GithubDashboard = () => {
+  const { yearlyStudyTime } = useStudyTimeStore();
+  const { clickedDate, setClickedDate } = useStudyTimeStore();
   const year = 2024; // 2024년
   const [dates, setDates] = useState([]); // 달력 데이터 저장 state
 
@@ -78,13 +81,13 @@ const GithubDashboard = ({ yearlyStudyTime, clickedDate, setClickedDate }) => {
           isToday(id)
             ? `bg-yellow-500` //오늘날짜라면 노란색 배경
             : durationHours >= 10 // 공부시간이 10시간 이상일 때 밝은 배경
-            ? "bg-blue-300"
+            ? "bg-[#4F93FF]"
             : durationHours >= 8
-            ? "bg-blue-500"
+            ? "bg-[#3360A6]"
             : durationHours >= 6
-            ? "bg-blue-700"
+            ? "bg-[#244273]"
             : durationHours >= 4
-            ? "bg-blue-900"
+            ? "bg-[#182E4F]"
             : "bg-dark" // 공부시간이 4시간 미만일 때 어두운 배경
         }
         durationHourAndMinute={durationHourAndMinute}
@@ -115,7 +118,10 @@ const GithubDashboard = ({ yearlyStudyTime, clickedDate, setClickedDate }) => {
       weeks.push(
         <div
           key={i}
-          className="flex flex-col mt-2 justify-start items-center gap-[1px] md:gap-[4px] lg:gap-1"
+          className="flex flex-col mt-2 justify-start items-center 
+          gap-[1px] 
+          md:gap-[4px]
+          lg:gap-1"
         >
           {dates.slice(i * 7, (i + 1) * 7).map((date, index) => (
             <div key={index}>{fillBoxWithDate(date)}</div>

@@ -1,3 +1,33 @@
+/* hexagon.module.css */
+@keyframes opacityPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.opacityAnimation0 {
+  animation: opacityPulse 1s ease-in-out 0s infinite;
+}
+
+.opacityAnimation1 {
+  animation: opacityPulse 1s ease-in-out 0.25s infinite;
+}
+
+.opacityAnimation2 {
+  animation: opacityPulse 1s ease-in-out 0.5s infinite;
+}
+
+.opacityAnimation3 {
+  animation: opacityPulse 1s ease-in-out 0.75s infinite;
+}
+.opacityAnimationDevlogList {
+  animation: opacityPulse 2.5s ease-in-out 0s infinite;
+}
+
 /* 육각형을 만들기 위한 css */
 .hexagon {
   background-color: black;

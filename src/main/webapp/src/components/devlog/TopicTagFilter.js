@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDevlogStore } from "../../store/DevlogStore";
 
 // 개발일지 우측, 토픽 및 태그 필터링 기능 제공 --[24.01.28 12:47 정지안]
-const TopicTagFilter = ({
-  icon,
-  topicName,
-  tagList,
-  countTagFunc,
-  selectedFilter,
-  setSelectedFilter,
-}) => {
+const TopicTagFilter = ({ icon, topicName, tagList, countTagFunc }) => {
+  const { selectedFilter, setSelectedFilter } = useDevlogStore();
   // 고유한 태그 이름만 추출
   const uniqueTagNames = Array.from(
     new Set(tagList.map((write) => write.tag.name))
@@ -20,8 +15,10 @@ const TopicTagFilter = ({
     let filterName;
 
     if (filterType === "tag") {
+      const stringRange = e.target.innerText.indexOf("(");
       // 태그의 경우, 이름만 추출
-      filterName = e.target.innerText.split(" ")[0];
+      filterName = e.target.innerText.slice(0, stringRange - 1);
+      // filterName = e.target.innerText.split(" ")[0];
     } else if (filterType === "topic") {
       // 토픽의 경우, 전체 텍스트 사용
       filterName = e.target.innerText;
