@@ -181,6 +181,7 @@ const WriteForm = () => {
     <div className="flex w-full min-h-screen bg-dark">
       <div className="flex flex-col w-min-h-screen w-2/12"></div>
       <div className="flex flex-col w-min-h-screen bg-darkDeep w-8/12 p-5">
+        <span className="text-white text-6xl ml-6">개발일지 글작성</span>
         {/* 제목 입력 */}
         <div className="flex items-center mt-10">
           <span className="text-red-500 text-3xl mr-2">*</span>
@@ -362,7 +363,7 @@ const WriteForm = () => {
       2xl:w-60 2xl:h-20 2xl:rounded-[40px] 2xl:text-3xl 2xl:bottom-15 2xl:right-15
       "
         >
-          <span>저장</span>
+          <span className="pl-6">저장🔐</span>
         </div>
       </div>
       <div className="flex flex-col w-min-h-screen w-2/12"></div>

@@ -70,7 +70,7 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
   return (
     <div className="flex">
       <div
-        className={styles.container}
+        className={`${styles.container}`}
         style={{ width: width, height: height }}
         ref={containerRef}
         onMouseMove={(e) => {
