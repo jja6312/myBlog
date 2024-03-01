@@ -11,6 +11,7 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
   const cardRefBack = useRef(null);
   const [width, setWidth] = useState(220);
   const [height, setHeight] = useState(310);
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleClick = () => {
     initCardDegree(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
@@ -82,7 +83,12 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
         }}
         onMouseOut={initCardDegree}
       >
-        <div className="cursor-pointer" onClick={handleClick}>
+        <div
+          className="cursor-pointer"
+          onClick={handleClick}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
           <div
             ref={overlayRef}
             className={styles.overlay}
@@ -98,8 +104,22 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
             className={`${styles.card} ${styles.cardBack}`}
             style={{ width: width, height: height }}
           ></div>
+          {isSelected && isHovering && (
+            <div className="relative">
+              <div
+                className="absolute top-0 left-0 opacity-10
+          -translate-x-[280px]
+          -translate-y-[155px]
+          
+          w-[330px] h-[466px] z-40 bg-black"
+              ></div>
+              <div className=" -left-[155px] top-[210px] absolute z-50 text-4xl">
+                Close
+              </div>
+            </div>
+          )}
         </div>
-
+        {/* translateX(-280px) translateY(-155px) */}
         <CardContent isSelected={isSelected}></CardContent>
       </div>
     </div>
