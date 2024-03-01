@@ -12,6 +12,7 @@ const Skill = () => {
       <SkillFilterContainer></SkillFilterContainer>
 
       <CardContainer></CardContainer>
+      <div className="h-96"></div>
     </div>
   );
 };

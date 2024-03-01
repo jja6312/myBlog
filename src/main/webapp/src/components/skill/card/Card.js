@@ -13,9 +13,10 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
   const [height, setHeight] = useState(310);
 
   const handleClick = () => {
-    initMouseMove(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
+    initCardDegree(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
     cardRefFront.current.classList.toggle(styles.cardActive);
     cardRefBack.current.classList.toggle(styles.cardActive);
+    overlayRef.current.classList.toggle(styles.overlayActive);
     setSelectedCard(cardId);
 
     if (isSelected) {
@@ -27,22 +28,24 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
     if (isSelected) {
       cardRefFront.current.classList.add(styles.cardActive);
       cardRefBack.current.classList.add(styles.cardActive);
+      overlayRef.current.classList.add(styles.overlayActive);
     } else {
       cardRefFront.current.classList.remove(styles.cardActive);
       cardRefBack.current.classList.remove(styles.cardActive);
+      overlayRef.current.classList.remove(styles.overlayActive);
     }
   }, [isSelected]);
 
   useEffect(() => {
     if (selectedView === "3개씩 보기") {
-      setWidth(330);
-      setHeight(465);
-    } else if (selectedView === "6개씩 보기") {
       setWidth(220);
       setHeight(310);
-    } else if (selectedView === "12개씩 보기") {
+    } else if (selectedView === "6개씩 보기") {
       setWidth(110);
       setHeight(155);
+    } else if (selectedView === "12개씩 보기") {
+      setWidth(55);
+      setHeight(77.5);
     }
   }, [selectedView]);
 
@@ -58,7 +61,7 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
     containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`; // container 회전 및 원근 변환 설정
   };
 
-  const initMouseMove = () => {
+  const initCardDegree = () => {
     containerRef.current.style.transform = `perspective(350px) rotateX(0deg) rotateY(0deg)`; // container 회전 및 원근 변환 설정
     overlayRef.current.style.filter = "opacity(0)";
     containerRef.current.style.perspective = "350px";
@@ -72,29 +75,30 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
         ref={containerRef}
         onMouseMove={(e) => {
           if (isSelected) {
-            initMouseMove();
+            initCardDegree();
           } else {
             handleMouseMove(e);
           }
         }}
-        onMouseOut={initMouseMove}
-        onClick={handleClick}
+        onMouseOut={initCardDegree}
       >
-        <div
-          ref={overlayRef}
-          className={styles.overlay}
-          style={{ width: width, height: height }}
-        ></div>
-        <div
-          ref={cardRefFront}
-          className={`${styles.card} ${styles.cardFront}`}
-          style={{ width: width, height: height }}
-        ></div>
-        <div
-          ref={cardRefBack}
-          className={`${styles.card} ${styles.cardBack}`}
-          style={{ width: width, height: height }}
-        ></div>
+        <div className="cursor-pointer" onClick={handleClick}>
+          <div
+            ref={overlayRef}
+            className={styles.overlay}
+            style={{ width: width, height: height }}
+          ></div>
+          <div
+            ref={cardRefFront}
+            className={`${styles.card} ${styles.cardFront}`}
+            style={{ width: width, height: height }}
+          ></div>
+          <div
+            ref={cardRefBack}
+            className={`${styles.card} ${styles.cardBack}`}
+            style={{ width: width, height: height }}
+          ></div>
+        </div>
 
         <CardContent isSelected={isSelected}></CardContent>
       </div>

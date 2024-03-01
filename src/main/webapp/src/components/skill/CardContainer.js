@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSkillStore } from "../../store/SkillStore";
 import Card from "./card/Card";
 
@@ -23,7 +23,6 @@ const cards = [
 ];
 const CardContainer = () => {
   const { selectedCard, setSelectedCard, selectedView } = useSkillStore();
-  const [perNum, setPerNum] = useState(3);
 
   const handleCardClick = (id) => {
     if (selectedCard === null) {
@@ -54,18 +53,17 @@ const CardContainer = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const substringBeforeEA = selectedView.substring(
-      0,
-      selectedView.indexOf("개") //'개' 이전까지 문자열 반환(3,6,12)
-    );
-    setPerNum(substringBeforeEA);
-  }, [selectedView]);
-
   return (
     <div
-      className={`grid grid-cols-${perNum} place-items-center mt-10
-      ${perNum === "3" ? "gap-10" : perNum === "6" ? "gap-6" : "gap-1"}
+      className={`grid 
+      ${
+        selectedView === "3개씩 보기"
+          ? "gap-10 grid-cols-3"
+          : selectedView === "6개씩 보기"
+          ? "gap-6 grid-cols-6"
+          : "gap-1 grid-cols-12"
+      }
+      place-items-center mt-10
       `}
     >
       {cards.map((cardId) => (
