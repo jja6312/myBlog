@@ -15,7 +15,7 @@ const SkillWriteForm = () => {
   const [writeDTO, setWriteDTO] = useState({
     name: "",
     strength: "",
-    weekness: "",
+    weakness: "",
     writeThumbnail: "",
   });
 
@@ -70,7 +70,7 @@ const SkillWriteForm = () => {
       alert("활용가능한 범위를 입력하세요.");
       return;
     }
-    if (writeDTO.weekness === "") {
+    if (writeDTO.weakness === "") {
       alert("부족한 점을 입력하세요.");
       return;
     }
@@ -81,7 +81,7 @@ const SkillWriteForm = () => {
     }
 
     axios
-      .post("http://localhost:8080/skill/save", writeDTO, {
+      .post("http://43.203.18.91:8080/skill/save", writeDTO, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -160,7 +160,7 @@ const SkillWriteForm = () => {
           <div className="flex w-full items-center mt-2">
             <span className="text-red-500 text-3xl mr-2">*</span>
             <textarea
-              id="weekness"
+              id="weakness"
               className="w-full h-28 bg-dark text-white pl-3 text-2xl"
               placeholder="어떤점이 부족하다고 생각하나요?"
               onChange={(e) => onChangeInput(e)}
