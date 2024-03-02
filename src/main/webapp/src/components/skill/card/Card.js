@@ -96,30 +96,24 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
           ></div>
           <div
             ref={cardRefFront}
-            className={`${styles.card} ${styles.cardFront}`}
+            className={`${styles.card} ${styles.cardFront}  relative`}
             style={{ width: width, height: height }}
-          ></div>
+          >
+            {isSelected && (
+              <div
+                className={`w-[330px] h-[466px] bg-black z-50 ${
+                  isHovering ? "opacity-10" : "opacity-0"
+                }`}
+              ></div>
+            )}
+          </div>
           <div
             ref={cardRefBack}
             className={`${styles.card} ${styles.cardBack}`}
             style={{ width: width, height: height }}
           ></div>
-          {isSelected && isHovering && (
-            <div className="relative">
-              <div
-                className="absolute top-0 left-0 opacity-10
-          -translate-x-[280px]
-          -translate-y-[155px]
-          
-          w-[330px] h-[466px] z-40 bg-black"
-              ></div>
-              <div className=" -left-[155px] top-[210px] absolute z-50 text-4xl">
-                Close
-              </div>
-            </div>
-          )}
         </div>
-        {/* translateX(-280px) translateY(-155px) */}
+
         <CardContent isSelected={isSelected}></CardContent>
       </div>
     </div>
