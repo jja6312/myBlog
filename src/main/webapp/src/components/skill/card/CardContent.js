@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./card.module.css";
 import { useSkillStore } from "../../../store/SkillStore";
+import CloseBtnModal from "../btn/CloseBtnModal";
 
 const CardContent = ({ isSelected }) => {
-  const { selectedView } = useSkillStore();
+  const { selectedView, setSelectedCard } = useSkillStore();
 
   return (
     <div
@@ -33,6 +34,10 @@ const CardContent = ({ isSelected }) => {
           <span>관련 프로젝트</span>
           <span>관련 학습도서</span>
           <span>관련 학습강의</span>
+        </div>
+        {/* 닫기버튼 */}
+        <div onClick={() => setSelectedCard(null)}>
+          <CloseBtnModal></CloseBtnModal>
         </div>
       </div>
     </div>

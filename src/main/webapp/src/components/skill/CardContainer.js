@@ -2,46 +2,13 @@ import React, { useEffect } from "react";
 import { useSkillStore } from "../../store/SkillStore";
 import Card from "./card/Card";
 
-const cards = [
-  "card1",
-  "card2",
-  "card3",
-  "card4",
-  "card5",
-  "card6",
-  "card7",
-  "card8",
-  "card9",
-  "card10",
-  "card11",
-  "card12",
-  "card13",
-  "card14",
-  "card15",
-  "card16",
-  "card17",
-];
 const CardContainer = () => {
-  const { selectedCard, setSelectedCard, selectedView } = useSkillStore();
-
-  const handleCardClick = (id) => {
-    if (selectedCard === null) {
-      setSelectedCard(id);
-    }
-
-    const cardElement = document.getElementById(id);
-    if (cardElement) {
-      cardElement.scrollIntoView({
-        behavior: "smooth", // 부드러운 스크롤 효과
-        block: "center", // 뷰포트의 중앙에 위치
-        inline: "nearest", // 가장 가까운 쪽으로 정렬
-      });
-    }
-  };
+  const { selectedCard, selectedView, skillList, setSelectedCard } =
+    useSkillStore();
 
   useEffect(() => {
     const clickOutOfCard = (e) => {
-      if (!cards.some((cardId) => e.target.closest(`#${cardId}`))) {
+      if (!skillList.some((item) => e.target.closest(`#id${item.id}`))) {
         setSelectedCard(null);
       }
     };
@@ -66,20 +33,26 @@ const CardContainer = () => {
       place-items-center mt-10
       `}
     >
-      {cards.map((cardId) => (
+      {skillList.map((item) => (
         <div
-          key={cardId}
-          id={cardId}
-          onClick={(e) => handleCardClick(e.currentTarget.id)}
+          key={item.id}
+          id={`id${item.id}`}
           style={{
-            zIndex: selectedCard === cardId ? 1000 : 1,
+            zIndex: selectedCard === item.id ? 1000 : 1,
             position: "relative",
           }}
         >
           <Card
-            cardId={cardId}
-            isSelected={selectedCard === cardId}
-            setSelectedCard={setSelectedCard}
+            cardId={`id${item.id}`}
+            createdAt={item.created_at}
+            name={item.name}
+            strength={item.strength}
+            totalDuration={item.total_duration}
+            type={item.type}
+            updatedAt={item.updated_at}
+            weakness={item.weakness}
+            writeThumbnail={item.write_thumbnail} //이까지 카드 구성 요소
+            selectedCard={selectedCard}
           />
         </div>
       ))}

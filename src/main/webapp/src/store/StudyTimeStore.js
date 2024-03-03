@@ -6,6 +6,7 @@ export const useStudyTimeStore = create((set) => ({
   level: "",
   exp: "",
   studyTimeHourSum: 0, //총 공부시간(시간단위)
+  totalStudyTimePerCategory: [], //카테고리별 총 공부시간
 
   // 메인 중간-상단 깃허브 대시보드
   yearlyStudyTime: [], // 연간, 날짜별 공부량
@@ -39,4 +40,6 @@ export const useStudyTimeStore = create((set) => ({
   setLevel: (data) => set({ level: data }),
   setExp: (data) => set({ exp: data }),
   setStudyTimeHourSum: (data) => set({ studyTimeHourSum: data }),
+  setTotalStudyTimePerCategory: (data) =>
+    set({ totalStudyTimePerCategory: data }),
 }));

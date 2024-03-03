@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import hexagon from "./hexagon.module.css";
+import SaveBtn from "../common/button/SaveBtn";
 
 // 글쓰기 페이지. --[24.01.26 17:36 정지안]
 
@@ -181,6 +182,7 @@ const WriteForm = () => {
     <div className="flex w-full min-h-screen bg-dark">
       <div className="flex flex-col w-min-h-screen w-2/12"></div>
       <div className="flex flex-col w-min-h-screen bg-darkDeep w-8/12 p-5">
+        <span className="text-white text-6xl ml-6">개발일지 글작성</span>
         {/* 제목 입력 */}
         <div className="flex items-center mt-10">
           <span className="text-red-500 text-3xl mr-2">*</span>
@@ -350,19 +352,8 @@ const WriteForm = () => {
           </div>
         </div>
         {/* 저장 버튼 */}
-        <div
-          onClick={() => onSaveWrite()}
-          className="fixed z-50  border-2 border-white flex justify-center items-center cursor-pointer font-semibold transition-all duration-200
-          bg-gray-700 text-white
-          hover:bg-amber-500 hover:text-black
-      
-      w-20 h-10 rounded-[20px] text-sm bottom-5 right-5
-      lg:w-40 lg:h-16 lg:rounded-[30px] lg:text-2xl lg:bottom-10 lg:right-10
-      
-      2xl:w-60 2xl:h-20 2xl:rounded-[40px] 2xl:text-3xl 2xl:bottom-15 2xl:right-15
-      "
-        >
-          <span>저장</span>
+        <div onClick={() => onSaveWrite()}>
+          <SaveBtn></SaveBtn>
         </div>
       </div>
       <div className="flex flex-col w-min-h-screen w-2/12"></div>

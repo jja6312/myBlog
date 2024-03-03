@@ -3,26 +3,52 @@ import styles from "./card.module.css";
 import CardContent from "./CardContent";
 import { useSkillStore } from "../../../store/SkillStore";
 
-const Card = ({ isSelected, setSelectedCard, cardId }) => {
-  const { selectedView } = useSkillStore();
+const Card = ({
+  cardId,
+  // createdAt,
+  // name,
+  // strength,
+  // totalDuration,
+  // type,
+  // updatedAt,
+  // weakness,
+  // writeThumbnail,
+  selectedCard,
+}) => {
+  const { selectedView, setSelectedCard } = useSkillStore();
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
   const cardRefFront = useRef(null);
   const cardRefBack = useRef(null);
   const [width, setWidth] = useState(220);
   const [height, setHeight] = useState(310);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     initCardDegree(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
-    cardRefFront.current.classList.toggle(styles.cardActive);
-    cardRefBack.current.classList.toggle(styles.cardActive);
-    overlayRef.current.classList.toggle(styles.overlayActive);
-    setSelectedCard(cardId);
-
-    if (isSelected) {
+    // cardRefFront.current.classList.toggle(styles.cardActive);
+    // cardRefBack.current.classList.toggle(styles.cardActive);
+    // overlayRef.current.classList.toggle(styles.overlayActive);
+    if (selectedCard === null) {
+      setSelectedCard(e.currentTarget.id);
+    } else {
       setSelectedCard(null);
     }
+
+    const cardElement = document.getElementById(e.currentTarget.id);
+    if (cardElement) {
+      cardElement.scrollIntoView({
+        behavior: "smooth", // 부드러운 스크롤 효과
+        block: "center", // 뷰포트의 중앙에 위치
+        inline: "nearest", // 가장 가까운 쪽으로 정렬
+      });
+    }
   };
+
+  useEffect(() => {
+    setIsSelected(selectedCard === cardId);
+  }, [selectedCard]);
 
   useEffect(() => {
     if (isSelected) {
@@ -70,7 +96,7 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
   return (
     <div className="flex">
       <div
-        className={styles.container}
+        className={`${styles.container}`}
         style={{ width: width, height: height }}
         ref={containerRef}
         onMouseMove={(e) => {
@@ -82,7 +108,13 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
         }}
         onMouseOut={initCardDegree}
       >
-        <div className="cursor-pointer" onClick={handleClick}>
+        <div
+          id={cardId}
+          className="cursor-pointer"
+          onClick={handleClick}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
           <div
             ref={overlayRef}
             className={styles.overlay}
@@ -90,16 +122,36 @@ const Card = ({ isSelected, setSelectedCard, cardId }) => {
           ></div>
           <div
             ref={cardRefFront}
-            className={`${styles.card} ${styles.cardFront}`}
+            className={`${styles.card} ${styles.cardFront} overflow-hidden relative`}
             style={{ width: width, height: height }}
-          ></div>
-          <div
-            ref={cardRefBack}
-            className={`${styles.card} ${styles.cardBack}`}
-            style={{ width: width, height: height }}
-          ></div>
+          >
+            {isSelected && (
+              <div
+                className={`w-[330px] h-[466px] bg-black z-50 ${
+                  isHovering ? "opacity-10" : "opacity-0"
+                }`}
+              ></div>
+            )}
+          </div>
         </div>
-
+        <div
+          ref={cardRefBack}
+          className={`${styles.card} ${styles.cardBack}`}
+          style={{ width: width, height: height }}
+        ></div>
+        {/* <span>{cardId}</span>
+          <span>{name}</span>
+          <span>{strength}</span>
+          <span>{totalDuration}</span>
+          <span>{type}</span>
+          <span>{updatedAt}</span>
+          <span>{weakness}</span>
+          <img
+            src={writeThumbnail}
+            className="w-full h-full object-cover"
+            alt="thumbnail"
+          />
+          <span>{createdAt}</span> */}
         <CardContent isSelected={isSelected}></CardContent>
       </div>
     </div>
