@@ -14,6 +14,7 @@ const SkillWriteForm = () => {
   // 제목,카테고리,태그,노션 페이지 아이디를 저장하는 객체
   const [writeDTO, setWriteDTO] = useState({
     name: "",
+    type: "",
     strength: "",
     weakness: "",
     writeThumbnail: "",
@@ -52,9 +53,10 @@ const SkillWriteForm = () => {
     }
   };
 
+  // 저장 로직
   const onSaveWrite = () => {
     console.log(writeDTO);
-
+    // 간단한 본인 확인
     const tmpInput = prompt("정지안이 아니면 저장하지 마세요.");
     if (tmpInput !== "정지안") {
       alert("You are not 정지안. 저장하지 않습니다");
@@ -64,6 +66,10 @@ const SkillWriteForm = () => {
     //유효성검사
     if (writeDTO.name === "") {
       alert("제목을 입력하세요.");
+      return;
+    }
+    if (writeDTO.type === "") {
+      alert("카테고리를 선택하세요.");
       return;
     }
     if (writeDTO.strength === "") {
@@ -116,7 +122,21 @@ const SkillWriteForm = () => {
             placeholder="기술스택 이름을 입력해주세요."
           ></input>
         </div>
-        7<div className="flex w-full space-x-6 mt-2"></div>
+        <div className="flex items-center mt-10">
+          <span className="text-red-500 text-3xl mr-2">*</span>
+          <select
+            id="type"
+            onChange={(e) => onChangeInput(e)}
+            className="w-full h-14 bg-dark text-white p-3 text-xl "
+          >
+            <option value="">선택</option>
+            <option value="FrontEnd">FrontEnd</option>
+            <option value="BackEnd">BackEnd</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Certificate">Certificate</option>
+          </select>
+        </div>
+        <div className="flex w-full space-x-6 mt-2"></div>
         <div className="flex flex-col w-full  items-center mt-2 ">
           <div className="flex w-full items-center">
             <span className="text-red-500 text-3xl mr-2">*</span>

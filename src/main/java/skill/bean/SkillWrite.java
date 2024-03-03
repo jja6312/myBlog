@@ -17,6 +17,8 @@ public class SkillWrite {
 
     @Column(name="name",nullable = false)
     private String name;
+    @Column(name="type", nullable = false)
+    private String type;
     @Column(name="strength", length = 1000,nullable = false)
     private String strength;
     @Column(name="weakness", length = 1000,nullable = false)
