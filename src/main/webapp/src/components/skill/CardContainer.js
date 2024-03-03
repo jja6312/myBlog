@@ -7,6 +7,9 @@ const CardContainer = () => {
     useSkillStore();
 
   useEffect(() => {
+    console.log("selectedCard:", selectedCard);
+    if (selectedCard === null) return;
+
     const clickOutOfCard = (e) => {
       if (!skillList.some((item) => e.target.closest(`#id${item.id}`))) {
         setSelectedCard(null);
@@ -18,7 +21,7 @@ const CardContainer = () => {
     return () => {
       window.removeEventListener("click", clickOutOfCard);
     };
-  }, []);
+  }, [selectedCard]);
 
   return (
     <div
