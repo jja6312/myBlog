@@ -13,7 +13,7 @@ const MainMiddle = () => {
   const getYearlyStudyTime = async () => {
     try {
       const response = await axios.get(
-        "http:// 43.203.18.91:8080/studyTime/getYearlyStudyTime"
+        "http://43.203.18.91:8080/studyTime/getYearlyStudyTime"
       );
       setYearlyStudyTime(response.data);
       console.log("yearlyStudyTime", response.data);

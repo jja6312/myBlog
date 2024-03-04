@@ -21,8 +21,10 @@
                 </choose>
             </when>
             <otherwise>
-                SELECT *
+                SELECT *, COALESCE(SUM(st.duration_in_seconds), 0) AS total_duration
                 FROM skill_write AS sw
+                LEFT JOIN category AS c ON c.name = sw.category_name
+                LEFT JOIN study_time AS st ON st.category_id = c.id
                 <where>
                     <if test="types != null">
                         AND sw.type IN
@@ -31,6 +33,7 @@
                         </foreach>
                     </if>
                 </where>
+                GROUP BY sw.id
                 ORDER BY
                 <if test="selectedAlignBox == '날짜순'">
                     sw.created_at

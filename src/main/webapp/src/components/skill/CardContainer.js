@@ -41,7 +41,7 @@ const CardContainer = () => {
           key={item.id}
           id={`id${item.id}`}
           style={{
-            zIndex: selectedCard === item.id ? 1000 : 1,
+            zIndex: selectedCard === `id${item.id}` ? 1000 : 1,
             position: "relative",
           }}
         >

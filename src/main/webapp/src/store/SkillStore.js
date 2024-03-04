@@ -9,6 +9,7 @@ export const useSkillStore = create((set) => ({
     BackEnd: true,
     DevOps: true,
     Certificate: true,
+    Tools: true,
   },
   //-------------------------------------------------------------
   // 2.모아보기-----------------------------------------------------
@@ -50,6 +51,7 @@ export const useSkillStore = create((set) => ({
         BackEnd: true,
         DevOps: true,
         Certificate: true,
+        Tools: true,
       },
     })),
   // 모든 카테고리 false설정
@@ -62,6 +64,7 @@ export const useSkillStore = create((set) => ({
         BackEnd: false,
         DevOps: false,
         Certificate: false,
+        Tools: false,
       },
     })),
   //---------------------------------------------------

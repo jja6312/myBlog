@@ -15,13 +15,14 @@ const SkillFilterContainer = () => {
         </div>
         <div
           className={` w-full h-1/2 border-[2px] border-[#42424a]
-        grid grid-cols-4 place-items-center gap-1
+        grid grid-cols-5 place-items-center gap-1
         `}
         >
           <SkillCheckBox category="FrontEnd"></SkillCheckBox>
           <SkillCheckBox category="BackEnd"></SkillCheckBox>
           <SkillCheckBox category="DevOps"></SkillCheckBox>
           <SkillCheckBox category="Certificate"></SkillCheckBox>
+          <SkillCheckBox category="Tools"></SkillCheckBox>
         </div>
       </SkillFilterContainerElement>
 

@@ -8,11 +8,11 @@ const Card = ({
   // createdAt,
   // name,
   // strength,
-  // totalDuration,
+  totalDuration,
   // type,
   // updatedAt,
   // weakness,
-  // writeThumbnail,
+  writeThumbnail,
   selectedCard,
 }) => {
   const { selectedView, setSelectedCard } = useSkillStore();
@@ -20,6 +20,7 @@ const Card = ({
   const overlayRef = useRef(null);
   const cardRefFront = useRef(null);
   const cardRefBack = useRef(null);
+  const textDurationRef = useRef(null);
   const [width, setWidth] = useState(220);
   const [height, setHeight] = useState(310);
   const [isHovering, setIsHovering] = useState(false);
@@ -27,14 +28,10 @@ const Card = ({
 
   const handleClick = (e) => {
     initCardDegree(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
-    // cardRefFront.current.classList.toggle(styles.cardActive);
-    // cardRefBack.current.classList.toggle(styles.cardActive);
-    // overlayRef.current.classList.toggle(styles.overlayActive);
-    if (selectedCard === null) {
-      setSelectedCard(e.currentTarget.id);
-    } else {
-      setSelectedCard(null);
-    }
+    textDurationRef.current.classList.add(styles.hiddenClass); // 카드를 클릭했을때 글자를 바로 숨기기 위해 hiddenClass를 추가
+
+    setSelectedCard(e.currentTarget.id); // 선택된 카드의 id를 store에 저장
+    if (selectedCard === e.currentTarget.id) setSelectedCard(null); // 선택된 카드의 id가 같으면 store에 저장된 id를 null로 바꿈(다시 클릭하면 선택 해제됨
 
     const cardElement = document.getElementById(e.currentTarget.id);
     if (cardElement) {
@@ -44,6 +41,13 @@ const Card = ({
         inline: "nearest", // 가장 가까운 쪽으로 정렬
       });
     }
+  };
+
+  const convertToFormat = (totalDuration) => {
+    const minute = totalDuration / 60;
+    let hour = Math.floor(minute / 60);
+    let min = Math.floor(minute % 60);
+    return `${hour}h ${min}m`;
   };
 
   useEffect(() => {
@@ -59,6 +63,14 @@ const Card = ({
       cardRefFront.current.classList.remove(styles.cardActive);
       cardRefBack.current.classList.remove(styles.cardActive);
       overlayRef.current.classList.remove(styles.overlayActive);
+    }
+
+    // 카드를 클릭했을때 글자가 서서히 보이게하기 위해 cardRefFront의  hiddenClass를 제거해준다.
+    if (isSelected) {
+      //카드가 돌아가는 시간 0.2초만큼 timeout
+      setTimeout(() => {
+        textDurationRef.current.classList.remove(styles.hiddenClass);
+      }, 400);
     }
   }, [isSelected]);
 
@@ -125,10 +137,11 @@ const Card = ({
             className={`${styles.card} ${styles.cardFront} overflow-hidden relative`}
             style={{ width: width, height: height }}
           >
+            <img src={writeThumbnail} className="w-full h-full"></img>
             {isSelected && (
               <div
-                className={`w-[330px] h-[466px] bg-black z-50 ${
-                  isHovering ? "opacity-10" : "opacity-0"
+                className={`w-[330px] h-[466px] bg-black absolute top-0 left-0 z-50 ${
+                  isHovering ? "opacity-20" : "opacity-0"
                 }`}
               ></div>
             )}
@@ -141,9 +154,61 @@ const Card = ({
         ></div>
         {/* <span>{cardId}</span>
           <span>{name}</span>
-          <span>{strength}</span>
-          <span>{totalDuration}</span>
-          <span>{type}</span>
+          <span>{strength}</span> */}
+
+        {convertToFormat(totalDuration) === "0h 0m" ? (
+          <div
+            className={`w-80 absolute
+        ${selectedView === "3개씩 보기" ? "bottom-9 left-6" : "bottom-3 left-3"}
+        ${isSelected && "-translate-x-[267px] -translate-y-[20px]"}
+        z-40`}
+          >
+            <span
+              ref={textDurationRef}
+              className={`text-gray-500
+            ${
+              isSelected
+                ? `text-[24px]`
+                : selectedView === "6개씩 보기" && "text-[7px]"
+            }`}
+            >
+              학습시간이 추적되지 않음
+            </span>
+          </div>
+        ) : (
+          <div
+            className={`w-80 absolute 
+          ${
+            selectedView === "3개씩 보기"
+              ? "bottom-9 left-6"
+              : "bottom-3 left-3"
+          }
+          ${isSelected && "-translate-x-[265px] -translate-y-[20px]"}
+          z-40`}
+          >
+            <span
+              className={`text-black ${
+                isSelected
+                  ? "text-[22px] "
+                  : selectedView === "6개씩 보기" && "text-[7px]"
+              }`}
+            >
+              누적 학습시간:{" "}
+            </span>
+            <span
+              className={`text-red-600 font-semibold text-[17px]
+             ${
+               isSelected
+                 ? "text-[26px]"
+                 : selectedView === "6개씩 보기" && "text-[10px]"
+             }`}
+            >
+              {convertToFormat(totalDuration)}
+            </span>
+          </div>
+        )}
+
+        {/* <span>{type}</span>
           <span>{updatedAt}</span>
           <span>{weakness}</span>
           <img

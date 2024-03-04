@@ -159,7 +159,7 @@ const DataDashboardByRangeDate = () => {
 
   const getStudyTimeGroupByCategory = () => {
     axios
-      .get("http:// 43.203.18.91:8080/studyTime/getStudyTimeGroupByCategory")
+      .get("http://43.203.18.91:8080/studyTime/getStudyTimeGroupByCategory")
       .then((res) => {
         console.log("getStudyTimeGroupByCategory:", res.data);
         setStudyTimeGroupByCategory(res.data);
@@ -172,7 +172,7 @@ const DataDashboardByRangeDate = () => {
   const getStudyTimeGroupByCategoryRecentOneMonth = () => {
     axios
       .get(
-        "http:// 43.203.18.91:8080/studyTime/getStudyTimeGroupByCategoryRecentOneMonth"
+        "http://43.203.18.91:8080/studyTime/getStudyTimeGroupByCategoryRecentOneMonth"
       )
       .then((res) => {
         console.log("getStudyTimeGroupByCategoryRecentOneMonth:", res.data);
@@ -187,7 +187,7 @@ const DataDashboardByRangeDate = () => {
     axios
 
       .get(
-        "http:// 43.203.18.91:8080/studyTime/getStudyTimeGroupByCategoryRecentOneYear"
+        "http://43.203.18.91:8080/studyTime/getStudyTimeGroupByCategoryRecentOneYear"
       )
       .then((res) => {
         console.log("getStudyTimeGroupByCategoryRecentOneYear:", res.data);
