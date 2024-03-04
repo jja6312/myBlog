@@ -7,6 +7,9 @@ const CardContainer = () => {
     useSkillStore();
 
   useEffect(() => {
+    console.log("selectedCard:", selectedCard);
+    if (selectedCard === null) return;
+
     const clickOutOfCard = (e) => {
       if (!skillList.some((item) => e.target.closest(`#id${item.id}`))) {
         setSelectedCard(null);
@@ -18,7 +21,7 @@ const CardContainer = () => {
     return () => {
       window.removeEventListener("click", clickOutOfCard);
     };
-  }, []);
+  }, [selectedCard]);
 
   return (
     <div
@@ -38,7 +41,7 @@ const CardContainer = () => {
           key={item.id}
           id={`id${item.id}`}
           style={{
-            zIndex: selectedCard === item.id ? 1000 : 1,
+            zIndex: selectedCard === `id${item.id}` ? 1000 : 1,
             position: "relative",
           }}
         >

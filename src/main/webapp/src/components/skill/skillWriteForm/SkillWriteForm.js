@@ -134,6 +134,7 @@ const SkillWriteForm = () => {
             <option value="BackEnd">BackEnd</option>
             <option value="DevOps">DevOps</option>
             <option value="Certificate">Certificate</option>
+            <option value="Tools">Tools</option>
           </select>
         </div>
         <div className="flex w-full space-x-6 mt-2"></div>

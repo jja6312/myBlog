@@ -41,7 +41,7 @@
   background-size: 150% 150%;
   background-position: 100%;
   transition: all 0.2s;
-  z-index: 50;
+  z-index: 30;
 }
 
 .overlayActive {
@@ -77,4 +77,9 @@
 
 .CardContentBG {
   background-image: url("../../../../public/image/card/cardContentBG2.jpg");
+}
+
+.hiddenClass {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
 }
