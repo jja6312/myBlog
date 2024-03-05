@@ -6,7 +6,7 @@ import { useSkillStore } from "../../../store/SkillStore";
 const Card = ({
   cardId,
   // createdAt,
-  // name,
+  name,
   // strength,
   totalDuration,
   // type,
@@ -16,11 +16,11 @@ const Card = ({
   selectedCard,
 }) => {
   const { selectedView, setSelectedCard } = useSkillStore();
+  const cardRef = useRef(null);
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
   const cardRefFront = useRef(null);
   const cardRefBack = useRef(null);
-  const textDurationRef = useRef(null);
   const [width, setWidth] = useState(220);
   const [height, setHeight] = useState(310);
   const [isHovering, setIsHovering] = useState(false);
@@ -28,12 +28,13 @@ const Card = ({
 
   const handleClick = (e) => {
     initCardDegree(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
-    textDurationRef.current.classList.add(styles.hiddenClass); // 카드를 클릭했을때 글자를 바로 숨기기 위해 hiddenClass를 추가
+    const targetId = e.currentTarget.id.includes("span-")
+      ? e.currentTarget.id.split("-")[1]
+      : e.currentTarget.id;
+    setSelectedCard(targetId); // 선택된 카드의 id를 store에 저장
+    if (selectedCard === targetId) setSelectedCard(null); // 선택된 카드의 id가 같으면 store에 저장된 id를 null로 바꿈(다시 클릭하면 선택 해제됨
 
-    setSelectedCard(e.currentTarget.id); // 선택된 카드의 id를 store에 저장
-    if (selectedCard === e.currentTarget.id) setSelectedCard(null); // 선택된 카드의 id가 같으면 store에 저장된 id를 null로 바꿈(다시 클릭하면 선택 해제됨
-
-    const cardElement = document.getElementById(e.currentTarget.id);
+    const cardElement = document.getElementById(targetId);
     if (cardElement) {
       cardElement.scrollIntoView({
         behavior: "smooth", // 부드러운 스크롤 효과
@@ -64,14 +65,6 @@ const Card = ({
       cardRefBack.current.classList.remove(styles.cardActive);
       overlayRef.current.classList.remove(styles.overlayActive);
     }
-
-    // 카드를 클릭했을때 글자가 서서히 보이게하기 위해 cardRefFront의  hiddenClass를 제거해준다.
-    if (isSelected) {
-      //카드가 돌아가는 시간 0.2초만큼 timeout
-      setTimeout(() => {
-        textDurationRef.current.classList.remove(styles.hiddenClass);
-      }, 400);
-    }
   }, [isSelected]);
 
   useEffect(() => {
@@ -82,10 +75,6 @@ const Card = ({
       setWidth(110);
       setHeight(155);
     }
-    // else if (selectedView === "12개씩 보기") {
-    //   setWidth(55);
-    //   setHeight(77.5);
-    // }
   }, [selectedView]);
 
   const handleMouseMove = (e) => {
@@ -123,6 +112,7 @@ const Card = ({
       >
         <div
           id={cardId}
+          ref={cardRef}
           className="cursor-pointer"
           onClick={handleClick}
           onMouseEnter={() => setIsHovering(true)}
@@ -153,54 +143,76 @@ const Card = ({
           className={`${styles.card} ${styles.cardBack}`}
           style={{ width: width, height: height }}
         ></div>
-        {/* <span>{cardId}</span>
-          <span>{name}</span>
-          <span>{strength}</span> */}
 
+        {/* 누적학습시간이 없을 때와 있을 때, 카드 내에 다른 div(text)표시. */}
         {convertToFormat(totalDuration) === "0h 0m" ? (
           <div
-            className={`w-80 absolute
-        ${selectedView === "3개씩 보기" ? "bottom-9 left-6" : "bottom-3 left-3"}
-        ${isSelected && "-translate-x-[267px] -translate-y-[20px]"}
-        z-40`}
+            id={`span-${cardId}`}
+            onClick={handleClick}
+            className={`w-80 absolute cursor-pointer
+            
+        
+            ${
+              selectedView === "3개씩 보기"
+                ? "bottom-[38px] left-[24px]"
+                : "bottom-[16px] left-[18px]"
+            }
+          ${
+            isSelected && selectedView === "3개씩 보기"
+              ? "-translate-x-[265px] -translate-y-[15px]"
+              : isSelected &&
+                selectedView === "6개씩 보기" &&
+                "-translate-x-[265px] translate-y-[115px]"
+          }
+          z-40`}
           >
             <span
-              ref={textDurationRef}
-              className={`text-gray-500
+              className={`text-gray-700 
+              
             ${
               isSelected
-                ? `text-[24px]`
+                ? styles.textSizeUpMore
                 : selectedView === "6개씩 보기" && "text-[7px]"
             }`}
             >
-              학습시간이 추적되지 않음
+              {name === "Dart"
+                ? "Flutter 학습 시간과 통합"
+                : "블로그 개설보다 먼저 학습"}
             </span>
           </div>
         ) : (
           <div
-            className={`w-80 absolute 
+            id={`span-${cardId}`}
+            onClick={handleClick}
+            className={`w-80 absolute flex flex-col cursor-pointer 
           ${
             selectedView === "3개씩 보기"
-              ? "bottom-9 left-6"
+              ? "bottom-6 left-6"
               : "bottom-3 left-3"
           }
-          ${isSelected && "-translate-x-[265px] -translate-y-[20px]"}
+          ${
+            isSelected && selectedView === "3개씩 보기"
+              ? "-translate-x-[190px] -translate-y-[21px] gap-2"
+              : isSelected &&
+                selectedView === "6개씩 보기" &&
+                "-translate-x-[190px] translate-y-[115px] "
+          }
           z-40`}
           >
             <span
               className={`text-black ${
                 isSelected
-                  ? "text-[22px] "
+                  ? styles.textSizeUp
                   : selectedView === "6개씩 보기" && "text-[7px]"
               }`}
             >
-              누적 학습시간:{" "}
+              [누적 학습시간]{" "}
             </span>
             <span
-              className={`text-red-600 font-semibold text-[17px]
+              className={`text-red-600 font-semibold 
              ${
                isSelected
-                 ? "text-[26px]"
+                 ? styles.textSizeUp
                  : selectedView === "6개씩 보기" && "text-[10px]"
              }`}
             >
@@ -208,16 +220,6 @@ const Card = ({
             </span>
           </div>
         )}
-
-        {/* <span>{type}</span>
-          <span>{updatedAt}</span>
-          <span>{weakness}</span>
-          <img
-            src={writeThumbnail}
-            className="w-full h-full object-cover"
-            alt="thumbnail"
-          />
-          <span>{createdAt}</span> */}
         <CardContent isSelected={isSelected}></CardContent>
       </div>
     </div>
