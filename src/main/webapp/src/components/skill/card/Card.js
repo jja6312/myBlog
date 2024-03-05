@@ -81,10 +81,11 @@ const Card = ({
     } else if (selectedView === "6개씩 보기") {
       setWidth(110);
       setHeight(155);
-    } else if (selectedView === "12개씩 보기") {
-      setWidth(55);
-      setHeight(77.5);
     }
+    // else if (selectedView === "12개씩 보기") {
+    //   setWidth(55);
+    //   setHeight(77.5);
+    // }
   }, [selectedView]);
 
   const handleMouseMove = (e) => {

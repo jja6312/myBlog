@@ -8,6 +8,7 @@ import { useSkillStore } from "../../store/SkillStore";
 
 const Skill = () => {
   const {
+    setIsLoading,
     // 데이터를 불러올 때 사용할 필터 조건
     checkBoxes, //어떤 종류의 기술스택인지?
     selectedAlignBox, //공부시간순인지, 날짜순인지?
@@ -16,6 +17,17 @@ const Skill = () => {
   } = useSkillStore();
 
   useEffect(() => {
+    //만약 필터 조건의 모든 것이 false라면, skillList를 비워주고 return
+    if (
+      Object.keys(checkBoxes).every((key) => checkBoxes[key] === false) ||
+      selectedAlignBox === "" ||
+      selectedOrderBy === ""
+    ) {
+      setSkillList([]);
+      return;
+    }
+    setIsLoading(true);
+
     const params = new URLSearchParams({
       checkBoxes: JSON.stringify(checkBoxes),
       selectedAlignBox,
@@ -27,6 +39,11 @@ const Skill = () => {
       .then((res) => {
         console.log("skillList", res.data);
         setSkillList(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
       });
   }, [checkBoxes, selectedAlignBox, selectedOrderBy]);
 
@@ -37,8 +54,11 @@ const Skill = () => {
     >
       {/* 기술스택 글쓰기 버튼 */}
       <WriteBtn category="기술스택"></WriteBtn>
+
+      {/* 상단의 필터(종류,모아보기,정렬)*/}
       <SkillFilterContainer></SkillFilterContainer>
 
+      {/* 기술스택 카드 */}
       <CardContainer></CardContainer>
       <div className="h-96"></div>
     </div>

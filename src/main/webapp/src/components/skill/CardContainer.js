@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSkillStore } from "../../store/SkillStore";
 import Card from "./card/Card";
+import LoadingCard from "./loading/LoadingCard";
 
 const CardContainer = () => {
-  const { selectedCard, selectedView, skillList, setSelectedCard } =
+  const { selectedCard, selectedView, skillList, setSelectedCard, isLoading } =
     useSkillStore();
 
   useEffect(() => {
@@ -36,29 +37,31 @@ const CardContainer = () => {
       place-items-center mt-10
       `}
     >
-      {skillList.map((item) => (
-        <div
-          key={item.id}
-          id={`id${item.id}`}
-          style={{
-            zIndex: selectedCard === `id${item.id}` ? 1000 : 1,
-            position: "relative",
-          }}
-        >
-          <Card
-            cardId={`id${item.id}`}
-            createdAt={item.created_at}
-            name={item.name}
-            strength={item.strength}
-            totalDuration={item.total_duration}
-            type={item.type}
-            updatedAt={item.updated_at}
-            weakness={item.weakness}
-            writeThumbnail={item.write_thumbnail} //이까지 카드 구성 요소
-            selectedCard={selectedCard}
-          />
-        </div>
-      ))}
+      {isLoading && <LoadingCard selectedView={selectedView}></LoadingCard>}
+      {!isLoading &&
+        skillList.map((item) => (
+          <div
+            key={item.id}
+            id={`id${item.id}`}
+            style={{
+              zIndex: selectedCard === `id${item.id}` ? 1000 : 1,
+              position: "relative",
+            }}
+          >
+            <Card
+              cardId={`id${item.id}`}
+              createdAt={item.created_at}
+              name={item.name}
+              strength={item.strength}
+              totalDuration={item.total_duration}
+              type={item.type}
+              updatedAt={item.updated_at}
+              weakness={item.weakness}
+              writeThumbnail={item.write_thumbnail} //이까지 카드 구성 요소
+              selectedCard={selectedCard}
+            />
+          </div>
+        ))}
     </div>
   );
 };
