@@ -1,3 +1,20 @@
+@keyframes textGrow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.4);
+  }
+}
+@keyframes textGrowMore {
+  from {
+    font-size: 0em;
+  }
+  to {
+    font-size: 1.3em;
+  }
+}
+
 @keyframes containerGrow {
   0% {
     transform: translateX(0px) rotateY(0deg);
@@ -82,4 +99,11 @@
 .hiddenClass {
   transition: opacity 0.2s ease-in-out;
   opacity: 0;
+}
+
+.textSizeUp {
+  animation: textGrow 0.6s forwards;
+}
+.textSizeUpMore {
+  animation: textGrowMore 0.6s forwards;
 }
