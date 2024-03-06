@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import DevlogListElement from "../../devlog/DevlogListElement";
-import { formatCreatedAt } from "../../formatCreatedAt";
+import { formatCreatedAt } from "../../../util/formatCreatedAt";
 import { Link } from "react-router-dom";
 import { useStudyTimeStore } from "../../../store/StudyTimeStore";
 

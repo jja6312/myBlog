@@ -33,7 +33,7 @@ const MainMiddle = () => {
     md:ml-0 md:w-full 
     xl:ml-0"
     >
-      {/* 1년간 일별 공부시간 대시보드 */}
+      {/* 1년간 일별 학습시간 대시보드 */}
       <div
         className="text-lg font-semibold mt-8 mb-2 flex 
       flex-col justify-center items-start

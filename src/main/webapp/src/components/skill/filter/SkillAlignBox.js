@@ -17,7 +17,7 @@ ${text === selectedAlignBox ? "bg-[#2a2a2e]" : "bg-[#39393E]"}
     `}
         onClick={() => setSelectedAlignBox(text)}
       >
-        {text === "공부시간순" ? (
+        {text === "학습시간순" ? (
           <span className={`${selectedAlignBox === text && `text-yellow-200`}`}>
             <FontAwesomeIcon size="2xl" icon={faBookOpenReader} />
           </span>

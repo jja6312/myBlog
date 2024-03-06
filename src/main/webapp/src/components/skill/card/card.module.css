@@ -1,16 +1,22 @@
 @keyframes textGrow {
-  from {
+  0% {
     transform: scale(0);
   }
-  to {
+  30% {
+    transform: scale(0);
+  }
+  100% {
     transform: scale(1.4);
   }
 }
 @keyframes textGrowMore {
-  from {
+  0% {
     font-size: 0em;
   }
-  to {
+  30% {
+    font-size: 0em;
+  }
+  100% {
     font-size: 1.3em;
   }
 }
@@ -93,7 +99,7 @@
 }
 
 .CardContentBG {
-  background-image: url("../../../../public/image/card/cardContentBG2.jpg");
+  background-image: url("../../../../public/image/card/cardContentBG3.png");
 }
 
 .hiddenClass {

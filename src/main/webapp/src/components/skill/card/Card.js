@@ -143,6 +143,24 @@ const Card = ({
           className={`${styles.card} ${styles.cardBack}`}
           style={{ width: width, height: height }}
         ></div>
+        {/* 카드 제목 */}
+        <span
+          className={`absolute   text-black ${
+            !isSelected && selectedView === "3개씩 보기"
+              ? "text-[20px] font-bold top-[8px] left-[26px]"
+              : !isSelected && selectedView === "6개씩 보기"
+              ? "text-[9px] top-[6px] left-[14px]"
+              : isSelected && selectedView === "3개씩 보기"
+              ? `${styles.textSizeUp} font-extrabold -top-[132px] -left-[232px]`
+              : isSelected && selectedView === "6개씩 보기"
+              ? `${styles.textSizeUp} font-extrabold -top-[132px] -left-[232px]`
+              : ""
+          }
+          
+          `}
+        >
+          {name}
+        </span>
 
         {/* 누적학습시간이 없을 때와 있을 때, 카드 내에 다른 div(text)표시. */}
         {convertToFormat(totalDuration) === "0h 0m" ? (
@@ -153,28 +171,19 @@ const Card = ({
             
         
             ${
-              selectedView === "3개씩 보기"
+              !isSelected && selectedView === "3개씩 보기"
                 ? "bottom-[38px] left-[24px]"
-                : "bottom-[16px] left-[18px]"
+                : !isSelected && selectedView === "6개씩 보기"
+                ? "bottom-[20px] left-[20px] text-[7px]"
+                : isSelected && selectedView === "3개씩 보기"
+                ? `-translate-x-[230px] translate-y-[222px] ${styles.textSizeUpMore}`
+                : isSelected && selectedView === "6개씩 보기"
+                ? `-translate-x-[230px] translate-y-[222px] ${styles.textSizeUpMore}`
+                : ""
             }
-          ${
-            isSelected && selectedView === "3개씩 보기"
-              ? "-translate-x-[265px] -translate-y-[15px]"
-              : isSelected &&
-                selectedView === "6개씩 보기" &&
-                "-translate-x-[265px] translate-y-[115px]"
-          }
           z-40`}
           >
-            <span
-              className={`text-gray-700 
-              
-            ${
-              isSelected
-                ? styles.textSizeUpMore
-                : selectedView === "6개씩 보기" && "text-[7px]"
-            }`}
-            >
+            <span className={`text-gray-700`}>
               {name === "Dart"
                 ? "Flutter 학습 시간과 통합"
                 : "블로그 개설보다 먼저 학습"}
@@ -186,36 +195,17 @@ const Card = ({
             onClick={handleClick}
             className={`w-80 absolute flex flex-col cursor-pointer 
           ${
-            selectedView === "3개씩 보기"
+            !isSelected && selectedView === "3개씩 보기"
               ? "bottom-6 left-6"
-              : "bottom-3 left-3"
-          }
-          ${
-            isSelected && selectedView === "3개씩 보기"
-              ? "-translate-x-[190px] -translate-y-[21px] gap-2"
+              : !isSelected && selectedView === "6개씩 보기"
+              ? "bottom-3 left-3 text-[7px]"
               : isSelected &&
-                selectedView === "6개씩 보기" &&
-                "-translate-x-[190px] translate-y-[115px] "
+                `-translate-x-[230px] translate-y-[208px] ${styles.textSizeUpMore}`
           }
           z-40`}
           >
-            <span
-              className={`text-black ${
-                isSelected
-                  ? styles.textSizeUp
-                  : selectedView === "6개씩 보기" && "text-[7px]"
-              }`}
-            >
-              [누적 학습시간]{" "}
-            </span>
-            <span
-              className={`text-red-600 font-semibold 
-             ${
-               isSelected
-                 ? styles.textSizeUp
-                 : selectedView === "6개씩 보기" && "text-[10px]"
-             }`}
-            >
+            <span className={`text-black`}>[누적 학습시간] </span>
+            <span className="text-red-600 font-semibold">
               {convertToFormat(totalDuration)}
             </span>
           </div>

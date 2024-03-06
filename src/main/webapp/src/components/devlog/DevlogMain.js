@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DevlogListElement from "./DevlogListElement";
 import WriteBtn from "../common/button/WriteBtn";
-import { formatCreatedAt } from "../formatCreatedAt";
+import { formatCreatedAt } from "../../util/formatCreatedAt";
 import InfiniteScroll from "../InpiniteScroll";
 import { useDevlogStore } from "../../store/DevlogStore";
 import LoadingDevlogListElement from "./loading/LoadingDevlogListElement";

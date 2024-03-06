@@ -3,7 +3,7 @@
 <mapper namespace="skill.mapper.SkillWriteMapper">
     <select id="selectSkillWrites" parameterType="map" resultType="skill.bean.SkillWriteFilterDTO">
         <choose>
-            <when test="selectedAlignBox == '공부시간순'">
+            <when test="selectedAlignBox == '학습시간순'">
                 SELECT sw.*, COALESCE(SUM(st.duration_in_seconds), 0) AS total_duration
                 FROM skill_write AS sw
                 <!-- 조건에 따라 LEFT JOIN을 사용하고, JOIN 조건 내에 sw.category_name이 null이 아닐 경우에만 JOIN 수행 -->

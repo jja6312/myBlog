@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudyTimeAverageDTO {
-    private double averageStudyTimePerDay; // 평균 일일 공부시간
-    private double averageStudyTimePerWeekend; // 주말 평균 공부시간
-    private double averageStudyTimeAll; // 평균 총 공부시간
+    private double averageStudyTimePerDay; // 평균 일일 학습시간
+    private double averageStudyTimePerWeekend; // 주말 평균 학습시간
+    private double averageStudyTimeAll; // 평균 총 학습시간
 }
