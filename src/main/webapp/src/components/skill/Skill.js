@@ -11,7 +11,7 @@ const Skill = () => {
     setIsLoading,
     // 데이터를 불러올 때 사용할 필터 조건
     checkBoxes, //어떤 종류의 기술스택인지?
-    selectedAlignBox, //공부시간순인지, 날짜순인지?
+    selectedAlignBox, //학습시간순인지, 날짜순인지?
     selectedOrderBy, //오름차순인지?
     setSkillList, //불러온 데이터를 저장
   } = useSkillStore();

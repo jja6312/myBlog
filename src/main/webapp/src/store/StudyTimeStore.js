@@ -5,8 +5,8 @@ export const useStudyTimeStore = create((set) => ({
   //메인 왼쪽, 레벨 및 경험치
   level: "",
   exp: "",
-  studyTimeHourSum: 0, //총 공부시간(시간단위)
-  totalStudyTimePerCategory: [], //카테고리별 총 공부시간
+  studyTimeHourSum: 0, //총 학습시간(시간단위)
+  totalStudyTimePerCategory: [], //카테고리별 총 학습시간
 
   // 메인 중간-상단 깃허브 대시보드
   yearlyStudyTime: [], // 연간, 날짜별 공부량
@@ -20,9 +20,9 @@ export const useStudyTimeStore = create((set) => ({
   sortedCategoryNames: [], //
 
   // 메인 오른쪽, 기간별 학습시간
-  averageStudyTimePerDay: 0, //평균 주중 공부시간(분단위)
-  averageStudyTimePerWeekend: 0, //평균 주말 공부시간(분단위)
-  averageStudyTimeAll: 0, //평균 일자별 공부시간(분단위)
+  averageStudyTimePerDay: 0, //평균 주중 학습시간(분단위)
+  averageStudyTimePerWeekend: 0, //평균 주말 학습시간(분단위)
+  averageStudyTimeAll: 0, //평균 일자별 학습시간(분단위)
 
   setYearlyStudyTime: (data) => set({ yearlyStudyTime: data }),
   setClickedDate: (date) => set({ clickedDate: date }),

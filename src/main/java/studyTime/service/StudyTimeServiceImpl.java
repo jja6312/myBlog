@@ -19,16 +19,15 @@ public class StudyTimeServiceImpl implements StudyTimeService {
     private final CategoryRepository categoryRepository;
     private final StudyTimeMapper studyTimeMapper;
 
-
     @Autowired
     public StudyTimeServiceImpl(StudyTimeRepository studyTimeRepository, CategoryRepository categoryRepository,
-                                StudyTimeMapper studyTimeMapper) {
+            StudyTimeMapper studyTimeMapper) {
         this.studyTimeRepository = studyTimeRepository;
         this.categoryRepository = categoryRepository;
         this.studyTimeMapper = studyTimeMapper;
     }
 
-    // 스톱워치 중지시, 카테고리별로 공부시간을 저장한다.
+    // 스톱워치 중지시, 카테고리별로 학습시간을 저장한다.
     @Override
     public void createStudyTime(StudyTimeDTO studyTimeDTO) {
         StudyTime studyTime = convertToEntity(studyTimeDTO);
@@ -75,17 +74,17 @@ public class StudyTimeServiceImpl implements StudyTimeService {
     @Override
     public StudyTimeAverageDTO getAverageStudyTime() {
 
-        // 평일 평균 공부시간
+        // 평일 평균 학습시간
         Double averageStudyTimePerDay = studyTimeRepository.findAverageWeekdayStudyTimeInMinutes();
         if (averageStudyTimePerDay == null)
             averageStudyTimePerDay = (double) 0;// null 예외처리
 
-        // 주말 평균 공부시간
+        // 주말 평균 학습시간
         Double averageStudyTimePerWeekend = studyTimeRepository.findAverageWeekendStudyTimeInMinutes();
         if (averageStudyTimePerWeekend == null)
             averageStudyTimePerWeekend = (double) 0;// null 예외처리
 
-        // 합계 평균 공부시간
+        // 합계 평균 학습시간
         Double averageStudyTimeAll = studyTimeRepository.findAverageAllStudyTimeInMinutes();
         if (averageStudyTimeAll == null)
             averageStudyTimeAll = (double) 0;
@@ -97,7 +96,7 @@ public class StudyTimeServiceImpl implements StudyTimeService {
 
     }
 
-    //(메인화면 중간 왼쪽)일별, 카테고리별 공부량
+    // (메인화면 중간 왼쪽)일별, 카테고리별 공부량
     @Override
     public List<StudyTimeByDayGroupByCategoryDTO> getStudyTimeByDayGroupByCategory(String clickedDate) {
         LocalDate date = LocalDate.parse(clickedDate);
@@ -106,7 +105,8 @@ public class StudyTimeServiceImpl implements StudyTimeService {
 
         return studyTimeRepository.findStudyTimeByDayGroupByCategory(startOfDay, startOfNextDay);
     }
-    //(메인화면 중간 오른쪽)최근 1주일,최근 1달,최근 1년 카테고리별 공부 시간
+
+    // (메인화면 중간 오른쪽)최근 1주일,최근 1달,최근 1년 카테고리별 공부 시간
     @Override
     public List<StudyTimeGroupByCategoryDTO> getStudyTimeGroupByCategory(String range) {
         LocalDate startDate = LocalDate.now(); // 기본값 설정
@@ -129,6 +129,5 @@ public class StudyTimeServiceImpl implements StudyTimeService {
     public String getStudyTimeHourSum() {
         return studyTimeMapper.getStudyTimeHourSum();
     }
-
 
 }

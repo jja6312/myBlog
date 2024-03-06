@@ -46,7 +46,7 @@ const SkillFilterContainer = () => {
         grid grid-cols-4 place-items-center gap-1
         `}
         >
-          <SkillAlignBox text="공부시간순"></SkillAlignBox>
+          <SkillAlignBox text="학습시간순"></SkillAlignBox>
           <SkillAlignBox text="날짜순"></SkillAlignBox>
           <div className="col-span-2 flex flex-col w-full h-full">
             <SkillAlignOrderBy text="오름차순"></SkillAlignOrderBy>

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { formatTime } from "../../formatTime";
+import { formatTime } from "../../../util/formatTime";
 
 // 메인의 왼쪽. 스탑워치 표시--[24.01.27 21:36 정지안]
 const Stopwatch = () => {
