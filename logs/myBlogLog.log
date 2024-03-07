@@ -1851,3 +1851,299 @@ Caused by: java.io.IOException: Could not find resource StudyTimeMapper.xml
 2024-03-07T21:54:57.779+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
 2024-03-07T21:54:57.780+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
 2024-03-07T21:54:57.782+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:33:21.404+09:00  WARN 20328 --- [HikariPool-3 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=27m10s262ms776µs100ns).
+2024-03-07T22:36:40.951+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-03-07T22:36:40.951+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-03-07T22:36:40.951+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-03-07T22:36:40.951+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-03-07T22:36:40.952+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-03-07T22:36:40.953+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-03-07T22:36:40.954+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-03-07T22:36:40.954+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-03-07T22:36:40.956+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-03-07T22:36:40.956+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-03-07T22:36:40.956+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-03-07T22:36:40.956+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-03-07T22:36:41.094+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.094+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [23077]
+2024-03-07T22:36:41.095+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.097+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.097+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["302.21"]
+2024-03-07T22:36:41.097+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.099+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.100+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.101+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-03-07", parameters={masked}
+2024-03-07T22:36:41.102+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-03-07T22:36:41.103+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-03-07T22:36:41.105+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-03-07", parameters={masked}
+2024-03-07T22:36:41.106+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-03-07T22:36:41.107+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-03-07, categoryName=데이터베이스, studyMinutes=313.75), StudyT (truncated)...]
+2024-03-07T22:36:41.113+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.113+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.123+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-03-07T22:36:41.123+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-03-07T22:36:41.124+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-03-07T22:36:41.124+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-03-07T22:36:41.165+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.165+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [23077]
+2024-03-07T22:36:41.165+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.166+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.166+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["302.21"]
+2024-03-07T22:36:41.167+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeByDayGroupByCategoryDTO(studyMinutesDay=313, categoryName=데이터베이스), StudyTimeByDayGroupByCa (truncated)...]
+2024-03-07T22:36:41.167+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.167+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-03-07T22:36:41.171+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.172+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.173+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-03-07T22:36:41.175+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-03-07T22:36:41.175+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-03-07T22:36:41.176+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-03-07T22:36:41.188+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.190+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=562.0884058, averageStudyTimePerWeekend=482.01666667, ave (truncated)...]
+2024-03-07T22:36:41.191+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.193+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-03-07T22:36:41.193+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-03-07T22:36:41.226+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.226+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.227+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-03-07T22:36:41.227+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-03-07, categoryName=데이터베이스, studyMinutes=313.75), StudyT (truncated)...]
+2024-03-07T22:36:41.228+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.229+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.379+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:41.380+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=562.0884058, averageStudyTimePerWeekend=482.01666667, ave (truncated)...]
+2024-03-07T22:36:41.382+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:41.550+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:46.860+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-03-07T22:36:46.868+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-03-07T22:36:46.869+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-03-07T22:36:46.878+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:36:47.388+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:36:53.289+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-03-07T22:36:53.293+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:37:04.945+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-03-07T22:37:04.945+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-03-07T22:37:05.951+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:37:05.991+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=23, name=Flutter, type=FrontEnd, strength=대규모 트래픽을 직접 경험하기 위해 웹 및 애플리케이션 프로젝 (truncated)...]
+2024-03-07T22:37:05.995+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-03-07T22:37:05.996+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-03-07T22:37:06.045+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:37:07.045+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:37:07.071+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=23, name=Flutter, type=FrontEnd, strength=대규모 트래픽을 직접 경험하기 위해 웹 및 애플리케이션 프로젝 (truncated)...]
+2024-03-07T22:37:07.111+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:37:08.337+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=Flutter", parameters={masked}
+2024-03-07T22:37:08.338+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:37:08.601+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:37:08.602+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=24, title=HAXM installation failed, 설치 에러 해결, topic=프로젝트 / 트러블슈팅, notionPageId=2-13- (truncated)...]
+2024-03-07T22:37:08.607+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:44:10.641+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-03-07T22:44:10.643+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-03-07T22:44:11.813+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:44:11.853+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=23, name=Flutter, type=FrontEnd, strength=대규모 트래픽을 직접 경험하기 위해 웹 및 애플리케이션 프로젝 (truncated)...]
+2024-03-07T22:44:11.859+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-03-07T22:44:11.860+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-03-07T22:44:11.913+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:44:12.748+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=Flutter", parameters={masked}
+2024-03-07T22:44:12.748+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:44:12.995+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:44:13.001+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=24, title=HAXM installation failed, 설치 에러 해결, topic=프로젝트 / 트러블슈팅, notionPageId=2-13- (truncated)...]
+2024-03-07T22:44:13.008+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:44:13.012+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:44:13.089+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=23, name=Flutter, type=FrontEnd, strength=대규모 트래픽을 직접 경험하기 위해 웹 및 애플리케이션 프로젝 (truncated)...]
+2024-03-07T22:44:13.286+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:44:14.966+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=Zustand", parameters={masked}
+2024-03-07T22:44:14.967+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:44:15.087+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:44:15.088+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-03-07T22:44:15.089+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:45:04.582+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:45:04.582+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:45:05.089+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:45:05.099+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:45:05.132+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:48:07.942+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=Mybatis", parameters={masked}
+2024-03-07T22:48:07.943+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:48:08.072+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:48:08.072+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-03-07T22:48:08.073+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:48:09.697+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:48:09.698+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:48:10.192+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:48:10.199+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:48:10.210+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:48:11.076+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:48:11.077+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:48:11.572+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:48:11.579+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:48:11.593+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:49:51.635+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:49:51.635+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:49:52.080+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:49:52.092+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:49:52.118+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:50:07.767+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:50:07.768+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:50:08.310+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:50:08.336+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:50:08.419+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:50:15.251+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=Naver%20Cloud%20Platform", parameters={masked}
+2024-03-07T22:50:15.251+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:50:15.370+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:50:15.371+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-03-07T22:50:15.372+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:50:28.695+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:50:28.695+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:50:29.159+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:50:29.166+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:50:29.205+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:50:34.645+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:50:34.645+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:50:35.202+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:50:35.213+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:50:35.224+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:51:00.977+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:51:00.977+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:51:01.454+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:51:01.461+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:51:01.471+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:51:04.319+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:51:04.319+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:51:04.805+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:51:04.810+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:51:04.820+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:52:53.379+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:52:53.380+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:52:53.852+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:52:53.857+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:52:53.867+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:52:57.802+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:52:57.803+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:52:58.325+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:52:58.329+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:52:58.342+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T22:53:06.483+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T22:53:06.483+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T22:53:06.980+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T22:53:06.984+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T22:53:06.995+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:06.880+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-03-07T23:05:06.880+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-03-07T23:05:08.100+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:08.132+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=23, name=Flutter, type=FrontEnd, strength=대규모 트래픽을 직접 경험하기 위해 웹 및 애플리케이션 프로젝 (truncated)...]
+2024-03-07T23:05:08.137+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-03-07T23:05:08.137+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-03-07T23:05:08.167+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:08.732+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T23:05:08.733+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T23:05:08.913+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:08.954+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=23, name=Flutter, type=FrontEnd, strength=대규모 트래픽을 직접 경험하기 위해 웹 및 애플리케이션 프로젝 (truncated)...]
+2024-03-07T23:05:09.020+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:09.337+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:09.343+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T23:05:09.353+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:18.778+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-03-07T23:05:18.778+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-03-07T23:05:19.339+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:19.346+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWrite(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2-IAM-3222 (truncated)...]
+2024-03-07T23:05:19.357+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:34.471+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-03-07T23:05:34.471+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-03-07T23:05:35.113+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.015+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-03-07T23:05:36.014+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-03-07T23:05:36.015+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-03-07T23:05:36.015+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-03-07T23:05:36.016+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-03-07", parameters={masked}
+2024-03-07T23:05:36.017+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-03-07T23:05:36.018+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-03-07T23:05:36.019+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-03-07T23:05:36.019+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-03-07", parameters={masked}
+2024-03-07T23:05:36.019+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-03-07T23:05:36.158+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.159+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-03-07T23:05:36.160+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.160+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.161+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["303.02"]
+2024-03-07T23:05:36.162+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.162+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.163+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-03-07, categoryName=데이터베이스, studyMinutes=313.75), StudyT (truncated)...]
+2024-03-07T23:05:36.163+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.163+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.163+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [25968]
+2024-03-07T23:05:36.163+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeByDayGroupByCategoryDTO(studyMinutesDay=313, categoryName=데이터베이스), StudyTimeByDayGroupByCa (truncated)...]
+2024-03-07T23:05:36.165+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.165+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.165+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.169+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-03-07T23:05:36.169+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-03-07", parameters={masked}
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-03-07T23:05:36.170+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-03-07T23:05:36.249+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.249+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.249+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["303.02"]
+2024-03-07T23:05:36.250+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-03-07, categoryName=데이터베이스, studyMinutes=313.75), StudyT (truncated)...]
+2024-03-07T23:05:36.251+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.253+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.259+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.259+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-03-07T23:05:36.261+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.261+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-03-07T23:05:36.261+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-03-07", parameters={masked}
+2024-03-07T23:05:36.262+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-03-07T23:05:36.262+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-03-07T23:05:36.266+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.267+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-03-07T23:05:36.269+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-03-07T23:05:36.269+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.269+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-03-07T23:05:36.340+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.341+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [25968]
+2024-03-07T23:05:36.341+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.342+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.342+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeByDayGroupByCategoryDTO(studyMinutesDay=313, categoryName=데이터베이스), StudyTimeByDayGroupByCa (truncated)...]
+2024-03-07T23:05:36.343+09:00 DEBUG 20328 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.372+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.372+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-03-07T23:05:36.373+09:00 DEBUG 20328 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.449+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.449+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=562.0884058, averageStudyTimePerWeekend=482.01666667, ave (truncated)...]
+2024-03-07T23:05:36.450+09:00 DEBUG 20328 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:36.451+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-03-07T23:05:36.452+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-03-07T23:05:36.701+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:36.702+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=562.0884058, averageStudyTimePerWeekend=482.01666667, ave (truncated)...]
+2024-03-07T23:05:36.702+09:00 DEBUG 20328 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:40.174+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-03-07T23:05:40.181+09:00 DEBUG 20328 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:40.181+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-03-07T23:05:40.183+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-03-07T23:05:40.200+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/devlog/getDevlogWriteList", parameters={}
+2024-03-07T23:05:40.200+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-03-07T23:05:41.196+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:44.593+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:48.021+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-03-07T23:05:48.026+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-03-07T23:05:48.026+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-03-07T23:05:48.031+09:00 DEBUG 20328 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:48.040+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/devlog/getDevlogWriteList", parameters={}
+2024-03-07T23:05:48.040+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-03-07T23:05:48.883+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:51.181+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [[DevlogWrite(id=2, title=[개인블로그 제작기] base64로 파일 업로드 구현, topic=프로젝트 / 트러블슈팅, notionPageId=0203-aws-s3 (truncated)...]
+2024-03-07T23:05:51.314+09:00 DEBUG 20328 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:05:52.398+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:56.031+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-03-07T23:05:56.032+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-03-07T23:05:56.983+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-03-07T23:05:57.320+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-03-07T23:05:57.323+09:00 DEBUG 20328 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:06:00.063+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [[DevlogWrite(id=2, title=[개인블로그 제작기] base64로 파일 업로드 구현, topic=프로젝트 / 트러블슈팅, notionPageId=0203-aws-s3 (truncated)...]
+2024-03-07T23:06:00.193+09:00 DEBUG 20328 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-03-07T23:06:02.893+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-03-07T23:06:02.901+09:00 DEBUG 20328 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
