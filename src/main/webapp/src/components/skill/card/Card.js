@@ -56,6 +56,7 @@ const Card = ({
   }, [selectedCard]);
 
   useEffect(() => {
+    // 선택된 카드에 대한 스타일 적용
     if (isSelected) {
       cardRefFront.current.classList.add(styles.cardActive);
       cardRefBack.current.classList.add(styles.cardActive);
@@ -210,7 +211,7 @@ const Card = ({
             </span>
           </div>
         )}
-        <CardContent isSelected={isSelected}></CardContent>
+        <CardContent name={name} isSelected={isSelected}></CardContent>
       </div>
     </div>
   );

@@ -15,10 +15,10 @@ public class SkillWriteFilterDTO {
     private String type;
     private String strength;
     private String weakness;
-    private String write_thumbnail;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    private String writeThumbnail;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-    private Long total_duration;
+    private Long totalDuration;
 
 }

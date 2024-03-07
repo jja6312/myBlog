@@ -8,5 +8,6 @@
     <mappers>
         <mapper resource="StudyTimeMapper.xml"/>
         <mapper resource="SkillWriteMapper.xml"/>
+        <mapper resource="DevlogWriteMapper.xml"/>
     </mappers>
 </configuration>

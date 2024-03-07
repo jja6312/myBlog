@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import devlog.mapper.DevlogWriteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +30,9 @@ public class DevlogServiceImpl implements DevlogService {
 	private CategoryRepository categoryRepository;
 	@Autowired
 	private TagRepository tagRepository;
+	@Autowired
+	private DevlogWriteMapper devlogWriteMapper;
+
 
 	@Override
 	public void saveWrite(DevlogWriteDTO devlogWriteDTO) {
@@ -37,6 +41,13 @@ public class DevlogServiceImpl implements DevlogService {
 
 		devlogRepository.save(devlogWrite);
 	}
+
+	//기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기 --[24.03.07]
+	@Override
+	public List<DevlogWrite> getDevlogWriteListByCategoryName(String name) {
+		return devlogWriteMapper.getDevlogWriteListByCategoryName(name);
+	}
+
 	private DevlogWrite convertToEntity(DevlogWriteDTO devlogWriteDTO) {
 		DevlogWrite devlogWrite = new DevlogWrite();
 		devlogWrite.setTitle(devlogWriteDTO.getTitle());
