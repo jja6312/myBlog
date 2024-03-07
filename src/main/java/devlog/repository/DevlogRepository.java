@@ -12,7 +12,8 @@ import devlog.bean.DevlogWrite;
 //개발일지 관련 Repository --[24.1.29 정지안]
 public interface DevlogRepository extends JpaRepository<DevlogWrite, Long> {
 
-	//메인 화면에서 선택된 일자에 따른 개발일지 목록을 불러온다. 
+	// 메인 화면에서 선택된 일자에 따른 개발일지 목록을 불러온다.
 	@Query("SELECT dw FROM DevlogWrite dw WHERE dw.createdAt >= :startDate AND dw.createdAt < :endDate")
-    List<DevlogWrite> findAllByDate(@Param("startDate")LocalDateTime startDate, @Param("endDate")LocalDateTime endDate);
+	List<DevlogWrite> findAllByDate(@Param("startDate") LocalDateTime startDate,
+			@Param("endDate") LocalDateTime endDate);
 }

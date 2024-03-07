@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./card.module.css";
 import CardContent from "./CardContent";
 import { useSkillStore } from "../../../store/SkillStore";
+import axios from "axios";
 
 const Card = ({
   cardId,
@@ -56,6 +57,18 @@ const Card = ({
   }, [selectedCard]);
 
   useEffect(() => {
+    // 선택된 카드의 카테고리 name으로 개발일지 불러오기
+    if (isSelected) {
+      axios
+        .get(
+          `http://43.203.18.91:8080/devlog/getDevlogWriteListByCategoryName?name=${name}`
+        )
+        .then((res) => {
+          console.log("카테고리별데이터!!!:", res.data);
+        });
+    }
+
+    // 선택된 카드에 대한 스타일 적용
     if (isSelected) {
       cardRefFront.current.classList.add(styles.cardActive);
       cardRefBack.current.classList.add(styles.cardActive);

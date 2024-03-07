@@ -23,4 +23,6 @@ public interface DevlogService {
 	List<DevlogWrite> getDevlogWriteListByDate(String clickedDate);
 
     void saveWrite(DevlogWriteDTO devlogWriteDTO);
+
+    List<DevlogWrite> getDevlogWriteListByCategoryName(String name);
 }

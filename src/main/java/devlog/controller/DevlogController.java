@@ -60,4 +60,11 @@ public class DevlogController {
         return devlogService.getDevlogWriteListByDate(clickedDate);
     }
 
+    //---------기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기
+
+    @GetMapping(value = "/devlog/getDevlogWriteListByCategoryName")
+    public ResponseEntity<List<DevlogWrite>> getDevlogWriteListByCategoryName(@RequestParam("name") String name ){
+        return ResponseEntity.ok(devlogService.getDevlogWriteListByCategoryName(name));
+    }
+
 }
