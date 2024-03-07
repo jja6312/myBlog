@@ -50,14 +50,14 @@ const CardContainer = () => {
           >
             <Card
               cardId={`id${item.id}`}
-              createdAt={item.created_at}
+              createdAt={item.createdAt}
               name={item.name}
               strength={item.strength}
-              totalDuration={item.total_duration}
+              totalDuration={item.totalDuration}
               type={item.type}
-              updatedAt={item.updated_at}
+              updatedAt={item.updatedAt}
               weakness={item.weakness}
-              writeThumbnail={item.write_thumbnail} //이까지 카드 구성 요소
+              writeThumbnail={item.writeThumbnail} //이까지 카드 구성 요소
               selectedCard={selectedCard}
             />
           </div>

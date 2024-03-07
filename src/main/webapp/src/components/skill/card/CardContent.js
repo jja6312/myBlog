@@ -3,8 +3,9 @@ import styles from "./card.module.css";
 import { useSkillStore } from "../../../store/SkillStore";
 import CloseBtnModal from "../btn/CloseBtnModal";
 import { formatCreatedAt } from "../../../util/formatCreatedAt";
+import axios from "axios";
 
-const CardContent = ({ isSelected }) => {
+const CardContent = ({ isSelected, name }) => {
   const {
     selectedView,
     setSelectedCard,
@@ -12,9 +13,27 @@ const CardContent = ({ isSelected }) => {
     selectedCard,
     selectedSkill,
     setSelectedSkill,
+    setDevlogWriteList,
   } = useSkillStore();
 
   useEffect(() => {
+    // 선택된 카드의 카테고리 name으로 개발일지 불러오기
+    if (isSelected) {
+      axios
+        .get(
+          `http://localhost:8080/devlog/getDevlogWriteListByCategoryName?name=${name}`
+        )
+        .then((res) => {
+          setDevlogWriteList(res.data);
+          console.log("devlogWriteList", res.data);
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    }
+
+    //-----------------------------------------
+    // 선택된 카드의 skill정보를 SkillList에서 filter
     if (isSelected && skillList.length > 0) {
       const filteredData = skillList.find(
         (skill) => `id${skill.id}` === selectedCard
@@ -25,14 +44,7 @@ const CardContent = ({ isSelected }) => {
     } else {
       setSelectedSkill(null);
     }
-    console.log("selectedSkill", selectedSkill);
   }, [isSelected]);
-
-  useEffect(() => {
-    if (isSelected) {
-      console.log(selectedSkill);
-    }
-  }, [selectedSkill]);
 
   return (
     <div
@@ -66,7 +78,7 @@ const CardContent = ({ isSelected }) => {
               <>
                 <span className="text-yellow-400 text-xl">첫 만남</span>
                 <span>
-                  {selectedSkill && formatCreatedAt(selectedSkill.created_at)}
+                  {selectedSkill && formatCreatedAt(selectedSkill.createdAt)}
                 </span>
                 <br></br>
               </>
@@ -91,7 +103,12 @@ const CardContent = ({ isSelected }) => {
                 <br></br>
               </>
             }
-            {<span className="text-yellow-400 text-xl">관련된 개발일지</span>}
+            {
+              <>
+                <span className="text-yellow-400 text-xl">관련된 개발일지</span>
+                <span></span>
+              </>
+            }
             {/* {(<span>관련된 프로젝트</span>)}
             {(<span>관련된 학습도서</span>)}
             {(<span>관련된 학습강의</span>)} */}
