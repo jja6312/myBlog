@@ -7,15 +7,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import devlog.bean.*;
 import devlog.mapper.DevlogWriteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import devlog.bean.Category;
-import devlog.bean.DevlogWrite;
-import devlog.bean.DevlogWriteDTO;
-import devlog.bean.Tag;
 import devlog.repository.CategoryRepository;
 import devlog.repository.DevlogRepository;
 import devlog.repository.TagRepository;
@@ -44,7 +41,7 @@ public class DevlogServiceImpl implements DevlogService {
 
 	//기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기 --[24.03.07]
 	@Override
-	public List<DevlogWrite> getDevlogWriteListByCategoryName(String name) {
+	public List<DevlogWriteSkillDTO> getDevlogWriteListByCategoryName(String name) {
 		return devlogWriteMapper.getDevlogWriteListByCategoryName(name);
 	}
 

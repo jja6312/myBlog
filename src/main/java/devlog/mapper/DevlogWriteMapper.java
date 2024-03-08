@@ -1,9 +1,10 @@
 package devlog.mapper;
 
 import devlog.bean.DevlogWrite;
+import devlog.bean.DevlogWriteSkillDTO;
 
 import java.util.List;
 
 public interface DevlogWriteMapper {
-    List<DevlogWrite> getDevlogWriteListByCategoryName(String name);
+    List<DevlogWriteSkillDTO> getDevlogWriteListByCategoryName(String name);
 }

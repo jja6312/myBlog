@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./card.module.css";
 import CardContent from "./CardContent";
 import { useSkillStore } from "../../../store/SkillStore";
+import CardDevlog from "./CardDevlog";
 
 const Card = ({
   cardId,
@@ -15,7 +16,7 @@ const Card = ({
   writeThumbnail,
   selectedCard,
 }) => {
-  const { selectedView, setSelectedCard } = useSkillStore();
+  const { selectedView, setSelectedCard, devlogWriteList } = useSkillStore();
   const cardRef = useRef(null);
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
@@ -212,6 +213,15 @@ const Card = ({
           </div>
         )}
         <CardContent name={name} isSelected={isSelected}></CardContent>
+        <div
+          className={`absolute -left-[280px] -bottom-[420px] transition-all duration-200 ${
+            isSelected && devlogWriteList.length > 0
+              ? "flex opacity-100"
+              : "hidden opacity-0"
+          }`}
+        >
+          <CardDevlog></CardDevlog>
+        </div>
       </div>
     </div>
   );

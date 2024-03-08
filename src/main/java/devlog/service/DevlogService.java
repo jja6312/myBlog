@@ -2,12 +2,9 @@ package devlog.service;
 
 import java.util.List;
 
+import devlog.bean.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import devlog.bean.Category;
-import devlog.bean.DevlogWrite;
-import devlog.bean.DevlogWriteDTO;
-import devlog.bean.Tag;
 import jakarta.servlet.http.HttpSession;
 
 public interface DevlogService {
@@ -24,5 +21,5 @@ public interface DevlogService {
 
     void saveWrite(DevlogWriteDTO devlogWriteDTO);
 
-    List<DevlogWrite> getDevlogWriteListByCategoryName(String name);
+    List<DevlogWriteSkillDTO> getDevlogWriteListByCategoryName(String name);
 }
