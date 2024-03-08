@@ -2,6 +2,7 @@ package devlog.controller;
 
 import java.util.List;
 
+import devlog.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import devlog.bean.Category;
-import devlog.bean.DevlogWrite;
-import devlog.bean.DevlogWriteDTO;
-import devlog.bean.Tag;
 import devlog.service.DevlogService;
 import jakarta.servlet.http.HttpSession;
 
@@ -63,7 +60,7 @@ public class DevlogController {
     //---------기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기
 
     @GetMapping(value = "/devlog/getDevlogWriteListByCategoryName")
-    public ResponseEntity<List<DevlogWrite>> getDevlogWriteListByCategoryName(@RequestParam("name") String name ){
+    public ResponseEntity<List<DevlogWriteSkillDTO>> getDevlogWriteListByCategoryName(@RequestParam("name") String name ){
         return ResponseEntity.ok(devlogService.getDevlogWriteListByCategoryName(name));
     }
 

@@ -4,7 +4,6 @@ import { useSkillStore } from "../../../store/SkillStore";
 import CloseBtnModal from "../btn/CloseBtnModal";
 import { formatCreatedAt } from "../../../util/formatCreatedAt";
 import axios from "axios";
-import CardContentDevlogListElement from "./CardContentDevlogListElement";
 
 const CardContent = ({ isSelected, name }) => {
   const {
@@ -14,7 +13,7 @@ const CardContent = ({ isSelected, name }) => {
     selectedCard,
     selectedSkill,
     setSelectedSkill,
-    devlogWriteList,
+
     setDevlogWriteList,
   } = useSkillStore();
 
@@ -105,24 +104,7 @@ const CardContent = ({ isSelected, name }) => {
                 <br></br>
               </>
             }
-            <>
-              {devlogWriteList.length > 0 && (
-                <span className="text-yellow-400 text-xl">관련된 개발일지</span>
-              )}
 
-              {[...devlogWriteList].reverse().map((item) => (
-                <CardContentDevlogListElement
-                  key={item.id}
-                  title={item.title}
-                  createdAt={item.createdAt}
-                  category={item.category}
-                  topic={item.topic}
-                  tag={item.tag}
-                  notionPageId={item.notionPageId}
-                  writeThumbnail={item.writeThumbnail}
-                />
-              ))}
-            </>
             {/* {(<span>관련된 프로젝트</span>)}
             {(<span>관련된 학습도서</span>)}
             {(<span>관련된 학습강의</span>)} */}
