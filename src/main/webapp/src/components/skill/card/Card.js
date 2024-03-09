@@ -15,8 +15,9 @@ const Card = ({
   // weakness,
   writeThumbnail,
   selectedCard,
+  categoryName,
 }) => {
-  const { selectedView, setSelectedCard, devlogWriteList } = useSkillStore();
+  const { selectedView, setSelectedCard } = useSkillStore();
   const cardRef = useRef(null);
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
@@ -215,9 +216,7 @@ const Card = ({
         <CardContent name={name} isSelected={isSelected}></CardContent>
         <div
           className={`absolute -left-[280px] -bottom-[420px] transition-all duration-200 ${
-            isSelected && devlogWriteList.length > 0
-              ? "flex opacity-100"
-              : "hidden opacity-0"
+            isSelected && categoryName ? "flex opacity-100" : "hidden opacity-0"
           }`}
         >
           <CardDevlog></CardDevlog>

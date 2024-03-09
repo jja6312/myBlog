@@ -59,6 +59,7 @@ const CardContainer = () => {
               weakness={item.weakness}
               writeThumbnail={item.writeThumbnail} //이까지 카드 구성 요소
               selectedCard={selectedCard}
+              categoryName={item.categoryName} //카드 클릭시 개발일지 div를 빠르게 띄우기 위해 검사로직에 필요.(null이면 띄우지 않음)
             />
           </div>
         ))}

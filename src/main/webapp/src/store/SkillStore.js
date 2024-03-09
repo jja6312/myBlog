@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const useSkillStore = create((set) => ({
   // 0.로딩----------------------------------------------------
   isLoading: false,
+  isLoadingCardDevlog: false,
   // 1.종류----------------------------------------------------
   selectedCard: null,
   checkBoxes: {
@@ -35,6 +36,7 @@ export const useSkillStore = create((set) => ({
   // 공통 -----------------------------------------------------
   // 0.로딩.set----------------------------------------------------
   setIsLoading: (bool) => set({ isLoading: bool }),
+  setIsLoadingCardDevlog: (bool) => set({ isLoadingCardDevlog: bool }),
   //-------------------------------------------------------------
   // 1.종류.set----------------------------------------------------
   setSelectedCard: (id) => set({ selectedCard: id }),

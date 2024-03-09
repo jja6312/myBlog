@@ -13,11 +13,13 @@ const CardContent = ({ isSelected, name }) => {
     selectedCard,
     selectedSkill,
     setSelectedSkill,
-
     setDevlogWriteList,
+
+    setIsLoadingCardDevlog,
   } = useSkillStore();
 
   useEffect(() => {
+    setIsLoadingCardDevlog(true);
     // 선택된 카드의 카테고리 name으로 개발일지 불러오기
     if (isSelected) {
       axios
@@ -27,9 +29,11 @@ const CardContent = ({ isSelected, name }) => {
         .then((res) => {
           setDevlogWriteList(res.data);
           console.log("devlogWriteList", res.data);
+          setIsLoadingCardDevlog(false);
         })
         .catch((err) => {
           console.log("err", err);
+          setIsLoadingCardDevlog(false);
         });
     }
 
@@ -45,6 +49,10 @@ const CardContent = ({ isSelected, name }) => {
     } else {
       setSelectedSkill(null);
     }
+
+    //-----------------------------------------
+    //만약 카드가 선택 해제되면, 선택된 스킬별 개발일지를 초기화
+    if (!isSelected) setDevlogWriteList([]);
   }, [isSelected]);
 
   return (

@@ -17,7 +17,7 @@ const CardContentDevlogListElement = ({
   return (
     <div id={key}>
       <div className="group cursor-pointer w-full flex flex-col">
-        <hr className="border-gray-500 my-5 "></hr>
+        <hr className="border-gray-800 my-5 "></hr>
         <Link
           to={`/readForm?notionPageId=${notionPageId}&createdAt=${createdAt}&title=${title}&category=${categoryName}&tag=${tagName}&topic=${topic}`}
         >
