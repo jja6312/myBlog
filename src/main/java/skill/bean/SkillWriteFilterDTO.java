@@ -20,5 +20,6 @@ public class SkillWriteFilterDTO {
     private LocalDateTime updatedAt;
 
     private Long totalDuration;
+    private String categoryName;
 
 }
