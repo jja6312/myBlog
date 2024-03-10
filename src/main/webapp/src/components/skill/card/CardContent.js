@@ -24,7 +24,7 @@ const CardContent = ({ isSelected, name }) => {
     if (isSelected) {
       axios
         .get(
-          `http://43.203.18.91:8080/devlog/getDevlogWriteListByCategoryName?name=${name}`
+          `http://localhost:8080/devlog/getDevlogWriteListByCategoryName?name=${name}`
         )
         .then((res) => {
           setDevlogWriteList(res.data);
