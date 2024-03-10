@@ -215,9 +215,17 @@ const Card = ({
         )}
         <CardContent name={name} isSelected={isSelected}></CardContent>
         <div
-          className={`absolute -left-[280px] -bottom-[420px] transition-all duration-200 ${
+          className={`absolute -left-[280px]  transition-all duration-200 
+          ${
             isSelected && categoryName ? "flex opacity-100" : "hidden opacity-0"
-          }`}
+          }
+          ${
+            selectedView === "3개씩 보기"
+              ? "-bottom-[266px]"
+              : selectedView === "6개씩 보기" && "-bottom-[420px]"
+          }
+          
+          `}
         >
           <CardDevlog></CardDevlog>
         </div>

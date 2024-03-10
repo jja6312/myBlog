@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="App flex-col justify-start items-start bg-dark">
+        <div className="App flex-col justify-start items-start bg-dark min-h-screen">
           <Header></Header>
           <Routes>
             <Route path="/" element={<Main />} />

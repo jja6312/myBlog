@@ -60,7 +60,7 @@ const Skill = () => {
 
       {/* 기술스택 카드 */}
       <CardContainer></CardContainer>
-      <div className="h-96"></div>
+      <div className="h-[500px]"></div>
     </div>
   );
 };

@@ -78,7 +78,7 @@ const CardContent = ({ isSelected, name }) => {
       <div className="relative bg-inherit h-[466px] ">
         <div className="absolute left-0 top-0 bg-black opacity-50 w-full h-full "></div>
         <div
-          className={`absolute left-0 right-0 z-20 w-full h-full   p-10 ${
+          className={`absolute left-0 right-0 z-20 w-full h-full pl-10 pt-10 pb-[16px] pr-2 ${
             isSelected ? "flex" : "hidden"
           }`}
         >

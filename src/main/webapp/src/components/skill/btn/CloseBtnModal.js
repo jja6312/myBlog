@@ -1,11 +1,15 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const CloseBtnModal = () => {
   return (
     <div
-      className={`absolute right-4 bottom-4 z-30 w-40 h-8 bg-gray-700 flex justify-center items-center rounded cursor-pointer hover:opacity-60`}
+      className={`absolute right-0 top-0 z-30 w-14 h-14 bg-red-600 flex justify-center items-center rounded cursor-pointer hover:bg-red-800`}
     >
-      <span>Close</span>
+      <span>
+        <FontAwesomeIcon size="xl" icon={faXmark} />
+      </span>
     </div>
   );
 };
