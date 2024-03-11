@@ -17,16 +17,28 @@ ${text === selectedOrderBy ? "bg-[#2a2a2e]" : "bg-[#39393E]"}
         onClick={() => setSelectedOrderBy(text)}
       >
         {text === "오름차순" ? (
-          <span className="text-red-500">
+          <span
+            className="
+          text-[8px]
+          lg:text-[16px]
+          text-red-500"
+          >
             <FontAwesomeIcon icon={faChevronUp} />
           </span>
         ) : (
-          <span className="text-blue-500">
+          <span
+            className="
+          text-[8px]
+          lg:text-[16px]
+          text-blue-500"
+          >
             <FontAwesomeIcon icon={faChevronDown} />
           </span>
         )}
         <span
           className={`
+          text-[8px]
+          lg:text-[16px]
       ${text === selectedOrderBy ? "text-yellow-200" : "text-white"}
       `}
         >
