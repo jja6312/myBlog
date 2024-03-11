@@ -27,6 +27,8 @@ const CardContainer = () => {
   return (
     <div
       className={`grid 
+      mt-10
+
       ${
         selectedView === "3개씩 보기"
           ? "gap-10 grid-cols-3"
@@ -34,7 +36,7 @@ const CardContainer = () => {
           ? "gap-6 grid-cols-6"
           : "gap-1 grid-cols-12"
       }
-      place-items-center mt-10
+      place-items-center 
       `}
     >
       {isLoading && <LoadingCard selectedView={selectedView}></LoadingCard>}

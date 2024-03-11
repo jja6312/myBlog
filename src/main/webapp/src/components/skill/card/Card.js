@@ -97,6 +97,37 @@ const Card = ({
     overlayRef.current.style.filter = "opacity(0)";
     containerRef.current.style.perspective = "350px";
   };
+  const updateSize = () => {
+    // 화면 너비에 따라 조건을 설정합니다.
+    const isLargeScreen = window.innerWidth >= 1024;
+
+    if (selectedView === "3개씩 보기") {
+      if (isLargeScreen) {
+        setWidth(220);
+        setHeight(310);
+      } else {
+        setWidth(110);
+        setHeight(155);
+      }
+    } else if (selectedView === "6개씩 보기") {
+      if (isLargeScreen) {
+        setWidth(110);
+        setHeight(155);
+      } else {
+        setWidth(55);
+        setHeight(77.5);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // 컴포넌트 마운트 시에 한 번 실행하고, 화면 크기가 변경될 때마다 업데이트
+    updateSize();
+    window.addEventListener("resize", updateSize);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너를 정리
+    return () => window.removeEventListener("resize", updateSize);
+  }, [selectedView]);
 
   return (
     <div className="flex">
@@ -150,13 +181,13 @@ const Card = ({
         <span
           className={`absolute   text-black ${
             !isSelected && selectedView === "3개씩 보기"
-              ? "text-[20px] font-bold top-[8px] left-[26px]"
+              ? "lg:text-[20px] text-[10px] font-bold lg:top-[8px] top-[4px] lg:left-[26px] left-[13px]"
               : !isSelected && selectedView === "6개씩 보기"
-              ? "text-[9px] top-[6px] left-[14px]"
+              ? "lg:text-[9px] text-[4.5px] lg:top-[6px] top-[3px] lg:left-[14px] left-[7px]"
               : isSelected && selectedView === "3개씩 보기"
-              ? `${styles.textSizeUp} font-extrabold -top-[132px] -left-[232px]`
+              ? `${styles.textSizeUp} font-extrabold lg:-top-[132px] -top-[66px] lg:-left-[232px] -left-[116px]`
               : isSelected && selectedView === "6개씩 보기"
-              ? `${styles.textSizeUp} font-extrabold -top-[132px] -left-[232px]`
+              ? `${styles.textSizeUp} font-extrabold lg:-top-[132px] -top-[66px] lg:-left-[232px] -left-[116px]`
               : ""
           }
           
@@ -175,15 +206,16 @@ const Card = ({
         
             ${
               !isSelected && selectedView === "3개씩 보기"
-                ? "bottom-[38px] left-[24px]"
+                ? "lg:bottom-[38px] lg:left-[24px] bottom-[19px] left-[12px]  lg:text-[16px] text-[8px]"
                 : !isSelected && selectedView === "6개씩 보기"
-                ? "bottom-[20px] left-[20px] text-[7px]"
+                ? "lg:bottom-[20px] lg:left-[20px] bottom-[10px] left-[10px] lg:text-[7px] text-[3.5px]"
                 : isSelected && selectedView === "3개씩 보기"
-                ? `-translate-x-[230px] translate-y-[222px] ${styles.textSizeUpMore}`
+                ? `lg:-translate-x-[230px] lg:translate-y-[222px] -translate-x-[115px] translate-y-[111px] ${styles.textSizeUpMore}`
                 : isSelected && selectedView === "6개씩 보기"
-                ? `-translate-x-[230px] translate-y-[222px] ${styles.textSizeUpMore}`
+                ? `lg:-translate-x-[230px] lg:translate-y-[222px] -translate-x-[115px] translate-y-[111px] ${styles.textSizeUpMore}`
                 : ""
             }
+
           z-40`}
           >
             <span className={`text-gray-700`}>
@@ -197,14 +229,16 @@ const Card = ({
             id={`span-${cardId}`}
             onClick={handleClick}
             className={`w-80 absolute flex flex-col cursor-pointer 
-          ${
-            !isSelected && selectedView === "3개씩 보기"
-              ? "bottom-6 left-6"
-              : !isSelected && selectedView === "6개씩 보기"
-              ? "bottom-3 left-3 text-[7px]"
-              : isSelected &&
-                `-translate-x-[230px] translate-y-[208px] ${styles.textSizeUpMore}`
-          }
+            ${
+              !isSelected && selectedView === "3개씩 보기"
+                ? "lg:bottom-6 lg:left-6 bottom-3 left-3 lg:text-[18px] text-[9px]"
+                : !isSelected && selectedView === "6개씩 보기"
+                ? "lg:bottom-3 lg:left-3 bottom-1.5 left-1.5 lg:text-[7px] text-[3.5px]"
+                : isSelected
+                ? `lg:-translate-x-[230px] lg:translate-y-[208px] -translate-x-[115px] translate-y-[104px] ${styles.textSizeUpMore}`
+                : ""
+            }
+          
           z-40`}
           >
             <span className={`text-black`}>[누적 학습시간] </span>

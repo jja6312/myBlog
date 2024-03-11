@@ -18,17 +18,36 @@ ${text === selectedAlignBox ? "bg-[#2a2a2e]" : "bg-[#39393E]"}
         onClick={() => setSelectedAlignBox(text)}
       >
         {text === "학습시간순" ? (
-          <span className={`${selectedAlignBox === text && `text-yellow-200`}`}>
-            <FontAwesomeIcon size="2xl" icon={faBookOpenReader} />
+          <span
+            className={`
+          ${selectedAlignBox === text && `text-yellow-200`}`}
+          >
+            <FontAwesomeIcon
+              className="text-sm 
+              lg:text-xl
+              xl:text-2xl"
+              icon={faBookOpenReader}
+            />
           </span>
         ) : (
-          <span className={`${selectedAlignBox === text && `text-yellow-200`}`}>
-            <FontAwesomeIcon size="2xl" icon={faCalendarAlt} />
+          <span
+            className={`
+          ${selectedAlignBox === text && `text-yellow-200`}`}
+          >
+            <FontAwesomeIcon
+              className="text-sm 
+              lg:text-xl
+              xl:text-2xl"
+              icon={faCalendarAlt}
+            />
           </span>
         )}
 
         <span
           className={`
+          text-[8px]
+          lg:text-[12px]
+          xl:text-[16px]
       ${text === selectedAlignBox ? "text-yellow-200" : "text-white"}
       `}
         >

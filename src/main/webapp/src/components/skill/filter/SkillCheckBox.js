@@ -41,7 +41,7 @@ const SkillCheckBox = ({ category }) => {
 
   return (
     <div
-      className="flex justify-center items-center gap-2
+      className="flex justify-center items-center gap-2 min-h-8
     w-full h-[90%] 
     rounded-lg border-[#5b5b64] bg-[#2a2a2e]
     cursor-pointer
@@ -50,16 +50,34 @@ const SkillCheckBox = ({ category }) => {
       onClick={handleCheckBoxClick}
     >
       {checkBoxes[category] ? (
-        <span className="text-[20px] text-yellow-200">
+        <span
+          className="text-yellow-200
+        text-[10px]
+        
+        lg:text-[12px]
+        2xl:text-[20px] "
+        >
           <FontAwesomeIcon icon={faSquareCheck} />
         </span>
       ) : (
-        <span className="text-[20px] text-white">
+        <span
+          className="text-white
+        text-[10px]
+        
+        lg:text-[12px]
+        2xl:text-[20px] "
+        >
           <FontAwesomeIcon icon={faSquare} />
         </span>
       )}
 
-      <span className="text-[15px]">{category}</span>
+      <span
+        className="text-[10px] 
+        lg:text-[10px]
+      2xl:text-[15px]"
+      >
+        {category}
+      </span>
     </div>
   );
 };
