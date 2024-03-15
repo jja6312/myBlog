@@ -3,10 +3,11 @@ import styles from "./card.module.css";
 import CardContent from "./CardContent";
 import { useSkillStore } from "../../../store/SkillStore";
 import CardDevlog from "./CardDevlog";
+import { formatCreatedAt } from "../../../util/formatCreatedAt";
 
 const Card = ({
   cardId,
-  // createdAt,
+  createdAt,
   name,
   // strength,
   totalDuration,
@@ -17,7 +18,7 @@ const Card = ({
   selectedCard,
   categoryName,
 }) => {
-  const { selectedView, setSelectedCard } = useSkillStore();
+  const { selectedView, setSelectedCard, selectedAlignBox } = useSkillStore();
   const cardRef = useRef(null);
   const containerRef = useRef(null);
   const overlayRef = useRef(null);
@@ -27,8 +28,13 @@ const Card = ({
   const [height, setHeight] = useState(310);
   const [isHovering, setIsHovering] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
+  const [isLarge, setIsLarge] = useState(window.innerWidth >= 1024);
 
   const handleClick = (e) => {
+    if (!isLarge) {
+      alert("카드 선택은 노트북 이상의 화면에서 가능합니다.");
+      return;
+    }
     initCardDegree(); //클릭했을 때 휘어진 카드를 똑바로 돌려놓기 위한 함수
     const targetId = e.currentTarget.id.includes("span-")
       ? e.currentTarget.id.split("-")[1]
@@ -51,6 +57,47 @@ const Card = ({
     let hour = Math.floor(minute / 60);
     let min = Math.floor(minute % 60);
     return `${hour}h ${min}m`;
+  };
+
+  const handleMouseMove = (e) => {
+    // 마우스 이동 이벤트 핸들러 함수
+    const { offsetX: x, offsetY: y } = e.nativeEvent; // 이벤트에서 x, y 좌표 추출
+    const rotateY = (-1 / 5) * x + 20; // Y 축 회전값 계산
+    const rotateX = (4 / 30) * y - 20; // X 축 회전값 계산
+
+    overlayRef.current.style.backgroundPosition = `${1.5 * x + 1.5 * y}%`; // overlay 배경 위치 설정
+    overlayRef.current.style.filter = `opacity(${x / 150}) brightness(1.2)`; // overlay 필터 설정
+
+    containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`; // container 회전 및 원근 변환 설정
+  };
+
+  const initCardDegree = () => {
+    containerRef.current.style.transform = `perspective(350px) rotateX(0deg) rotateY(0deg)`; // container 회전 및 원근 변환 설정
+    overlayRef.current.style.filter = "opacity(0)";
+    containerRef.current.style.perspective = "350px";
+  };
+  const updateSize = () => {
+    // 화면 너비에 따라 조건을 설정합니다.
+    setIsLarge(window.innerWidth > 1024);
+    const isLargeScreen = window.innerWidth > 1024;
+
+    if (selectedView === "3개씩 보기") {
+      if (isLargeScreen) {
+        setWidth(220);
+        setHeight(310);
+      } else {
+        setWidth(110);
+        setHeight(155);
+      }
+    } else if (selectedView === "6개씩 보기") {
+      if (isLargeScreen) {
+        setWidth(110);
+        setHeight(155);
+      } else {
+        setWidth(55);
+        setHeight(77.5);
+      }
+    }
   };
 
   useEffect(() => {
@@ -79,46 +126,6 @@ const Card = ({
       setHeight(155);
     }
   }, [selectedView]);
-
-  const handleMouseMove = (e) => {
-    // 마우스 이동 이벤트 핸들러 함수
-    const { offsetX: x, offsetY: y } = e.nativeEvent; // 이벤트에서 x, y 좌표 추출
-    const rotateY = (-1 / 5) * x + 20; // Y 축 회전값 계산
-    const rotateX = (4 / 30) * y - 20; // X 축 회전값 계산
-
-    overlayRef.current.style.backgroundPosition = `${1.5 * x + 1.5 * y}%`; // overlay 배경 위치 설정
-    overlayRef.current.style.filter = `opacity(${x / 150}) brightness(1.2)`; // overlay 필터 설정
-
-    containerRef.current.style.transform = `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`; // container 회전 및 원근 변환 설정
-  };
-
-  const initCardDegree = () => {
-    containerRef.current.style.transform = `perspective(350px) rotateX(0deg) rotateY(0deg)`; // container 회전 및 원근 변환 설정
-    overlayRef.current.style.filter = "opacity(0)";
-    containerRef.current.style.perspective = "350px";
-  };
-  const updateSize = () => {
-    // 화면 너비에 따라 조건을 설정합니다.
-    const isLargeScreen = window.innerWidth >= 1024;
-
-    if (selectedView === "3개씩 보기") {
-      if (isLargeScreen) {
-        setWidth(220);
-        setHeight(310);
-      } else {
-        setWidth(110);
-        setHeight(155);
-      }
-    } else if (selectedView === "6개씩 보기") {
-      if (isLargeScreen) {
-        setWidth(110);
-        setHeight(155);
-      } else {
-        setWidth(55);
-        setHeight(77.5);
-      }
-    }
-  };
 
   useEffect(() => {
     // 컴포넌트 마운트 시에 한 번 실행하고, 화면 크기가 변경될 때마다 업데이트
@@ -198,7 +205,8 @@ const Card = ({
         </span>
 
         {/* 누적학습시간이 없을 때와 있을 때, 카드 내에 다른 div(text)표시. */}
-        {convertToFormat(totalDuration) === "0h 0m" ? (
+        {convertToFormat(totalDuration) === "0h 0m" &&
+        selectedAlignBox === "학습시간순" ? (
           <div
             id={`span-${cardId}`}
             onClick={handleClick}
@@ -242,10 +250,32 @@ const Card = ({
           
           z-40`}
           >
-            <span className={`text-black`}>[누적 학습시간] </span>
-            <span className="text-red-600 font-semibold">
-              {convertToFormat(totalDuration)}
-            </span>
+            {selectedAlignBox === "학습시간순" ? (
+              <>
+                <span className={`text-black`}>[누적 학습시간] </span>
+                <span className="text-red-600 font-semibold">
+                  {convertToFormat(totalDuration)}
+                </span>
+              </>
+            ) : (
+              selectedAlignBox === "날짜순" && (
+                <>
+                  <span
+                    className={`text-black font-semibold transform ${
+                      selectedView === "3개씩 보기"
+                        ? "-translate-y-3"
+                        : selectedView === "6개씩 보기" && !isSelected
+                        ? "-translate-y-2"
+                        : selectedView === "6개씩 보기" &&
+                          isSelected &&
+                          "translate-y-3"
+                    }`}
+                  >
+                    {formatCreatedAt(createdAt)}~
+                  </span>
+                </>
+              )
+            )}
           </div>
         )}
         <CardContent name={name} isSelected={isSelected}></CardContent>

@@ -39,13 +39,13 @@ const HeaderCategories = ({
         isClickedCategory={isClickedCategory}
         setIsClickedCategory={setIsClickedCategory}
       ></HeaderCategoryElement>
-      <HeaderCategoryElement
+      {/* <HeaderCategoryElement
         link="/youtube"
         text="유튜브 활동"
         icon="faYoutube"
         isClickedCategory={isClickedCategory}
         setIsClickedCategory={setIsClickedCategory}
-      ></HeaderCategoryElement>
+      ></HeaderCategoryElement> */}
       <HeaderCategoryElement
         link="/book"
         text="학습 도서"

@@ -7,6 +7,7 @@ const CardContainer = () => {
   const { selectedCard, selectedView, skillList, setSelectedCard, isLoading } =
     useSkillStore();
 
+  //카드 외의 다른 곳을 클릭했을 때, 카드를 닫아주는 useEffect
   useEffect(() => {
     console.log("selectedCard:", selectedCard);
     if (selectedCard === null) return;

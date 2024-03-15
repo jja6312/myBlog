@@ -82,7 +82,7 @@ const CardContent = ({ isSelected, name }) => {
             isSelected ? "flex" : "hidden"
           }`}
         >
-          <div className="overflow-y-auto flex flex-col">
+          <div className="overflow-y-auto flex flex-col pr-8">
             {
               <>
                 <span className="text-yellow-400 text-xl">첫 만남</span>
