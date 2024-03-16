@@ -1,5 +1,4 @@
 import React from "react";
-import Developing from "../Developing";
 
 const Project = () => {
   return (
@@ -7,7 +6,13 @@ const Project = () => {
       id="projectContainer"
       className="bg-dark text-white flex pl-5 min-h-screen"
     >
-      <Developing />
+      <div className="flex justify-center  w-full mt-3">
+        <img
+          src="/image/project/tablet.png"
+          alt="tablet"
+          className="w-7/12 h-fit"
+        />
+      </div>
     </div>
   );
 };
