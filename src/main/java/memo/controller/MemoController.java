@@ -1,7 +1,9 @@
 package memo.controller;
 
+import com.amazonaws.Response;
 import memo.bean.Memo;
 import memo.bean.MemoSaveDTO;
+import memo.bean.MemoUpdateStatusDTO;
 import memo.service.MemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,19 +15,30 @@ import java.util.List;
 @CrossOrigin
 public class MemoController {
     private final MemoService memoService;
+
     @Autowired
-    public MemoController(MemoService memoService){
+    public MemoController(MemoService memoService) {
         this.memoService = memoService;
     }
 
-    @PostMapping(path="/memo/saveMemo")
-    public ResponseEntity<Memo> saveMemo(@RequestBody MemoSaveDTO memoSaveDTO){
+    @PostMapping(path = "/memo/saveMemo")
+    public ResponseEntity<Memo> saveMemo(@RequestBody MemoSaveDTO memoSaveDTO) {
         return ResponseEntity.ok(memoService.saveMemo(memoSaveDTO));
     }
 
-    @GetMapping(path="/memo/getMemo")
-    public ResponseEntity<List<Memo>> getMemo(@RequestParam String clickedDate){
+    @GetMapping(path = "/memo/getMemo")
+    public ResponseEntity<List<Memo>> getMemo(@RequestParam String clickedDate) {
 
         return ResponseEntity.ok(memoService.getMemo(clickedDate));
+    }
+
+    @PostMapping(path = "/memo/updateStatus")
+    public ResponseEntity<Memo> updateStatus(@RequestBody MemoUpdateStatusDTO memoUpdateStatusDTO) {
+        String id= memoUpdateStatusDTO.getId();
+        String status = memoUpdateStatusDTO.getStatus();
+
+        System.out.println(id + "@@@");
+        System.out.println(status + "@@@");
+        return ResponseEntity.ok(memoService.updateMemo(id, status));
     }
 }

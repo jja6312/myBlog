@@ -31,6 +31,3 @@ public class Memo {
 
 }
 
-enum Status {
-    TODOLIST, PROGRESS, DONE
-}

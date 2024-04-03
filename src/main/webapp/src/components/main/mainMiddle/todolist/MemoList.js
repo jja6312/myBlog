@@ -6,7 +6,8 @@ import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
 import axios from "axios";
 
 const MemoList = ({ title }) => {
-  const { allMemoList, setAllMemoList, memoUpdated } = useMemoStore();
+  const { allMemoList, setAllMemoList, memoUpdated, setMemoUpdated } =
+    useMemoStore();
   const { clickedDate } = useStudyTimeStore();
   const [todoListMemoList, setTodoListMemoList] = useState([]);
   const [progressMemoList, setProgressMemoList] = useState([]);
@@ -14,10 +15,33 @@ const MemoList = ({ title }) => {
 
   const [visibleMemoInput, setVisibleMemoInput] = useState(false);
 
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const memoId = e.dataTransfer.getData("text/plain");
+    const newStatus = title; // 드랍 영역의 제목이 새로운 status입니다.
+
+    axios
+      .post("http://43.203.18.91:8080/memo/updateStatus", {
+        id: memoId,
+        status: newStatus,
+      })
+      .then((response) => {
+        console.log("Status update success", response.data);
+        setMemoUpdated(!memoUpdated);
+      })
+      .catch((error) => {
+        console.error("Status update failed", error);
+      });
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault(); // 드랍 이벤트를 허용하기 위해 필요합니다.
+  };
+
   useEffect(() => {
     if (clickedDate === "") return;
     axios
-      .get("http://localhost:8080/memo/getMemo", {
+      .get("http://43.203.18.91:8080/memo/getMemo", {
         params: {
           clickedDate: clickedDate,
         },
@@ -43,7 +67,11 @@ const MemoList = ({ title }) => {
   }, [allMemoList]);
 
   return (
-    <div className="flex flex-col rounded overflow-hidden">
+    <div
+      className="flex flex-col rounded overflow-hidden"
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+    >
       <div className="flex justify-start items-center h-16 bg-gray-600 pl-5">
         <span>{title}</span>
       </div>
@@ -68,6 +96,7 @@ const MemoList = ({ title }) => {
         {title === "TODOLIST" && (
           <>
             <MemoListPlustBtn
+              PlustBtn
               visibleMemoInput={visibleMemoInput}
               setVisibleMemoInput={setVisibleMemoInput}
             ></MemoListPlustBtn>

@@ -23,7 +23,7 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
   const addMemo = () => {
     setVisibleMemoInput(false);
     axios
-      .post("http://localhost:8080/memo/saveMemo", memoSaveDTO)
+      .post("http://43.203.18.91:8080/memo/saveMemo", memoSaveDTO)
       .then((response) => {
         console.log(response);
         setMemoUpdated(!memoUpdated);
@@ -63,7 +63,7 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
         <>
           <textarea
             onChange={onChange}
-            className="w-full min-h-32 rounded bg-gray-200 text-black p-5 whitespace-pre"
+            className="w-full min-h-32 rounded bg-gray-200 text-black p-5 pre-wrap-text"
             value={memoSaveDTO.content}
             style={{ overflowY: "hidden" }} // 스크롤 바가 나타나지 않도록 설정
           />
