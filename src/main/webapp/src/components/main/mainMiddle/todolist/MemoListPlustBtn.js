@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useMemoStore } from "../../../../store/MemoStore";
 
 const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
+  const { memoUpdated, setMemoUpdated } = useMemoStore();
   const [memoSaveDTO, setMemoSaveDTO] = useState({
     content: "",
     status: "TODOLIST",
@@ -24,6 +26,7 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
       .post("http://localhost:8080/memo/saveMemo", memoSaveDTO)
       .then((response) => {
         console.log(response);
+        setMemoUpdated(!memoUpdated);
       })
       .catch((error) => {
         console.log(error);
@@ -47,6 +50,7 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
   useEffect(() => {
     console.log(memoSaveDTO);
   }, [memoSaveDTO]);
+
   return (
     <>
       <div

@@ -1,17 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MemoContent from "./MemoContent";
 import MemoListPlustBtn from "./MemoListPlustBtn";
-
-const todoListContentArray = [];
-const progressContentArray = ["내용", "hello"];
-const doneContentArray = ["내용", "hello"];
+import { useMemoStore } from "../../../../store/MemoStore";
+import { useStudyTimeStore } from "../../../../store/StudyTimeStore";
+import axios from "axios";
 
 const MemoList = ({ title }) => {
-  // const addMemo = () => {
-  //   console.log("addMemo");
-  // };
+  const { allMemoList, setAllMemoList, memoUpdated } = useMemoStore();
+  const { clickedDate } = useStudyTimeStore();
+  const [todoListMemoList, setTodoListMemoList] = useState([]);
+  const [progressMemoList, setProgressMemoList] = useState([]);
+  const [doneMemoList, setDoneMemoList] = useState([]);
 
   const [visibleMemoInput, setVisibleMemoInput] = useState(false);
+
+  useEffect(() => {
+    if (clickedDate === "") return;
+    axios
+      .get("http://localhost:8080/memo/getMemo", {
+        params: {
+          clickedDate: clickedDate,
+        },
+      })
+      .then((response) => {
+        console.log("allMemoList", response.data);
+        setAllMemoList(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [memoUpdated, clickedDate]);
+
+  // allMemoList를 status에 따라 나눠서 저장
+  useEffect(() => {
+    const todoList = allMemoList.filter((data) => data.status === "TODOLIST");
+    const progress = allMemoList.filter((data) => data.status === "PROGRESS");
+    const done = allMemoList.filter((data) => data.status === "DONE");
+
+    setTodoListMemoList(todoList);
+    setProgressMemoList(progress);
+    setDoneMemoList(done);
+  }, [allMemoList]);
 
   return (
     <div className="flex flex-col rounded overflow-hidden">
@@ -21,18 +50,18 @@ const MemoList = ({ title }) => {
       <div className="flex flex-col items-center gap-2 p-2 h-full bg-gray-300">
         {/* 왼족, TODOLIST */}
         {title === "TODOLIST" &&
-          todoListContentArray.map((item, key) => {
-            return <MemoContent key={key} content={item}></MemoContent>;
+          todoListMemoList.map((item, key) => {
+            return <MemoContent key={key} item={item}></MemoContent>;
           })}
         {/* 중앙, PROGRESS(진행상황) */}
         {title === "PROGRESS" &&
-          progressContentArray.map((item, key) => {
-            return <MemoContent key={key} content={item}></MemoContent>;
+          progressMemoList.map((item, key) => {
+            return <MemoContent key={key} item={item}></MemoContent>;
           })}
         {/* 오른쪽, DONE(완료) */}
         {title === "DONE" &&
-          doneContentArray.map((item, key) => {
-            return <MemoContent key={key} content={item}></MemoContent>;
+          doneMemoList.map((item, key) => {
+            return <MemoContent key={key} item={item}></MemoContent>;
           })}
 
         {/* TODOLIST에는 + 표시로 메모를 추가할 수 있다. */}
