@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MemoContent from "./MemoContent";
+import MemoListPlustBtn from "./MemoListPlustBtn";
 
 const todoListContentArray = [];
 const progressContentArray = ["내용", "hello"];
@@ -9,19 +10,8 @@ const MemoList = ({ title }) => {
   // const addMemo = () => {
   //   console.log("addMemo");
   // };
-  const onChange = (e) => {
-    setMemoInput(e.target.value);
-  };
   const [memoInput, setMemoInput] = useState("");
   const [visibleMemoInput, setVisibleMemoInput] = useState(false);
-  const addMemo = () => {
-    setVisibleMemoInput(false);
-    setMemoInput("");
-  };
-  const resetMemo = () => {
-    setVisibleMemoInput(false);
-    setMemoInput("");
-  };
 
   return (
     <div className="flex flex-col rounded overflow-hidden">
@@ -29,14 +19,17 @@ const MemoList = ({ title }) => {
         <span>{title}</span>
       </div>
       <div className="flex flex-col items-center gap-2 p-2 h-full bg-gray-300">
+        {/* 왼족, TODOLIST */}
         {title === "TODOLIST" &&
           todoListContentArray.map((item, key) => {
             return <MemoContent key={key} content={item}></MemoContent>;
           })}
+        {/* 중앙, PROGRESS(진행상황) */}
         {title === "PROGRESS" &&
           progressContentArray.map((item, key) => {
             return <MemoContent key={key} content={item}></MemoContent>;
           })}
+        {/* 오른쪽, DONE(완료) */}
         {title === "DONE" &&
           doneContentArray.map((item, key) => {
             return <MemoContent key={key} content={item}></MemoContent>;
@@ -45,35 +38,12 @@ const MemoList = ({ title }) => {
         {/* TODOLIST에는 + 표시로 메모를 추가할 수 있다. */}
         {title === "TODOLIST" && (
           <>
-            <div
-              className="rounded w-full  h-14 bg-gray-400 flex justify-center items-center text-3xl cursor-pointer hover:opacity-60"
-              onClick={() => setVisibleMemoInput(true)}
-            >
-              +
-            </div>
-            {visibleMemoInput && (
-              <>
-                <input
-                  onChange={onChange}
-                  className="w-full min-h-32 rounded bg-gray-200 text-black"
-                  value={memoInput}
-                />
-                <div className="grid grid-cols-3 gap-1 w-full ">
-                  <div
-                    className="bg-emerald-500 rounded h-10 flex justify-center items-center cursor-pointer col-span-2"
-                    onClick={addMemo}
-                  >
-                    <span>등록</span>
-                  </div>
-                  <div
-                    className="bg-red-500 rounded h-10 flex justify-center items-center cursor-pointer"
-                    onClick={resetMemo}
-                  >
-                    <span>취소</span>
-                  </div>
-                </div>
-              </>
-            )}
+            <MemoListPlustBtn
+              visibleMemoInput={visibleMemoInput}
+              setVisibleMemoInput={setVisibleMemoInput}
+              memoInput={memoInput}
+              setMemoInput={setMemoInput}
+            ></MemoListPlustBtn>
           </>
         )}
       </div>
