@@ -1,26 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const MemoListPlustBtn = ({
-  memoInput,
-  setMemoInput,
-  setVisibleMemoInput,
-  visibleMemoInput,
-}) => {
+const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
+  const [memoSaveDTO, setMemoSaveDTO] = useState({
+    content: "",
+    status: "TODOLIST",
+  });
+
   const onChange = (e) => {
     const textarea = e.target;
     textarea.style.height = "auto"; // 스크롤보다 내용길이가 잛을때 height를 auto설정으로 줄인다.
     textarea.style.height = textarea.scrollHeight + "px"; // 스크롤보다 내용길이가 많을때 height를 늘린다.
-    setMemoInput(e.target.value);
+
+    setMemoSaveDTO({
+      ...memoSaveDTO,
+      content: e.target.value,
+    });
   };
 
   const addMemo = () => {
     setVisibleMemoInput(false);
-    setMemoInput("");
+    axios
+      .post("http://localhost:8080/memo/saveMemo", memoSaveDTO)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setMemoSaveDTO({
+          content: "",
+          status: "TODOLIST",
+        });
+      });
   };
   const resetMemo = () => {
     setVisibleMemoInput(false);
-    setMemoInput("");
+
+    setMemoSaveDTO({
+      content: "",
+      status: "TODOLIST",
+    });
   };
+
+  useEffect(() => {
+    console.log(memoSaveDTO);
+  }, [memoSaveDTO]);
   return (
     <>
       <div
@@ -34,7 +60,7 @@ const MemoListPlustBtn = ({
           <textarea
             onChange={onChange}
             className="w-full min-h-32 rounded bg-gray-200 text-black p-5 whitespace-pre"
-            value={memoInput}
+            value={memoSaveDTO.content}
             style={{ overflowY: "hidden" }} // 스크롤 바가 나타나지 않도록 설정
           />
           <div className="grid grid-cols-3 gap-1 w-full ">

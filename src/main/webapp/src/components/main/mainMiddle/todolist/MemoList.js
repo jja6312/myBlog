@@ -10,7 +10,7 @@ const MemoList = ({ title }) => {
   // const addMemo = () => {
   //   console.log("addMemo");
   // };
-  const [memoInput, setMemoInput] = useState("");
+
   const [visibleMemoInput, setVisibleMemoInput] = useState(false);
 
   return (
@@ -41,8 +41,6 @@ const MemoList = ({ title }) => {
             <MemoListPlustBtn
               visibleMemoInput={visibleMemoInput}
               setVisibleMemoInput={setVisibleMemoInput}
-              memoInput={memoInput}
-              setMemoInput={setMemoInput}
             ></MemoListPlustBtn>
           </>
         )}
