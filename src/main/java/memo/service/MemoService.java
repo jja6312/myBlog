@@ -12,4 +12,6 @@ public interface MemoService {
     List<Memo> getMemo(String clickedDate);
 
     Memo updateMemo(String id, String status);
+
+    void deleteMemo(Long id);
 }

@@ -41,4 +41,11 @@ public class MemoController {
         System.out.println(status + "@@@");
         return ResponseEntity.ok(memoService.updateMemo(id, status));
     }
+
+    @DeleteMapping("/memo/deleteMemo/{id}")
+    public ResponseEntity<?> deleteMemo(@PathVariable Long id){
+        System.out.println(id);
+        memoService.deleteMemo(id);
+        return ResponseEntity.ok().build();
+    }
 }
