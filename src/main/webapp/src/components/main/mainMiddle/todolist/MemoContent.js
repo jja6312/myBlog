@@ -67,7 +67,7 @@ const MemoContent = ({ item }) => {
   };
   return (
     <div
-      className="relative group rounded w-full flex flex-col justify-between h-auto bg-gray-200 p-5 cursor-pointer hover:bg-white transition duration-150"
+      className="relative group rounded w-full flex flex-col justify-between h-auto bg-gray-200 p-5 cursor-pointer hover:bg-white transition duration-150 z-10"
       draggable="true"
       onDragStart={handleDragStart}
     >

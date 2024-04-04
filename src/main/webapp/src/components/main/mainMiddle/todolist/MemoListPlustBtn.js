@@ -54,7 +54,7 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
   return (
     <>
       <div
-        className="rounded w-full  h-14 bg-gray-400 flex justify-center items-center text-3xl cursor-pointer hover:opacity-60"
+        className="rounded w-full  h-14 bg-gray-400 flex justify-center items-center text-3xl cursor-pointer hover:bg-gray-500 z-10 transition duration-150"
         onClick={() => setVisibleMemoInput(true)}
       >
         +
@@ -63,11 +63,11 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
         <>
           <textarea
             onChange={onChange}
-            className="w-full min-h-32 rounded bg-gray-200 text-black p-5 pre-wrap-text"
+            className="w-full min-h-32 rounded bg-gray-200 text-black p-5 pre-wrap-text z-10"
             value={memoSaveDTO.content}
             style={{ overflowY: "hidden" }} // 스크롤 바가 나타나지 않도록 설정
           />
-          <div className="grid grid-cols-3 gap-1 w-full ">
+          <div className="grid grid-cols-3 gap-1 w-full z-10">
             <div
               className="bg-emerald-500 rounded h-10 flex justify-center items-center cursor-pointer col-span-2"
               onClick={addMemo}
