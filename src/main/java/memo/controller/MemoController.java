@@ -2,6 +2,7 @@ package memo.controller;
 
 import com.amazonaws.Response;
 import memo.bean.Memo;
+import memo.bean.MemoEditDTO;
 import memo.bean.MemoSaveDTO;
 import memo.bean.MemoUpdateStatusDTO;
 import memo.service.MemoService;
@@ -46,6 +47,13 @@ public class MemoController {
     public ResponseEntity<?> deleteMemo(@PathVariable Long id){
         System.out.println(id);
         memoService.deleteMemo(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/memo/editMemo/{id}")
+    public ResponseEntity<?> editMemo(@PathVariable Long id, @RequestBody MemoEditDTO memoEditDTO){
+        memoService.editMemo(id, memoEditDTO);
+
         return ResponseEntity.ok().build();
     }
 }

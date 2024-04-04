@@ -107,4 +107,4 @@ const MemoList = ({ title }) => {
   );
 };
 
-export default MemoList;
+export default MemoL
