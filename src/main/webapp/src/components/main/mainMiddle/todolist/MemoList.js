@@ -21,7 +21,7 @@ const MemoList = ({ title }) => {
     const newStatus = title; // 드랍 영역의 제목이 새로운 status입니다.
 
     axios
-      .post("http://localhost:8080/memo/updateStatus", {
+      .post("http://43.203.18.91:8080/memo/updateStatus", {
         id: memoId,
         status: newStatus,
       })
@@ -41,7 +41,7 @@ const MemoList = ({ title }) => {
   useEffect(() => {
     if (clickedDate === "") return;
     axios
-      .get("http://localhost:8080/memo/getMemo", {
+      .get("http://43.203.18.91:8080/memo/getMemo", {
         params: {
           clickedDate: clickedDate,
         },
