@@ -21,7 +21,7 @@ const MemoList = ({ title }) => {
     const newStatus = title; // 드랍 영역의 제목이 새로운 status입니다.
 
     axios
-      .post("http://43.203.18.91:8080/memo/updateStatus", {
+      .post("http://localhost:8080/memo/updateStatus", {
         id: memoId,
         status: newStatus,
       })
@@ -41,7 +41,7 @@ const MemoList = ({ title }) => {
   useEffect(() => {
     if (clickedDate === "") return;
     axios
-      .get("http://43.203.18.91:8080/memo/getMemo", {
+      .get("http://localhost:8080/memo/getMemo", {
         params: {
           clickedDate: clickedDate,
         },
@@ -68,19 +68,36 @@ const MemoList = ({ title }) => {
 
   return (
     <div
-      className="flex flex-col rounded overflow-hidden"
+      className="flex flex-col rounded overflow-hidden "
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
       <div className="flex justify-start items-center h-16 bg-gray-600 pl-5">
         <span>{title}</span>
       </div>
-      <div className="flex flex-col items-center gap-2 p-2 h-full bg-gray-300">
+      <div
+        className={`relative flex flex-col items-center gap-2 p-2 min-h-60 h-full 
+      ${
+        title === "TODOLIST"
+          ? "bg-sky-600"
+          : title === "PROGRESS"
+          ? "bg-indigo-600"
+          : title === "DONE" && "bg-purple-600"
+      }`}
+      >
+        <div className="flex justify-center items-center w-full h-full opacity-50 absolute top-0 left-0 z-0">
+          <img
+            src="/image/todolist/memo.gif"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
         {/* 왼족, TODOLIST */}
         {title === "TODOLIST" &&
           todoListMemoList.map((item, key) => {
             return <MemoContent key={key} item={item}></MemoContent>;
           })}
+
         {/* 중앙, PROGRESS(진행상황) */}
         {title === "PROGRESS" &&
           progressMemoList.map((item, key) => {
