@@ -10,6 +10,8 @@ const ProjectWriteForm = () => {
   ); // 이미지 미리보기
   const [projectDTO, setProjectDTO] = useState({
     title: "",
+    detail: "",
+    type: "",
     startDate: "",
     endDate: "",
     img: "",
@@ -87,7 +89,7 @@ const ProjectWriteForm = () => {
     }
 
     axios
-      .post("http://localhost:8080/project/save", projectDTO)
+      .post("http://43.203.18.91:8080/project/save", projectDTO)
       .then((response) => {
         console.log(response.data);
         alert("프로젝트가 저장되었습니다.");
@@ -116,6 +118,27 @@ const ProjectWriteForm = () => {
             className="w-full h-20 bg-darkDeep text-white p-3 text-4xl border border-gray-700"
             placeholder="프로젝트 이름을 입력하세요."
           ></input>
+        </div>
+        {/* 내용 */}
+        <div className="flex items-center mt-10">
+          <span className="text-red-500 text-3xl mr-2">*</span>
+          <textarea
+            id="detail"
+            onChange={handleProjectDTO}
+            className="w-full h-20 bg-darkDeep text-white p-3 text-lg border border-gray-700"
+            placeholder="간단한 설명을 입력하세요."
+          ></textarea>
+        </div>
+        <div className="flex items-center mt-10">
+          <span className="text-red-500 text-3xl mr-2">*</span>
+          <select
+            id="type"
+            onChange={handleProjectDTO}
+            className="w-full h-10 bg-darkDeep text-white pl-2 text-2xl border border-gray-700"
+          >
+            <option value="개인 프로젝트">개인 프로젝트</option>
+            <option value="팀 프로젝트">팀 프로젝트</option>
+          </select>
         </div>
         {/* 개발 시작날짜 */}
         <div className="flex items-center mt-10">

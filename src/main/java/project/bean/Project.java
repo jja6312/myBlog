@@ -18,6 +18,12 @@ public class Project {
     @Column(length = 30, nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String detail;
+
+    @Column(nullable = false)
+    private String type;
+
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 

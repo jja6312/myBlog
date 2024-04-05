@@ -1,14 +1,13 @@
 package project.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.bean.Project;
 import project.bean.ProjectSaveDTO;
 import project.service.ProjectService;
 import project.service.ProjectServiceImpl;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -24,6 +23,10 @@ public class ProjectController {
         projectService.projectSave(projectSaveDTO);
 
         return ResponseEntity.ok().build();
+    }
+    @GetMapping("/project/getProjectListAll")
+    public ResponseEntity<List<Project>> getProjectListAll(){
+        return ResponseEntity.ok(projectService.getProjectListALl());
     }
 
 }
