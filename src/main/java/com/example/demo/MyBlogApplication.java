@@ -8,10 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.example.demo", "user.*", "devlog.*", "studyTime.*", "skill.*" })
-@EntityScan(basePackages = { "user.bean", "devlog.bean", "studyTime.bean","skill.bean" })
+@ComponentScan(basePackages = { "com.example.demo", "user.*", "devlog.*", "studyTime.*", "skill.*", "memo.*" })
+@EntityScan(basePackages = { "user.bean", "devlog.bean", "studyTime.bean","skill.bean", "memo.bean" })
 @MapperScan(basePackages = { "studyTime.mapper", "skill.mapper", "devlog.mapper"} )
-@EnableJpaRepositories(basePackages = { "user.dao", "devlog.repository" , "studyTime.repository","skill.repository" })
+@EnableJpaRepositories(basePackages = { "user.dao", "devlog.repository" , "studyTime.repository","skill.repository", "memo.repository" })
 public class MyBlogApplication {
 
 	public static void main(String[] args) {
