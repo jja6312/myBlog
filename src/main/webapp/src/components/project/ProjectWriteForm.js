@@ -59,6 +59,12 @@ const ProjectWriteForm = () => {
 
   // 프로젝트 저장 함수
   const saveProject = () => {
+    if (
+      prompt("정지안이 아니면 저장하지 마세요. 추적이 가능합니다.") !== "정지안"
+    ) {
+      alert("좋은 선택입니다.");
+      return;
+    }
     if (projectDTO.title === "") {
       alert("제목을 입력해주세요.");
       return;
@@ -84,12 +90,8 @@ const ProjectWriteForm = () => {
       .post("http://localhost:8080/project/save", projectDTO)
       .then((response) => {
         console.log(response.data);
-        if (response.data === 1) {
-          alert("프로젝트가 저장되었습니다.");
-          window.location.href = "/project";
-        } else {
-          alert("프로젝트 저장에 실패했습니다.");
-        }
+        alert("프로젝트가 저장되었습니다.");
+        window.location.href = "/project";
       })
       .catch((error) => {
         console.log(error);
