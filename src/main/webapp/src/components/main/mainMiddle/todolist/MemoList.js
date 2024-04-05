@@ -79,10 +79,10 @@ const MemoList = ({ title }) => {
         className={`relative flex flex-col items-center gap-2 p-2 min-h-60 h-full 
       ${
         title === "TODOLIST"
-          ? "bg-sky-600"
+          ? "bg-sky-900"
           : title === "PROGRESS"
-          ? "bg-indigo-600"
-          : title === "DONE" && "bg-purple-600"
+          ? "bg-indigo-900"
+          : title === "DONE" && "bg-purple-900"
       }`}
       >
         <div className="flex justify-center items-center w-full h-full opacity-50 absolute top-0 left-0 z-0">

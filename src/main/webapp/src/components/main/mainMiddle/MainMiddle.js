@@ -50,11 +50,10 @@ const MainMiddle = () => {
         </span>
       </div>
       <GithubDashboard></GithubDashboard>
-      {/* 특정 날짜의 공부종류 및 공부량 데이터 시각화 */}
-      <DataDashboard></DataDashboard>
-
       {/* TODOLIST */}
       <TodoList></TodoList>
+      {/* 특정 날짜의 공부종류 및 공부량 데이터 시각화 */}
+      <DataDashboard></DataDashboard>
 
       {/* 특정 날짜의 개발일지 */}
       <WriteDashboard></WriteDashboard>
