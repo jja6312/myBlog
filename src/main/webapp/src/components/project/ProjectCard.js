@@ -1,17 +1,41 @@
 import React from "react";
 import ProjectCardImage from "./ProjectCardImage";
 import ProjectCardInfo from "./ProjectCardInfo";
+import { Link } from "react-router-dom";
 
-const ProjectCard = () => {
+// detail={item.detail}
+//                 type={item.type}
+const ProjectCard = ({
+  title,
+  detail,
+  type,
+  startDate,
+  endDate,
+  img,
+  notionPageId,
+  githubAddress,
+  deployAddress,
+}) => {
   return (
-    <div className="flex flex-col items-center justify-between w-full h-[600px] rounded border bg-black border-white p-5">
-      <ProjectCardImage></ProjectCardImage>
-      <ProjectCardInfo></ProjectCardInfo>
-      <div className="w-full h-[10%] py-2">
-        <div className="flex justify-center items-center w-full h-full bg-blue-500 rounded cursor-pointer hover:bg-blue-700 transition duration-150">
+    <div className="flex flex-col items-center justify-between w-full h-[700px] rounded border bg-black border-white p-5">
+      <ProjectCardImage
+        type={type}
+        img={img}
+        startDate={startDate}
+        endDate={endDate}
+      ></ProjectCardImage>
+      <ProjectCardInfo
+        title={title}
+        detail={detail}
+        githubAddress={githubAddress}
+        deployAddress={deployAddress}
+      ></ProjectCardInfo>
+
+      <Link to={`/project/${notionPageId}`} className="w-full h-[10%]">
+        <div className="w-full h-full py-2 flex justify-center items-center bg-blue-500 rounded cursor-pointer hover:bg-blue-700 transition duration-150">
           <span className="">자세히 보기</span>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
