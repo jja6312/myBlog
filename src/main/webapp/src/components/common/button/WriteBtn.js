@@ -11,7 +11,7 @@ const WriteBtn = ({ category }) => {
             ? "/skill/writeForm"
             : category === "개발일지"
             ? "/devlog/writeForm"
-            : "/"
+            : "/project/writeForm"
         }
       >
         <div
@@ -29,6 +29,8 @@ const WriteBtn = ({ category }) => {
             <span>기술스택 추가</span>
           ) : category === "개발일지" ? (
             <span>글쓰기</span>
+          ) : category === "프로젝트" ? (
+            <span>프로젝트 추가</span>
           ) : (
             <span>!설정필요!</span>
           )}

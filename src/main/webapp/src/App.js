@@ -13,6 +13,7 @@ import Video from "./components/video/Video";
 import WriteForm from "./components/devlog/WriteForm";
 import ReadForm from "./components/devlog/read/ReadForm";
 import SkillWriteForm from "./components/skill/skillWriteForm/SkillWriteForm";
+import ProjectWriteForm from "./components/project/ProjectWriteForm";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             {/* 글 작성 */}
             <Route path="/devlog/writeForm" element={<WriteForm />} />
             <Route path="/skill/writeForm" element={<SkillWriteForm />} />
+            <Route path="/project/writeForm" element={<ProjectWriteForm />} />
             {/* 글 읽기 */}
             <Route path="/readForm" element={<ReadForm />} />
           </Routes>
