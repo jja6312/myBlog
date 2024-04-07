@@ -3852,7 +3852,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 2024-04-05T14:11:05.453+09:00 DEBUG 12508 --- [http-nio-8080-exec-22] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:05.453+09:00 DEBUG 12508 --- [http-nio-8080-exec-24] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:05.453+09:00 DEBUG 12508 --- [http-nio-8080-exec-23] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:05.453+09:00 ERROR 12508 --- [http-nio-8080-exec-24] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:05.453+09:00 ERROR 12508 --- [http-nio-8080-exec-24] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -3930,7 +3930,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:05.453+09:00 ERROR 12508 --- [http-nio-8080-exec-23] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:05.453+09:00 ERROR 12508 --- [http-nio-8080-exec-23] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -4008,7 +4008,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:05.453+09:00 ERROR 12508 --- [http-nio-8080-exec-22] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:05.453+09:00 ERROR 12508 --- [http-nio-8080-exec-22] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -4701,7 +4701,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 2024-04-05T14:11:08.665+09:00 DEBUG 12508 --- [http-nio-8080-exec-16] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:08.665+09:00 DEBUG 12508 --- [http-nio-8080-exec-17] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Apr 05 14:11:08 KST 2024, status=500, error=Internal Server Error, trace=org.mybatis. (truncated)...]
 2024-04-05T14:11:08.666+09:00 DEBUG 12508 --- [http-nio-8080-exec-20] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:08.665+09:00 ERROR 12508 --- [http-nio-8080-exec-18] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:08.665+09:00 ERROR 12508 --- [http-nio-8080-exec-18] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -4780,7 +4780,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	... 53 common frames omitted
 
 2024-04-05T14:11:08.668+09:00 DEBUG 12508 --- [http-nio-8080-exec-17] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:08.664+09:00 ERROR 12508 --- [http-nio-8080-exec-15] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:08.664+09:00 ERROR 12508 --- [http-nio-8080-exec-15] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -4858,7 +4858,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:08.665+09:00 ERROR 12508 --- [http-nio-8080-exec-19] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:08.665+09:00 ERROR 12508 --- [http-nio-8080-exec-19] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -4936,7 +4936,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:08.665+09:00 ERROR 12508 --- [http-nio-8080-exec-16] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:08.665+09:00 ERROR 12508 --- [http-nio-8080-exec-16] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -5014,7 +5014,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:08.668+09:00 ERROR 12508 --- [http-nio-8080-exec-20] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:08.668+09:00 ERROR 12508 --- [http-nio-8080-exec-20] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -5092,7 +5092,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:08.669+09:00 ERROR 12508 --- [http-nio-8080-exec-17] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:08.669+09:00 ERROR 12508 --- [http-nio-8080-exec-17] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -5613,7 +5613,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 2024-04-05T14:11:11.131+09:00 DEBUG 12508 --- [http-nio-8080-exec-11] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:11.131+09:00 DEBUG 12508 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:11.132+09:00 DEBUG 12508 --- [http-nio-8080-exec-25] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection [HikariPool-1 - Connection is not available, request timed out after 30015ms.] [n/a]
-2024-04-05T14:11:11.131+09:00 ERROR 12508 --- [http-nio-8080-exec-12] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.131+09:00 ERROR 12508 --- [http-nio-8080-exec-12] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -5691,7 +5691,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:11.131+09:00 ERROR 12508 --- [http-nio-8080-exec-11] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.131+09:00 ERROR 12508 --- [http-nio-8080-exec-11] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -5769,7 +5769,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:11.131+09:00 ERROR 12508 --- [http-nio-8080-exec-14] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.131+09:00 ERROR 12508 --- [http-nio-8080-exec-14] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -5847,7 +5847,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:11.132+09:00 ERROR 12508 --- [http-nio-8080-exec-9] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.132+09:00 ERROR 12508 --- [http-nio-8080-exec-9] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -6039,7 +6039,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 2024-04-05T14:11:11.143+09:00 DEBUG 12508 --- [http-nio-8080-exec-25] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
 2024-04-05T14:11:11.144+09:00 DEBUG 12508 --- [http-nio-8080-exec-25] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Apr 05 14:11:11 KST 2024, status=500, error=Internal Server Error, trace=org.springfr (truncated)...]
 2024-04-05T14:11:11.146+09:00 DEBUG 12508 --- [http-nio-8080-exec-25] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:11.146+09:00 ERROR 12508 --- [http-nio-8080-exec-25] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.146+09:00 ERROR 12508 --- [http-nio-8080-exec-25] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -6531,7 +6531,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 2024-04-05T14:11:11.483+09:00 DEBUG 12508 --- [http-nio-8080-exec-29] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:11.483+09:00 DEBUG 12508 --- [http-nio-8080-exec-31] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:11.484+09:00 DEBUG 12508 --- [http-nio-8080-exec-28] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:11.484+09:00 ERROR 12508 --- [http-nio-8080-exec-31] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.484+09:00 ERROR 12508 --- [http-nio-8080-exec-31] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -6609,7 +6609,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:11.483+09:00 ERROR 12508 --- [http-nio-8080-exec-30] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.483+09:00 ERROR 12508 --- [http-nio-8080-exec-30] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -6687,7 +6687,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:11.484+09:00 ERROR 12508 --- [http-nio-8080-exec-29] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.484+09:00 ERROR 12508 --- [http-nio-8080-exec-29] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -6765,7 +6765,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:11.484+09:00 ERROR 12508 --- [http-nio-8080-exec-28] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:11.484+09:00 ERROR 12508 --- [http-nio-8080-exec-28] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -7027,7 +7027,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 2024-04-05T14:11:30.310+09:00 DEBUG 12508 --- [http-nio-8080-exec-48] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
 2024-04-05T14:11:30.311+09:00 DEBUG 12508 --- [http-nio-8080-exec-48] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Apr 05 14:11:30 KST 2024, status=500, error=Internal Server Error, trace=org.springfr (truncated)...]
 2024-04-05T14:11:30.314+09:00 DEBUG 12508 --- [http-nio-8080-exec-48] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:30.315+09:00 ERROR 12508 --- [http-nio-8080-exec-48] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.315+09:00 ERROR 12508 --- [http-nio-8080-exec-48] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -7404,7 +7404,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 
 2024-04-05T14:11:30.606+09:00 DEBUG 12508 --- [http-nio-8080-exec-51] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
 2024-04-05T14:11:30.607+09:00 DEBUG 12508 --- [http-nio-8080-exec-51] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
-2024-04-05T14:11:30.604+09:00 ERROR 12508 --- [http-nio-8080-exec-53] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.604+09:00 ERROR 12508 --- [http-nio-8080-exec-53] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -7482,7 +7482,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:301) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	... 53 common frames omitted
 
-2024-04-05T14:11:30.604+09:00 ERROR 12508 --- [http-nio-8080-exec-52] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.604+09:00 ERROR 12508 --- [http-nio-8080-exec-52] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -7781,7 +7781,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 
 2024-04-05T14:11:30.616+09:00 DEBUG 12508 --- [http-nio-8080-exec-56] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
 2024-04-05T14:11:30.616+09:00 DEBUG 12508 --- [http-nio-8080-exec-55] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
-2024-04-05T14:11:30.613+09:00 ERROR 12508 --- [http-nio-8080-exec-51] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.613+09:00 ERROR 12508 --- [http-nio-8080-exec-51] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -7865,7 +7865,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 2024-04-05T14:11:30.618+09:00 DEBUG 12508 --- [http-nio-8080-exec-55] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 2024-04-05T14:11:30.618+09:00 DEBUG 12508 --- [http-nio-8080-exec-56] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Apr 05 14:11:30 KST 2024, status=500, error=Internal Server Error, trace=org.springfr (truncated)...]
 2024-04-05T14:11:30.619+09:00 DEBUG 12508 --- [http-nio-8080-exec-56] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:30.619+09:00 ERROR 12508 --- [http-nio-8080-exec-55] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.619+09:00 ERROR 12508 --- [http-nio-8080-exec-55] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -8028,7 +8028,7 @@ java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not avail
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
 
-2024-04-05T14:11:30.620+09:00 ERROR 12508 --- [http-nio-8080-exec-56] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.620+09:00 ERROR 12508 --- [http-nio-8080-exec-56] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -8111,7 +8111,7 @@ Caused by: java.io.IOException: 현재 연결은 사용자의 호스트 시스�
 2024-04-05T14:11:30.628+09:00 DEBUG 12508 --- [http-nio-8080-exec-54] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
 2024-04-05T14:11:30.628+09:00 DEBUG 12508 --- [http-nio-8080-exec-54] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Fri Apr 05 14:11:30 KST 2024, status=500, error=Internal Server Error, trace=org.mybatis. (truncated)...]
 2024-04-05T14:11:30.630+09:00 DEBUG 12508 --- [http-nio-8080-exec-54] o.s.web.servlet.DispatcherServlet        : Unresolved failure from "ERROR" dispatch: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
-2024-04-05T14:11:30.630+09:00 ERROR 12508 --- [http-nio-8080-exec-54] o.a.c.c.C.[Tomcat].[43.203.18.91]           : Exception Processing ErrorPage[errorCode=0, location=/error]
+2024-04-05T14:11:30.630+09:00 ERROR 12508 --- [http-nio-8080-exec-54] o.a.c.c.C.[Tomcat].[localhost]           : Exception Processing ErrorPage[errorCode=0, location=/error]
 
 org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
 	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:305) ~[tomcat-embed-core-10.1.17.jar:10.1.17]
@@ -13935,3 +13935,387 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown database 'myblog-maindb'
 2024-04-07T21:46:04.940+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
 2024-04-07T21:46:04.957+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
 2024-04-07T21:46:04.997+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.440+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-04-07T21:47:51.441+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-04-07T21:47:51.441+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-04-07T21:47:51.441+09:00 DEBUG 26544 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-04-07T21:47:51.441+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-04-07T21:47:51.441+09:00 DEBUG 26544 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-04-07T21:47:51.442+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.442+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-04-07T21:47:51.442+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.442+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-04-07T21:47:51.442+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-04-07T21:47:51.442+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T21:47:51.456+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.456+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.456+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [5558]
+2024-04-07T21:47:51.456+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["517.71"]
+2024-04-07T21:47:51.456+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.456+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.459+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.459+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-04-07T21:47:51.459+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-04-07T21:47:51.459+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-04-07T21:47:51.459+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.459+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeByDayGroupByCategoryDTO(studyMinutesDay=92, categoryName=React)]]
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-04-07, categoryName=React, studyMinutes=92.6333), StudyT (truncated)...]
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.460+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.464+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-04-07T21:47:51.464+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-04-07T21:47:51.464+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-04-07T21:47:51.464+09:00 DEBUG 26544 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-04-07T21:47:51.465+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-04-07T21:47:51.465+09:00 DEBUG 26544 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-04-07T21:47:51.470+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.470+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-04-07T21:47:51.470+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.472+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.472+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["517.71"]
+2024-04-07T21:47:51.472+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.472+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T21:47:51.472+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.473+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.473+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [5558]
+2024-04-07T21:47:51.475+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.475+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.475+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.475+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-04-07T21:47:51.475+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-04-07T21:47:51.476+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.477+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-04-07T21:47:51.477+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-04-07T21:47:51.478+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-04-07T21:47:51.478+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-04-07T21:47:51.481+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.481+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T21:47:51.481+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.483+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.483+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-04-07T21:47:51.488+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.488+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.488+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeByDayGroupByCategoryDTO(studyMinutesDay=92, categoryName=React)]]
+2024-04-07T21:47:51.488+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-04-07, categoryName=React, studyMinutes=92.6333), StudyT (truncated)...]
+2024-04-07T21:47:51.488+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.488+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.490+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.490+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T21:47:51.491+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.491+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-04-07T21:47:51.492+09:00 DEBUG 26544 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.492+09:00 DEBUG 26544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.492+09:00 DEBUG 26544 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=535.36071429, averageStudyTimePerWeekend=471.38333333, av (truncated)...]
+2024-04-07T21:47:51.492+09:00 DEBUG 26544 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.494+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-04-07T21:47:51.495+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-04-07T21:47:51.497+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.497+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-04-07T21:47:51.497+09:00 DEBUG 26544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.502+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.502+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T21:47:51.502+09:00 DEBUG 26544 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.504+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.504+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T21:47:51.549+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.550+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T21:47:51.550+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.551+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.551+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T21:47:51.560+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.560+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T21:47:51.560+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.561+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T21:47:51.562+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T21:47:51.563+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.563+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=535.36071429, averageStudyTimePerWeekend=471.38333333, av (truncated)...]
+2024-04-07T21:47:51.564+09:00 DEBUG 26544 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.570+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:51.570+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T21:47:51.570+09:00 DEBUG 26544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:47:51.572+09:00 DEBUG 26544 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:47:53.583+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-04-07T21:47:53.583+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-04-07T21:47:54.045+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:48:00.526+09:00 DEBUG 26544 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-04-07T21:48:00.533+09:00 DEBUG 26544 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+2024-04-07T21:48:02.380+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-04-07T21:48:02.384+09:00 DEBUG 26544 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+2024-04-07T21:51:53.342+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/studyTime/saveTime", parameters={}
+2024-04-07T21:51:53.342+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#createStudySession(StudyTimeDTO)
+2024-04-07T21:51:53.351+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [StudyTimeDTO(categoryName=React, startTime=2024-04-07T12:44:28.723, endTime=2024-04-07T12:51:53.325, (truncated)...]
+2024-04-07T21:51:53.409+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [*/*]
+2024-04-07T21:51:53.410+09:00 DEBUG 26544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T21:51:53.410+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-04-07T21:51:53.410+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-04-07T21:51:53.426+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T21:51:53.426+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [6002]
+2024-04-07T21:51:53.426+09:00 DEBUG 26544 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:33:04.555+09:00  WARN 26172 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-07T22:33:04.574+09:00  WARN 26172 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-04-07T22:33:13.810+09:00  WARN 26172 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-07T22:33:14.117+09:00 DEBUG 26172 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 27 mappings in 'requestMappingHandlerMapping'
+2024-04-07T22:33:14.356+09:00 DEBUG 26172 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-04-07T22:33:14.466+09:00 DEBUG 26172 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-04-07T22:33:14.609+09:00 DEBUG 26172 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-04-07T22:33:50.181+09:00  WARN 13880 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-07T22:33:50.187+09:00  WARN 13880 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-04-07T22:33:57.378+09:00  WARN 13880 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-07T22:33:57.623+09:00 DEBUG 13880 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 27 mappings in 'requestMappingHandlerMapping'
+2024-04-07T22:33:57.777+09:00 DEBUG 13880 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-04-07T22:33:57.840+09:00 DEBUG 13880 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-04-07T22:33:57.921+09:00 DEBUG 13880 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-04-07T22:34:02.621+09:00  INFO 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-07T22:34:02.622+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-04-07T22:34:02.623+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-04-07T22:34:02.624+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-04-07T22:34:02.626+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@64914ff3
+2024-04-07T22:34:02.628+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@62d05ede
+2024-04-07T22:34:02.630+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-04-07T22:34:02.631+09:00  INFO 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-04-07T22:34:02.669+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-04-07T22:34:02.669+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-04-07T22:34:02.669+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-04-07T22:34:02.669+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-04-07T22:34:02.669+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-04-07T22:34:02.669+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-04-07T22:34:02.716+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-04-07T22:34:02.716+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-04-07T22:34:02.716+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-04-07T22:34:02.716+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-04-07T22:34:02.716+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-04-07T22:34:02.716+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-04-07T22:34:02.989+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-04-07T22:34:02.991+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["517.83"]
+2024-04-07T22:34:02.997+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:02.999+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-04-07, categoryName=React, studyMinutes=100.0333), Study (truncated)...]
+2024-04-07T22:34:03.009+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.013+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T22:34:03.014+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-04-07T22:34:03.067+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.068+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [6002]
+2024-04-07T22:34:03.069+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.071+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-04-07T22:34:03.078+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.081+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T22:34:03.082+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T22:34:03.131+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.135+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T22:34:03.136+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-04-07T22:34:03.138+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.141+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:34:03.142+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:34:03.158+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.158+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.158+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T22:34:03.159+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeByDayGroupByCategoryDTO(studyMinutesDay=100, categoryName=React)]]
+2024-04-07T22:34:03.163+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.165+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.165+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.168+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=535.36071429, averageStudyTimePerWeekend=471.38333333, av (truncated)...]
+2024-04-07T22:34:03.170+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.173+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-04-07T22:34:03.173+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-04-07T22:34:03.175+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-04-07T22:34:03.174+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-04-07T22:34:03.175+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-04-07T22:34:03.176+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-04-07T22:34:03.244+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.245+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-04-07T22:34:03.246+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.247+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.247+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-04-07, categoryName=React, studyMinutes=100.0333), Study (truncated)...]
+2024-04-07T22:34:03.249+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.251+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-04-07T22:34:03.252+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T22:34:03.252+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-04-07T22:34:03.253+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T22:34:03.254+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.254+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.255+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["517.83"]
+2024-04-07T22:34:03.255+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [6002]
+2024-04-07T22:34:03.256+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.256+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.260+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-04-07T22:34:03.261+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-04-07T22:34:03.365+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.366+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T22:34:03.367+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.370+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-04-07", parameters={masked}
+2024-04-07T22:34:03.371+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-04-07T22:34:03.373+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.374+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-04-07T22:34:03.377+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.487+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.487+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T22:34:03.489+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.492+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:03.493+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=535.36071429, averageStudyTimePerWeekend=471.38333333, av (truncated)...]
+2024-04-07T22:34:03.494+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:03.943+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:05.063+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:05.131+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:34:05.144+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:34:05.145+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:34:05.250+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:06.573+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:06.600+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:34:06.724+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:14.886+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-04-07T22:34:14.893+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-04-07T22:34:14.894+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-04-07T22:34:14.927+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:34:15.747+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:34:23.957+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-04-07T22:34:23.963+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:45:52.684+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:45:52.685+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:45:54.365+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:45:54.400+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:45:54.405+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:45:54.406+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:45:54.452+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:45:55.835+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:45:55.868+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:45:55.936+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:46:27.323+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:46:27.323+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:46:28.726+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:46:28.746+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:46:28.752+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:46:28.752+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:46:28.792+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:46:30.043+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:46:30.073+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:46:30.146+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:46:35.535+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:46:35.535+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:46:37.399+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:46:37.415+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:46:37.420+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:46:37.420+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:46:37.475+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:46:38.676+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:46:38.703+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:46:38.767+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:48:46.394+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:48:46.395+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:48:47.744+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:48:47.765+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:48:47.771+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:48:47.771+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:48:47.811+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:48:49.122+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:48:49.147+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:48:49.199+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:10.681+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-04-07T22:51:10.684+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-04-07T22:51:11.425+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:11.603+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:51:11.604+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:51:12.198+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-04-07T22:51:12.199+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-04-07T22:51:13.341+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:13.396+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:51:13.411+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:51:13.412+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:51:13.489+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:15.485+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:15.533+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=25, name=SQLD, type=Certificate, strength=정규화와 반정규화를 고려해 ERD를 설계할 수 있습니다., w (truncated)...]
+2024-04-07T22:51:15.552+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-04-07T22:51:15.552+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-04-07T22:51:15.664+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:17.510+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:17.531+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:51:17.540+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:51:17.540+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:51:17.604+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:17.735+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:17.786+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=25, name=SQLD, type=Certificate, strength=정규화와 반정규화를 고려해 ERD를 설계할 수 있습니다., w (truncated)...]
+2024-04-07T22:51:17.893+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:18.885+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:18.915+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:51:18.923+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:51:18.924+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:51:18.992+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:20.473+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:20.500+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:51:20.609+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:22.857+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-04-07T22:51:22.866+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-04-07T22:51:22.867+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-04-07T22:51:22.870+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:22.877+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/devlog/getDevlogWriteList", parameters={}
+2024-04-07T22:51:22.877+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-04-07T22:51:23.930+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:30.298+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:35.666+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-04-07T22:51:35.681+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:35.694+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/devlog/getDevlogWriteList", parameters={}
+2024-04-07T22:51:35.695+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-04-07T22:51:42.335+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[DevlogWrite(id=2, title=[개인블로그 제작기] base64로 파일 업로드 구현, topic=프로젝트 / 트러블슈팅, notionPageId=0203-aws-s3 (truncated)...]
+2024-04-07T22:51:42.621+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:42.748+09:00 DEBUG 13880 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:48.044+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-04-07T22:51:48.044+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-04-07T22:51:49.773+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:49.812+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=25, name=SQLD, type=Certificate, strength=정규화와 반정규화를 고려해 ERD를 설계할 수 있습니다., w (truncated)...]
+2024-04-07T22:51:49.818+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-04-07T22:51:49.819+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-04-07T22:51:49.903+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:51.292+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:51.319+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=25, name=SQLD, type=Certificate, strength=정규화와 반정규화를 고려해 ERD를 설계할 수 있습니다., w (truncated)...]
+2024-04-07T22:51:51.399+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:52.800+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Writing [[DevlogWrite(id=2, title=[개인블로그 제작기] base64로 파일 업로드 구현, topic=프로젝트 / 트러블슈팅, notionPageId=0203-aws-s3 (truncated)...]
+2024-04-07T22:51:53.104+09:00 DEBUG 13880 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:51:58.971+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS%20SAA", parameters={masked}
+2024-04-07T22:51:58.971+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-04-07T22:51:59.093+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:51:59.093+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-04-07T22:51:59.094+09:00 DEBUG 13880 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:52:22.937+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=Azure", parameters={masked}
+2024-04-07T22:52:22.938+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-04-07T22:52:23.487+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:52:23.490+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWriteSkillDTO(id=67, title=VNet (Azure Virtual Network==aws VPC), topic=공식문서 탐독, notionPageId (truncated)...]
+2024-04-07T22:52:23.505+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:52:50.725+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteListByCategoryName?name=AWS", parameters={masked}
+2024-04-07T22:52:50.725+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByCategoryName(String)
+2024-04-07T22:52:51.403+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:52:51.416+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[DevlogWriteSkillDTO(id=27, title=EC2 네트워킹 구조 도식화 및 IAM의 사용자/역할, topic=개념 정리, notionPageId=2-14-EC2- (truncated)...]
+2024-04-07T22:52:51.467+09:00 DEBUG 13880 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:53:43.924+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Afalse%2C%22FrontEnd%22%3Afalse%2C%22BackEnd%22%3Afalse%2C%22DevOps%22%3Afalse%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Afalse%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-04-07T22:53:43.925+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-04-07T22:53:44.446+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:53:44.453+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=25, name=SQLD, type=Certificate, strength=정규화와 반정규화를 고려해 ERD를 설계할 수 있습니다., w (truncated)...]
+2024-04-07T22:53:44.470+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:53:52.248+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/skill/getSkillList?checkBoxes=%7B%22All%22%3Atrue%2C%22FrontEnd%22%3Atrue%2C%22BackEnd%22%3Atrue%2C%22DevOps%22%3Atrue%2C%22Certificate%22%3Atrue%2C%22Tools%22%3Atrue%7D&selectedAlignBox=%EB%82%A0%EC%A7%9C%EC%88%9C&selectedOrderBy=%EB%82%B4%EB%A6%BC%EC%B0%A8%EC%88%9C", parameters={masked}
+2024-04-07T22:53:52.248+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to skill.controller.SkillController#getSkillList(Map)
+2024-04-07T22:53:53.796+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:53:53.838+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[SkillWriteFilterDTO(id=25, name=SQLD, type=Certificate, strength=정규화와 반정규화를 고려해 ERD를 설계할 수 있습니다., w (truncated)...]
+2024-04-07T22:53:53.909+09:00 DEBUG 13880 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:54:02.868+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:54:02.869+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:54:04.173+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:54:04.207+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:54:04.213+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:54:04.213+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:54:04.251+09:00 DEBUG 13880 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:54:05.409+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:54:05.432+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:54:05.478+09:00 DEBUG 13880 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:57:58.199+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:57:58.200+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:57:59.606+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:57:59.635+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:57:59.643+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T22:57:59.644+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()
+2024-04-07T22:57:59.708+09:00 DEBUG 13880 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T22:58:00.809+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-04-07T22:58:00.830+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[Project(id=1, title=반려견 연애/산책 매칭, 플러독(FlirDog), detail=국내 연 20% 이상 성장을 보이는 반려동물 시장을 타겟팅한, 반려견 연애/산책 (truncated)...]
+2024-04-07T22:58:00.891+09:00 DEBUG 13880 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-04-07T23:03:07.805+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/project/getProjectListAll", parameters={}
+2024-04-07T23:03:07.807+09:00 DEBUG 13880 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to project.controller.ProjectController#getProjectListAll()

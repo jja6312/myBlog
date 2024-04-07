@@ -14,6 +14,7 @@ import WriteForm from "./components/devlog/WriteForm";
 import ReadForm from "./components/devlog/read/ReadForm";
 import SkillWriteForm from "./components/skill/skillWriteForm/SkillWriteForm";
 import ProjectWriteForm from "./components/project/ProjectWriteForm";
+import ProjectReadForm from "./components/project/readForm/ProjectReadForm";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/project/writeForm" element={<ProjectWriteForm />} />
             {/* 글 읽기 */}
             <Route path="/readForm" element={<ReadForm />} />
+            <Route path="/projectReadForm" element={<ProjectReadForm />} />
           </Routes>
         </div>
       </BrowserRouter>
