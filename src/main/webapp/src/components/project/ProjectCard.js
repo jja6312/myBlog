@@ -31,7 +31,10 @@ const ProjectCard = ({
         deployAddress={deployAddress}
       ></ProjectCardInfo>
 
-      <Link to={`/project/${notionPageId}`} className="w-full h-[10%]">
+      <Link
+        to={`/projectReadForm?notionPageId=${notionPageId}`}
+        className="w-full h-[10%]"
+      >
         <div className="w-full h-full py-2 flex justify-center items-center bg-blue-500 rounded cursor-pointer hover:bg-blue-700 transition duration-150">
           <span className="">자세히 보기</span>
         </div>
