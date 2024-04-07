@@ -2,7 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 const ProjectCardInfo = ({ title, detail, githubAddress, deployAddress }) => {
   return (
@@ -11,21 +10,21 @@ const ProjectCardInfo = ({ title, detail, githubAddress, deployAddress }) => {
       <span className="text-white">{detail}</span>
       <div className="flex w-full justify-center gap-4">
         {githubAddress && (
-          <Link to={githubAddress}>
+          <a href={githubAddress} target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon
               className="w-10 h-10 cursor-pointer hover:text-gray-500 transition duration-150"
               icon={faGithub}
             />
-          </Link>
+          </a>
         )}
 
         {deployAddress && (
-          <Link to={deployAddress}>
+          <a href={deployAddress} target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon
               className="w-10 h-10 cursor-pointer hover:text-gray-500 transition duration-150"
               icon={faGlobe}
             />
-          </Link>
+          </a>
         )}
       </div>
     </div>
