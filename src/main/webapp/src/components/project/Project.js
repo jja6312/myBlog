@@ -41,7 +41,7 @@ const Project = () => {
       "
         >
           {projectList &&
-            projectList.map((item) => {
+            [...projectList].reverse().map((item) => {
               return (
                 <ProjectCard
                   key={item.id}
@@ -59,6 +59,7 @@ const Project = () => {
             })}
         </div>
       </div>
+      <div className="w-full h-[200px]"></div>
     </>
   );
 };

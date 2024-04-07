@@ -11,7 +11,7 @@ const ProjectWriteForm = () => {
   const [projectDTO, setProjectDTO] = useState({
     title: "",
     detail: "",
-    type: "",
+    type: "개인 프로젝트",
     startDate: "",
     endDate: "",
     img: "",
