@@ -1,6 +1,6 @@
 import React from "react";
 
-// 깃허브대시보드 박스에 마우스를 올렸을 때, 공부시간을 보여주는 컴포넌트
+// 깃허브대시보드 박스에 마우스를 올렸을 때, 학습시간을 보여주는 컴포넌트
 const FillboxHover = ({ durationHourAndMinute, isClicked, id, isToday }) => {
   return (
     <>
@@ -30,7 +30,7 @@ const FillboxHover = ({ durationHourAndMinute, isClicked, id, isToday }) => {
           ) : id === "xlEvaluation" ? (
             <span>10시간 이상</span>
           ) : (
-            <span>공부시간 : {durationHourAndMinute}</span>
+            <span>학습시간 : {durationHourAndMinute}</span>
           )}
         </div>
         {/* 말풍선 꼬리표 */}

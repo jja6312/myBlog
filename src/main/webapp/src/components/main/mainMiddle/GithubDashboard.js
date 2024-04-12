@@ -65,14 +65,14 @@ const GithubDashboard = () => {
     const durationHours = dayStudyTime[0]
       ? dayStudyTime[0].durationInSeconds / 3600
       : 0;
-    // 마우스를 올렸을 때 나타나는 일별 공부시간 표시
+    // 마우스를 올렸을 때 나타나는 일별 학습시간 표시
     const durationHourAndMinute = dayStudyTime[0]
       ? Math.floor(durationHours) > 0 // 1시간 이상일 때, xx시간 xx분
         ? `${Math.floor(durationHours)}시간 ${Math.floor(
             (durationHours - Math.floor(durationHours)) * 60
           )}분`
         : `${Math.floor((durationHours - Math.floor(durationHours)) * 60)}분` // 1시간 미만일 때, xx분
-      : "-"; // 공부시간이 없을 때, "-"
+      : "-"; // 학습시간이 없을 때, "-"
 
     return (
       <Fillbox
@@ -80,7 +80,7 @@ const GithubDashboard = () => {
         brightness={
           isToday(id)
             ? `bg-yellow-500` //오늘날짜라면 노란색 배경
-            : durationHours >= 10 // 공부시간이 10시간 이상일 때 밝은 배경
+            : durationHours >= 10 // 학습시간이 10시간 이상일 때 밝은 배경
             ? "bg-[#4F93FF]"
             : durationHours >= 8
             ? "bg-[#3360A6]"
@@ -88,7 +88,7 @@ const GithubDashboard = () => {
             ? "bg-[#244273]"
             : durationHours >= 4
             ? "bg-[#182E4F]"
-            : "bg-dark" // 공부시간이 4시간 미만일 때 어두운 배경
+            : "bg-dark" // 학습시간이 4시간 미만일 때 어두운 배경
         }
         durationHourAndMinute={durationHourAndMinute}
         clickedDate={clickedDate}
@@ -141,7 +141,7 @@ const GithubDashboard = () => {
           <div className="flex ml-2 gap-[0.5px] md:gap-[4px] lg:gap-1">
             {/* 좌측, 월 수 금 텍스트 */}
             <GithubDashboardDayOfWeekAtMiddle />
-            {/* 메인, 공부시간에 따라 밝기를 나타내는 네모상자, 2024년 1년치 렌더 */}
+            {/* 메인, 학습시간에 따라 밝기를 나타내는 네모상자, 2024년 1년치 렌더 */}
             {renderWeeks()}
           </div>
           {/* 하단, 부연 설명 */}

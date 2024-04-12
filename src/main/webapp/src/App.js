@@ -12,12 +12,15 @@ import Book from "./components/book/Book";
 import Video from "./components/video/Video";
 import WriteForm from "./components/devlog/WriteForm";
 import ReadForm from "./components/devlog/read/ReadForm";
+import SkillWriteForm from "./components/skill/skillWriteForm/SkillWriteForm";
+import ProjectWriteForm from "./components/project/ProjectWriteForm";
+import ProjectReadForm from "./components/project/readForm/ProjectReadForm";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="App flex-col justify-start items-start bg-dark">
+        <div className="App flex-col justify-start items-start bg-dark min-h-screen">
           <Header></Header>
           <Routes>
             <Route path="/" element={<Main />} />
@@ -30,9 +33,12 @@ function App() {
             <Route path="/video" element={<Video />} />
             <Route path="/timeline" element={<Video />} />
             {/* 글 작성 */}
-            <Route path="/writeForm" element={<WriteForm />} />
+            <Route path="/devlog/writeForm" element={<WriteForm />} />
+            <Route path="/skill/writeForm" element={<SkillWriteForm />} />
+            <Route path="/project/writeForm" element={<ProjectWriteForm />} />
             {/* 글 읽기 */}
             <Route path="/readForm" element={<ReadForm />} />
+            <Route path="/projectReadForm" element={<ProjectReadForm />} />
           </Routes>
         </div>
       </BrowserRouter>

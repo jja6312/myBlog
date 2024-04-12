@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { formatTime } from "../../formatTime";
+import { formatTime } from "../../../util/formatTime";
 
 // 메인의 왼쪽. 스탑워치 표시--[24.01.27 21:36 정지안]
 const Stopwatch = () => {
@@ -64,7 +64,7 @@ const Stopwatch = () => {
   const getTodayStudyTime = () => {
     // 오늘 총 공부량 불러오기
     axios
-      .get("http://localhost:8080/studyTime/getTodayStudyTime")
+      .get("http://43.203.18.91:8080/studyTime/getTodayStudyTime")
       .then((res) => {
         console.log("todayStudyTime", res.data);
         setTodayStudyTime(res.data);
@@ -79,7 +79,7 @@ const Stopwatch = () => {
     // 스톱워치 저장
     try {
       await axios.post(
-        "http://localhost:8080/studyTime/saveTime",
+        "http://43.203.18.91:8080/studyTime/saveTime",
         studyTimeDTO
       );
       getTodayStudyTime();
@@ -96,7 +96,7 @@ const Stopwatch = () => {
     getTodayStudyTime();
     // 카테고리 목록 불러오기
     axios
-      .get("http://localhost:8080/devlog/getCategoryList")
+      .get("http://43.203.18.91:8080/devlog/getCategoryList")
       .then((res) => {
         console.log("categoryList", res.data);
         setCategoryList(res.data);

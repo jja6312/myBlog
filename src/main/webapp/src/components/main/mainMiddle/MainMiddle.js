@@ -4,6 +4,7 @@ import DataDashboard from "./DataDashboard/DataDashboard";
 import WriteDashboard from "./WriteDashboard";
 import axios from "axios";
 import { useStudyTimeStore } from "../../../store/StudyTimeStore";
+import TodoList from "./todolist/TodoList";
 
 // 메인 페이지의 가운데 콘텐츠표시부분. --[24.02.05 16:02 정지안]
 
@@ -13,7 +14,7 @@ const MainMiddle = () => {
   const getYearlyStudyTime = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/studyTime/getYearlyStudyTime"
+        "http://43.203.18.91:8080/studyTime/getYearlyStudyTime"
       );
       setYearlyStudyTime(response.data);
       console.log("yearlyStudyTime", response.data);
@@ -33,7 +34,7 @@ const MainMiddle = () => {
     md:ml-0 md:w-full 
     xl:ml-0"
     >
-      {/* 1년간 일별 공부시간 대시보드 */}
+      {/* 1년간 일별 학습시간 대시보드 */}
       <div
         className="text-lg font-semibold mt-8 mb-2 flex 
       flex-col justify-center items-start
@@ -49,9 +50,11 @@ const MainMiddle = () => {
         </span>
       </div>
       <GithubDashboard></GithubDashboard>
+      {/* TODOLIST */}
+      <TodoList></TodoList>
       {/* 특정 날짜의 공부종류 및 공부량 데이터 시각화 */}
-
       <DataDashboard></DataDashboard>
+
       {/* 특정 날짜의 개발일지 */}
       <WriteDashboard></WriteDashboard>
     </div>

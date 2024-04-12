@@ -14,7 +14,7 @@ const LevelBar = () => {
 
   const getStudyTimeSum = () => {
     axios
-      .get("http://localhost:8080/studyTime/getStudyTimeHourSum")
+      .get("http://43.203.18.91:8080/studyTime/getStudyTimeHourSum")
       .then((res) => {
         console.log("studyTimeSum:", res.data);
 
@@ -29,7 +29,7 @@ const LevelBar = () => {
     getStudyTimeSum();
   }, []);
   useEffect(() => {
-    const calLevel = 1 + Math.floor(studyTimeHourSum / 100); //공부시간 100시간당 1레벨업.
+    const calLevel = 1 + Math.floor(studyTimeHourSum / 100); //학습시간 100시간당 1레벨업.
     setLevel(calLevel);
 
     setExp(Math.floor((studyTimeHourSum - (calLevel - 1) * 100) * 100) / 100); // 소수점 2째자리까지 표현

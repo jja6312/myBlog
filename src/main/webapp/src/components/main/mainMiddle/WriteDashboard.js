@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import DevlogListElement from "../../devlog/DevlogListElement";
-import { formatCreatedAt } from "../../formatCreatedAt";
+import { formatCreatedAt } from "../../../util/formatCreatedAt";
 import { Link } from "react-router-dom";
 import { useStudyTimeStore } from "../../../store/StudyTimeStore";
 
@@ -13,7 +13,7 @@ const WriteDashboard = () => {
   //일자에 따른 개발일지 가져오기
   const getDevlogWriteListByDate = () => {
     axios
-      .get("http://localhost:8080/myBlog/getDevlogWriteListByDate", {
+      .get("http://43.203.18.91:8080/myBlog/getDevlogWriteListByDate", {
         params: {
           clickedDate: clickedDate,
         },

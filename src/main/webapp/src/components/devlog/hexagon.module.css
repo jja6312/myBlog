@@ -24,6 +24,35 @@
 .opacityAnimation3 {
   animation: opacityPulse 1s ease-in-out 0.75s infinite;
 }
+
+.opacityAnimationFast0 {
+  animation: opacityPulse 0.5s ease-in-out 0s infinite;
+}
+
+.opacityAnimationFast1 {
+  animation: opacityPulse 0.5s ease-in-out 0.125s infinite;
+}
+
+.opacityAnimationFast2 {
+  animation: opacityPulse 0.5s ease-in-out 0.25s infinite;
+}
+
+.opacityAnimationFast3 {
+  animation: opacityPulse 0.5s ease-in-out 0.375s infinite;
+}
+
+.opacityAnimationFast4 {
+  animation: opacityPulse 0.5s ease-in-out 0.5s infinite;
+}
+
+.opacityAnimationFast5 {
+  animation: opacityPulse 0.5s ease-in-out 0.675s infinite;
+}
+
+.opacityAnimationFast6 {
+  animation: opacityPulse 0.5s ease-in-out 0.8s infinite;
+}
+
 .opacityAnimationDevlogList {
   animation: opacityPulse 2.5s ease-in-out 0s infinite;
 }
