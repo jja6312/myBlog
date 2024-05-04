@@ -31,7 +31,7 @@ const MemoContent = ({ item }) => {
       return;
     }
     axios
-      .put(`http://43.203.18.91:8080/memo/editMemo/${item.id}`, {
+      .put(`http://localhost:8080/memo/editMemo/${item.id}`, {
         content: editContent,
       })
       .then((response) => {
@@ -56,7 +56,7 @@ const MemoContent = ({ item }) => {
       return;
     }
     axios
-      .delete(`http://43.203.18.91:8080/memo/deleteMemo/${item.id}`)
+      .delete(`http://localhost:8080/memo/deleteMemo/${item.id}`)
       .then((response) => {
         console.log("삭제완료", response.data);
         setMemoUpdated(!memoUpdated);

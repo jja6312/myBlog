@@ -27,7 +27,7 @@ public class DevlogController {
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/devlog/save")
     public void saveDevlog(@RequestBody DevlogWriteDTO devlogWriteDTO) {
-        System.out.println("!!!devlogWriteDTO.get"+devlogWriteDTO.getCategoryThumbnail());
+        System.out.println("!!!devlogWriteDTO.get" + devlogWriteDTO.getCategoryThumbnail());
         devlogService.saveWrite(devlogWriteDTO);
 
     }
@@ -46,7 +46,7 @@ public class DevlogController {
 
     // ----------------------개발일지 메인----------------------
 
-    @PostMapping(value = "/devlog/getDevlogWriteList")
+    @GetMapping(value = "/devlog/getDevlogWriteList")
     public List<DevlogWrite> getDevlogWriteList() {
         return devlogService.getDevlogWriteList();
     }
@@ -60,7 +60,7 @@ public class DevlogController {
     //---------기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기
 
     @GetMapping(value = "/devlog/getDevlogWriteListByCategoryName")
-    public ResponseEntity<List<DevlogWriteSkillDTO>> getDevlogWriteListByCategoryName(@RequestParam("name") String name ){
+    public ResponseEntity<List<DevlogWriteSkillDTO>> getDevlogWriteListByCategoryName(@RequestParam("name") String name) {
         return ResponseEntity.ok(devlogService.getDevlogWriteListByCategoryName(name));
     }
 
