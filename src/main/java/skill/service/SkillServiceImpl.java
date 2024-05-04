@@ -3,6 +3,7 @@ package skill.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import devlog.bean.Category;
 import devlog.repository.CategoryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import skill.bean.SkillWrite;
@@ -14,13 +15,14 @@ import skill.repository.SkillRepository;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class SkillServiceImpl implements SkillService{
-@Autowired
-private SkillRepository skillRepository;
-@Autowired
-private CategoryRepository categoryRepository;
-@Autowired
-private SkillWriteMapper skillWriteMapper;
+
+private final SkillRepository skillRepository;
+
+private final CategoryRepository categoryRepository;
+
+private final SkillWriteMapper skillWriteMapper;
 
     @Override
     public void saveWrite(SkillWriteDTO skillWriteDTO) {

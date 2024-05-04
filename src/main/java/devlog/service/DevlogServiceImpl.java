@@ -9,6 +9,7 @@ import java.util.List;
 
 import devlog.bean.*;
 import devlog.mapper.DevlogWriteMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,16 +20,17 @@ import devlog.repository.TagRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Service
+@RequiredArgsConstructor
 public class DevlogServiceImpl implements DevlogService {
 
-	@Autowired
-	private DevlogRepository devlogRepository;
-	@Autowired
-	private CategoryRepository categoryRepository;
-	@Autowired
-	private TagRepository tagRepository;
-	@Autowired
-	private DevlogWriteMapper devlogWriteMapper;
+
+	private final DevlogRepository devlogRepository;
+
+	private final CategoryRepository categoryRepository;
+
+	private final TagRepository tagRepository;
+
+	private final DevlogWriteMapper devlogWriteMapper;
 
 
 	@Override

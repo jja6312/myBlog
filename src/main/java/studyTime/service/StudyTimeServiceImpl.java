@@ -2,6 +2,7 @@ package studyTime.service;
 
 import devlog.bean.Category;
 import devlog.repository.CategoryRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import studyTime.bean.*;
@@ -14,24 +15,16 @@ import java.util.List;
 
 //스터디 시간과 관련된 service --[24.01.27 20:41 정지안]
 @Service
+@RequiredArgsConstructor
 public class StudyTimeServiceImpl implements StudyTimeService {
     private final StudyTimeRepository studyTimeRepository;
     private final CategoryRepository categoryRepository;
     private final StudyTimeMapper studyTimeMapper;
 
-    @Autowired
-    public StudyTimeServiceImpl(StudyTimeRepository studyTimeRepository, CategoryRepository categoryRepository,
-            StudyTimeMapper studyTimeMapper) {
-        this.studyTimeRepository = studyTimeRepository;
-        this.categoryRepository = categoryRepository;
-        this.studyTimeMapper = studyTimeMapper;
-    }
-
     // 스톱워치 중지시, 카테고리별로 학습시간을 저장한다.
     @Override
     public void createStudyTime(StudyTimeDTO studyTimeDTO) {
         StudyTime studyTime = convertToEntity(studyTimeDTO);
-        System.out.println("serviceImpl시간저장 엔티티 변환후!!!:" + studyTime.getDurationInSeconds());
         studyTimeRepository.save(studyTime);
     }
 
@@ -57,13 +50,6 @@ public class StudyTimeServiceImpl implements StudyTimeService {
         return studyTimeRepository.findTotalDurationByDate(today)
                 .orElse(0L);
     }
-    // 메인페이지 렌더시, 연간 공부 시간을 조회
-    // public Map<LocalDate, Long> getYearlyStudyTime() {
-    // LocalDate startDate = LocalDate.of(2024, 1, 1);
-    // LocalDate endDate = LocalDate.of(2024, 12, 31);
-    // return studyTimeRepository.findDurationByDateRange(startDate, endDate);
-    // return null;
-    // }
 
     public List<StudyTimeSummaryDTO> getYearlyStudyTime() {
         LocalDateTime startDate = LocalDateTime.of(2024, 1, 1, 0, 0);

@@ -1,5 +1,6 @@
 package studyTime.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +10,11 @@ import studyTime.service.StudyTimeService;
 import java.util.List;
 
 //스터디 시간과 관련된 controller --[24.01.27 20:41 정지안]
-@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 public class StudyTimeController {
-	@Autowired
-	private StudyTimeService studyTimeService; // 스터디시간 서비스
+
+	private final StudyTimeService studyTimeService; // 스터디시간 서비스
 
 	// 학습시간 저장
 	@PostMapping("/studyTime/saveTime")
