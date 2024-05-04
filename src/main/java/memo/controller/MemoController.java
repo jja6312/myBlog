@@ -1,6 +1,7 @@
 package memo.controller;
 
 import com.amazonaws.Response;
+import lombok.RequiredArgsConstructor;
 import memo.bean.Memo;
 import memo.bean.MemoEditDTO;
 import memo.bean.MemoSaveDTO;
@@ -13,14 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@RequiredArgsConstructor
 public class MemoController {
     private final MemoService memoService;
-
-    @Autowired
-    public MemoController(MemoService memoService) {
-        this.memoService = memoService;
-    }
 
     @PostMapping(path = "/memo/saveMemo")
     public ResponseEntity<Memo> saveMemo(@RequestBody MemoSaveDTO memoSaveDTO) {

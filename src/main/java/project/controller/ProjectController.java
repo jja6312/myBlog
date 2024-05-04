@@ -1,5 +1,6 @@
 package project.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.bean.Project;
@@ -10,13 +11,9 @@ import project.service.ProjectServiceImpl;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@RequiredArgsConstructor
 public class ProjectController {
     private final ProjectService projectService;
-
-    public ProjectController(ProjectService projectService){
-        this.projectService = projectService;
-    }
 
     @PostMapping("/project/save")
     public ResponseEntity<?> projectSave(@RequestBody ProjectSaveDTO projectSaveDTO){

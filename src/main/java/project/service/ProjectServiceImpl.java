@@ -1,5 +1,6 @@
 package project.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import project.bean.Project;
 import project.bean.ProjectSaveDTO;
@@ -8,13 +9,9 @@ import project.repository.ProjectRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
-
-
-    public ProjectServiceImpl(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
-    }
 
     @Override
     public void projectSave(ProjectSaveDTO projectSaveDTO) {

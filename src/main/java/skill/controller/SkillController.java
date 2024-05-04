@@ -1,6 +1,7 @@
 package skill.controller;
 
 import devlog.bean.DevlogWriteDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,11 +14,11 @@ import skill.service.SkillService;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 public class SkillController {
-    @Autowired
-    private SkillService skillService;
+
+    private final SkillService skillService;
 
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/skill/save")

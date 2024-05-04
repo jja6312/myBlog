@@ -3,6 +3,7 @@ package devlog.controller;
 import java.util.List;
 
 import devlog.bean.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,11 +18,11 @@ import devlog.service.DevlogService;
 import jakarta.servlet.http.HttpSession;
 
 //개발일지와 관련된 controller --[24.01.29 정지안]
-@CrossOrigin
 @RestController
+@RequiredArgsConstructor
 public class DevlogController {
-    @Autowired
-    private DevlogService devlogService; // 개발일지 서비스
+
+    private final DevlogService devlogService; // 개발일지 서비스
 
     // ----------------------글쓰기----------------------
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.

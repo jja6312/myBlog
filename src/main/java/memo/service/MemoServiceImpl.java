@@ -1,6 +1,7 @@
 package memo.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import memo.bean.Memo;
 import memo.bean.MemoEditDTO;
 import memo.bean.MemoSaveDTO;
@@ -17,13 +18,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MemoServiceImpl implements MemoService {
     private final MemoRepository memoRepository;
-
-    @Autowired
-    public MemoServiceImpl(MemoRepository memoRepository) {
-        this.memoRepository = memoRepository;
-    }
 
 
     @Override
