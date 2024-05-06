@@ -2,13 +2,17 @@ package skill.bean;
 
 import devlog.bean.Category;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="skillWrite")
-@Data
+@Getter
+@NoArgsConstructor
 public class SkillWrite {
 
     @Id
@@ -42,4 +46,14 @@ public class SkillWrite {
     @ManyToOne(optional = true)
     @JoinColumn(name = "category_name", referencedColumnName = "name")
     private Category category;
+
+    @Builder
+    public SkillWrite(String name, String type, String strength, String weakness, String writeThumbnail, Category category) {
+        this.name = name;
+        this.type = type;
+        this.strength = strength;
+        this.weakness = weakness;
+        this.writeThumbnail = writeThumbnail;
+        this.category = category;
+    }
 }

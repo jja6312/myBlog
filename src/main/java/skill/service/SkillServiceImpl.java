@@ -19,20 +19,27 @@ import java.util.*;
 public class SkillServiceImpl implements SkillService{
 
 private final SkillRepository skillRepository;
-
 private final CategoryRepository categoryRepository;
-
 private final SkillWriteMapper skillWriteMapper;
 
     @Override
     public void saveWrite(SkillWriteDTO skillWriteDTO) {
-        System.out.println("service에서 writeThumbnail"+skillWriteDTO.getWriteThumbnail());
-        SkillWrite skillWrite = convertToEntity(skillWriteDTO);
+        Optional<Category> category = categoryRepository.findByName(skillWriteDTO.getName());
+
+        SkillWrite skillWrite = SkillWrite.builder()
+                .name(skillWriteDTO.getName())
+                .type(skillWriteDTO.getType())
+                .strength(skillWriteDTO.getStrength())
+                .weakness(skillWriteDTO.getWeakness())
+                .writeThumbnail(skillWriteDTO.getWriteThumbnail())
+                .category(category.orElse(null))
+                .build();
+
         skillRepository.save(skillWrite);
     }
 
     @Override
-    public List<SkillWriteFilterDTO> getSkillList(Map<String, String> allParams) {
+    public List<SkillWriteFilterDTO> getSkillList(Map<String, String> allParams) {// 안좋은코드. 앞으론 이렇게 설계하지말자.
         String checkBoxes = allParams.get("checkBoxes");
         List<String> types = new ArrayList<>();
 
@@ -60,26 +67,6 @@ private final SkillWriteMapper skillWriteMapper;
 
         return skillWriteMapper.selectSkillWrites(params);
     }//getSkillList()
-
-    private SkillWrite convertToEntity(SkillWriteDTO skillWriteDTO){
-        SkillWrite skillWrite = new SkillWrite();
-        skillWrite.setName(skillWriteDTO.getName());
-        skillWrite.setType(skillWriteDTO.getType());
-        skillWrite.setStrength(skillWriteDTO.getStrength());
-        skillWrite.setWeakness(skillWriteDTO.getWeakness());
-        skillWrite.setWriteThumbnail(skillWriteDTO.getWriteThumbnail());
-
-        //name과 일치하는 카테고리가 있다면, 관계설정하기.
-        //name과 일치하는 카테고리가 없다면, 없는채로 두자.
-        Optional<Category> categoryOptional = categoryRepository.findByName(skillWriteDTO.getName());
-        if(categoryOptional.isPresent()){
-            Category category = categoryOptional.get();
-            skillWrite.setCategory(category);
-        }
-        System.out.println("skillWrite의 writethumbnail"+skillWrite.getWriteThumbnail());
-
-        return skillWrite;
-    }//convertToEntity()
 
 
 }//SkillService Class

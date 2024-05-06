@@ -1,14 +1,18 @@
 package project.bean;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="project")
-@Data
+@Getter
+@NoArgsConstructor
 public class Project {
 
     @Id
@@ -57,6 +61,19 @@ public class Project {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }// 수정일 업데이트 함수
+
+    @Builder
+    public Project(String title, String detail, String type, LocalDate startDate, LocalDate endDate, String notionPageId, String githubAddress, String deployAddress, String img) {
+        this.title = title;
+        this.detail = detail;
+        this.type = type;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.notionPageId = notionPageId;
+        this.githubAddress = githubAddress;
+        this.deployAddress = deployAddress;
+        this.img = img;
+    }
 
 
 }

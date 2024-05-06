@@ -42,12 +42,15 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private Set<Tag> tag;
 
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private Set<StudyTime> studyTimes;
+
     public Category(String name, String categoryThumbnail) {
         this.name = name;
         this.categoryThumbnail = categoryThumbnail;
     }
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<StudyTime> studyTimes;
+
 }
 
 // *카테고리란?

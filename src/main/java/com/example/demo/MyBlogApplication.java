@@ -26,23 +26,4 @@ public class MyBlogApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyBlogApplication.class, args);
 	}
-
-	// CORS설정
-	// @Bean
-	// CorsConfigurationSource corsConfigurationSource() {
-	// return request -> {
-	// CorsConfiguration config = new CorsConfiguration();
-	// config.setAllowedHeaders(Collections.singletonList("*"));
-	// config.setAllowedOrigins(List.of("http://43.203.18.91:3000",
-	// "http://law10000hours.com.s3-website.ap-northeast-2.amazonaws.com"));
-	// config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH",
-	// "OPTIONS"));
-	// // config.setAllowCredentials(true);
-	//
-	// UrlBasedCorsConfigurationSource source = new
-	// UrlBasedCorsConfigurationSource();
-	// source.registerCorsConfiguration("/**", config); // 모든 경로에 CORS 적용
-	// return config;
-	// };
-	// }
 }

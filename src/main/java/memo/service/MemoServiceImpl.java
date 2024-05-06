@@ -25,10 +25,10 @@ public class MemoServiceImpl implements MemoService {
 
     @Override
     public Memo saveMemo(MemoSaveDTO memoSaveDTO) {
-        Memo memo = new Memo();
-        memo.setContent(memoSaveDTO.getContent());
-        memo.setStatus(memoSaveDTO.getStatus());
-
+        Memo memo = Memo.builder()
+                .content(memoSaveDTO.getContent())
+                .status(memoSaveDTO.getStatus())
+                .build();
         return memoRepository.save(memo);
     }
 
@@ -43,25 +43,24 @@ public class MemoServiceImpl implements MemoService {
         return memoRepository.findMemosByCreatedAtBetween(startOfDay, endOfDay);
     }
 
+
     @Override
-    public Memo updateMemo(String idStr, String statusStr) {
+    public Memo updateMemo(String idStr, String statusStr) {//메모의 status수정
         Long id = Long.parseLong(idStr);
-        Optional<Memo> memoFindedId = memoRepository.findById(id);
-
-        if (memoFindedId.isPresent()) {
-            try {
-
-                Memo memo = memoFindedId.get();
-                Status status = Status.valueOf(statusStr);
-                memo.setStatus(status);
-                return memoRepository.save(memo); // 수정된 메모를 저장하고 반환
-            } catch (IllegalArgumentException e) {
-                throw new IllegalArgumentException("유효하지 않은 status 값입니다: " + statusStr);
-            }
-        } else {
-            throw new EntityNotFoundException("해당 id의 메모를 찾을 수 없음. id: " + id);
+        Status status;
+        try {//status 값이 유효한지 확인
+            status = Status.valueOf(statusStr);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("유효하지 않은 status 값: " + statusStr);
         }
 
+        // id로 메모를 찾아옴
+        Memo memo = memoRepository.findById(id)
+                                  .orElseThrow(() -> new EntityNotFoundException("해당 메모 ID를 찾을 수 없음. ID:" + id));
+        memo.setStatus(status); // 메모의 상태를 수정
+
+
+        return memoRepository.save(memo); // 수정된 메모를 저장하고 반환
 
     }
 
@@ -71,15 +70,12 @@ public class MemoServiceImpl implements MemoService {
     }
 
     @Override
-    public void editMemo(Long id, MemoEditDTO memoEditDTO) {
-        Optional<Memo> memoOptional = memoRepository.findById(id);
-        if (memoOptional.isPresent()) {
-            Memo memo = memoOptional.get();
-            memo.setContent(memoEditDTO.getContent());
-            memoRepository.save(memo);
-        } else {
-            throw new EntityNotFoundException("해당 메모 ID를 찾을 수 없음. ID:" + id);
-        }
+    public void editMemo(Long id, MemoEditDTO memoEditDTO) {//메모의 content 수정
+        Memo memo = memoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("해당 메모 ID를 찾을 수 없음. ID:" + id));
+        memo.setContent(memoEditDTO.getContent());
+
+        memoRepository.save(memo);
 
     }//editMemo
 }
