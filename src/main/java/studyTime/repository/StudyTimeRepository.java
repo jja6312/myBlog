@@ -18,14 +18,6 @@ import studyTime.bean.StudyTimeSummaryDTO;
 public interface StudyTimeRepository extends JpaRepository<StudyTime, Long> {
 	@Query("SELECT SUM(st.durationInSeconds) FROM StudyTime st WHERE FUNCTION('DATE', st.startTime) = :date")
 	Optional<Long> findTotalDurationByDate(@Param("date") LocalDate date);
-
-	// @Query("SELECT FUNCTION('DATE', st.startTime) as date,
-	// SUM(st.durationInSeconds) " +
-	// "FROM StudyTime st WHERE st.startTime BETWEEN :startDate AND :endDate " +
-	// "GROUP BY FUNCTION('DATE', st.startTime)")
-	// Map<LocalDate, Long> findDurationByDateRange(@Param("startDate") LocalDate
-	// startDate,
-	// @Param("endDate") LocalDate endDate);
 	@Query("SELECT new studyTime.bean.StudyTimeSummaryDTO(FUNCTION('DATE', st.startTime) as date, SUM(st.durationInSeconds)) "
 			+
 			"FROM StudyTime st WHERE st.startTime BETWEEN :startDate AND :endDate " +

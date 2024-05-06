@@ -24,25 +24,26 @@ public class StudyTimeServiceImpl implements StudyTimeService {
     // 스톱워치 중지시, 카테고리별로 학습시간을 저장한다.
     @Override
     public void createStudyTime(StudyTimeDTO studyTimeDTO) {
-        StudyTime studyTime = convertToEntity(studyTimeDTO);
-        studyTimeRepository.save(studyTime);
-    }
-
-    // 스톱워치 중지시, studyTimeDTO의 categoryName에 따른 Category정보를 적절하게 StudyTime에 매핑하기위한
-    // 함수.
-    private StudyTime convertToEntity(StudyTimeDTO studyTimeDTO) {
+        //카테고리 이름이 존재하는지 확인
         Category category = categoryRepository.findByName(studyTimeDTO.getCategoryName())
                 .orElseThrow(() -> new RuntimeException("일치하는 카테고리 이름이 없습니다."));
 
+        //끝시간 - 시작시간 계산
         long durationInSeconds = java.time.Duration.between(studyTimeDTO.getStartTime(), studyTimeDTO.getEndTime())
                 .getSeconds();
-        return new StudyTime(
-                null, // id는 자동생성되니까 null
-                category,
-                studyTimeDTO.getStartTime(),
-                studyTimeDTO.getEndTime(),
-                durationInSeconds);
+
+        //builder
+        StudyTime studyTime = StudyTime.builder()
+                .category(category)
+                .startTime(studyTimeDTO.getStartTime())
+                .endTime(studyTimeDTO.getEndTime())
+                .durationInSeconds(durationInSeconds)
+                .build();
+
+        studyTimeRepository.save(studyTime);
     }
+
+
 
     // 메인페이지 렌더시, 오늘의 총 공부 시간을 나타내기 위한 함수.
     public long getTodayStudyTime() {
@@ -58,29 +59,22 @@ public class StudyTimeServiceImpl implements StudyTimeService {
     }
 
     @Override
-    public StudyTimeAverageDTO getAverageStudyTime() {
+    public StudyTimeAverageDTO getAverageStudyTime() {// 평균 공부 시간들을 반환. null 값이 나오면 0으로 처리
 
-        // 평일 평균 학습시간
-        Double averageStudyTimePerDay = studyTimeRepository.findAverageWeekdayStudyTimeInMinutes();
-        if (averageStudyTimePerDay == null)
-            averageStudyTimePerDay = (double) 0;// null 예외처리
+        // 평일 평균 공부 시간
+        Double averageStudyTimePerDay = handleNullValue(studyTimeRepository.findAverageWeekdayStudyTimeInMinutes());
+        // 주말 평균 공부 시간
+        Double averageStudyTimePerWeekend = handleNullValue(studyTimeRepository.findAverageWeekendStudyTimeInMinutes());
+        // 전체 평균 공부 시간
+        Double averageStudyTimeAll = handleNullValue(studyTimeRepository.findAverageAllStudyTimeInMinutes());
 
-        // 주말 평균 학습시간
-        Double averageStudyTimePerWeekend = studyTimeRepository.findAverageWeekendStudyTimeInMinutes();
-        if (averageStudyTimePerWeekend == null)
-            averageStudyTimePerWeekend = (double) 0;// null 예외처리
-
-        // 합계 평균 학습시간
-        Double averageStudyTimeAll = studyTimeRepository.findAverageAllStudyTimeInMinutes();
-        if (averageStudyTimeAll == null)
-            averageStudyTimeAll = (double) 0;
-
-        StudyTimeAverageDTO studyTimeAverageDTO = new StudyTimeAverageDTO(averageStudyTimePerDay,
-                averageStudyTimePerWeekend, averageStudyTimeAll);
-
-        return studyTimeAverageDTO;
-
+        return new StudyTimeAverageDTO(averageStudyTimePerDay, averageStudyTimePerWeekend, averageStudyTimeAll);
     }
+
+    private Double handleNullValue(Double value) {
+        return value != null ? value : 0.0;
+    }
+
 
     // (메인화면 중간 왼쪽)일별, 카테고리별 공부량
     @Override
