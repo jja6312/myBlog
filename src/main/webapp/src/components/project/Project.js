@@ -10,7 +10,7 @@ const Project = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/project/getProjectListAll")
+      .get("http://43.203.18.91:8080/project/getProjectListAll")
       .then((response) => {
         setProjectList(response.data);
 

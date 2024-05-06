@@ -33,7 +33,7 @@ public class MyBlogApplication {
 	// return request -> {
 	// CorsConfiguration config = new CorsConfiguration();
 	// config.setAllowedHeaders(Collections.singletonList("*"));
-	// config.setAllowedOrigins(List.of("http://localhost:3000",
+	// config.setAllowedOrigins(List.of("http://43.203.18.91:3000",
 	// "http://law10000hours.com.s3-website.ap-northeast-2.amazonaws.com"));
 	// config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH",
 	// "OPTIONS"));

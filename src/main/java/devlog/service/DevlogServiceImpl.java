@@ -10,7 +10,10 @@ import java.util.List;
 import devlog.bean.*;
 import devlog.mapper.DevlogWriteMapper;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,8 +35,34 @@ public class DevlogServiceImpl implements DevlogService {
 
     @Override
     public void saveWrite(DevlogWriteDTO devlogWriteDTO) {
-        DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
+        //1-1. 카테고리가 존재하는지 확인, 없으면 새로 생성
+        Category category = categoryRepository.findByName(devlogWriteDTO.getCategoryName())
+                .orElseGet(() -> new Category(devlogWriteDTO.getCategoryName(), devlogWriteDTO.getCategoryThumbnail()));
 
+        //1-2. 카테고리가 새로 생성된경우 저장
+        if (category.getId() == null) {
+            category = categoryRepository.save(category);
+        }
+
+        //2-1. 태그가 존재하는지 확인, 없으면 새로 생성
+        Category finalCategory = category;
+        Tag tag = tagRepository.findByName(devlogWriteDTO.getTagName())
+                .orElseGet(() -> new Tag(devlogWriteDTO.getTagName(), finalCategory));
+
+        //2-2. 태그가 새로생성된경우 저장
+        if (tag.getId() == null) {
+            tag = tagRepository.save(tag);
+        }
+
+        //3. builder
+        DevlogWrite devlogWrite = DevlogWrite.builder()
+                .title(devlogWriteDTO.getTitle())
+                .topic(devlogWriteDTO.getTopic())
+                .notionPageId(devlogWriteDTO.getNotionPageId())
+                .writeThumbnail(devlogWriteDTO.getWriteThumbnail())
+                .category(category)
+                .tag(tag)
+                .build();
 
         devlogRepository.save(devlogWrite);
     }
@@ -44,73 +73,6 @@ public class DevlogServiceImpl implements DevlogService {
         return devlogWriteMapper.getDevlogWriteListByCategoryName(name);
     }
 
-    private DevlogWrite convertToEntity(DevlogWriteDTO devlogWriteDTO) {
-        DevlogWrite devlogWrite = new DevlogWrite();
-
-        Category category = categoryRepository.findByName(devlogWriteDTO.getCategoryName())
-                .orElseGet(() -> new Category(devlogWriteDTO.getCategoryName(), devlogWriteDTO.getCategoryThumbnail()));
-        //카테고리가 새로생성된경우 저장
-        if (category.getId() == null) {
-            category = categoryRepository.save(category);
-        }
-
-		Category finalCategory = category;
-		Tag tag = tagRepository.findByName(devlogWriteDTO.getTagName())
-                .orElseGet(() -> new Tag(devlogWriteDTO.getTagName(), finalCategory));
-        //태그가 새로생성된경우 저장
-        if (tag.getId() == null) {
-            tag = tagRepository.save(tag);
-        }
-
-        //builder
-        devlogWrite.builder()
-				.title(devlogWriteDTO.getTitle())
-                .topic(devlogWriteDTO.getTopic())
-                .notionPageId(devlogWriteDTO.getNotionPageId())
-                .writeThumbnail(devlogWriteDTO.getWriteThumbnail())
-                .category(category)
-                .tag(tag).build();
-
-
-//		devlogWrite.setTitle(devlogWriteDTO.getTitle());
-//		devlogWrite.setTopic(devlogWriteDTO.getTopic());
-//		devlogWrite.setNotionPageId(devlogWriteDTO.getNotionPageId());
-//
-//		// 카테고리 처리
-//		Category category = categoryRepository.findByName(devlogWriteDTO.getCategoryName())
-//				.orElseGet(() -> new Category(devlogWriteDTO.getCategoryName()));
-//
-//		// 썸네일 값이 비어 있지 않은 경우에만 설정
-//		if (!devlogWriteDTO.getCategoryThumbnail().isEmpty()) {
-//			category.setCategoryThumbnail(devlogWriteDTO.getCategoryThumbnail());
-//		}
-//
-//		// Category 객체가 새로 생성되었을 때만 저장
-//		if (category.getId() == null) {
-//			category = categoryRepository.save(category);
-//		}
-//
-//		// 태그를 처리합니다. Tag 엔티티에 카테고리를 설정
-//		Category finalCategory = category;
-//		Tag tag = tagRepository.findByName(devlogWriteDTO.getTagName())
-//				.orElseGet(() -> new Tag(devlogWriteDTO.getTagName(), finalCategory));
-//
-//		// Tag 객체가 새로 생성되었을 때만 저장
-//		if (tag.getId() == null) {
-//			tag = tagRepository.save(tag); // Tag 저장 로직 추가
-//		}
-//
-//		// DevlogWrite 엔티티에 writeThumbnail을 설정
-//		devlogWrite.setWriteThumbnail(devlogWriteDTO.getWriteThumbnail());
-//
-//		// 최종적으로 Category와 Tag를 DevlogWrite 엔티티에 설정
-//		devlogWrite.setCategory(category);
-//		devlogWrite.setTag(tag);
-
-        return devlogWrite;
-    }
-
-
     // 카테고리 리스트 가져오기
     @Override
     public List<Category> getCategoryList() {
@@ -119,13 +81,11 @@ public class DevlogServiceImpl implements DevlogService {
 
     @Override
     public List<Tag> getTagList() {
-
         return tagRepository.findAll();
     }
 
     @Override
     public List<DevlogWrite> getDevlogWriteList() {
-
         return devlogRepository.findAll();
     }
 
@@ -141,6 +101,5 @@ public class DevlogServiceImpl implements DevlogService {
 
         return devlogRepository.findAllByDate(startOfDay, endOfDay);
     }
-
 
 }
