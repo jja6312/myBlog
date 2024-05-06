@@ -259,7 +259,7 @@ const WriteForm = () => {
                 {/* taglist를 filter(taglist[i].category.name===selectedCategory) */}
 
                 {tagList
-                  .filter((tag) => tag.category.name === selectedCategory)
+                  .filter((tag) => tag.category?.name === selectedCategory)
                   .map((tag) => (
                     <option key={tag.name} className="text-yellow-500">
                       {tag.name}

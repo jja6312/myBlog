@@ -10,7 +10,10 @@ import java.util.List;
 import devlog.bean.*;
 import devlog.mapper.DevlogWriteMapper;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,102 +27,79 @@ import jakarta.servlet.http.HttpSession;
 public class DevlogServiceImpl implements DevlogService {
 
 
-	private final DevlogRepository devlogRepository;
-
-	private final CategoryRepository categoryRepository;
-
-	private final TagRepository tagRepository;
-
-	private final DevlogWriteMapper devlogWriteMapper;
+    private final DevlogRepository devlogRepository;
+    private final CategoryRepository categoryRepository;
+    private final TagRepository tagRepository;
+    private final DevlogWriteMapper devlogWriteMapper;
 
 
-	@Override
-	public void saveWrite(DevlogWriteDTO devlogWriteDTO) {
-		DevlogWrite devlogWrite = convertToEntity(devlogWriteDTO);
+    @Override
+    public void saveWrite(DevlogWriteDTO devlogWriteDTO) {
+        //1-1. 카테고리가 존재하는지 확인, 없으면 새로 생성
+        Category category = categoryRepository.findByName(devlogWriteDTO.getCategoryName())
+                .orElseGet(() -> new Category(devlogWriteDTO.getCategoryName(), devlogWriteDTO.getCategoryThumbnail()));
 
+        //1-2. 카테고리가 새로 생성된경우 저장
+        if (category.getId() == null) {
+            category = categoryRepository.save(category);
+        }
 
-		devlogRepository.save(devlogWrite);
-	}
+        //2-1. 태그가 존재하는지 확인, 없으면 새로 생성
+        Category finalCategory = category;
+        Tag tag = tagRepository.findByName(devlogWriteDTO.getTagName())
+                .orElseGet(() -> new Tag(devlogWriteDTO.getTagName(), finalCategory));
 
-	//기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기 --[24.03.07]
-	@Override
-	public List<DevlogWriteSkillDTO> getDevlogWriteListByCategoryName(String name) {
-		return devlogWriteMapper.getDevlogWriteListByCategoryName(name);
-	}
+        //2-2. 태그가 새로생성된경우 저장
+        if (tag.getId() == null) {
+            tag = tagRepository.save(tag);
+        }
 
-	private DevlogWrite convertToEntity(DevlogWriteDTO devlogWriteDTO) {
-		DevlogWrite devlogWrite = new DevlogWrite();
-		devlogWrite.setTitle(devlogWriteDTO.getTitle());
-		devlogWrite.setTopic(devlogWriteDTO.getTopic());
-		devlogWrite.setNotionPageId(devlogWriteDTO.getNotionPageId());
+        //3. builder
+        DevlogWrite devlogWrite = DevlogWrite.builder()
+                .title(devlogWriteDTO.getTitle())
+                .topic(devlogWriteDTO.getTopic())
+                .notionPageId(devlogWriteDTO.getNotionPageId())
+                .writeThumbnail(devlogWriteDTO.getWriteThumbnail())
+                .category(category)
+                .tag(tag)
+                .build();
 
-		// 카테고리 처리
-		Category category = categoryRepository.findByName(devlogWriteDTO.getCategoryName())
-				.orElseGet(() -> new Category(devlogWriteDTO.getCategoryName()));
+        devlogRepository.save(devlogWrite);
+    }
 
-		// 썸네일 값이 비어 있지 않은 경우에만 설정
-		if (!devlogWriteDTO.getCategoryThumbnail().isEmpty()) {
-			category.setCategoryThumbnail(devlogWriteDTO.getCategoryThumbnail());
-		}
+    //기술스택에서 선택된 카드의 카테고리 name으로 개발일지 불러오기 --[24.03.07]
+    @Override
+    public List<DevlogWriteSkillDTO> getDevlogWriteListByCategoryName(String name) {
+        return devlogWriteMapper.getDevlogWriteListByCategoryName(name);
+    }
 
-		// Category 객체가 새로 생성되었을 때만 저장
-		if (category.getId() == null) {
-			category = categoryRepository.save(category);
-		}
+    // 카테고리 리스트 가져오기
+    @Override
+    public List<Category> getCategoryList() {
+        return categoryRepository.findAll();
+    }
 
-		// 태그를 처리합니다. Tag 엔티티에 카테고리를 설정
-		Category finalCategory = category;
-		Tag tag = tagRepository.findByName(devlogWriteDTO.getTagName())
-				.orElseGet(() -> new Tag(devlogWriteDTO.getTagName(), finalCategory));
+    @Override
+    public List<Tag> getTagList() {
+        return tagRepository.findAll();
+    }
 
-		// Tag 객체가 새로 생성되었을 때만 저장
-		if (tag.getId() == null) {
-			tag = tagRepository.save(tag); // Tag 저장 로직 추가
-		}
+    @Override
+    public List<DevlogWrite> getDevlogWriteList() {
+        return devlogRepository.findAll();
+    }
 
-		// DevlogWrite 엔티티에 writeThumbnail을 설정
-		devlogWrite.setWriteThumbnail(devlogWriteDTO.getWriteThumbnail());
+    @Override
+    public List<DevlogWrite> getDevlogWriteListByDate(String clickedDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(clickedDate, formatter);
+        LocalDateTime startOfDay = date.atStartOfDay();
+        LocalDateTime endOfDay = date.atTime(23, 59, 59);
+        System.out.println(date + "=>date!!!!!!!!!!");
+        System.out.println(startOfDay + "=>startOfDay!!!!!!!!!!");
+        System.out.println(endOfDay + "=>endOfDay!!!!!!!!!!");
 
-		// 최종적으로 Category와 Tag를 DevlogWrite 엔티티에 설정
-		devlogWrite.setCategory(category);
-		devlogWrite.setTag(tag);
-
-		return devlogWrite;
-	}
-
-
-	// 카테고리 리스트 가져오기
-	@Override
-	public List<Category> getCategoryList() {
-		return categoryRepository.findAll();
-	}
-
-	@Override
-	public List<Tag> getTagList() {
-
-		return tagRepository.findAll();
-	}
-
-	@Override
-	public List<DevlogWrite> getDevlogWriteList() {
-
-		return devlogRepository.findAll();
-	}
-
-	@Override
-	public List<DevlogWrite> getDevlogWriteListByDate(String clickedDate) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate date = LocalDate.parse(clickedDate, formatter);
-		LocalDateTime startOfDay = date.atStartOfDay();
-		LocalDateTime endOfDay = date.atTime(23, 59, 59);
-		System.out.println(date + "=>date!!!!!!!!!!");
-		System.out.println(startOfDay + "=>startOfDay!!!!!!!!!!");
-		System.out.println(endOfDay + "=>endOfDay!!!!!!!!!!");
-
-		return devlogRepository.findAllByDate(startOfDay, endOfDay);
-	}
-
-
-
+        return devlogRepository.findAllByDate(startOfDay, endOfDay);
+    }
 
 }

@@ -2,6 +2,8 @@ package devlog.bean;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import studyTime.bean.StudyTime;
@@ -33,13 +36,15 @@ public class Category {
 
     // ------------다른 테이블과의 관계---------------
     @OneToMany(mappedBy = "category")
+    @JsonBackReference
     private Set<DevlogWrite> devlogWrite;
 
     @OneToMany(mappedBy = "category")
     private Set<Tag> tag;
 
-    public Category(String name) {
+    public Category(String name, String categoryThumbnail) {
         this.name = name;
+        this.categoryThumbnail = categoryThumbnail;
     }
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<StudyTime> studyTimes;
