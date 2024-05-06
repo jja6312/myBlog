@@ -4520,3 +4520,309 @@ Caused by: java.lang.IllegalArgumentException: When allowCredentials is true, al
 2024-05-04T22:41:03.313+09:00 DEBUG 7980 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
 2024-05-04T22:41:12.884+09:00 DEBUG 7980 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [java.lang.IllegalStateException: Session/EntityManager is closed]
 2024-05-04T22:41:12.887+09:00 DEBUG 7980 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.apache.catalina.connector.ClientAbortException: java.nio.channels.ClosedChannelException
+2024-05-05T00:37:17.373+09:00  WARN 26416 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-05T00:37:17.375+09:00  WARN 26416 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-05T00:37:20.845+09:00  WARN 26416 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-05T00:37:20.942+09:00 DEBUG 26416 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2024-05-05T00:37:21.004+09:00 DEBUG 26416 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-05T00:37:21.027+09:00 DEBUG 26416 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-05T00:37:21.055+09:00 DEBUG 26416 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-05T00:37:21.434+09:00  INFO 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-05T00:37:21.434+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-05T00:37:21.434+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-05T00:37:21.434+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-05T00:37:21.435+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@8d29638
+2024-05-05T00:37:21.435+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@430e9c87
+2024-05-05T00:37:21.436+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-05T00:37:21.436+09:00  INFO 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-05T00:37:21.446+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:37:21.446+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:37:21.447+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:21.446+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:37:21.461+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:37:21.461+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:21.461+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:37:21.461+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:37:21.472+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:21.472+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:21.472+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:21.472+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:21.478+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:21.478+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:21.478+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:21.478+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:21.484+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:21.485+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:21.486+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:21.486+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.009+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-05-05T00:37:24.010+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-05-05T00:37:24.010+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-05-05T00:37:24.011+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-05-05T00:37:24.012+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:37:24.012+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.012+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:37:24.012+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.013+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.013+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.013+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.014+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.028+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:37:24.028+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:37:24.029+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:37:24.029+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:37:24.029+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:37:24.029+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.029+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:37:24.030+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.030+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.030+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.030+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.030+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.033+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-05-05T00:37:24.033+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-05-05T00:37:24.034+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.034+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.034+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-05-05T00:37:24.035+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:37:24.036+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:37:24.037+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.037+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.037+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.037+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:37:24.038+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.038+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.038+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.039+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.039+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.039+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.074+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:24.075+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:24.076+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-05-05T00:37:24.078+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:24.078+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.078+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:24.079+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-05-05T00:37:24.080+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.080+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.081+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.083+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.084+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.099+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:24.105+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:24.109+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.113+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:24.118+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:24.119+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:24.121+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:24.123+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.495+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.496+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.497+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.497+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.497+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:37:29.497+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.497+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:37:29.498+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.498+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:37:29.498+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:37:29.498+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.499+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:37:29.499+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:37:29.499+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.499+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.499+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.499+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.500+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-05-05T00:37:29.500+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:37:29.500+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:37:29.500+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-05-05T00:37:29.500+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.501+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:37:29.502+09:00 DEBUG 26416 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.502+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:37:29.502+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:37:29.502+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.503+09:00 DEBUG 26416 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.504+09:00 DEBUG 26416 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.546+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:29.546+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-05-05T00:37:29.548+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:29.548+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.548+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:29.549+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.549+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:29.549+09:00 DEBUG 26416 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.551+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-05-05T00:37:29.551+09:00 DEBUG 26416 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.552+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.554+09:00 DEBUG 26416 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.567+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:29.570+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:29.571+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.573+09:00 DEBUG 26416 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:37:29.577+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:37:29.578+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:37:29.579+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.cors.DefaultCorsProcessor        : Reject: 'http://43.203.18.91:3000' origin is not allowed
+2024-05-05T00:37:29.580+09:00 DEBUG 26416 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 403 FORBIDDEN
+2024-05-05T00:38:14.799+09:00  WARN 27716 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-05T00:38:14.803+09:00  WARN 27716 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-05T00:38:19.054+09:00  WARN 27716 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-05T00:38:19.375+09:00 DEBUG 27716 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2024-05-05T00:38:19.629+09:00 DEBUG 27716 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-05T00:38:19.684+09:00 DEBUG 27716 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-05T00:38:19.735+09:00 DEBUG 27716 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-05T00:38:25.095+09:00  INFO 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-05T00:38:25.096+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-05T00:38:25.096+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-05T00:38:25.097+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-05T00:38:25.098+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2bff7ab1
+2024-05-05T00:38:25.098+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@789c65a0
+2024-05-05T00:38:25.099+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-05T00:38:25.099+09:00  INFO 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-05T00:38:25.114+09:00 DEBUG 27716 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:38:25.114+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:38:25.114+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-05-05T00:38:25.114+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-05-05T00:38:25.114+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:38:25.114+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:38:25.151+09:00 DEBUG 27716 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:38:25.151+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-05-05T00:38:25.151+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:38:25.151+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:38:25.151+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-05-05T00:38:25.151+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:38:25.486+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.488+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["665.74"]
+2024-05-05T00:38:25.493+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.494+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-05-04, categoryName=Spring, studyMinutes=216.35), StudyT (truncated)...]
+2024-05-05T00:38:25.500+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.503+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeByDayGroupByCategory?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:38:25.503+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeByDayGroupByCategory(String)
+2024-05-05T00:38:25.541+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.544+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [0]
+2024-05-05T00:38:25.556+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.579+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.582+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-05-05T00:38:25.585+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:38:25.585+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:38:25.749+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.752+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-05-05T00:38:25.763+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.768+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/myBlog/getDevlogWriteListByDate?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:38:25.769+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteListByDate(String)
+2024-05-05T00:38:25.786+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.786+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.790+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.791+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-05-05T00:38:25.799+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.831+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=501.38954802, averageStudyTimePerWeekend=418.97013889, av (truncated)...]
+2024-05-05T00:38:25.839+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeHourSum", parameters={}
+2024-05-05T00:38:25.844+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeHourSum()
+2024-05-05T00:38:25.844+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getTodayStudyTime", parameters={}
+2024-05-05T00:38:25.846+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.847+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getTodayStudyTime()
+2024-05-05T00:38:25.853+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.861+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getStudyTimeGroupByCategory", parameters={}
+2024-05-05T00:38:25.859+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:38:25.862+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:38:25.862+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getStudyTimeGroupByCategory()
+2024-05-05T00:38:25.919+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.920+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [0]
+2024-05-05T00:38:25.922+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.924+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.924+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["665.74"]
+2024-05-05T00:38:25.924+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.927+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-05-05T00:38:25.927+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.929+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.932+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.934+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [[]]
+2024-05-05T00:38:25.940+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:25.941+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeGroupByCategoryDTO(studyDate=2024-05-04, categoryName=Spring, studyMinutes=216.35), StudyT (truncated)...]
+2024-05-05T00:38:25.943+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.952+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:25.959+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/memo/getMemo?clickedDate=2024-05-05", parameters={masked}
+2024-05-05T00:38:25.959+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/averageStudyTime", parameters={}
+2024-05-05T00:38:25.960+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to memo.controller.MemoController#getMemo(String)
+2024-05-05T00:38:25.960+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getAverageStudyTime()
+2024-05-05T00:38:25.961+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/studyTime/getYearlyStudyTime", parameters={}
+2024-05-05T00:38:25.962+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to studyTime.controller.StudyTimeController#getYearlyStudyTime()
+2024-05-05T00:38:26.012+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:26.012+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2024-05-05T00:38:26.013+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:26.021+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:26.022+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[StudyTimeSummaryDTO(date=2024-02-03, durationInSeconds=38183), StudyTimeSummaryDTO(date=2024-02-04, (truncated)...]
+2024-05-05T00:38:26.024+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:26.123+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:26.123+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [StudyTimeAverageDTO(averageStudyTimePerDay=501.38954802, averageStudyTimePerWeekend=418.97013889, av (truncated)...]
+2024-05-05T00:38:26.124+09:00 DEBUG 27716 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:26.180+09:00 DEBUG 27716 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:33.106+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getTagList", parameters={}
+2024-05-05T00:38:33.107+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getTagList()
+2024-05-05T00:38:35.096+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:38.625+09:00 DEBUG 27716 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-05T00:38:38.631+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:38:38.631+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:38:38.650+09:00 DEBUG 27716 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:39.790+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:47.706+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:38:47.706+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:38:47.706+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:38:47.706+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:38:48.362+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Tag(id=2, name=base64, category=Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64 (truncated)...]
+2024-05-05T00:38:48.367+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getTagList", parameters={}
+2024-05-05T00:38:48.368+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getTagList()
+2024-05-05T00:38:48.407+09:00 DEBUG 27716 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:48.625+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:48.628+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:51.926+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:53.105+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:38:53.105+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:38:53.121+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-05T00:38:53.121+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-05T00:38:54.922+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-05T00:38:54.938+09:00 DEBUG 27716 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:38:56.484+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:38:56.667+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:39:10.191+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-05T00:39:10.198+09:00 DEBUG 27716 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:39:10.211+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteList", parameters={}
+2024-05-05T00:39:10.212+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-05-05T00:39:10.228+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-05T00:39:10.233+09:00 DEBUG 27716 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:39:14.131+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Tag(id=2, name=base64, category=Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64 (truncated)...]
+2024-05-05T00:39:14.178+09:00 DEBUG 27716 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:39:14.957+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-05T00:39:14.970+09:00 DEBUG 27716 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:39:16.467+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-05T00:39:16.475+09:00 DEBUG 27716 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-05T00:39:17.058+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-05T00:39:27.977+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[DevlogWrite(id=2, title=[개인블로그 제작기] base64로 파일 업로드 구현, topic=프로젝트 / 트러블슈팅, notionPageId=0203-aws-s3 (truncated)...]
+2024-05-05T00:39:27.989+09:00 DEBUG 27716 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.apache.catalina.connector.ClientAbortException: java.io.IOException: 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
