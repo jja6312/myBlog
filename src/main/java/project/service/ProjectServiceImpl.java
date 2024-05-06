@@ -15,16 +15,17 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void projectSave(ProjectSaveDTO projectSaveDTO) {
-        Project project = new Project();
-        project.setTitle(projectSaveDTO.getTitle());
-        project.setDetail(projectSaveDTO.getDetail());
-        project.setType(projectSaveDTO.getType());
-        project.setStartDate(projectSaveDTO.getStartDate());
-        project.setEndDate(projectSaveDTO.getEndDate());
-        project.setImg(projectSaveDTO.getImg());
-        project.setNotionPageId(projectSaveDTO.getNotionPageId());
-        project.setGithubAddress(projectSaveDTO.getGithubAddress());
-        project.setDeployAddress(projectSaveDTO.getDeployAddress());
+        Project project = Project.builder()
+                .title(projectSaveDTO.getTitle())
+                .detail(projectSaveDTO.getDetail())
+                .type(projectSaveDTO.getType())
+                .startDate(projectSaveDTO.getStartDate())
+                .endDate(projectSaveDTO.getEndDate())
+                .img(projectSaveDTO.getImg())
+                .notionPageId(projectSaveDTO.getNotionPageId())
+                .githubAddress(projectSaveDTO.getGithubAddress())
+                .deployAddress(projectSaveDTO.getDeployAddress())
+                .build();
 
         projectRepository.save(project);
     }
