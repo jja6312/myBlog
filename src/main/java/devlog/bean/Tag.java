@@ -1,5 +1,6 @@
 package devlog.bean;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tag")
+@NoArgsConstructor
 @Data
 public class Tag {
 
@@ -34,9 +36,6 @@ public class Tag {
     public Tag(String name, Category category) {
         this.name = name;
         this.category = category;
-    }
-
-    public Tag() {
     }
 }
 
