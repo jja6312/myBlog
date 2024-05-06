@@ -23,14 +23,12 @@ public class SkillController {
     // 글 '저장'버튼을 누르면 devlogWrite에 글 정보를 담는다.
     @PostMapping(value = "/skill/save")
     public void saveSkill(@RequestBody SkillWriteDTO skillWriteDTO) {
-        System.out.println("hi");
         skillService.saveWrite(skillWriteDTO);
     }
 
     @GetMapping(value="/skill/getSkillList")
-    public ResponseEntity<List<SkillWriteFilterDTO>> getSkillList(@RequestParam Map<String, String> allParams){
+    public ResponseEntity<List<SkillWriteFilterDTO>> getSkillList(@RequestParam Map<String, String> allParams){// 안좋은코드. 앞으론 이렇게 설계하지말자.
         return ResponseEntity.ok(skillService.getSkillList(allParams));
-
     }
 
 
