@@ -5770,3 +5770,81 @@ java.lang.StackOverflowError: null
 2024-05-06T23:58:34.900+09:00  INFO 28456 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-06T23:58:34.903+09:00  INFO 28456 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-06T23:58:35.588+09:00  INFO 28456 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-07T13:50:56.541+09:00  INFO 26040 --- [restartedMain] com.example.demo.MyBlogApplication       : Starting MyBlogApplication using Java 17.0.8.1 with PID 26040 (C:\git\project\myBlog\build\classes\java\main started by User in C:\git\project\myBlog)
+2024-05-07T13:50:56.550+09:00  INFO 26040 --- [restartedMain] com.example.demo.MyBlogApplication       : No active profile set, falling back to 1 default profile: "default"
+2024-05-07T13:50:56.745+09:00  INFO 26040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-07T13:50:56.747+09:00  INFO 26040 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-07T13:50:59.716+09:00  INFO 26040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-07T13:51:00.151+09:00  INFO 26040 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 397 ms. Found 7 JPA repository interfaces.
+2024-05-07T13:51:03.448+09:00  INFO 26040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-07T13:51:03.479+09:00  INFO 26040 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-07T13:51:03.479+09:00  INFO 26040 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-05-07T13:51:03.656+09:00  INFO 26040 --- [restartedMain] o.a.c.c.C.[Tomcat].[43.203.18.91].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-07T13:51:03.657+09:00  INFO 26040 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6909 ms
+2024-05-07T13:51:04.104+09:00  INFO 26040 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-07T13:51:04.441+09:00  INFO 26040 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-05-07T13:51:04.644+09:00  INFO 26040 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-07T13:51:06.021+09:00  INFO 26040 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-07T13:51:06.172+09:00  INFO 26040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-07T13:51:07.445+09:00  INFO 26040 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4951a02
+2024-05-07T13:51:07.453+09:00  INFO 26040 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-07T13:51:07.633+09:00  WARN 26040 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-07T13:51:07.638+09:00  WARN 26040 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-07T13:51:11.852+09:00  INFO 26040 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-07T13:51:12.229+09:00  INFO 26040 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-07T13:51:13.395+09:00  INFO 26040 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-07T13:51:16.869+09:00  WARN 26040 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-07T13:51:17.240+09:00 DEBUG 26040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 26 mappings in 'requestMappingHandlerMapping'
+2024-05-07T13:51:17.502+09:00 DEBUG 26040 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-07T13:51:17.614+09:00 DEBUG 26040 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-07T13:51:17.746+09:00 DEBUG 26040 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-07T13:51:18.368+09:00  INFO 26040 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-07T13:51:18.533+09:00  INFO 26040 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-07T13:51:18.558+09:00  INFO 26040 --- [restartedMain] com.example.demo.MyBlogApplication       : Started MyBlogApplication in 23.411 seconds (process running for 26.436)
+2024-05-07T13:51:37.656+09:00  INFO 26040 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[43.203.18.91].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-07T13:51:37.657+09:00  INFO 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-07T13:51:37.659+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-07T13:51:37.659+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-07T13:51:37.660+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-07T13:51:37.662+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@342a6d06
+2024-05-07T13:51:37.663+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4ea552d
+2024-05-07T13:51:37.664+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-07T13:51:37.666+09:00  INFO 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-05-07T13:51:37.710+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-07T13:51:37.787+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-07T13:51:38.467+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T13:51:42.732+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-07T13:51:42.838+09:00 DEBUG 26040 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-07T13:51:42.840+09:00 DEBUG 26040 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-07T13:51:42.866+09:00 DEBUG 26040 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-07T13:51:42.879+09:00 DEBUG 26040 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteList", parameters={}
+2024-05-07T13:51:42.879+09:00 DEBUG 26040 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-05-07T13:51:43.195+09:00 DEBUG 26040 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T13:51:49.464+09:00 DEBUG 26040 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T13:51:49.464+09:00 DEBUG 26040 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[devlog.bean.DevlogWrite@2502beb8, devlog.bean.DevlogWrite@3cc73a4d, devlog.bean.DevlogWrite@3af2713 (truncated)...]
+2024-05-07T13:51:51.314+09:00 DEBUG 26040 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-07T13:51:51.331+09:00 DEBUG 26040 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-07T13:51:51.339+09:00 DEBUG 26040 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteList", parameters={}
+2024-05-07T13:51:51.340+09:00 DEBUG 26040 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-05-07T13:51:57.086+09:00 DEBUG 26040 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-07T13:51:57.174+09:00 DEBUG 26040 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T13:51:57.175+09:00 DEBUG 26040 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [[devlog.bean.DevlogWrite@29399be6, devlog.bean.DevlogWrite@34b6ea5e, devlog.bean.DevlogWrite@4240f5a (truncated)...]
+2024-05-07T13:52:02.582+09:00 DEBUG 26040 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-07T14:08:18.749+09:00 DEBUG 26040 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-07T14:08:18.750+09:00 DEBUG 26040 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-07T14:08:18.939+09:00 DEBUG 26040 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T14:08:23.021+09:00 DEBUG 26040 --- [http-nio-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-07T14:08:23.030+09:00 DEBUG 26040 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getCategoryList", parameters={}
+2024-05-07T14:08:23.030+09:00 DEBUG 26040 --- [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getCategoryList()
+2024-05-07T14:08:23.034+09:00 DEBUG 26040 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-07T14:08:23.049+09:00 DEBUG 26040 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/devlog/getDevlogWriteList", parameters={}
+2024-05-07T14:08:23.051+09:00 DEBUG 26040 --- [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to devlog.controller.DevlogController#getDevlogWriteList()
+2024-05-07T14:08:23.476+09:00 DEBUG 26040 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T14:08:28.945+09:00 DEBUG 26040 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/cbor]
+2024-05-07T14:08:28.946+09:00 DEBUG 26040 --- [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [[devlog.bean.DevlogWrite@fca2194, devlog.bean.DevlogWrite@5b2b3a0c, devlog.bean.DevlogWrite@2163ff28 (truncated)...]
+2024-05-07T14:08:32.383+09:00 DEBUG 26040 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.apache.catalina.connector.ClientAbortException: java.nio.channels.ClosedChannelException
+2024-05-07T14:08:32.443+09:00 DEBUG 26040 --- [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [[Category(id=2, name=Spring, categoryThumbnail=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAF (truncated)...]
+2024-05-07T14:08:32.445+09:00 DEBUG 26040 --- [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Failed to complete request: org.apache.catalina.connector.ClientAbortException: java.nio.channels.ClosedChannelException
+2024-05-07T14:08:32.452+09:00  INFO 26040 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-07T14:08:32.458+09:00  INFO 26040 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-07T14:08:32.530+09:00  INFO 26040 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -14,19 +14,50 @@ blockquote {
 }
 
 .notion-h1 {
-  color: rgb(199, 194, 103);
+  font-size: 40px;
+  color: #d33637;
 }
-
 .notion-h2 {
-  color: rgb(192, 128, 139);
+  font-size: 35px;
+  color: #da730d;
+}
+.notion-h3 {
+  font-size: 30px;
+  color: #af8441;
 }
 
-.notion-h3 {
+.notion-text,
+li {
+  font-size: 25px;
+}
+
+.notion-red {
+  color: #d33637;
+}
+.notion-orange {
+  color: #da730d;
+}
+.notion-blue {
+  color: #0b6f9b;
+}
+.notion-pink {
+  color: #ad1a74;
+}
+.notion-purple {
+  color: #6c41a9;
+}
+.notion-yellow {
+  color: #af8441;
+}
+.notion-brown {
   color: rgb(173, 146, 113);
+}
+.notion-teal {
+  color: #4b8161;
 }
 
 .notion-teal_background {
-  background-color: rgb(44, 101, 59);
+  background-color: #4b8161;
 }
 
 .notion-blue_background {
@@ -42,7 +73,7 @@ blockquote {
 }
 
 .notion-brown_background {
-  background-color: rgb(164, 107, 66);
+  background-color: #ba856f;
 }
 .notion-gray_background {
   background-color: rgb(41, 41, 41);
@@ -58,5 +89,5 @@ blockquote {
 }
 
 .notion-yellow_background {
-  background-color: rgb(123, 109, 39);
+  background-color: #af8441;
 }
