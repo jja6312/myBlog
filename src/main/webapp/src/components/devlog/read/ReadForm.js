@@ -50,7 +50,7 @@ const ReadForm = () => {
       });
   }, []);
   return (
-    <div className="bg-dark text-white w-full min-h-screen flex justify-center">
+    <div className="bg-[#191919] text-white w-full min-h-screen flex justify-center">
       <div className="w-8/12 p-10 flex flex-col mt-32">
         {/* 제목 */}
         <span className="text-6xl font-semibold">{title}</span>
