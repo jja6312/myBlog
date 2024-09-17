@@ -89,7 +89,7 @@ const ReadForm = () => {
             </div>
           ) : (
             <NotionRenderer
-              blockMap={notionData}
+              blockMap={notionData || {}} // null 또는 undefined일 경우 빈 객체를 넘김
               hideHeader={true}
               darkMode={true}
             />
