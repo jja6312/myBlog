@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="studyTime.mapper.StudyTimeMapper">
+<mapper namespace="com.example.demo.studyTime.mapper.StudyTimeMapper">
 
-    <select id="findStudyTimeGroupByCategory" resultType="studyTime.bean.StudyTimeGroupByCategoryDTO">
+    <select id="findStudyTimeGroupByCategory" resultType="com.example.demo.studyTime.bean.StudyTimeGroupByCategoryDTO">
         SELECT
             DATE_FORMAT(st.start_time, '%Y-%m-%d') AS studyDate,
             c.name AS categoryName,

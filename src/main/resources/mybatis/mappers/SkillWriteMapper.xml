@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="skill.mapper.SkillWriteMapper">
-    <select id="selectSkillWrites" parameterType="map" resultType="skill.bean.SkillWriteFilterDTO">
+<mapper namespace="com.example.demo.skill.mapper.SkillWriteMapper">
+    <select id="selectSkillWrites" parameterType="map" resultType="com.example.demo.skill.bean.SkillWriteFilterDTO">
         <choose>
             <when test="selectedAlignBox == '학습시간순'">
                 SELECT

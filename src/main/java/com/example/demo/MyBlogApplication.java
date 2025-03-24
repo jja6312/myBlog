@@ -9,10 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.example.demo", "user.*", "devlog.*", "studyTime.*", "skill.*", "memo.*", "project.*" })
-@EntityScan(basePackages = { "user.bean", "devlog.bean", "studyTime.bean","skill.bean", "memo.bean","project.bean" })
-@MapperScan(basePackages = { "studyTime.mapper", "skill.mapper", "devlog.mapper"} )
-@EnableJpaRepositories(basePackages = { "user.dao", "devlog.repository" , "studyTime.repository","skill.repository", "memo.repository", "project.repository" })
+@MapperScan(basePackages = { "com.example.demo.studyTime.mapper", "com.example.demo.skill.mapper", "com.example.demo.devlog.mapper"} )
 public class MyBlogApplication {
 
 	public static void main(String[] args) {
