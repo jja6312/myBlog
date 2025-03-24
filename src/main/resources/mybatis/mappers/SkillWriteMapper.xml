@@ -4,24 +4,45 @@
     <select id="selectSkillWrites" parameterType="map" resultType="skill.bean.SkillWriteFilterDTO">
         <choose>
             <when test="selectedAlignBox == '학습시간순'">
-                SELECT sw.*, COALESCE(SUM(st.duration_in_seconds), 0) AS total_duration, c.name as categoryName
+                SELECT
+                sw.id,
+                sw.name,
+                sw.type,
+                sw.strength,
+                sw.weakness,
+                sw.write_thumbnail AS writeThumbnail,
+                sw.created_at,
+                sw.updated_at,
+                COALESCE(SUM(st.duration_in_seconds), 0) AS totalDuration,
+                c.name AS categoryName
                 FROM skill_write AS sw
-                <!-- 조건에 따라 LEFT JOIN을 사용하고, JOIN 조건 내에 sw.category_name이 null이 아닐 경우에만 JOIN 수행 -->
                 LEFT JOIN category AS c ON c.name = sw.category_name AND sw.category_name IS NOT NULL
                 LEFT JOIN study_time AS st ON st.category_id = c.id
                 WHERE sw.type IN
                 <foreach item="type" collection="types" open="(" separator="," close=")">
                     #{type}
                 </foreach>
-                GROUP BY sw.id
-                ORDER BY total_duration
+                GROUP BY
+                sw.id, sw.name, sw.type, sw.strength, sw.weakness,
+                sw.write_thumbnail, sw.created_at, sw.updated_at, c.name
+                ORDER BY totalDuration
                 <choose>
                     <when test="selectedOrderBy == '오름차순'">ASC</when>
                     <otherwise>DESC</otherwise>
                 </choose>
             </when>
             <otherwise>
-                SELECT *, COALESCE(SUM(st.duration_in_seconds), 0) AS total_duration
+                SELECT
+                sw.id,
+                sw.name,
+                sw.type,
+                sw.strength,
+                sw.weakness,
+                sw.write_thumbnail AS writeThumbnail,
+                sw.created_at,
+                sw.updated_at,
+                COALESCE(SUM(st.duration_in_seconds), 0) AS totalDuration,
+                c.name AS categoryName
                 FROM skill_write AS sw
                 LEFT JOIN category AS c ON c.name = sw.category_name
                 LEFT JOIN study_time AS st ON st.category_id = c.id
@@ -33,7 +54,9 @@
                         </foreach>
                     </if>
                 </where>
-                GROUP BY sw.id
+                GROUP BY
+                sw.id, sw.name, sw.type, sw.strength, sw.weakness,
+                sw.write_thumbnail, sw.created_at, sw.updated_at, c.name
                 ORDER BY
                 <if test="selectedAlignBox == '날짜순'">
                     sw.created_at

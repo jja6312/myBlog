@@ -89,7 +89,7 @@ const ProjectWriteForm = () => {
     }
 
     axios
-      .post("http://43.203.18.91:8080/project/save", projectDTO)
+      .post("http://localhost:8080/project/save", projectDTO)
       .then((response) => {
         console.log(response.data);
         alert("프로젝트가 저장되었습니다.");

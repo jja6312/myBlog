@@ -23,7 +23,7 @@ const MemoListPlustBtn = ({ setVisibleMemoInput, visibleMemoInput }) => {
   const addMemo = () => {
     setVisibleMemoInput(false);
     axios
-      .post("http://43.203.18.91:8080/memo/saveMemo", memoSaveDTO)
+      .post("http://localhost:8080/memo/saveMemo", memoSaveDTO)
       .then((response) => {
         console.log(response);
         setMemoUpdated(!memoUpdated);
