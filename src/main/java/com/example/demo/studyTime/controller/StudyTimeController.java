@@ -11,12 +11,13 @@ import java.util.List;
 //스터디 시간과 관련된 controller --[24.01.27 20:41 정지안]
 @CrossOrigin
 @RestController
+@RequestMapping("/api/studyTime")
 public class StudyTimeController {
 	@Autowired
 	private StudyTimeService studyTimeService; // 스터디시간 서비스
 
 	// 학습시간 저장
-	@PostMapping("/studyTime/saveTime")
+	@PostMapping("/saveTime")
 	public ResponseEntity<?> createStudySession(@RequestBody StudyTimeDTO studyTimeDTO) {
 		// UTC시간대 +9시간을 해준다 --[24.02.03 정지안]
 		studyTimeDTO.adjustTimeForKST();
@@ -26,27 +27,27 @@ public class StudyTimeController {
 	}
 
 	// 오늘 공부한 시간 가져오기
-	@GetMapping("/studyTime/getTodayStudyTime")
+	@GetMapping("/getTodayStudyTime")
 	public ResponseEntity<Long> getTodayStudyTime() {
 		long todayStudyTime = studyTimeService.getTodayStudyTime();
 		return ResponseEntity.ok(todayStudyTime);
 	}
 
 	// 연간 공부 시간 가져오기
-	@GetMapping("/studyTime/getYearlyStudyTime")
+	@GetMapping("/getYearlyStudyTime")
 	public ResponseEntity<List<StudyTimeSummaryDTO>> getYearlyStudyTime() {
 		List<StudyTimeSummaryDTO> yearlyStudyTime = studyTimeService.getYearlyStudyTime();
 		return ResponseEntity.ok(yearlyStudyTime);
 	}
 
-	@GetMapping("/studyTime/averageStudyTime")
+	@GetMapping("/averageStudyTime")
 	public ResponseEntity<StudyTimeAverageDTO> getAverageStudyTime() {
 		StudyTimeAverageDTO studyTimeAverageDTO = studyTimeService.getAverageStudyTime();
 		return ResponseEntity.ok(studyTimeAverageDTO);
 	}
 
 	// (메인화면 중간 오른쪽)최근 1주일, 카테고리별 공부 시간
-	@GetMapping("/studyTime/getStudyTimeGroupByCategory")
+	@GetMapping("/getStudyTimeGroupByCategory")
 	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategory() {
 		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService
 				.getStudyTimeGroupByCategory("최근 1주일");
@@ -55,7 +56,7 @@ public class StudyTimeController {
 
 	// (메인화면 중간 오른쪽)최근 1달, 카테고리별 공부 시간(메인화면 중간 오른쪽)
 
-	@GetMapping("/studyTime/getStudyTimeGroupByCategoryRecentOneMonth")
+	@GetMapping("/getStudyTimeGroupByCategoryRecentOneMonth")
 	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategoryRecentOneMonth() {
 		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService
 				.getStudyTimeGroupByCategory("최근 1달");
@@ -63,7 +64,7 @@ public class StudyTimeController {
 	}
 
 	// (메인화면 중간 오른쪽)최근 1년, 카테고리별 공부 시간
-	@GetMapping("/studyTime/getStudyTimeGroupByCategoryRecentOneYear")
+	@GetMapping("/getStudyTimeGroupByCategoryRecentOneYear")
 	public ResponseEntity<List<StudyTimeGroupByCategoryDTO>> getStudyTimeGroupByCategoryRecentOneYear() {
 		List<StudyTimeGroupByCategoryDTO> studyTimeGroupByCategoryDTO = studyTimeService
 				.getStudyTimeGroupByCategory("최근 1년");
@@ -71,7 +72,7 @@ public class StudyTimeController {
 	}
 
 	// (메인화면 중간 왼쪽)일별, 카테고리별 공부량
-	@GetMapping("/studyTime/getStudyTimeByDayGroupByCategory")
+	@GetMapping("/getStudyTimeByDayGroupByCategory")
 	public ResponseEntity<List<StudyTimeByDayGroupByCategoryDTO>> getStudyTimeByDayGroupByCategory(
 			@RequestParam("clickedDate") String clickedDate) {
 		List<StudyTimeByDayGroupByCategoryDTO> studyTimeByDayGroupByCategoryDTO = studyTimeService
@@ -80,7 +81,7 @@ public class StudyTimeController {
 	}
 
 	// (메인화면 왼쪽)경험치바를 표현하기 위한 전체 공부 시간 계산
-	@GetMapping("/studyTime/getStudyTimeHourSum")
+	@GetMapping("/getStudyTimeHourSum")
 	public ResponseEntity<String> getStudyTimeHourSum() {
 		String studyTimeHourSum = studyTimeService.getStudyTimeHourSum();
 		return ResponseEntity.ok(studyTimeHourSum);

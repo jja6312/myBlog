@@ -10,7 +10,7 @@ const Project = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/project/getProjectListAll")
+      .get("http://localhost:8080/api/project/getProjectListAll")
       .then((response) => {
         setProjectList(response.data);
 

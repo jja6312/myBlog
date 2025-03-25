@@ -16,7 +16,7 @@ const GithubDashboardDescriptionAtBottom = ({
     if (clickedDate === "") return;
     axios
       .get(
-        "http://localhost:8080/studyTime/getStudyTimeByDayGroupByCategory",
+        "http://localhost:8080/api/studyTime/getStudyTimeByDayGroupByCategory",
         {
           params: {
             clickedDate: clickedDate,

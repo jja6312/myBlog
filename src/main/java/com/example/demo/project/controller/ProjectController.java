@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api/project")
 public class ProjectController {
     private final ProjectService projectService;
 
@@ -17,13 +18,13 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @PostMapping("/project/save")
+    @PostMapping("/save")
     public ResponseEntity<?> projectSave(@RequestBody ProjectSaveDTO projectSaveDTO){
         projectService.projectSave(projectSaveDTO);
 
         return ResponseEntity.ok().build();
     }
-    @GetMapping("/project/getProjectListAll")
+    @GetMapping("/getProjectListAll")
     public ResponseEntity<List<Project>> getProjectListAll(){
         return ResponseEntity.ok(projectService.getProjectListALl());
     }

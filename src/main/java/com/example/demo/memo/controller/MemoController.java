@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api/memo")
 public class MemoController {
     private final MemoService memoService;
 
@@ -21,18 +22,18 @@ public class MemoController {
         this.memoService = memoService;
     }
 
-    @PostMapping(path = "/memo/saveMemo")
+    @PostMapping(path = "/saveMemo")
     public ResponseEntity<Memo> saveMemo(@RequestBody MemoSaveDTO memoSaveDTO) {
         return ResponseEntity.ok(memoService.saveMemo(memoSaveDTO));
     }
 
-    @GetMapping(path = "/memo/getMemo")
+    @GetMapping(path = "/getMemo")
     public ResponseEntity<List<Memo>> getMemo(@RequestParam String clickedDate) {
 
         return ResponseEntity.ok(memoService.getMemo(clickedDate));
     }
 
-    @PostMapping(path = "/memo/updateStatus")
+    @PostMapping(path = "/updateStatus")
     public ResponseEntity<Memo> updateStatus(@RequestBody MemoUpdateStatusDTO memoUpdateStatusDTO) {
         String id= memoUpdateStatusDTO.getId();
         String status = memoUpdateStatusDTO.getStatus();
@@ -42,14 +43,14 @@ public class MemoController {
         return ResponseEntity.ok(memoService.updateMemo(id, status));
     }
 
-    @DeleteMapping("/memo/deleteMemo/{id}")
+    @DeleteMapping("/deleteMemo/{id}")
     public ResponseEntity<?> deleteMemo(@PathVariable Long id){
         System.out.println(id);
         memoService.deleteMemo(id);
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/memo/editMemo/{id}")
+    @PutMapping("/editMemo/{id}")
     public ResponseEntity<?> editMemo(@PathVariable Long id, @RequestBody MemoEditDTO memoEditDTO){
         memoService.editMemo(id, memoEditDTO);
 
