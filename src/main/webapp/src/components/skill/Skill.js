@@ -35,7 +35,7 @@ const Skill = () => {
     }).toString();
 
     axios
-      .get(`http://localhost:8080/api/skill/getSkillList?${params}`)
+      .get(`http://132.226.236.237:8080/api/skill/getSkillList?${params}`)
       .then((res) => {
         console.log("skillList", res.data);
         setSkillList(res.data);

@@ -13,7 +13,7 @@ const WriteDashboard = () => {
   //일자에 따른 개발일지 가져오기
   const getDevlogWriteListByDate = () => {
     axios
-      .get("http://localhost:8080/api/myBlog/getDevlogWriteListByDate", {
+      .get("http://132.226.236.237:8080/api/myBlog/getDevlogWriteListByDate", {
         params: {
           clickedDate: clickedDate,
         },

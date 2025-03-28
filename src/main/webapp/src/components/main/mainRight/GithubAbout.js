@@ -17,7 +17,7 @@ const GithubAbout = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/studyTime/averageStudyTime")
+      .get("http://132.226.236.237:8080/api/studyTime/averageStudyTime")
       .then((res) => {
         setAverageStudyTimePerWeekend(res.data.averageStudyTimePerWeekend);
         setAverageStudyTimePerDay(res.data.averageStudyTimePerDay);

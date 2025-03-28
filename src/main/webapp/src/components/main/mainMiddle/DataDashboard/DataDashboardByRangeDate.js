@@ -159,7 +159,7 @@ const DataDashboardByRangeDate = () => {
 
   const getStudyTimeGroupByCategory = () => {
     axios
-      .get("http://localhost:8080/api/studyTime/getStudyTimeGroupByCategory")
+      .get("http://132.226.236.237:8080/api/studyTime/getStudyTimeGroupByCategory")
       .then((res) => {
         console.log("getStudyTimeGroupByCategory:", res.data);
         setStudyTimeGroupByCategory(res.data);
@@ -172,7 +172,7 @@ const DataDashboardByRangeDate = () => {
   const getStudyTimeGroupByCategoryRecentOneMonth = () => {
     axios
       .get(
-        "http://localhost:8080/api/studyTime/getStudyTimeGroupByCategoryRecentOneMonth"
+        "http://132.226.236.237:8080/api/studyTime/getStudyTimeGroupByCategoryRecentOneMonth"
       )
       .then((res) => {
         console.log("getStudyTimeGroupByCategoryRecentOneMonth:", res.data);
@@ -187,7 +187,7 @@ const DataDashboardByRangeDate = () => {
     axios
 
       .get(
-        "http://localhost:8080/api/studyTime/getStudyTimeGroupByCategoryRecentOneYear"
+        "http://132.226.236.237:8080/api/studyTime/getStudyTimeGroupByCategoryRecentOneYear"
       )
       .then((res) => {
         console.log("getStudyTimeGroupByCategoryRecentOneYear:", res.data);

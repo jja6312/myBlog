@@ -87,7 +87,7 @@ const SkillWriteForm = () => {
     }
 
     axios
-      .post("http://localhost:8080/api/skill/save", writeDTO, {
+      .post("http://132.226.236.237:8080/api/skill/save", writeDTO, {
         headers: {
           "Content-Type": "application/json",
         },

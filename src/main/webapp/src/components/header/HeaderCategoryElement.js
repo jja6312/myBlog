@@ -37,7 +37,8 @@ const HeaderCategory = ({
             text === "홈" ||
             text === "개발일지" ||
             text === "기술스택" ||
-            text === "프로젝트"
+            text === "프로젝트" ||
+            text === "소개"
               ? ""
               : "text-gray-600"
           }`}
@@ -74,7 +75,8 @@ const HeaderCategory = ({
                 text === "홈" ||
                 text === "개발일지" ||
                 text === "기술스택" ||
-                text === "프로젝트"
+                text === "프로젝트" ||
+                text === "소개"
                   ? ""
                   : "text-gray-600"
               }`}

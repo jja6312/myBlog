@@ -1,5 +1,4 @@
 import React from "react";
-import Developing from "../Developing";
 
 const About = () => {
   return (
@@ -7,7 +6,10 @@ const About = () => {
       id="aboutContainer"
       className="bg-dark text-white flex pl-5 min-h-screen"
     >
-      <Developing />
+      <div className="flex justify-center w-full mt-10">
+        <a href="http://www.github.com/jja6312" className="text-blue-500 underline text-xl font-bold">http://www.github.com/jja6312</a>
+
+      </div>
     </div>
   );
 };

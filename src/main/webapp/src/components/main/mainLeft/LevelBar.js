@@ -14,7 +14,7 @@ const LevelBar = () => {
 
   const getStudyTimeSum = () => {
     axios
-      .get("http://localhost:8080/api/studyTime/getStudyTimeHourSum")
+      .get("http://132.226.236.237:8080/api/studyTime/getStudyTimeHourSum")
       .then((res) => {
         console.log("studyTimeSum:", res.data);
 
